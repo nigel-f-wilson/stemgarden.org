@@ -31,16 +31,6 @@ const theme = createTheme({
             disabledBackground: '#2e6b12',
             disabledOpacity: '0.5'
         },
-        board: {
-            light: '#2962ff',
-            main: '#0039cb',
-            dark: '#001399',
-        },
-        chip: {
-            playerOne: '#d50000',
-            playerTwo: '#ffea00',
-            unclaimed: '#b3e5fc',
-        },
         background: '#b3e5fc',
         white: '#FFFFFF',
         transparent: 'rgba(0, 0, 0, 0)',
