@@ -3,7 +3,7 @@ import { Link as RouterLink } from "react-router-dom";
 
 
 // MY components
-// import Navbar from "../components/Navbar/Navbar";
+import Navbar from "../components/navigation/Navbar";
 // import LandingCards from "../components/LandingCards";
 
 // MY images
@@ -19,7 +19,7 @@ import { Container, Box, Typography } from '@mui/material';
 export function LandingPage(props) {
     return (
         <React.Fragment >
-            {/* <Navbar /> */}
+            <Navbar />
             <MobileLandingPage />
             <DesktopLandingPage />
         </React.Fragment>
