@@ -9,6 +9,8 @@ import { createTheme, responsiveFontSizes } from '@mui/material/styles';
 
 const theme = createTheme({
     palette: {
+        white: '#FFFFFF',
+        black: '#000000',
         primary: {
             light: '#669944',
             main: '#2e6b12',
