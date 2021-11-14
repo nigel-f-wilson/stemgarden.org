@@ -10,9 +10,11 @@ import theme from "./theme"
 import { ThemeProvider } from '@mui/material/styles';
 
 // PAGES
-import { Landing as LandingPage } from "./pages/Landing"
-// import Play from "./pages/Play"
-// import Info from "./pages/Info"
+import { LandingPage } from "./pages/LandingPage"
+// import { MathGamesPage } from "./pages/MathGamesPage"
+// import { ContactPage } from "./pages/ContactPage"
+// import { TeachingServicesPage } from "./pages/TeachingServicesPage"
+
 
 // MUI  components
 import { Box, CssBaseline } from '@mui/material';
