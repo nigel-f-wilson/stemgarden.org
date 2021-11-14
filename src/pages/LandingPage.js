@@ -48,11 +48,13 @@ function MobileLandingPage(props) {
         >
             <Typography  align='center' 
                 color='white' 
-                component='h1' variant='h2' 
+                // component='h1' variant='h2' 
                 sx={{
                     padding: '4.0rem 3.0rem',
                     textShadow: '0.15rem 0.15rem 0.3rem black',
-                    fontSize: 'min(2.5rem, 8vw)'
+                    fontSize: 'min(2.5rem, 8vw)',
+                    fontWeight: 'light',
+
                 }}
             >
                 Sowing the seeds of life&#8209;long learning and DIY&#8209;spirit
@@ -61,8 +63,14 @@ function MobileLandingPage(props) {
             <Typography
                 align='justify'
                 color='primary.contrastText'
-                component='h2'
-                variant='body1'
+                // component='h2'
+                // variant='body1'
+                sx={{
+                    padding: '0.0rem 4.0rem',
+                    textShadow: '0.12rem 0.12rem 0.20rem black',
+                    fontWeight: 'light',
+
+                }}
             >
                 The STEM Garden is an off-grid urban teaching garden, rooted in New Orleans.
                 The STEM Garden is dedicated to 
@@ -101,7 +109,7 @@ function DesktopLandingPage(props) {
         >
             <Container
                 id="MaxWidthContainer"
-                maxWidth='lg'
+                maxWidth='md'
                 sx={{
                     height: 'auto',
                     minHeight: '100vh',
@@ -123,42 +131,38 @@ function DesktopLandingPage(props) {
                 <Typography
                     id="TitleText"
                     align='center'
-                    color='primary.contrastText'
-                    component='h1'
+                    color='white'
                     variant='h2'
                     sx={{
                         padding: '4.0rem 3.0rem',
                         textShadow: '0.15rem 0.15rem 0.3rem black',
-                        fontSize: 'min(2.5rem, 8vw)'
+                        fontSize: 'min(2rem, 6vw)',
+                        fontWeight: 'light',
                     }}
                 >
                     Sowing the seeds of life&#8209;long learning and DIY&#8209;spirit
-                    through integrated teaching of math, physics, chess, biology,
+                    through integrated teaching of math, physics, chess, gardening, woodworking,
                     and computer programming.
                 </Typography>
 
-                <Box
-                    // className={classes.smText}
-                    display={{ xs: 'none', sm: 'block' }}
+                <Typography
+                    align='justify'
+                    color='white'
+                    // component='h2'
+                    variant='h5'
+                    sx={{
+                        padding: '0.0rem 4.0rem',
+                        textShadow: '0.12rem 0.12rem 0.20rem black',
+                        fontWeight: 'light',
+
+                    }}
                 >
-                    <Typography
-                        // className={classes.subtitleText}
-                        align='justify'
-                        color='primary.contrastText'
-                        component='h2'
-                        variant='h5'
-                        sx={{
-                            padding: '0.0rem 4.0rem',
-                            textShadow: '0.12rem 0.12rem 0.20rem black',
-                        }}
-                    >
-                        The STEM Garden is an off-grid urban teaching garden, rooted in New Orleans.
-                        We offer private tutoring and small group lessons, both in the garden and online.
-                        We help students excell on the SAT and ACT and meet all Common Core math standards,
-                        but we see learning math as so much more than that! We emphacize the playful side of
-                        mathematical thinking and make use of many puzzles, games, and hands-on projects to engage young imaginations.
-                    </Typography>
-                </Box>
+                    The STEM Garden is an off-grid urban teaching garden rooted in New Orleans.
+                    We offer private tutoring and small group lessons, both in the garden and online.
+                    We help students excell on the SAT and ACT and meet all Common Core math standards,
+                    but we see learning math as so much more than that! We emphacize the playful side of
+                    mathematical thinking and make use of many puzzles, games, and hands-on projects to engage young imaginations.
+                </Typography>
 
                 <Box p={2} >
                     {/* <LandingCards /> */}
