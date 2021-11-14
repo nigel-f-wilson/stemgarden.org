@@ -39,16 +39,7 @@ const theme = createTheme({
     },
     components: {
         MuiPaper: {
-            styleOverrides: {  // Name of the slot
-                root: {        // Some CSS
-                    backgroundColor: '#fff',
-                    borderRadius: '50%',
-                    height: '80%',
-                    width: '80%',
-                    transform: 'translate(0, 15%)'
-
-                },
-            },
+            
         },
     },
     typography: {
@@ -64,16 +55,8 @@ const theme = createTheme({
         borderRadius: 8,
     },
     spacing: 8,
-    transitions: {
-        easing: {
-            bounce: "cubic-bezier(0.175, 0.885, 0.32, 1.275)",
-            parabolicAcceleration: "cubic-bezier(0.5, 0.0, 1.0, 0.5)"
-        }
-    },
-    zIndex: {
-        chip: 10,
-        board: 20
-    }
+    transitions: {    },
+    zIndex: { }
 
 });
 
