@@ -16,7 +16,7 @@ import { Container, Box, Typography } from '@mui/material';
 
 // LandingPage is responsible for rendering a Navbar and either the Mobile or Desktop version
 // depending on screen width. The Navbar contains its own M.vs.D. rendering logic. 
-export function Landing(props) {
+export function LandingPage(props) {
     return (
         <React.Fragment >
             {/* <Navbar /> */}
@@ -47,7 +47,7 @@ function MobileLandingPage(props) {
             
         >
             <Typography  align='center' 
-                color='primary.contrastText' 
+                color='white' 
                 component='h1' variant='h2' 
                 sx={{
                     padding: '4.0rem 3.0rem',
@@ -65,6 +65,7 @@ function MobileLandingPage(props) {
                 variant='body1'
             >
                 The STEM Garden is an off-grid urban teaching garden, rooted in New Orleans.
+                The STEM Garden is dedicated to 
                 We offer private tutoring and small group lessons, both in the garden and online.
                 We help students meet all common core math standards but see learning math as
                 so much more than that! We emphacize the playful side of mathematical thinking and
