@@ -10,7 +10,7 @@ import theme from "./theme"
 import { ThemeProvider } from '@mui/material/styles';
 
 // PAGES
-// import Landing from "./pages/Landing"
+import { Landing as LandingPage } from "./pages/Landing"
 // import Play from "./pages/Play"
 // import Info from "./pages/Info"
 
@@ -37,18 +37,10 @@ export default function App() {
                         justifyContent: 'center',
                     }}
                 >
-                        <Routes>
-                            <Route exact path="/">
-                                {/* <Landing /> */}
-                            </Route>
-                            <Route path="/play" >
-                                {/* <Play /> */}
-                            </Route>
-                            <Route path="/info" >
-                                {/* <Info /> */}
-                            </Route>
-
-                        </Routes>
+                    <Routes>
+                        <Route exact path="/" element={<LandingPage />} />
+                        <Route path="/math_games" element={<LandingPage />} />
+                    </Routes>
                 </Box>
             </ThemeProvider>
         </React.Fragment>
