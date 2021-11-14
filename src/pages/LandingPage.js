@@ -56,8 +56,7 @@ function MobileLandingPage(props) {
                 }}
             >
                 Sowing the seeds of life&#8209;long learning and DIY&#8209;spirit
-                through integrated teaching of math, chess, gardening, woodworking, 
-                and programming.
+                with a focus on math, chess, gardening, woodworking, and programming.
             </Typography>
             <Typography
                 align='justify'
