@@ -1,6 +1,5 @@
 import React from 'react'
 import {
-    HashRouter as Router,
     Route,
     Routes
 } from "react-router-dom"
@@ -38,7 +37,6 @@ export default function App() {
                         justifyContent: 'center',
                     }}
                 >
-                    <Router>
                         <Routes>
                             <Route exact path="/">
                                 {/* <Landing /> */}
@@ -51,7 +49,6 @@ export default function App() {
                             </Route>
 
                         </Routes>
-                    </Router>
                 </Box>
             </ThemeProvider>
         </React.Fragment>
