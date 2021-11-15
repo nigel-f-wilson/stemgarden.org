@@ -182,20 +182,99 @@ function DesktopNavbar(props) {
 }
 
 
+function TeachDropdown() {
+    const [open, setOpen] = React.useState(false);
+    const anchorRef = React.useRef(null);
 
+    const handleToggle = () => {
+        setOpen((prevOpen) => !prevOpen);
+    }
+    const handleClose = () => {
+        setOpen(false);
+    }
+    const handleClickAway = (event) => {
+        if (anchorRef.current && anchorRef.current.contains(event.target)) {
+            return;
+        }
+        setOpen(false);
+    }
+    function handleListKeyDown(event) {
+        if (event.key === 'Tab') {
+            // event.preventDefault();     
+            // setOpen(false);
+        }
+    }
+
+    // return focus to the button when we transitioned from !open -> open
+    const prevOpen = React.useRef(open);
+    React.useEffect(() => {
+        if (prevOpen.current === true && open === false) {
+            anchorRef.current.focus();
+        }
+        prevOpen.current = open;
+    }, [open]);
+
+    return (
+        <Box id="teachingServicesMenu" 
+        >
+            <Button
                 // className={classes.dropdownButton}
+                variant="text"
+                ref={anchorRef}
+                aria-controls={open ? 'menu-list-grow' : undefined}
+                aria-haspopup="true"
+                onClick={handleToggle}
                 sx={{
                     color: "white",
                     textTransform: "none",
                     textAlign: 'center',
                     paddingBottom: '0.5rem',
                 }}
+            >
+                <Typography variant="h5">
+                    Teaching<br />Services
+                </Typography>
+            </Button>
+            <Popper
+                open={open}
+                anchorEl={anchorRef.current}
+                role={undefined}
+                transition
+                disablePortal
+            >
+                {({ TransitionProps }) => (
+                    <Grow
+                        {...TransitionProps}
+                        style={{ transformOrigin: 'center top' }}
+                    >
+                        <Paper 
                         // className={classes.dropdownSurface}
+                            onClick={handleClose}
+
                             sx={{
                                 border: 'solid white 1px',
                                 // blurRadius: ,
                                 backgroundColor: "primary.main",
                             }}
+                        >
+                            <ClickAwayListener onClickAway={handleClickAway}>
+
+                                <MenuList autoFocusItem={open}
+                                    id="menu-list-grow"
+                                    onKeyDown={handleListKeyDown}
+                                >
+                                    <TeachingServicesList
+                                        // handleClose={handleClose}
+                                    />
+                                </MenuList>
+                            </ClickAwayListener>
+                        </Paper>
+                    </Grow>
+                )}
+            </Popper>
+        </Box>
+    )
+}
 
 function GardenDropdown() {
     const [open, setOpen] = React.useState(false);
