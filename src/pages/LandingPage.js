@@ -1,6 +1,4 @@
 import React from 'react';
-import { Link as RouterLink } from "react-router-dom";
-
 
 // MY components
 import Navbar from "../components/navigation/Navbar";
