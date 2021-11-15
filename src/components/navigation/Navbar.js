@@ -26,14 +26,14 @@ import { Container,
     Popper,
     MenuList,
     ListItem,
-    ListItemIcon,
+    // ListItemIcon,
     ListItemText,
     Icon
 } from "@mui/material"
 
 
 // ICONS
-import SchoolIcon from '@mui/icons-material/School';
+// import SchoolIcon from '@mui/icons-material/School';
 // import EcoIcon from '@mui/icons-material/EcoIcon';
 // import PhotoCameraIcon from '@mui/icons-material/PhotoCameraIcon';
 
@@ -66,7 +66,6 @@ function MobileNavbar(props) {
                     flexDirection: 'row',
                     justifyContent: 'center',
                     backgroundColor: "primary.main", // Matches Logo Background
-                    display: 'flex',
                     color: "white",
                 }}
             >
