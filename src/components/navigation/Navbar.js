@@ -284,22 +284,162 @@ function GardenDropdown() {
 }
 
 
+function TeachingServicesList(props) {
+    // const handleClose = props.handleClose
 
-function ContactPageLink() {
-    // const classes = useStyles();
-    
+    return (
+        <React.Fragment>
+            <ListItem
+                key={'tutoring services'}
                 // className={classes.listItem}
+                button
+                // onClick={handleClose}
+                component={RouterLink}
+                to={{
+                    pathname: '/teach',
+                    state: {
+                        selectedTab: 'tutoring',
+                    }
+                }}
+            >
+                <Icon className={"fas fa-brain fa-2x"}
                     // classes={{ root: classes.icon }}
+                />
+                <ListItemText
+                    primary={'Math Tutoring'}
+                    primaryTypographyProps={{ variant: 'h5' }}
+                />
+            </ListItem>
+
+
+            <ListItem
+                key={'stem enrichment'}
                 // className={classes.listItem}
+                button
+                // onClick={handleClose}
+                component={RouterLink}
+                to={{
+                    pathname: '/teach',
+                    state: {
+                        selectedTab: 'enrichment',
+                    }
+                }}
+            >
+                <Icon className={"fas fa-flask fa-2x"}
                     // classes={{ root: classes.icon }}
+                />
+                <ListItemText
+                    primary={'STEM Enrichment'}
+                    primaryTypographyProps={{ variant: 'h5' }}
+                />
+            </ListItem>
+
+            <ListItem
+                key={'chess lessons'}
                 // className={classes.listItem}
+                button
+                // onClick={handleClose}
+                component={RouterLink}
+                // to='/teach/chess'
+                to={{
+                    pathname: '/teach',
+                    state: {
+                        selectedTab: 'chess',
+                    }
+                }}
+            >
+                <Icon className={"fas fa-chess-knight fa-2x"}
                     // classes={{ root: classes.icon }}
+                />
+                <ListItemText
+                    primary={'Chess Lessons'}
+                    primaryTypographyProps={{ variant: 'h5' }}
+                />
+            </ListItem>
+
+            <ListItem
+                key={'test prep'}
                 // className={classes.listItem}
+                button
+                // onClick={handleClose}
+                component={RouterLink}
+                to={{
+                    pathname: '/teach',
+                    state: {
+                        selectedTab: 'test_prep',
+                    }
+                }}
+
+            >
+                <Icon className={"fas fa-graduation-cap fa-2x"}
                     // classes={{ root: classes.icon }}
+                />
+                <ListItemText
+                    primary={'Test Prep'}
+                    primaryTypographyProps={{ variant: 'h5' }}
+                />
+            </ListItem>
+
+            <ListItem
+                key={'Math Games'}
                 // className={classes.listItem}
+                button
+                // onClick={handleClose}
+                component={RouterLink}
+                to='/math_games'
+            >
+                <Icon className="fas fa-laptop-code fa-2x"
                     // classes={{ root: classes.icon }}
+                />
+                <ListItemText
+                    primary={'Math Games'}
+                    primaryTypographyProps={{ variant: 'h5' }}
+                />
+            </ListItem>
+
+
+
+            {/* <ListItem
+                key={'math_games'}
+                className={classes.listItem}
+                button
+                onClick={handleClose}
+                component={RouterLink}
+                // to='/teach/math_games'
+                to='/teach'
+            >
+                <Icon className="fas fa-dice-six fa-2x"
+                    classes={{ root: classes.icon }}
+                />
+                <ListItemText 
+                    primary={'Math Games'}
+                    primaryTypographyProps={{ variant: 'h5' }}
+                />
+            </ListItem> */}
+
+
+            <ListItem
+                key={'puzzle_collection'}
                 // className={classes.listItem}
+                button
+                // onClick={handleClose}
+                component={RouterLink}
+                // to='/teach/puzzles'
+                to='/teach'
+            >
+                <Icon className="fas fa-puzzle-piece fa-2x"
                     // classes={{ root: classes.icon }}
+                />
+                <ListItemText
+                    primary={'Puzzle Collection'}
+                    primaryTypographyProps={{ variant: 'h5' }}
+                />
+            </ListItem>
+
+        </React.Fragment>
+    )
+}
+
                 // className={classes.listItem}
                     // classes={{ root: classes.icon }}
                 // className={classes.listItem}
