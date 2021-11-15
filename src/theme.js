@@ -11,6 +11,8 @@ const theme = createTheme({
     palette: {
         white: '#FFFFFF',
         black: '#000000',
+        connectFourBackground: '#b3e5fc',
+        transparent: 'rgba(0, 0, 0, 0)',
         primary: {
             light: '#669944',
             main: '#2e6b12',
@@ -33,9 +35,6 @@ const theme = createTheme({
             disabledBackground: '#2e6b12',
             disabledOpacity: '0.5'
         },
-        background: '#b3e5fc',
-        white: '#FFFFFF',
-        transparent: 'rgba(0, 0, 0, 0)',
     },
     components: {
         MuiPaper: {
