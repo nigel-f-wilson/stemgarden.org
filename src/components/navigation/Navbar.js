@@ -171,13 +171,9 @@ function DesktopNavbar(props) {
                             alignItems: 'flex-end',
                         }}
                     >
-                        
-                        {/* <TeachDropdown />
-
-                        <GardenDropdown /> */}
-
-                        <ContactPageLink />
-
+                        <TeachDropdown />
+                        <GardenDropdown />
+                        <LinkToContactPage />
                     </Box>
                 </Container>
             </AppBar>
