@@ -109,6 +109,7 @@ function MobileNavbar(props) {
 
 function DesktopNavbar(props) {
     // const classes = useStyles();
+    const height = "6.0rem"
     return (
         <Box display={{ xs: 'none', md: 'block' }} >
             <AppBar
