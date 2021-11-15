@@ -591,6 +591,7 @@ function GardenNavList(props) {
 
 
 
+function LinkToContactPage() {
     return (
         <Box 
         // className={classes.desktopMenuButton}
