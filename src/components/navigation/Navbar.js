@@ -3,6 +3,7 @@ import React from 'react';
 // React ROUTER
 import { Link as RouterLink } from "react-router-dom";
 
+import { useScreenWidth } from "../../hooks"
 
 // MY COMPONENTS
 // import MobileMenu from "./MobileMenu";
@@ -39,6 +40,8 @@ import { Container,
 
 export default function Navbar(props) {
     // const classes = useStyles();
+    const screenWidth = useScreenWidth()
+    
     return (
         <Box 
             sx={{ 
@@ -46,8 +49,7 @@ export default function Navbar(props) {
                 backgroundColor: 'primary.main'
             }}
         >
-            <MobileNavbar />
-            <DesktopNavbar />
+            {(screenWidth >= 600) ? <DesktopNavbar /> : <MobileNavbar />  }  // Same as breakpoint "md"
         </Box>
     )
 }
