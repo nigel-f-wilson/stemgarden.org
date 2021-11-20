@@ -1,4 +1,11 @@
-import React from 'react';
+import React from 'react'
+
+
+import Carousel from 'react-material-ui-carousel'
+import { Paper, Button } from '@mui/material'
+
+import { useScreenWidth } from "../hooks"
+
 
 // MY components
 import Navbar from "../components/navigation/Navbar";
@@ -15,20 +22,21 @@ import { Container, Box, Typography } from '@mui/material';
 // LandingPage is responsible for rendering a Navbar and either the Mobile or Desktop version
 // depending on screen width. The Navbar contains its own M.vs.D. rendering logic. 
 export function LandingPage(props) {
+    const screenWidth = useScreenWidth()
     return (
         <React.Fragment >
             <Navbar />
-            <MobileLandingPage />
-            <DesktopLandingPage />
+            {(screenWidth >= 600) ? <DesktopLandingPage /> : <MobileLandingPage />}  // Same as breakpoint "md"
         </React.Fragment>
     )
 }
 
 function MobileLandingPage(props) {
     return (
+
         <Box id="MobileLandingPage"
             sx={{ 
-                display: { xs: 'block', md: 'none' }, 
+                // display: { xs: 'block', md: 'none' }, 
                 height: 'auto',
                 width: '100%',
                 minHeight: '100vh',
@@ -55,8 +63,8 @@ function MobileLandingPage(props) {
 
                 }}
             >
-                Sowing the seeds of life&#8209;long learning and DIY&#8209;spirit
-                with a focus on math, chess, gardening, woodworking, and programming.
+                Sowing the seeds of life&#8209;long learning and DIY&#8209;spirit.
+                {/* with a focus on math, chess, gardening, woodworking, and programming. */}
             </Typography>
             <Typography
                 align='justify'
@@ -90,7 +98,8 @@ function DesktopLandingPage(props) {
         <Box
             id="DesktopLandingPage"
             sx={{
-                display: { xs: 'none', md: 'block' },
+                // display: { xs: 'none', md: 'block' },
+                padding: '6rem 0',
                 height: 'auto',
                 minHeight: '100vh',
                 width: '100%',
@@ -138,12 +147,12 @@ function DesktopLandingPage(props) {
                         fontWeight: 'light',
                     }}
                 >
-                    Sowing the seeds of life&#8209;long learning and DIY&#8209;spirit
-                    through integrated teaching of math, physics, chess, gardening, woodworking,
-                    and computer programming.
+                    Sowing the seeds of life&#8209;long learning and DIY&#8209;spirit.
+                    {/* through integrated teaching of math, physics, chess, gardening, woodworking,
+                    and computer programming. */}
                 </Typography>
 
-                <Typography
+                {/* <Typography
                     align='justify'
                     color='white'
                     // component='h2'
@@ -160,9 +169,10 @@ function DesktopLandingPage(props) {
                     We help students excell on the SAT and ACT and meet all Common Core math standards,
                     but we see learning math as so much more than that! We emphacize the playful side of
                     mathematical thinking and make use of many puzzles, games, and hands-on projects to engage young imaginations.
-                </Typography>
+                </Typography> */}
 
                 <Box p={2} >
+                    <Example />
                     {/* <LandingCards /> */}
                 </Box>
             </Container>
@@ -171,3 +181,36 @@ function DesktopLandingPage(props) {
     )
 }
 
+function Example(props) {
+    var items = [
+        {
+            name: "Random Name #1",
+            description: "Probably the most random thing you have ever seen!"
+        },
+        {
+            name: "Random Name #2",
+            description: "Hello World!"
+        }
+    ]
+
+    return (
+        <Carousel>
+            {
+                items.map((item, i) => <Item key={i} item={item} />)
+            }
+        </Carousel>
+    )
+}
+
+function Item(props) {
+    return (
+        <Paper>
+            <h2>{props.item.name}</h2>
+            <p>{props.item.description}</p>
+
+            <Button className="CheckButton">
+                Check it out!
+            </Button>
+        </Paper>
+    )
+}

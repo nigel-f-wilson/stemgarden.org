@@ -39,9 +39,7 @@ import { Container,
 // import PhotoCameraIcon from '@mui/icons-material/PhotoCameraIcon';
 
 export default function Navbar(props) {
-    // const classes = useStyles();
     const screenWidth = useScreenWidth()
-    
     return (
         <Box sx={{ 
                 width: '100vw',
@@ -54,6 +52,7 @@ export default function Navbar(props) {
 }
 
 function MobileNavbar(props) {
+    const height = "3.5rem"
     return (
         <AppBar
             // className={classes.navbar, classes.mobileNavbar}
@@ -101,31 +100,24 @@ function MobileNavbar(props) {
 function DesktopNavbar(props) {
     const height = "6.0rem"
     const [openDropdown, setOpenDropdown] = React.useState("none")   // "none", "teach", "garden", "test"
-    const anchorRef = React.useRef(null);
+    // const anchorRef = React.useRef(null);
 
+    
     // const handleToggle = () => {
     //     setOpen((prevOpen) => !prevOpen);
     // }
     // const handleClose = () => {
     //     setOpen(false);
     // }
-    const handleClickAway = (event) => {
-        if (anchorRef.current && anchorRef.current.contains(event.target)) {
-            return;
-        }
-        // setOpen(false);
-    }
-    const openTeachDropdown = () => {
-        setOpenDropdown("teach");
-    }
-    const openGardenDropdown = () => {
-        setOpenDropdown("garden");
-    }
-    const closeAllDropdowns = () => {
-        setOpenDropdown("none");
-    }
+    // const handleClickAway = (event) => {
+    //     if (anchorRef.current && anchorRef.current.contains(event.target)) {
+    //         return;
+    //     }
+    //     setOpenDropdown("none")
+    // }
     
     const setDropdownState = (newState) => {
+        console.log(`setDropdownState to: ${newState}`)
         setOpenDropdown(newState);
     }
 
@@ -140,111 +132,99 @@ function DesktopNavbar(props) {
 
 
     return (
-        <Box display={{ xs: 'none', md: 'block' }} >
-            <AppBar
-                position="fixed"
-                elevation={3}
+        <AppBar id="DesktopNavbar"
+            position="fixed"
+            elevation={3}
+            sx={{
+                height: height,
+                width: '100vw',
+                backgroundColor: "primary.main", 
+            }}
+        >
+            <Container
+                maxWidth='md'
                 sx={{
-                    height: height,
-                    width: '100vw',
+                    backgroundColor: "primary.main", 
                     display: 'flex',
                     flexDirection: 'row',
-                    justifyContent: 'center',
-                    backgroundColor: "primary.main", 
+                    justifyContent: 'space-between',
                 }}
             >
-                <Container
-                    maxWidth='md'
+                <Box id="DesktopBrand"
+                    component={RouterLink} to='/'
                     sx={{
-                        backgroundColor: "primary.main", 
+                        // border: 'solid red 1px',
+                        textDecoration: 'none',
+                        flex: '1 0 10%',
                         display: 'flex',
-                        flexDirection: 'row',
-                        justifyContent: 'space-between',
-                        // alignItems: 'flex-end',
                     }}
                 >
-                    <Box id="DesktopBrand"
+                    <Box id="DesktopLogo"
+                        sx={{
+                            height: height,
+                            paddingRight: height,
+                            backgroundImage: `
+                            url(${logo})  
+                        `,
+                            backgroundPosition: 'center bottom',
+                            backgroundRepeat: 'no-repeat',
+                            backgroundSize: 'auto 95%',
+                        }}
+                    />
+                    <Typography id="DesktopOrgName"
                         component={RouterLink} to='/'
                         sx={{
-                            // border: 'solid red 1px',
                             textDecoration: 'none',
-                            flex: '1 0 10%',
-                            display: 'flex',
+                            margin: 'auto 0',
+                            fontSize: '2rem',
+                            lineHeight: '2.2rem',
+                            color: "white",
                         }}
                     >
-                        <Box id="DesktopLogo"
-                            sx={{
-                                height: height,
-                                paddingRight: height,
-                                backgroundImage: `
-                                url(${logo})  
-                            `,
-                                backgroundPosition: 'center bottom',
-                                backgroundRepeat: 'no-repeat',
-                                backgroundSize: 'auto 95%',
-                            }}
-                        />
-                        <Typography id="DesktopOrgName"
-                            component={RouterLink} to='/'
-                            sx={{
-                                textDecoration: 'none',
-                                margin: 'auto 0',
-                                fontSize: '2rem',
-                                lineHeight: '2.2rem',
-                                color: "white",
-                            }}
-                        >
-                            STEM <br />Garden
-                            {openDropdown}
-                        </Typography>
-                    </Box>
-                    
-                    <Box id="dropdownMenu"
-                        sx={{
-                            // border: 'solid red 1px',
-                            flex: '1 0 50%',
-                            display: 'flex',
-                            justifyContent: 'space-between',
-                            alignItems: 'flex-end',
-                        }}
-                    >
-                        <TeachDropdown 
-                            openDropdown={openDropdown}
-                            setDropdownState={setDropdownState}
-                        />
-                        <GardenDropdown
-                            open={openDropdown === "garden" }
-                            openDropdown={openDropdown}
-                            setDropdownState={setDropdownState}
-                        />
-                        <TestDropdown 
-                            open={openDropdown === "test" }
-                            openDropdown={openDropdown}
-                            setDropdownState={setDropdownState}
-                        />
-                    </Box>
-                </Container>
-            </AppBar>
-        </Box>
+                        STEM <br />Garden
+                    </Typography>
+                </Box>
+                
+                <Box id="dropdownMenu"
+                    sx={{
+                        // border: 'solid red 1px',
+                        flex: '1 0 50%',
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        alignItems: 'flex-end',
+                    }}
+                >
+                    <TeachDropdown 
+                        openDropdown={openDropdown}
+                        setDropdownState={setDropdownState}
+                    />
+                    <GardenDropdown
+                        openDropdown={openDropdown}
+                        setDropdownState={setDropdownState}
+                    />
+                    <TestDropdown 
+                        openDropdown={openDropdown}
+                        setDropdownState={setDropdownState}
+                    />
+                </Box>
+            </Container>
+        </AppBar>
     );
 }
 
 
 function TeachDropdown(props) {
-    // const [open, setOpen] = React.useState(false);
     const { openDropdown, setDropdownState } = props
     const open = (openDropdown === "teach")
-
     const anchorRef = React.useRef(null);
 
-    // const handleToggle = () => {
-    //     setOpen((prevOpen) => !prevOpen);
-    // }
-    const handleOpen = () => {
-        setDropdownState("teach")
-    }
-    const handleClose = () => {
-        setDropdownState("none")
+    const toggleTeachDropdown = () => {
+        if (open) {
+            setDropdownState("none")
+        }
+        else {
+            setDropdownState("teach")
+        }
     }
     const handleClickAway = (event) => {
         if (anchorRef.current && anchorRef.current.contains(event.target)) {
@@ -252,33 +232,24 @@ function TeachDropdown(props) {
         }
         setDropdownState("none")
     }
-    
-
-    // return focus to the button when we transitioned from !open -> open
-    const prevOpen = React.useRef(open);
-    React.useEffect(() => {
-        if (prevOpen.current === true && open === false) {
-            anchorRef.current.focus();
-        }
-        prevOpen.current = open;
-    }, [open]);
+    const handleClose = () => {
+        setDropdownState("none")
+    }
 
     return (
-        <Box id="teachingServicesMenu" 
-        >
+        <Box id="TeachingServicesMenu" >
             <Button
-                // className={classes.dropdownButton}
+                onClick={toggleTeachDropdown}
                 variant="text"
-                ref={anchorRef}
-                aria-controls={open ? 'menu-list-grow' : undefined}
-                aria-haspopup="true"
-                onClick={handleOpen}
                 sx={{
                     color: "white",
                     textTransform: "none",
                     textAlign: 'center',
                     paddingBottom: '0.5rem',
                 }}
+                ref={anchorRef}
+                aria-controls={open ? 'menu-list-grow' : undefined}
+                aria-haspopup="true"
             >
                 <Typography variant="h5">
                     Teaching<br />Services
@@ -287,7 +258,7 @@ function TeachDropdown(props) {
             <Popper
                 open={open}
                 anchorEl={anchorRef.current}
-                role={undefined}
+                role={undefined} // What values can this take?
                 transition
                 disablePortal
             >
@@ -296,25 +267,24 @@ function TeachDropdown(props) {
                         {...TransitionProps}
                         style={{ transformOrigin: 'center top' }}
                     >
-                        <Paper 
-                        // className={classes.dropdownSurface}
+                        <Paper id="dropdownSurface"
                             onClick={handleClose}
-
+                            elevation={3}
                             sx={{
                                 border: 'solid white 1px',
-                                // blurRadius: ,
                                 backgroundColor: "primary.main",
                             }}
                         >
                             <ClickAwayListener onClickAway={handleClickAway}>
-
-                                <MenuList autoFocusItem={open}
-                                    id="menu-list-grow"
-                                    // onKeyDown={handleListKeyDown}
+                                <MenuList id="menu-list-grow"
+                                    autoFocusItem={open}
                                 >
-                                    <TeachingServicesList
-                                        // handleClose={handleClose}
-                                    />
+                                    <TeachingServicesList />
+                                    {/* {teachingServicesList.map((propsObject) => {
+                                        return (
+                                            <DrodownListItem props={propsObject} />
+                                        )
+                                    })} */}
                                 </MenuList>
                             </ClickAwayListener>
                         </Paper>
@@ -325,27 +295,27 @@ function TeachDropdown(props) {
     )
 }
 
-function GardenDropdown() {
-    const [open, setOpen] = React.useState(false);
+function GardenDropdown(props) {
+    const { openDropdown, setDropdownState } = props
+    const open = (openDropdown === "garden")
     const anchorRef = React.useRef(null);
 
-    const handleToggle = () => {
-        setOpen((prevOpen) => !prevOpen);
-    }
-    const handleClose = (event) => {
-        setOpen(false);
+    const toggleGardenDropdown = () => {
+        if (open) {
+            setDropdownState("none")
+        }
+        else {
+            setDropdownState("garden")
+        }
     }
     const handleClickAway = (event) => {
         if (anchorRef.current && anchorRef.current.contains(event.target)) {
-            return;
+            return; // do nothing
         }
-        setOpen(false);
+        setDropdownState("none")
     }
-    function handleListKeyDown(event) {
-        if (event.key === 'Tab') {
-            event.preventDefault();
-            setOpen(false);
-        }
+    const handleClose = () => {
+        setDropdownState("none")
     }
 
     // return focus to the button when we transitioned from !open -> open
@@ -359,44 +329,46 @@ function GardenDropdown() {
     }, [open])
 
     return (
-        <Box id="aboutTheGardenMenu" >
+        <Box id="GardenMenu" >
             <Button
-                // className={classes.dropdownButton}
+                onClick={toggleGardenDropdown}
+                variant="text"
                 sx={{
                     color: "white",
                     textTransform: "none",
                     textAlign: 'center',
                     paddingBottom: '0.5rem',
                 }}
-                variant="text"
                 ref={anchorRef}
                 aria-controls={open ? 'menu-list-grow' : undefined}
                 aria-haspopup="true"
-                onClick={handleToggle}
             >
                 <Typography variant="h5">
                     About the<br />Garden
                 </Typography>
-
             </Button>
-            <Popper open={open} anchorEl={anchorRef.current} role={undefined} transition disablePortal>
+            <Popper open={open} 
+                anchorEl={anchorRef.current} 
+                role={undefined} 
+                transition 
+                disablePortal
+            >
                 {({ TransitionProps }) => (
                     <Grow
                         {...TransitionProps}
                         style={{ transformOrigin: 'center top' }}
                     >
-                        <Paper 
-                        // className={classes.dropdownSurface}  
+                        <Paper id="dropdownSurface"
+                            onClick={handleClose}
+                            elevation={3}
                             sx={{
-                                border: 'solid white 0.1px',
+                                border: 'solid white 1px',
                                 backgroundColor: "primary.main",
                             }}
                         >
                             <ClickAwayListener onClickAway={handleClickAway}>
-                                <MenuList autoFocusItem={open} id="menu-list-grow" onKeyDown={handleListKeyDown}>
-                                    <GardenNavList
-                                        handleClose={handleClose}
-                                    />
+                                <MenuList autoFocusItem={open} id="menu-list-grow" >
+                                    <GardenNavList />
                                 </MenuList>
                             </ClickAwayListener>
                         </Paper>
@@ -407,6 +379,61 @@ function GardenDropdown() {
     )
 }
 
+const teachingServicesList = [
+    {
+        text: 'Tutoring',
+        key: 'tutoring services',
+        pathname: '/',
+        state: {
+            selectedTab: 'tutoring',
+        },
+        iconClassName: "fas fa-brain fa-2x",
+
+    },
+    {
+        text: 'STEM Enrichment',
+        key: 'stem enrichment',
+        pathname: '/',
+        state: {
+            selectedTab: 'enrichment',
+        },
+        iconClassName: "fas fa-flask fa-2x",
+
+    },
+    {
+        text: 'Chess',
+        key: 'chess',
+        pathname: '/',
+        state: {
+            selectedTab: 'chess',
+        },
+        iconClassName: "fas fa-chess-knight fa-2x",
+    }
+]
+
+function DrodownListItem(props) {
+    const { text, key, pathname, iconClassName } = props
+    return (
+        <ListItem
+            key={key}
+            button
+            component={RouterLink}
+            to={pathname}
+            // to={{
+            //     pathname: {pathname},
+            //     // state: {
+            //     //     selectedTab: 'tutoring',
+            //     // }
+            // }}
+        >
+            <Icon className={iconClassName} />
+            <ListItemText
+                primary={text}
+                primaryTypographyProps={{ variant: 'h5' }}
+            />
+        </ListItem>
+    )
+}
 
 function TeachingServicesList(props) {
     // const handleClose = props.handleClose
@@ -415,9 +442,7 @@ function TeachingServicesList(props) {
         <React.Fragment>
             <ListItem
                 key={'tutoring services'}
-                // className={classes.listItem}
                 button
-                // onClick={handleClose}
                 component={RouterLink}
                 to={{
                     pathname: '/teach',
@@ -426,9 +451,7 @@ function TeachingServicesList(props) {
                     }
                 }}
             >
-                <Icon className={"fas fa-brain fa-2x"}
-                    // classes={{ root: classes.icon }}
-                />
+                <Icon className={"fas fa-brain fa-2x"} />
                 <ListItemText
                     primary={'Math Tutoring'}
                     primaryTypographyProps={{ variant: 'h5' }}
