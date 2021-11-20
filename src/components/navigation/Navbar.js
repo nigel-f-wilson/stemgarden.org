@@ -46,7 +46,7 @@ export default function Navbar(props) {
                 backgroundColor: 'primary.main'
             }}
         >
-            {(screenWidth >= 600) ? <DesktopNavbar /> : <MobileNavbar />  }  // Same as breakpoint "md"
+            {(screenWidth >= 600) ? <DesktopNavbar /> : <MobileNavbar />  }  
         </Box>
     )
 }

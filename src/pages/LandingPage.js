@@ -26,7 +26,7 @@ export function LandingPage(props) {
     return (
         <React.Fragment >
             <Navbar />
-            {(screenWidth >= 600) ? <DesktopLandingPage /> : <MobileLandingPage />}  // Same as breakpoint "md"
+            {(screenWidth >= 600) ? <DesktopLandingPage /> : <MobileLandingPage />}  
         </React.Fragment>
     )
 }
@@ -194,7 +194,10 @@ function Example(props) {
     ]
 
     return (
-        <Carousel>
+        <Carousel
+            next={(next, active) => console.log(`we left ${active}, and are now at ${next}`) }
+            prev = { (prev, active) => console.log(`we left ${active}, and are now at ${prev}`) }
+        >
             {
                 items.map((item, i) => <Item key={i} item={item} />)
             }
