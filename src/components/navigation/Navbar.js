@@ -59,7 +59,7 @@ function MobileNavbar(props) {
             position="fixed"
             elevation={3}
             sx={{
-                height: '3.5rem',
+                height: {height},
                 // width: '100vw',
                 display: 'flex',
                 justifyContent: 'center',
@@ -282,9 +282,12 @@ function TeachDropdown(props) {
                                     <TeachingServicesList />
                                     {/* {teachingServicesList.map((propsObject) => {
                                         return (
-                                            <DrodownListItem props={propsObject} />
+                                            <DropdownListItem props={propsObject} />
                                         )
                                     })} */}
+                                    {/* {
+                                        teachingServicesList.map((item, index) => <DropdownListItem key={index} item={item} />)
+                                    } */}
                                 </MenuList>
                             </ClickAwayListener>
                         </Paper>
@@ -294,6 +297,7 @@ function TeachDropdown(props) {
         </Box>
     )
 }
+
 
 function GardenDropdown(props) {
     const { openDropdown, setDropdownState } = props
@@ -411,7 +415,7 @@ const teachingServicesList = [
     }
 ]
 
-function DrodownListItem(props) {
+function DropdownListItem(props) {
     const { text, key, pathname, iconClassName } = props
     return (
         <ListItem
