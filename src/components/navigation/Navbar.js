@@ -155,7 +155,7 @@ function DesktopNavbar(props) {
                     sx={{
                         // border: 'solid red 1px',
                         textDecoration: 'none',
-                        flex: '1 0 10%',
+                        flex: '1 0 60%',
                         display: 'flex',
                     }}
                 >
@@ -188,7 +188,7 @@ function DesktopNavbar(props) {
                 <Box id="dropdownMenu"
                     sx={{
                         // border: 'solid red 1px',
-                        flex: '1 0 50%',
+                        flex: '1 0 40%',
                         display: 'flex',
                         justifyContent: 'space-between',
                         alignItems: 'flex-end',
@@ -202,10 +202,10 @@ function DesktopNavbar(props) {
                         openDropdown={openDropdown}
                         setDropdownState={setDropdownState}
                     />
-                    <TestDropdown 
+                    {/* <TestDropdown 
                         openDropdown={openDropdown}
                         setDropdownState={setDropdownState}
-                    />
+                    /> */}
                 </Box>
             </Container>
         </AppBar>
@@ -666,125 +666,125 @@ function GardenNavList(props) {
 
 
 
-function LinkToContactPage() {
-    return (
-        <Box 
-        // className={classes.desktopMenuButton}
-        >
-            <Button
-                variant="text"
-                sx={{ textTransform: "none" }}
-            >
-                <Typography color="white"  variant="h5">
-                    Contact
-                </Typography>
-            </Button>
-        </Box>
-    );
-}
+// function LinkToContactPage() {
+//     return (
+//         <Box 
+//         // className={classes.desktopMenuButton}
+//         >
+//             <Button
+//                 variant="text"
+//                 sx={{ textTransform: "none" }}
+//             >
+//                 <Typography color="white"  variant="h5">
+//                     Contact
+//                 </Typography>
+//             </Button>
+//         </Box>
+//     );
+// }
 
 
-function TestDropdown(props) {
-    const { openDropdown, setDropdownState } = props
-    const open = (openDropdown === "test")
+// function TestDropdown(props) {
+//     const { openDropdown, setDropdownState } = props
+//     const open = (openDropdown === "test")
     
-    // const [open, setOpen] = React.useState(false);
-    const anchorRef = React.useRef(null);
+//     // const [open, setOpen] = React.useState(false);
+//     const anchorRef = React.useRef(null);
 
-    // const handleToggle = () => {
-    //     setOpen((prevOpen) => !prevOpen);
-    // }
-    // const handleClose = () => {
-    //     setOpen(false);
-    // }
-    // const handleClickAway = (event) => {
-    //     if (anchorRef.current && anchorRef.current.contains(event.target)) {
-    //         return;
-    //     }
-    //     setOpen(false);
-    // }
-    const handleOpen = () => {
-        setDropdownState("test")
-    }
-    const handleClose = () => {
-        setDropdownState("none")
-    }
-    const handleClickAway = (event) => {
-        if (anchorRef.current && anchorRef.current.contains(event.target)) {
-            return; // do nothing
-        }
-        setDropdownState("none")
-    }
-    const toggleTestDropdown = () => {
-        // if prevOpenDropdown
-        setDropdownState((prevOpen) => !prevOpen);
-        setDropdownState("test")
-    }
+//     // const handleToggle = () => {
+//     //     setOpen((prevOpen) => !prevOpen);
+//     // }
+//     // const handleClose = () => {
+//     //     setOpen(false);
+//     // }
+//     // const handleClickAway = (event) => {
+//     //     if (anchorRef.current && anchorRef.current.contains(event.target)) {
+//     //         return;
+//     //     }
+//     //     setOpen(false);
+//     // }
+//     const handleOpen = () => {
+//         setDropdownState("test")
+//     }
+//     // const handleClose = () => {
+//     //     setDropdownState("none")
+//     // }
+//     const handleClickAway = (event) => {
+//         if (anchorRef.current && anchorRef.current.contains(event.target)) {
+//             return; // do nothing
+//         }
+//         setDropdownState("none")
+//     }
+//     // const toggleTestDropdown = () => {
+//     //     // if prevOpenDropdown
+//     //     setDropdownState((prevOpen) => !prevOpen);
+//     //     setDropdownState("test")
+//     // }
 
-    // return focus to the button when we transitioned from !open -> open
-    // const prevOpen = React.useRef(open);
-    // React.useEffect(() => {
-    //     if (prevOpen.current === true && open === false) {
-    //         anchorRef.current.focus();
-    //     }
-    //     prevOpen.current = open;
-    // }, [open]);
+//     // return focus to the button when we transitioned from !open -> open
+//     // const prevOpen = React.useRef(open);
+//     // React.useEffect(() => {
+//     //     if (prevOpen.current === true && open === false) {
+//     //         anchorRef.current.focus();
+//     //     }
+//     //     prevOpen.current = open;
+//     // }, [open]);
 
-    return (
-        <Box id="TestDropdown"  >
-            <Button
-                variant="text"
-                ref={anchorRef}
-                aria-controls={open ? 'menu-list-grow' : undefined}
-                aria-haspopup="true"
-                onClick={handleOpen}
-                sx={{
-                    color: "white",
-                    textTransform: "none",
-                    textAlign: 'center',
-                    paddingBottom: '0.5rem',
-                }}
-            >
-                <Typography variant="h5">
-                    Test Menu
-                </Typography>
-            </Button>
-            <Popper
-                open={open}
-                anchorEl={anchorRef.current}
-                role={undefined}
-                transition
-                disablePortal
-            >
-                {({ TransitionProps }) => (
-                    <Grow
-                        {...TransitionProps}
-                        style={{ transformOrigin: 'center top' }}
-                    >
-                        <Paper
-                            // className={classes.dropdownSurface}
-                            onClick={setDropdownState("none")}
+//     return (
+//         <Box id="TestDropdown"  >
+//             <Button
+//                 variant="text"
+//                 ref={anchorRef}
+//                 aria-controls={open ? 'menu-list-grow' : undefined}
+//                 aria-haspopup="true"
+//                 onClick={handleOpen}
+//                 sx={{
+//                     color: "white",
+//                     textTransform: "none",
+//                     textAlign: 'center',
+//                     paddingBottom: '0.5rem',
+//                 }}
+//             >
+//                 <Typography variant="h5">
+//                     Test Menu
+//                 </Typography>
+//             </Button>
+//             <Popper
+//                 open={open}
+//                 anchorEl={anchorRef.current}
+//                 role={undefined}
+//                 transition
+//                 disablePortal
+//             >
+//                 {({ TransitionProps }) => (
+//                     <Grow
+//                         {...TransitionProps}
+//                         style={{ transformOrigin: 'center top' }}
+//                     >
+//                         <Paper
+//                             // className={classes.dropdownSurface}
+//                             onClick={setDropdownState("none")}
 
-                            sx={{
-                                border: 'solid white 1px',
-                                // blurRadius: ,
-                                backgroundColor: "primary.main",
-                            }}
-                        >
-                            <ClickAwayListener onClickAway={handleClickAway} >
+//                             sx={{
+//                                 border: 'solid white 1px',
+//                                 // blurRadius: ,
+//                                 backgroundColor: "primary.main",
+//                             }}
+//                         >
+//                             <ClickAwayListener onClickAway={handleClickAway} >
 
-                                <MenuList autoFocusItem={open}
-                                    id="menu-list-grow"
-                                >
-                                    <TeachingServicesList
-                                    // handleClose={handleClose}
-                                    />
-                                </MenuList>
-                            </ClickAwayListener>
-                        </Paper>
-                    </Grow>
-                )}
-            </Popper>
-        </Box>
-    )
-}
+//                                 <MenuList autoFocusItem={open}
+//                                     id="menu-list-grow"
+//                                 >
+//                                     <TeachingServicesList
+//                                     // handleClose={handleClose}
+//                                     />
+//                                 </MenuList>
+//                             </ClickAwayListener>
+//                         </Paper>
+//                     </Grow>
+//                 )}
+//             </Popper>
+//         </Box>
+//     )
+// }
