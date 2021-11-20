@@ -383,61 +383,61 @@ function GardenDropdown(props) {
     )
 }
 
-const teachingServicesList = [
-    {
-        text: 'Tutoring',
-        key: 'tutoring services',
-        pathname: '/',
-        state: {
-            selectedTab: 'tutoring',
-        },
-        iconClassName: "fas fa-brain fa-2x",
+// const teachingServicesList = [
+//     {
+//         text: 'Tutoring',
+//         key: 'tutoring services',
+//         pathname: '/',
+//         state: {
+//             selectedTab: 'tutoring',
+//         },
+//         iconClassName: "fas fa-brain fa-2x",
 
-    },
-    {
-        text: 'STEM Enrichment',
-        key: 'stem enrichment',
-        pathname: '/',
-        state: {
-            selectedTab: 'enrichment',
-        },
-        iconClassName: "fas fa-flask fa-2x",
+//     },
+//     {
+//         text: 'STEM Enrichment',
+//         key: 'stem enrichment',
+//         pathname: '/',
+//         state: {
+//             selectedTab: 'enrichment',
+//         },
+//         iconClassName: "fas fa-flask fa-2x",
 
-    },
-    {
-        text: 'Chess',
-        key: 'chess',
-        pathname: '/',
-        state: {
-            selectedTab: 'chess',
-        },
-        iconClassName: "fas fa-chess-knight fa-2x",
-    }
-]
+//     },
+//     {
+//         text: 'Chess',
+//         key: 'chess',
+//         pathname: '/',
+//         state: {
+//             selectedTab: 'chess',
+//         },
+//         iconClassName: "fas fa-chess-knight fa-2x",
+//     }
+// ]
 
-function DropdownListItem(props) {
-    const { text, key, pathname, iconClassName } = props
-    return (
-        <ListItem
-            key={key}
-            button
-            component={RouterLink}
-            to={pathname}
-            // to={{
-            //     pathname: {pathname},
-            //     // state: {
-            //     //     selectedTab: 'tutoring',
-            //     // }
-            // }}
-        >
-            <Icon className={iconClassName} />
-            <ListItemText
-                primary={text}
-                primaryTypographyProps={{ variant: 'h5' }}
-            />
-        </ListItem>
-    )
-}
+// function DropdownListItem(props) {
+//     const { text, key, pathname, iconClassName } = props
+//     return (
+//         <ListItem
+//             key={key}
+//             button
+//             component={RouterLink}
+//             to={pathname}
+//             // to={{
+//             //     pathname: {pathname},
+//             //     // state: {
+//             //     //     selectedTab: 'tutoring',
+//             //     // }
+//             // }}
+//         >
+//             <Icon className={iconClassName} />
+//             <ListItemText
+//                 primary={text}
+//                 primaryTypographyProps={{ variant: 'h5' }}
+//             />
+//         </ListItem>
+//     )
+// }
 
 function TeachingServicesList(props) {
     // const handleClose = props.handleClose
