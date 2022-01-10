@@ -53,6 +53,23 @@ export default function Navbar(props) {
 
 function MobileNavbar(props) {
     const height = "3.5rem"
+
+    // const anchorRef = React.useRef(null);
+
+    
+    // const handleToggle = () => {
+    //     setOpen((prevOpen) => !prevOpen);
+    // }
+    // const handleClose = () => {
+    //     setOpen(false);
+    // }
+    // const handleClickAway = (event) => {
+    //     if (anchorRef.current && anchorRef.current.contains(event.target)) {
+    //         return;
+    //     }
+    //     setOpenDropdown("none")
+    // }
+
     return (
         <AppBar
             // className={classes.navbar, classes.mobileNavbar}
@@ -75,17 +92,10 @@ function MobileNavbar(props) {
                     />
                 </Grid>
                 <Grid item xs={8} >
-                    <Box 
-                    // className={classes.mobileBrand} 
-                    >
-                        <Typography variant='h3' 
-                        // className={classes.businessName}
-                        >
+                    <Box  >
+                        <Typography variant='h3'  >
                             STEM Garden
                         </Typography>
-                        {/* <Typography variant='body2' className={classes.businessType} >
-                            Tutoring & Enrichment
-                        </Typography> */}
                     </Box>
                 </Grid>
                 <Grid item xs={2} >
@@ -98,30 +108,14 @@ function MobileNavbar(props) {
 
 
 function DesktopNavbar(props) {
-    const height = "6.0rem"
+    const height = "6rem"
     const [openDropdown, setOpenDropdown] = React.useState("none")   // "none", "teach", "garden", "test"
-    // const anchorRef = React.useRef(null);
-
-    
-    // const handleToggle = () => {
-    //     setOpen((prevOpen) => !prevOpen);
-    // }
-    // const handleClose = () => {
-    //     setOpen(false);
-    // }
-    // const handleClickAway = (event) => {
-    //     if (anchorRef.current && anchorRef.current.contains(event.target)) {
-    //         return;
-    //     }
-    //     setOpenDropdown("none")
-    // }
     
     const setDropdownState = (newState) => {
-        console.log(`setDropdownState to: ${newState}`)
-        setOpenDropdown(newState);
+        console.log(`setOpenDropdown state to: ${newState}`)
+        setOpenDropdown(newState)
     }
-
-    // return focus to the button when we transitioned from !open -> open
+    // return focus to the button when we transitioned from !open -> open  
     // const prevOpen = React.useRef(openDropdown);
     // React.useEffect(() => {
     //     if (prevOpen.current === true && openDropdown === "none") {
@@ -130,49 +124,39 @@ function DesktopNavbar(props) {
     //     prevOpen.current = openDropdown;
     // }, [openDropdown]);
 
-
     return (
         <AppBar id="DesktopNavbar"
             position="fixed"
             elevation={3}
-            sx={{
-                height: height,
-                width: '100vw',
-                backgroundColor: "primary.main", 
-            }}
+            sx={{ height: height, }}
         >
-            <Container
-                maxWidth='md'
+            <Container maxWidth='md'
                 sx={{
-                    backgroundColor: "primary.main", 
                     display: 'flex',
                     flexDirection: 'row',
                     justifyContent: 'space-between',
                 }}
             >
-                <Box id="DesktopBrand"
+                <Box id="Brand"
                     component={RouterLink} to='/'
                     sx={{
-                        // border: 'solid red 1px',
+                        border: 'solid red 1px',
                         textDecoration: 'none',
                         flex: '1 0 60%',
                         display: 'flex',
                     }}
                 >
-                    <Box id="DesktopLogo"
+                    <Box id="Logo"
                         sx={{
                             height: height,
                             paddingRight: height,
-                            backgroundImage: `
-                            url(${logo})  
-                        `,
+                            backgroundImage: `url(${logo})`,
                             backgroundPosition: 'center bottom',
                             backgroundRepeat: 'no-repeat',
                             backgroundSize: 'auto 95%',
                         }}
                     />
-                    <Typography id="DesktopOrgName"
-                        component={RouterLink} to='/'
+                    <Typography id="OrgName"
                         sx={{
                             textDecoration: 'none',
                             margin: 'auto 0',
