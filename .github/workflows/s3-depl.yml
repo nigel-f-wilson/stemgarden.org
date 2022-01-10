@@ -1,4 +1,4 @@
-name: s3-deploy
+name: s3-depl
 
 on:
 #   push:
