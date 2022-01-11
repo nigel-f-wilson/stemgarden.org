@@ -11,6 +11,7 @@ import leaves from "../images/leaves_cropped_for_mobile.jpg";
 
 // MUI Imports
 import { Container, Box, Typography } from '@mui/material';
+import { common } from '@mui/material/colors';
 
 
 // LandingPage is responsible for rendering a Navbar and either the Mobile or Desktop version
@@ -126,9 +127,26 @@ function DesktopLandingPage(props) {
                     backgroundPosition: 'center top',
                     backgroundRepeat: 'repeat-y',
                     backgroundSize: 'cover',
-                    padding: '0rem 9rem'
+                    padding: '0rem 9rem',
+                    textAlign: "center",
+                    color: common.white
                 }}
             >
+                <Typography id="TitleText"
+                    // align='center'
+                    // color='white'
+                    variant='h2'
+                    sx={{
+                        padding: '4.0rem 3.0rem',
+                        textShadow: '0.15rem 0.15rem 0.3rem black',
+                        fontSize: 'min(2rem, 6vw)',
+                        fontWeight: 'light',
+                    }}
+                >
+                    Sowing the seeds of life&#8209;long learning and DIY&#8209;spirit.
+                    {/* through integrated teaching of math, physics, chess, gardening, woodworking,
+                    and computer programming. */}
+                </Typography>
                 <Typography
                     id="TitleText"
                     align='center'
