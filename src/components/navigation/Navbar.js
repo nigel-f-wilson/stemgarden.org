@@ -1,20 +1,16 @@
 import React from 'react';
-
-// React ROUTER
 import { Link as RouterLink } from "react-router-dom";
 
 import { useScreenWidth } from "../../hooks"
 
 // MY COMPONENTS
-// import MobileMenu from "./MobileMenu";
-// import TeachDropdown from "./TeachDropdown";
-// import GardenDropdown from "./GardenDropdown";
-// import SpacerBox from "./SpacerBox";
+import { aboutList, servicesList } from "./menuItems";
 
 // Image Imports
 import logo from "../../images/nsgLogoSnipped.png";
 
-// MATERIAL-UI COMPONENTS
+// MUI imports
+import { common } from '@mui/material/colors';
 import { Container, 
     Box, 
     Grid,
@@ -25,6 +21,7 @@ import { Container,
     Grow,
     Paper,
     Popper,
+    List,
     MenuList,
     ListItem,
     // ListItemIcon,
@@ -32,11 +29,8 @@ import { Container,
     Icon
 } from "@mui/material"
 
-
 // ICONS
-// import SchoolIcon from '@mui/icons-material/School';
-// import EcoIcon from '@mui/icons-material/EcoIcon';
-// import PhotoCameraIcon from '@mui/icons-material/PhotoCameraIcon';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default function Navbar(props) {
     const screenWidth = useScreenWidth()
@@ -53,23 +47,6 @@ export default function Navbar(props) {
 
 function MobileNavbar(props) {
     const height = "3.5rem"
-
-    // const anchorRef = React.useRef(null);
-
-    
-    // const handleToggle = () => {
-    //     setOpen((prevOpen) => !prevOpen);
-    // }
-    // const handleClose = () => {
-    //     setOpen(false);
-    // }
-    // const handleClickAway = (event) => {
-    //     if (anchorRef.current && anchorRef.current.contains(event.target)) {
-    //         return;
-    //     }
-    //     setOpenDropdown("none")
-    // }
-
     return (
         <AppBar
             // className={classes.navbar, classes.mobileNavbar}
@@ -106,29 +83,12 @@ function MobileNavbar(props) {
     );
 }
 
-
-function DesktopNavbar(props) {
-    const height = "6rem"
-    const [openDropdown, setOpenDropdown] = React.useState("none")   // "none", "teach", "garden", "test"
-    
-    const setDropdownState = (newState) => {
-        console.log(`setOpenDropdown state to: ${newState}`)
-        setOpenDropdown(newState)
-    }
-    // return focus to the button when we transitioned from !open -> open  
-    // const prevOpen = React.useRef(openDropdown);
-    // React.useEffect(() => {
-    //     if (prevOpen.current === true && openDropdown === "none") {
-    //         anchorRef.current.focus();
-    //     }
-    //     prevOpen.current = openDropdown;
-    // }, [openDropdown]);
-
+function DesktopNavbar() {
     return (
         <AppBar id="DesktopNavbar"
             position="fixed"
             elevation={3}
-            sx={{ height: height, }}
+            sx={{ height: "6rem" }}
         >
             <Container maxWidth='md'
                 sx={{
@@ -137,93 +97,104 @@ function DesktopNavbar(props) {
                     justifyContent: 'space-between',
                 }}
             >
-                <Box id="Brand"
-                    component={RouterLink} to='/'
-                    sx={{
-                        border: 'solid red 1px',
-                        textDecoration: 'none',
-                        flex: '1 0 60%',
-                        display: 'flex',
-                    }}
-                >
-                    <Box id="Logo"
-                        sx={{
-                            height: height,
-                            paddingRight: height,
-                            backgroundImage: `url(${logo})`,
-                            backgroundPosition: 'center bottom',
-                            backgroundRepeat: 'no-repeat',
-                            backgroundSize: 'auto 95%',
-                        }}
-                    />
-                    <Typography id="OrgName"
-                        sx={{
-                            textDecoration: 'none',
-                            margin: 'auto 0',
-                            fontSize: '2rem',
-                            lineHeight: '2.2rem',
-                            color: "white",
-                        }}
-                    >
-                        STEM <br />Garden
-                    </Typography>
-                </Box>
-                
-                <Box id="dropdownMenu"
-                    sx={{
-                        // border: 'solid red 1px',
-                        flex: '1 0 40%',
-                        display: 'flex',
-                        justifyContent: 'space-between',
-                        alignItems: 'flex-end',
-                    }}
-                >
-                    <TeachDropdown 
-                        openDropdown={openDropdown}
-                        setDropdownState={setDropdownState}
-                    />
-                    <GardenDropdown
-                        openDropdown={openDropdown}
-                        setDropdownState={setDropdownState}
-                    />
-                    {/* <TestDropdown 
-                        openDropdown={openDropdown}
-                        setDropdownState={setDropdownState}
-                    /> */}
-                </Box>
+                <DesktopBrand />
+                <DesktopMenus />
             </Container>
         </AppBar>
     );
 }
+function DesktopBrand() {
+    return (
+        <Box component={RouterLink} to='/'
+            sx={{
+                textDecoration: 'none',
+                flex: '1 1 45%',
+                display: 'flex',
+            }}
+        >
+            <Box id="Logo"
+                sx={{
+                    height: "6rem",
+                    paddingRight: "6rem",
+                    backgroundImage: `url(${logo})`,
+                    backgroundPosition: 'center bottom',
+                    backgroundRepeat: 'no-repeat',
+                    backgroundSize: 'auto 95%',
+                }}
+            />
+            <Typography id="OrgName"
+                sx={{
+                    textDecoration: 'none',
+                    margin: 'auto 0',
+                    fontSize: '2rem',
+                    lineHeight: '2.2rem',
+                    color: "white",
+                }}
+            >
+                STEM<br />Garden
+            </Typography>
+        </Box>
+    )
+}
+function DesktopMenus() {
+    const [openDropdown, setOpenDropdown] = React.useState("none")   // "none", "about", "teach", "garden", "contact"
 
+    const setDropdownState = (newState) => {
+        console.log(`setOpenDropdown state to: ${newState}`)
+        setOpenDropdown(newState)
+    }
+ 
+    return (
+        <Box sx={{
+            flex: '1 1 55%',
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'flex-end',
+        }}>
+            <DesktopMenu
+                name="about"
+                items={aboutList}
+                open={openDropdown === "about"}
+                setDropdownState={setDropdownState}
+            />
+            <DesktopMenu
+                name="services"
+                items={servicesList}
+                open={openDropdown === "services"}
+                setDropdownState={setDropdownState}
+            />
+            <ContactPageLink
+            /> 
+        </Box>
+    )
+}
 
-function TeachDropdown(props) {
-    const { openDropdown, setDropdownState } = props
-    const open = (openDropdown === "teach")
+function DesktopMenu(props) {
+    let { name, items, open, setDropdownState } = props
+    
     const anchorRef = React.useRef(null);
 
-    const toggleTeachDropdown = () => {
-        if (open) {
-            setDropdownState("none")
-        }
-        else {
-            setDropdownState("teach")
-        }
-    }
     const handleClickAway = (event) => {
         if (anchorRef.current && anchorRef.current.contains(event.target)) {
-            return; // do nothing
+            return; // do nothing, not a click "away"
         }
         setDropdownState("none")
     }
+    const handleToggle = () => {
+        if (open) { setDropdownState("none") }
+        else { setDropdownState(name)}
+    }
     const handleClose = () => {
-        setDropdownState("none")
+        setDropdownState("none") 
+    }
+    const capitalize = (string) => {
+        return  string[0].toUpperCase() + string.slice(1).toLowerCase()
     }
 
     return (
-        <Box id="TeachingServicesMenu" >
+        <Box >
             <Button
-                onClick={toggleTeachDropdown}
+                onClick={handleToggle}
                 variant="text"
                 sx={{
                     color: "white",
@@ -235,14 +206,12 @@ function TeachDropdown(props) {
                 aria-controls={open ? 'menu-list-grow' : undefined}
                 aria-haspopup="true"
             >
-                <Typography variant="h5">
-                    Teaching<br />Services
-                </Typography>
+                <Typography variant="h5" children={capitalize(name)} />
             </Button>
             <Popper
                 open={open}
                 anchorEl={anchorRef.current}
-                role={undefined} // What values can this take?
+                role="menu" // What values can this take?
                 transition
                 disablePortal
             >
@@ -251,7 +220,7 @@ function TeachDropdown(props) {
                         {...TransitionProps}
                         style={{ transformOrigin: 'center top' }}
                     >
-                        <Paper id="dropdownSurface"
+                        <Paper
                             onClick={handleClose}
                             elevation={3}
                             sx={{
@@ -260,18 +229,43 @@ function TeachDropdown(props) {
                             }}
                         >
                             <ClickAwayListener onClickAway={handleClickAway}>
-                                <MenuList id="menu-list-grow"
-                                    autoFocusItem={open}
-                                >
-                                    <TeachingServicesList />
-                                    {/* {teachingServicesList.map((propsObject) => {
-                                        return (
-                                            <DropdownListItem props={propsObject} />
-                                        )
-                                    })} */}
-                                    {/* {
-                                        teachingServicesList.map((item, index) => <DropdownListItem key={index} item={item} />)
-                                    } */}
+                                <MenuList autoFocusItem={open} >
+                                    <List>
+                                        {
+                                            items.map((item, index) => {
+                                                return (
+                                                    <ListItem
+                                                        key={index}
+                                                        button
+                                                        component={RouterLink}
+                                                        to={{
+                                                            pathname: item.pathname,
+                                                            state: {
+                                                                selectedTab: item.activeTab,
+                                                            }
+                                                        }}
+                                                    >
+                                                        <FontAwesomeIcon 
+                                                            icon={item.icon} 
+                                                            size="2x" 
+                                                            transform="shrink-2" 
+                                                            color={common.white}
+                                                        />
+                                                        <ListItemText
+                                                            primary={item.label}
+                                                            primaryTypographyProps={{ 
+                                                                variant: 'h5', 
+                                                                color: common.white
+                                                            }}
+                                                            sx={{
+                                                                paddingLeft: "1rem",
+                                                            }}
+                                                        />
+                                                    </ListItem>
+                                                )
+                                            })
+                                        }
+                                    </List>
                                 </MenuList>
                             </ClickAwayListener>
                         </Paper>
@@ -282,493 +276,27 @@ function TeachDropdown(props) {
     )
 }
 
-
-function GardenDropdown(props) {
-    const { openDropdown, setDropdownState } = props
-    const open = (openDropdown === "garden")
-    const anchorRef = React.useRef(null);
-
-    const toggleGardenDropdown = () => {
-        if (open) {
-            setDropdownState("none")
-        }
-        else {
-            setDropdownState("garden")
-        }
-    }
-    const handleClickAway = (event) => {
-        if (anchorRef.current && anchorRef.current.contains(event.target)) {
-            return; // do nothing
-        }
-        setDropdownState("none")
-    }
-    const handleClose = () => {
-        setDropdownState("none")
-    }
-
-    // return focus to the button when we transitioned from !open -> open
-    const prevOpen = React.useRef(open);
-    React.useEffect(() => {
-        if (prevOpen.current === true && open === false) {
-            anchorRef.current.focus();
-        }
-
-        prevOpen.current = open;
-    }, [open])
-
+function ContactPageLink() {
     return (
-        <Box id="GardenMenu" >
-            <Button
-                onClick={toggleGardenDropdown}
-                variant="text"
-                sx={{
-                    color: "white",
-                    textTransform: "none",
-                    textAlign: 'center',
-                    paddingBottom: '0.5rem',
-                }}
-                ref={anchorRef}
-                aria-controls={open ? 'menu-list-grow' : undefined}
-                aria-haspopup="true"
-            >
-                <Typography variant="h5">
-                    About the<br />Garden
-                </Typography>
-            </Button>
-            <Popper open={open} 
-                anchorEl={anchorRef.current} 
-                role={undefined} 
-                transition 
-                disablePortal
-            >
-                {({ TransitionProps }) => (
-                    <Grow
-                        {...TransitionProps}
-                        style={{ transformOrigin: 'center top' }}
-                    >
-                        <Paper id="dropdownSurface"
-                            onClick={handleClose}
-                            elevation={3}
-                            sx={{
-                                border: 'solid white 1px',
-                                backgroundColor: "primary.main",
-                            }}
-                        >
-                            <ClickAwayListener onClickAway={handleClickAway}>
-                                <MenuList autoFocusItem={open} id="menu-list-grow" >
-                                    <GardenNavList />
-                                </MenuList>
-                            </ClickAwayListener>
-                        </Paper>
-                    </Grow>
-                )}
-            </Popper>
-        </Box>
-    )
-}
-
-// const teachingServicesList = [
-//     {
-//         text: 'Tutoring',
-//         key: 'tutoring services',
-//         pathname: '/',
-//         state: {
-//             selectedTab: 'tutoring',
-//         },
-//         iconClassName: "fas fa-brain fa-2x",
-
-//     },
-//     {
-//         text: 'STEM Enrichment',
-//         key: 'stem enrichment',
-//         pathname: '/',
-//         state: {
-//             selectedTab: 'enrichment',
-//         },
-//         iconClassName: "fas fa-flask fa-2x",
-
-//     },
-//     {
-//         text: 'Chess',
-//         key: 'chess',
-//         pathname: '/',
-//         state: {
-//             selectedTab: 'chess',
-//         },
-//         iconClassName: "fas fa-chess-knight fa-2x",
-//     }
-// ]
-
-// function DropdownListItem(props) {
-//     const { text, key, pathname, iconClassName } = props
-//     return (
-//         <ListItem
-//             key={key}
-//             button
-//             component={RouterLink}
-//             to={pathname}
-//             // to={{
-//             //     pathname: {pathname},
-//             //     // state: {
-//             //     //     selectedTab: 'tutoring',
-//             //     // }
-//             // }}
-//         >
-//             <Icon className={iconClassName} />
-//             <ListItemText
-//                 primary={text}
-//                 primaryTypographyProps={{ variant: 'h5' }}
-//             />
-//         </ListItem>
-//     )
-// }
-
-function TeachingServicesList(props) {
-    // const handleClose = props.handleClose
-
-    return (
-        <React.Fragment>
-            <ListItem
-                key={'tutoring services'}
-                button
-                component={RouterLink}
-                to={{
-                    pathname: '/teach',
-                    state: {
-                        selectedTab: 'tutoring',
-                    }
-                }}
-            >
-                <Icon className={"fas fa-brain fa-2x"} />
-                <ListItemText
-                    primary={'Math Tutoring'}
-                    primaryTypographyProps={{ variant: 'h5' }}
-                />
-            </ListItem>
-
-
-            <ListItem
-                key={'stem enrichment'}
-                // className={classes.listItem}
-                button
-                // onClick={handleClose}
-                component={RouterLink}
-                to={{
-                    pathname: '/teach',
-                    state: {
-                        selectedTab: 'enrichment',
-                    }
-                }}
-            >
-                <Icon className={"fas fa-flask fa-2x"}
-                    // classes={{ root: classes.icon }}
-                />
-                <ListItemText
-                    primary={'STEM Enrichment'}
-                    primaryTypographyProps={{ variant: 'h5' }}
-                />
-            </ListItem>
-
-            <ListItem
-                key={'chess lessons'}
-                // className={classes.listItem}
-                button
-                // onClick={handleClose}
-                component={RouterLink}
-                // to='/teach/chess'
-                to={{
-                    pathname: '/teach',
-                    state: {
-                        selectedTab: 'chess',
-                    }
-                }}
-            >
-                <Icon className={"fas fa-chess-knight fa-2x"}
-                    // classes={{ root: classes.icon }}
-                />
-                <ListItemText
-                    primary={'Chess Lessons'}
-                    primaryTypographyProps={{ variant: 'h5' }}
-                />
-            </ListItem>
-
-            <ListItem
-                key={'test prep'}
-                // className={classes.listItem}
-                button
-                // onClick={handleClose}
-                component={RouterLink}
-                to={{
-                    pathname: '/teach',
-                    state: {
-                        selectedTab: 'test_prep',
-                    }
-                }}
-
-            >
-                <Icon className={"fas fa-graduation-cap fa-2x"}
-                    // classes={{ root: classes.icon }}
-                />
-                <ListItemText
-                    primary={'Test Prep'}
-                    primaryTypographyProps={{ variant: 'h5' }}
-                />
-            </ListItem>
-
-            <ListItem
-                key={'Math Games'}
-                // className={classes.listItem}
-                button
-                // onClick={handleClose}
-                component={RouterLink}
-                to='/math_games'
-            >
-                <Icon className="fas fa-laptop-code fa-2x"
-                    // classes={{ root: classes.icon }}
-                />
-                <ListItemText
-                    primary={'Math Games'}
-                    primaryTypographyProps={{ variant: 'h5' }}
-                />
-            </ListItem>
-
-
-
-            {/* <ListItem
-                key={'math_games'}
-                className={classes.listItem}
-                button
-                onClick={handleClose}
-                component={RouterLink}
-                // to='/teach/math_games'
-                to='/teach'
-            >
-                <Icon className="fas fa-dice-six fa-2x"
-                    classes={{ root: classes.icon }}
-                />
-                <ListItemText 
-                    primary={'Math Games'}
-                    primaryTypographyProps={{ variant: 'h5' }}
-                />
-            </ListItem> */}
-
-
-            <ListItem
-                key={'puzzle_collection'}
-                // className={classes.listItem}
-                button
-                // onClick={handleClose}
-                component={RouterLink}
-                // to='/teach/puzzles'
-                to='/teach'
-            >
-                <Icon className="fas fa-puzzle-piece fa-2x"
-                    // classes={{ root: classes.icon }}
-                />
-                <ListItemText
-                    primary={'Puzzle Collection'}
-                    primaryTypographyProps={{ variant: 'h5' }}
-                />
-            </ListItem>
-
-        </React.Fragment>
+        <Button
+            component={RouterLink}
+            to={{
+                pathname: "contact",
+                // state: {
+                //     selectedTab: item.activeTab,
+                // }
+            }}
+            variant="text"
+            sx={{
+                color: "white",
+                textTransform: "none",
+                textAlign: 'center',
+                paddingBottom: '0.5rem',
+            }}
+        >
+            <Typography variant="h5" children="Contact" />
+        </Button>
     )
 }
 
 
-
-function GardenNavList(props) {
-    const handleClose = props.handleClose
-
-    return (
-        <React.Fragment>
-            <ListItem
-                key={'our_story'}
-                // className={classes.listItem}
-                button
-                onClick={handleClose}
-                component={RouterLink}
-                to={{
-                    pathname: '/garden',
-                    state: {
-                        selectedTab: 'our_story',
-                    }
-                }}
-            >
-                <Icon className={"fas fa-leaf fa-2x"}
-                    // classes={{ root: classes.icon }}
-                />
-                <ListItemText
-                    primary={'Our Story'}
-                    primaryTypographyProps={{ variant: 'h5' }}
-                />
-            </ListItem>
-
-            <ListItem
-                key={'whats_growing'}
-                // className={classes.listItem}
-                button
-                onClick={handleClose}
-                component={RouterLink}
-                to={{
-                    pathname: '/garden',
-                    state: {
-                        selectedTab: 'whats_growing',
-                    }
-                }}
-            >
-                <Icon className="fas fa-camera fa-2x"
-                    // classes={{ root: classes.icon }}
-                />
-                <ListItemText
-                    primary={"What's Growing"}
-                    primaryTypographyProps={{ variant: 'h5' }}
-                />
-            </ListItem>
-
-            <ListItem
-                key={'for_sale'}
-                // className={classes.listItem}
-                button
-                onClick={handleClose}
-                component={RouterLink}
-                to='/produce_for_sale'
-            >
-                <Icon className="fas fa-carrot fa-2x"
-                    // classes={{ root: classes.icon }}
-                />
-                <ListItemText
-                    primary={'Produce for Sale'}
-                    primaryTypographyProps={{ variant: 'h5' }}
-                />
-            </ListItem>
-
-
-        </React.Fragment>
-    );
-}
-
-
-
-// function LinkToContactPage() {
-//     return (
-//         <Box 
-//         // className={classes.desktopMenuButton}
-//         >
-//             <Button
-//                 variant="text"
-//                 sx={{ textTransform: "none" }}
-//             >
-//                 <Typography color="white"  variant="h5">
-//                     Contact
-//                 </Typography>
-//             </Button>
-//         </Box>
-//     );
-// }
-
-
-// function TestDropdown(props) {
-//     const { openDropdown, setDropdownState } = props
-//     const open = (openDropdown === "test")
-    
-//     // const [open, setOpen] = React.useState(false);
-//     const anchorRef = React.useRef(null);
-
-//     // const handleToggle = () => {
-//     //     setOpen((prevOpen) => !prevOpen);
-//     // }
-//     // const handleClose = () => {
-//     //     setOpen(false);
-//     // }
-//     // const handleClickAway = (event) => {
-//     //     if (anchorRef.current && anchorRef.current.contains(event.target)) {
-//     //         return;
-//     //     }
-//     //     setOpen(false);
-//     // }
-//     const handleOpen = () => {
-//         setDropdownState("test")
-//     }
-//     // const handleClose = () => {
-//     //     setDropdownState("none")
-//     // }
-//     const handleClickAway = (event) => {
-//         if (anchorRef.current && anchorRef.current.contains(event.target)) {
-//             return; // do nothing
-//         }
-//         setDropdownState("none")
-//     }
-//     // const toggleTestDropdown = () => {
-//     //     // if prevOpenDropdown
-//     //     setDropdownState((prevOpen) => !prevOpen);
-//     //     setDropdownState("test")
-//     // }
-
-//     // return focus to the button when we transitioned from !open -> open
-//     // const prevOpen = React.useRef(open);
-//     // React.useEffect(() => {
-//     //     if (prevOpen.current === true && open === false) {
-//     //         anchorRef.current.focus();
-//     //     }
-//     //     prevOpen.current = open;
-//     // }, [open]);
-
-//     return (
-//         <Box id="TestDropdown"  >
-//             <Button
-//                 variant="text"
-//                 ref={anchorRef}
-//                 aria-controls={open ? 'menu-list-grow' : undefined}
-//                 aria-haspopup="true"
-//                 onClick={handleOpen}
-//                 sx={{
-//                     color: "white",
-//                     textTransform: "none",
-//                     textAlign: 'center',
-//                     paddingBottom: '0.5rem',
-//                 }}
-//             >
-//                 <Typography variant="h5">
-//                     Test Menu
-//                 </Typography>
-//             </Button>
-//             <Popper
-//                 open={open}
-//                 anchorEl={anchorRef.current}
-//                 role={undefined}
-//                 transition
-//                 disablePortal
-//             >
-//                 {({ TransitionProps }) => (
-//                     <Grow
-//                         {...TransitionProps}
-//                         style={{ transformOrigin: 'center top' }}
-//                     >
-//                         <Paper
-//                             // className={classes.dropdownSurface}
-//                             onClick={setDropdownState("none")}
-
-//                             sx={{
-//                                 border: 'solid white 1px',
-//                                 // blurRadius: ,
-//                                 backgroundColor: "primary.main",
-//                             }}
-//                         >
-//                             <ClickAwayListener onClickAway={handleClickAway} >
-
-//                                 <MenuList autoFocusItem={open}
-//                                     id="menu-list-grow"
-//                                 >
-//                                     <TeachingServicesList
-//                                     // handleClose={handleClose}
-//                                     />
-//                                 </MenuList>
-//                             </ClickAwayListener>
-//                         </Paper>
-//                     </Grow>
-//                 )}
-//             </Popper>
-//         </Box>
-//     )
-// }
