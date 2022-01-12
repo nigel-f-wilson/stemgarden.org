@@ -24,9 +24,7 @@ import { Container,
     List,
     MenuList,
     ListItem,
-    // ListItemIcon,
     ListItemText,
-    Icon
 } from "@mui/material"
 
 // ICONS
