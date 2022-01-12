@@ -132,15 +132,12 @@ function DesktopLandingPage(props) {
                     color: common.white
                 }}
             >
-                <Typography id="TitleText"
-                    // align='center'
-                    // color='white'
-                    variant='h2'
+                <Typography id="TitleText" variant='h1'
                     sx={{
                         padding: '4.0rem 3.0rem',
-                        textShadow: '0.15rem 0.15rem 0.3rem black',
-                        fontSize: 'min(2rem, 6vw)',
-                        fontWeight: 'light',
+                        // textShadow: '0.15rem 0.15rem 0.3rem black',
+                        // fontSize: 'min(2rem, 6vw)',
+                        // fontWeight: 'light',
                     }}
                 >
                     Sowing the seeds of life&#8209;long learning and DIY&#8209;spirit.
