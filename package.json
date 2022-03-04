@@ -4,6 +4,7 @@
   "private": true,
   "license": "UNLICENSED",
   "dependencies": {
+    "@emotion/react": "11.8.1",
     "@emotion/styled": "11.3.0",
     "@fortawesome/fontawesome-svg-core": "1.2.36",
     "@fortawesome/free-brands-svg-icons": "5.15.4",
