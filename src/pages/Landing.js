@@ -20,13 +20,12 @@ export default function LandingPage(props) {
     const screenWidth = useScreenWidth()
     return (
         <React.Fragment >
-            <Navbar />
             {(screenWidth >= 600) ? <DesktopLandingPage /> : <MobileLandingPage />}  
         </React.Fragment>
     )
 }
 
-function MobileLandingPage(props) {
+function MobileLandingPage() {
     return (
         <Box id="MobileLandingPage"
             sx={{ 
