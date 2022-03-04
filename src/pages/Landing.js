@@ -16,7 +16,7 @@ import { common } from '@mui/material/colors';
 
 // LandingPage is responsible for rendering a Navbar and either the Mobile or Desktop version
 // depending on screen width. The Navbar contains its own M.vs.D. rendering logic. 
-export function LandingPage(props) {
+export default function LandingPage(props) {
     const screenWidth = useScreenWidth()
     return (
         <React.Fragment >
@@ -28,10 +28,8 @@ export function LandingPage(props) {
 
 function MobileLandingPage(props) {
     return (
-
         <Box id="MobileLandingPage"
             sx={{ 
-                // display: { xs: 'block', md: 'none' }, 
                 height: 'auto',
                 width: '100%',
                 minHeight: '100vh',
