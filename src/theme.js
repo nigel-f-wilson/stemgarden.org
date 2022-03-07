@@ -42,14 +42,14 @@ const theme = createTheme({
         },
     },
     typography: {
-        h1: {
-            textShadow: '0.15rem 0.15rem 0.3rem black',
-            fontWeight: 200,
-        },
-        button: {
-            fontSize: '1.0rem',
-            fontWeight: '700'
-        }
+     h1: {
+        textShadow: '0.15rem 0.15rem 0.3rem black',
+        fontWeight: 200,
+      },
+      button: {
+        fontSize: '1.0rem',
+        fontWeight: '700'
+      }
     },
     status: {
 
@@ -63,4 +63,4 @@ const theme = createTheme({
 
 });
 
-export default responsiveFontSizes(theme)
+export default responsiveFontSizes(theme, 1.8)
