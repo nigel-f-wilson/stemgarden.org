@@ -88,7 +88,7 @@ function DesktopNavbar() {
             elevation={3}
             sx={{ height: "6rem" }}
         >
-            <Container maxWidth='md'
+            <Container maxWidth='lg'
                 sx={{
                     display: 'flex',
                     flexDirection: 'row',
