@@ -9,30 +9,47 @@ import leafy_background from "../images/leafy_background.jpg";
 import { Paper, Container, Box, Grid, Typography, Card, CardActions, CardMedia, CardContent, Button } from '@mui/material';
 import theme from '../theme';
 
+
 export default function CustomCard(props) {
   const { title, linkTo, imgUrl } = props.data
 
+  const cardStyles = { 
+    backgroundColor: theme.palette.grey[900],
+    color: theme.palette.common.white,
+    textDecoration: 'none',
+  }
+  const linkStyles = { 
+    // position: 'absolute',
+    color: theme.palette.common.white,
+    textDecoration: 'none',
+  }
+
+  console.log(`LINK: `, linkTo);
   return (
-      <Card
-        component={RouterLink}
-        to={linkTo}
+      <Card raised style={cardStyles}
+        // component={RouterLink}
+        // to="services/tutoring"
+        // to={linkTo}
+        sx={{ position: 'static' }}
       >
+        <RouterLink to={linkTo} style={linkStyles} >
+          <Typography 
+            align='center' 
+            variant="h4"
+            noWrap
+            children={title}
+            padding="0.5rem 0"
+          />
+          <CardMedia
+            component="img"
+            image={imgUrl}
+            alt={title}
+          />
+        </RouterLink>
         
         
         
-        <Typography 
-          component="div"
-          align='center' 
-          variant="h4"
-          noWrap
-          children={title}
-          padding="0.5rem 0"
-        />
-        <CardMedia
-          component="img"
-          image={imgUrl}
-          alt={title}
-        />
+        
         
         {/* <CardActions>
           <Button size="small">Share</Button>
