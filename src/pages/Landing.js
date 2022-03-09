@@ -4,41 +4,54 @@ import { useScreenWidth } from "../hooks"
 // MY images
 import leafy_background from "../images/leafy_background.jpg";
 import CustomCard from "../components/CustomCard"
+import BigIconButton from "../components/navigation/BigIconButton"
 import { Container, Box, Grid, Typography } from '@mui/material';
-import theme from '../theme';
 import { useTheme } from '@emotion/react';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCoffee } from '@fortawesome/free-solid-svg-icons'
+
+const coffee = <FontAwesomeIcon icon={faCoffee} />
+
+
+const playing_the_15_game = "https://res.cloudinary.com/nola-stem-garden/image/upload/v1646685339/stemgarden.org/project_screenshots/playing_the_15_game_rcowti.jpg"
+const playing_connect_four = "https://res.cloudinary.com/nola-stem-garden/image/upload/v1646687130/stemgarden.org/project_screenshots/playing_math_fact_connect_four_zgyzou.jpg"
 
 
 const landingCards = [
   {
     title: "Tutoring Services",
-    linkTo: "/services/tutoring",
-    imgUrl: "https://res.cloudinary.com/nola-stem-garden/image/upload/v1646597930/stemgarden.org/guitar_fret_spacing_jezbuk.jpg"
+    linkTo: "tutoring-services",
+    imgUrl: "https://res.cloudinary.com/nola-stem-garden/image/upload/v1646597930/stemgarden.org/guitar_fret_spacing_jezbuk.jpg",
+    icon: coffee
+
+  },
+  {
+    title: "Math Games",
+    linkTo: "math-games",
+    imgUrl: playing_connect_four,
+    icon: coffee
+  },
+  {
+    title: "Tutoring Services",
+    linkTo: "services/tutoring",
+    imgUrl: "https://res.cloudinary.com/nola-stem-garden/image/upload/v1646597930/stemgarden.org/guitar_fret_spacing_jezbuk.jpg",
+    icon: coffee
+  },
+  {
+    title: "Tutoring Services",
+    linkTo: "services/tutoring",
+    imgUrl: "https://res.cloudinary.com/nola-stem-garden/image/upload/v1646597930/stemgarden.org/guitar_fret_spacing_jezbuk.jpg",
   },
   {
     title: "Tutoring Services",
     linkTo: "/services/tutoring",
-    imgUrl: "https://res.cloudinary.com/nola-stem-garden/image/upload/v1646597930/stemgarden.org/guitar_fret_spacing_jezbuk.jpg"
+    imgUrl: "https://res.cloudinary.com/nola-stem-garden/image/upload/v1646597930/stemgarden.org/guitar_fret_spacing_jezbuk.jpg",
   },
   {
     title: "Tutoring Services",
     linkTo: "/services/tutoring",
-    imgUrl: "https://res.cloudinary.com/nola-stem-garden/image/upload/v1646597930/stemgarden.org/guitar_fret_spacing_jezbuk.jpg"
-  },
-  {
-    title: "Tutoring Services",
-    linkTo: "/services/tutoring",
-    imgUrl: "https://res.cloudinary.com/nola-stem-garden/image/upload/v1646597930/stemgarden.org/guitar_fret_spacing_jezbuk.jpg"
-  },
-  {
-    title: "Tutoring Services",
-    linkTo: "/services/tutoring",
-    imgUrl: "https://res.cloudinary.com/nola-stem-garden/image/upload/v1646597930/stemgarden.org/guitar_fret_spacing_jezbuk.jpg"
-  },
-  {
-    title: "Tutoring Services",
-    linkTo: "/services/tutoring",
-    imgUrl: "https://res.cloudinary.com/nola-stem-garden/image/upload/v1646597930/stemgarden.org/guitar_fret_spacing_jezbuk.jpg"
+    imgUrl: "https://res.cloudinary.com/nola-stem-garden/image/upload/v1646597930/stemgarden.org/guitar_fret_spacing_jezbuk.jpg",
   },
 ]
 
@@ -48,21 +61,7 @@ export default function LandingPage() {
   return (
     <Background smallScreen={smallScreen} >
       <Header smallScreen={smallScreen} />
-
-      <Grid container 
-        spacing={2} 
-        sx={{ padding: '1rem' }}
-      >
-        {
-          landingCards.map((cardData, index) => {
-            return (
-              <Grid item xs={6} sm={4} md={3} key={index} >
-                <CustomCard data={cardData}  />
-              </Grid>
-            )
-          })
-        }
-      </Grid>
+      <CardGrid />
     </Background>
   )
 }
@@ -99,7 +98,7 @@ function Header(props) {
   
   const theme = useTheme()
   const color = theme.palette.common.white
-  const padding = (smallScreen) ? '7rem 0rem 3rem' : '12rem 0rem'   
+  const padding = (smallScreen) ? '7rem 0rem 3rem' : '12rem 0rem 5rem'   
   const fontSize = (smallScreen) ? '2.5rem' : '6.0rem'   
   
   const styles = {
@@ -117,6 +116,27 @@ function Header(props) {
       </Typography>
   )
 }
+
+function CardGrid(props) {
+  return (
+    <Grid container 
+      spacing={2} 
+      sx={{ padding: '1rem' }}
+    >
+      {
+        landingCards.map((cardData, index) => {
+          return (
+            <Grid item xs={6} sm={4} md={3} key={index} >
+              <CustomCard data={cardData}  />
+              {/* <BigIconButton data={cardData} /> */}
+            </Grid>
+          )
+        })
+      }
+    </Grid>
+  )
+}
+
 
 
 {/* 
