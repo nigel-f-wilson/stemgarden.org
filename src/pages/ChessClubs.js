@@ -5,7 +5,6 @@ import { useScreenWidth } from "../hooks"
 // MY components
 
 // MY images
-import leafy_background from "../images/leafy_background.jpg";
 
 // MUI Imports
 import { Container, Box, Typography } from '@mui/material';

@@ -6,7 +6,6 @@ import { useScreenWidth } from "../hooks"
 import Navbar from "../components/navigation/Navbar";
 // import LandingCards from "../components/LandingCards";
 
-import leafy_background from "../images/leafy_background.jpg";
 
 
 // MUI Imports

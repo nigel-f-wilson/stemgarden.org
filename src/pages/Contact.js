@@ -7,7 +7,6 @@ import Navbar from "../components/navigation/Navbar";
 // import LandingCards from "../components/LandingCards";
 
 // MY images
-import leafy_background from "../images/leafy_background.jpg";
 
 
 // MUI Imports

@@ -2,7 +2,6 @@ import React from 'react'
 
 import { useScreenWidth } from "../hooks"
 // MY images
-import leafy_background from "../images/leafy_background.jpg";
 import CustomCard from "../components/CustomCard"
 import BigIconButton from "../components/navigation/BigIconButton"
 import { Container, Box, Grid, Typography } from '@mui/material';
