@@ -1,14 +1,7 @@
 import React from 'react'
 import { Link as RouterLink } from 'react-router-dom';
-
-import { useScreenWidth } from "../hooks"
-// MY images
-import leafy_background from "../images/leafy_background.jpg";
-
-// MUI Imports
-import { Paper, Container, Box, Grid, Typography, Card, CardActions, CardMedia, CardContent, Button } from '@mui/material';
+import { Card, CardHeader, CardMedia } from '@mui/material';
 import theme from '../theme';
-
 
 export default function CustomCard(props) {
   const { title, linkTo, imgUrl } = props.data
@@ -19,43 +12,48 @@ export default function CustomCard(props) {
     textDecoration: 'none',
   }
   const linkStyles = { 
-    // position: 'absolute',
     color: theme.palette.common.white,
     textDecoration: 'none',
   }
 
   console.log(`LINK: `, linkTo);
   return (
+    <RouterLink to={linkTo} style={linkStyles} >
       <Card raised style={cardStyles}
-        // component={RouterLink}
-        // to="services/tutoring"
-        // to={linkTo}
-        sx={{ position: 'static' }}
+        sx={{ 
+          position: 'relative', 
+          paddingTop: '112%',
+          borderRadius: "1rem"
+        }}
       >
-        <RouterLink to={linkTo} style={linkStyles} >
-          <Typography 
-            align='center' 
-            variant="h4"
-            noWrap
-            children={title}
-            padding="0.5rem 0"
-          />
-          <CardMedia
-            component="img"
-            image={imgUrl}
-            alt={title}
-          />
-        </RouterLink>
-        
-        
-        
-        
-        
-        {/* <CardActions>
-          <Button size="small">Share</Button>
-          <Button size="small">Learn More</Button>
-        </CardActions> */}
+        <CardHeader 
+          title={title}
+          titleTypographyProps={{
+            align: 'center', 
+            variant: 'cardHeader',
+            noWrap: true,
+          }}
+          sx={{ 
+              position: 'absolute', 
+              top: 0,
+              zIndex: 20,
+              width: "100%",
+              padding: "2% 0 6%",
+              background: "rgb(32,32,32)",
+              background: "linear-gradient(180deg, rgba(32,32,32,1) 80%, rgba(32,32,32,0.5) 93%, rgba(32,32,32,0.1) 100%)",
+            }}
+        />
+        <CardMedia
+          component="img"
+          image={imgUrl}
+          alt={title}
+          sx={{ 
+            position: 'absolute', 
+            bottom: "0%",
+            zIndex: 10
+          }}
+        />
       </Card>
+    </RouterLink>
   )
-
 }
