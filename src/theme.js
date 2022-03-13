@@ -42,7 +42,19 @@ const theme = createTheme({
         },
     },
     typography: {
-     h1: {
+      h1: {
+        textShadow: '0.15rem 0.15rem 0.3rem black',
+        fontWeight: 200,
+      },
+      pageHeader: { 
+        // color: theme.palette.common.white
+
+        textAlign: "center",
+
+        textShadow: '0.15rem 0.15rem 0.3rem black',
+        fontWeight: 200,
+      },
+      cardHeader: { 
         textShadow: '0.15rem 0.15rem 0.3rem black',
         fontWeight: 200,
       },
@@ -62,5 +74,41 @@ const theme = createTheme({
     zIndex: { }
 
 });
+
+theme.typography.pageHeader = {
+  color: theme.palette.common.white,
+
+  textAlign: "center",
+  textShadow: '0.15rem 0.15rem 0.3rem black',
+  fontWeight: 200,
+  padding: '7rem 0rem 3rem',
+
+  fontSize: '2.0rem',
+    '@media (min-width:450px)': {
+      fontSize: '3.0rem',
+    },
+    [theme.breakpoints.up('sm')]: {
+      fontSize: '4.0rem',
+      padding: '12rem 0rem 5rem',
+    },
+    [theme.breakpoints.up('md')]: {
+      fontSize: '6.0rem',
+    },
+}
+
+theme.typography.cardHeader = {
+  textShadow: '0.15rem 0.15rem 0.3rem black',
+  fontWeight: 200,
+  fontSize: '1.0rem',
+    '@media (min-width:450px)': {
+      fontSize: '1.4rem',
+    },
+    [theme.breakpoints.up('sm')]: {
+      fontSize: '1.6rem',
+    },
+    [theme.breakpoints.up('md')]: {
+      fontSize: '2.0rem',
+    },
+}
 
 export default responsiveFontSizes(theme, 1.8)
