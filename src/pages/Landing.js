@@ -1,56 +1,82 @@
 import React from 'react'
 
 import { useScreenWidth } from "../hooks"
-// MY images
+
 import CustomCard from "../components/CustomCard"
-import BigIconButton from "../components/navigation/BigIconButton"
 import { Container, Box, Grid, Typography } from '@mui/material';
-import { useTheme } from '@emotion/react';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCoffee } from '@fortawesome/free-solid-svg-icons'
+// MY images
+// import leafy_background from "../images/leafy_background.jpg";
+const leafy_background = "https://res.cloudinary.com/nola-stem-garden/image/upload/v1647192146/stemgarden.org/leafy_background_wzclfb.jpg"
 
-const coffee = <FontAwesomeIcon icon={faCoffee} />
+// Tutoring
+const practicing_math_facts = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_1000,h_1000,c_limit/v1646863130/stemgarden.org/teaching/practicing_math_facts_gnhwkx.jpg"
 
+// Math Games
+// const playing_the_15_game = "https://res.cloudinary.com/nola-stem-garden/image/upload/v1646685339/stemgarden.org/project_screenshots/playing_the_15_game_rcowti.jpg"
+// const playing_connect_four = "https://res.cloudinary.com/nola-stem-garden/image/upload/v1646687130/stemgarden.org/project_screenshots/playing_math_fact_connect_four_zgyzou.jpg"
+const girls_playing_connect_four = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_1000,h_1000,c_limit/v1647052443/stemgarden.org/teaching/connect_four/girls_playing_math_fact_connect_four_j84gqo.jpg"
 
-const playing_the_15_game = "https://res.cloudinary.com/nola-stem-garden/image/upload/v1646685339/stemgarden.org/project_screenshots/playing_the_15_game_rcowti.jpg"
-const playing_connect_four = "https://res.cloudinary.com/nola-stem-garden/image/upload/v1646687130/stemgarden.org/project_screenshots/playing_math_fact_connect_four_zgyzou.jpg"
+// Chess Clubs
+const chess_at_college_track = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_1000,h_1000,c_limit/v1647050134/stemgarden.org/chess/chess_club_college_track_st00uc.jpg"
+// const chess_at_bric = "https://res.cloudinary.com/nola-stem-garden/image/upload/v1647050028/stemgarden.org/chess/chess_club_at_bric_tvycwi.jpg"
+// const chess_demo_board = "https://res.cloudinary.com/nola-stem-garden/image/upload/v1612135192/stemgarden.org/chess/chess_demo_board_qtdzpw.jpg"
+// const simul_at_bric = "https://res.cloudinary.com/nola-stem-garden/image/upload/v1646937461/stemgarden.org/chess/simul_at_bric_nagag0.jpg"
 
+// Enrichment + Hands On
+const guitar_fret_measuring = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_1000,h_1000,c_limit/v1646597930/stemgarden.org/teaching/hands_on/guitar_fret_spacing_jezbuk.jpg"
+const bike_gear_ratio_tutoring = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_1000,h_1000,c_limit/v1647052266/stemgarden.org/teaching/hands_on/bike_gear_ratios_at_tutoring_s6l3ee.jpg"
+
+// What We Grow
+const banana_papaya_turmeric_flower = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_1000,h_1000,c_limit/v1646607021/stemgarden.org/banana_papaya_turmeric_j3f7k9.jpg"
 
 const landingCards = [
   {
-    title: "Tutoring Services",
+    title: "Math Tutoring",
     linkTo: "tutoring-services",
-    imgUrl: "https://res.cloudinary.com/nola-stem-garden/image/upload/v1646597930/stemgarden.org/guitar_fret_spacing_jezbuk.jpg",
-    icon: coffee
+    imgUrl: practicing_math_facts
 
   },
   {
     title: "Math Games",
     linkTo: "math-games",
-    imgUrl: playing_connect_four,
-    icon: coffee
+    // imgUrl: playing_the_15_game,
+    imgUrl: girls_playing_connect_four,
   },
   {
-    title: "Tutoring Services",
+    title: "Chess Clubs",
     linkTo: "services/tutoring",
-    imgUrl: "https://res.cloudinary.com/nola-stem-garden/image/upload/v1646597930/stemgarden.org/guitar_fret_spacing_jezbuk.jpg",
-    icon: coffee
+    imgUrl: chess_at_college_track
   },
   {
-    title: "Tutoring Services",
+    title: "STEM Enrichment",
     linkTo: "services/tutoring",
-    imgUrl: "https://res.cloudinary.com/nola-stem-garden/image/upload/v1646597930/stemgarden.org/guitar_fret_spacing_jezbuk.jpg",
+    imgUrl: bike_gear_ratio_tutoring,
   },
   {
-    title: "Tutoring Services",
-    linkTo: "/services/tutoring",
-    imgUrl: "https://res.cloudinary.com/nola-stem-garden/image/upload/v1646597930/stemgarden.org/guitar_fret_spacing_jezbuk.jpg",
+    title: "What We Grow",
+    linkTo: "about",
+    imgUrl: banana_papaya_turmeric_flower,
   },
   {
-    title: "Tutoring Services",
+    title: "Study Materials",
     linkTo: "/services/tutoring",
-    imgUrl: "https://res.cloudinary.com/nola-stem-garden/image/upload/v1646597930/stemgarden.org/guitar_fret_spacing_jezbuk.jpg",
+    imgUrl: guitar_fret_measuring,
+  },
+  {
+    title: "Our Story",
+    linkTo: "/garden/story",
+    imgUrl: guitar_fret_measuring,
+  },
+  {
+    title: "Buy Our Fruit",
+    linkTo: "/garden/for_sale",
+    imgUrl: guitar_fret_measuring,
+  },
+  {
+    title: "Get Involved",
+    linkTo: "/garden/get_involved",
+    imgUrl: guitar_fret_measuring,
   },
 ]
 
@@ -59,7 +85,7 @@ export default function LandingPage() {
   const smallScreen = screenWidth < 600
   return (
     <Background smallScreen={smallScreen} >
-      <Header smallScreen={smallScreen} />
+      <Header />
       <CardGrid />
     </Background>
   )
@@ -81,38 +107,30 @@ function Background(props) {
     backgroundPosition: 'center top',
     backgroundRepeat: 'repeat-y',
     backgroundSize: 'cover',
+
+    margin: '3rem 0rem 0rem',
+    padding: '3rem 1rem',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    textAlign: 'center',
   }  
   return (
     <Box sx={backgroundStyles} >
-      <Container maxWidth='lg' >
+      <Container maxWidth='lg'  >
         { props.children }
       </Container>
     </Box>
   )
 }
 
-
-function Header(props) {
-  const { smallScreen } = props
-  
-  const theme = useTheme()
-  const color = theme.palette.common.white
-  const padding = (smallScreen) ? '7rem 0rem 3rem' : '12rem 0rem 5rem'   
-  const fontSize = (smallScreen) ? '2.5rem' : '6.0rem'   
-  
-  const styles = {
-    color: color,
-    padding: padding,
-    fontSize: fontSize,
-    width: '100%',
-    fontWeight: '200',
-    textShadow: '0.15rem 0.15rem 0.3rem black',
-  } 
-  
+function Header() {
   return (
-      <Typography sx={styles} align="center" >
+    <Box sx={{ padding: '0 2rem' }} >
+      <Typography align="center" variant="pageHeader" >
           Sowing seeds of life&#8209;long learning and DIY&#8209;spirit.
       </Typography>
+    </Box>
   )
 }
 
@@ -120,14 +138,13 @@ function CardGrid(props) {
   return (
     <Grid container 
       spacing={2} 
-      sx={{ padding: '1rem' }}
+      sx={{ padding: '3rem 0rem' }}
     >
       {
         landingCards.map((cardData, index) => {
           return (
-            <Grid item xs={6} sm={4} md={3} key={index} >
+            <Grid item xs={6} sm={4} key={index} >
               <CustomCard data={cardData}  />
-              {/* <BigIconButton data={cardData} /> */}
             </Grid>
           )
         })
@@ -135,8 +152,6 @@ function CardGrid(props) {
     </Grid>
   )
 }
-
-
 
 {/* 
       The STEM Garden is an off-grid urban teaching garden rooted in New Orleans.
