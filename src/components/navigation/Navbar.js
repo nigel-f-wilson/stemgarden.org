@@ -1,13 +1,15 @@
 import React from 'react';
 import { Link as RouterLink } from "react-router-dom";
 
-import { useScreenWidth } from "../../hooks"
+// import { useScreenWidth } from "../../hooks"
 
 // MY COMPONENTS
 import { aboutList, servicesList } from "./menuItems";
 
 // Image Imports
-import logo from "../../images/nsgLogoSnipped.png";
+// import logo from "../../images/nsgLogoSnipped.png";
+
+
 
 // MUI imports
 import { common } from '@mui/material/colors';
@@ -25,59 +27,137 @@ import { Container,
     MenuList,
     ListItem,
     ListItemText,
+    IconButton,
+    Drawer
 } from "@mui/material"
 
 // ICONS
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars } from '@fortawesome/free-solid-svg-icons'
+
+
+const logo = "https://res.cloudinary.com/nola-stem-garden/image/upload/c_scale,h_150,w_150/v1647198083/stemgarden.org/nsgLogoSnipped_li5iap.png"
 
 export default function Navbar(props) {
-    const screenWidth = useScreenWidth()
     return (
-        <Box sx={{ 
-                width: '100vw',
-                backgroundColor: 'primary.main'
-            }}
-        >
-            {(screenWidth >= 600) ? <DesktopNavbar /> : <MobileNavbar />  }  
-        </Box>
+      <Box 
+        sx={{ 
+          width: '100vw',
+          backgroundColor: 'primary.main'
+        }}
+      >
+        <Container maxWidth='md'  >
+          <MobileNavbar />
+        </Container>
+        {/* {(screenWidth >= 600) ? <DesktopNavbar /> : <MobileNavbar />  }   */}
+      </Box>
     )
 }
 
-function MobileNavbar(props) {
-    const height = "3.5rem"
-    return (
-        <AppBar
-            // className={classes.navbar, classes.mobileNavbar}
-            position="fixed"
-            elevation={3}
-            sx={{
-                height: {height},
-                // width: '100vw',
-                display: 'flex',
-                justifyContent: 'center',
-                backgroundColor: "primary.main", 
-                color: "white",
-            }}
-        >
-            <Grid container>
-                <Grid item xs={2} >
-                    <Box 
-                    // className={classes.mobileLogo} 
+function FlexRow(props) {
+  const align = props.align ? props.align : 'center'
+  const justify = props.justify ? props.justify : 'start'
+  // const ma
 
-                    />
-                </Grid>
-                <Grid item xs={8} >
-                    <Box  >
-                        <Typography variant='h3'  >
-                            STEM Garden
-                        </Typography>
-                    </Box>
-                </Grid>
-                <Grid item xs={2} >
-                    {/* <MobileMenu /> */}
-                </Grid>
-            </Grid>
-        </AppBar>
+  return (
+    <Container maxWidth={props.maxWidth} sx={{
+      display: 'flex',
+      flexDirection: 'row',
+      alignItems: align,
+      justifyContent: justify,
+      // backgroundColor: '#f00'
+    }} >
+      { props.children }
+    </Container>
+  )
+}
+
+function MobileNavbar(props) {
+  const height = "3.0rem"
+  return (
+    <AppBar
+      elevation={4}
+      sx={{
+        height: height,
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        backgroundColor: "primary.main", 
+        color: "white",
+      }}
+    >
+      <FlexRow justify='space-between' maxWidth='lg' >
+        <FlexRow justify='start'  >
+        <Box id="Logo"
+          sx={{
+            height: "3rem",
+            width: "3rem",
+            backgroundImage: `url(${logo})`,
+            backgroundPosition: 'center bottom',
+            backgroundRepeat: 'no-repeat',
+            backgroundSize: 'auto 95%',
+          }}
+        />
+        <Typography sx={{ paddingLeft: '1rem' }} variant='h3'   >
+            STEM Garden
+        </Typography>
+        </FlexRow>
+        <MenuButton />
+      </FlexRow>
+            
+    </AppBar>
+  );
+}
+
+
+
+function MenuButton() {
+    const [open, setOpen] = React.useState(false)
+
+    const [state, setState] = React.useState({
+        open: false,
+    });
+
+    const toggleDrawer = (anchor, open) => (event) => {
+        if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+            return;
+        }
+        setOpen(prev => !prev)
+        setState({ ...state, [anchor]: open });
+    };
+
+    
+    return (
+        <Box  >
+            <IconButton 
+                onClick={() => setOpen(true)}
+                aria-controls="simple-menu"
+                aria-haspopup="true"
+            >
+              <FontAwesomeIcon
+                  icon={faBars} 
+                  size="md"
+                  color='white'
+              />
+            </IconButton>   
+            <Drawer 
+              classes={{ paper: 'paper'}}
+              anchor='right' 
+              open={open} 
+              onClose={toggleDrawer('open', false)}
+            >
+              <Box role="presentation"
+                onClick={toggleDrawer('right', false)}
+                onKeyDown={toggleDrawer('right', false)}
+              >
+                <List sx={{ width: '280px' }}>
+                    {/* <TeachingServicesList />
+                    <GardenNavigationList /> */}
+                </List>
+              </Box>
+            </Drawer>
+        </Box>
     );
 }
 
