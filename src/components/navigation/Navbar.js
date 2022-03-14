@@ -89,16 +89,7 @@ function MobileNavbar(props) {
     >
       <FlexRow justify='space-between' maxWidth='lg' >
         <FlexRow justify='start'  >
-        <Box id="Logo"
-          sx={{
-            height: "3rem",
-            width: "3rem",
-            backgroundImage: `url(${logo})`,
-            backgroundPosition: 'center bottom',
-            backgroundRepeat: 'no-repeat',
-            backgroundSize: 'auto 95%',
-          }}
-        />
+        <Logo />
         <Typography sx={{ paddingLeft: '1rem' }} variant='h3'   >
             STEM Garden
         </Typography>
@@ -110,7 +101,21 @@ function MobileNavbar(props) {
   );
 }
 
-
+function Logo(props) {
+  const navbarHeight = "3.0rem"
+  return (
+    <Box id="Logo"
+      sx={{
+        height: navbarHeight,
+        width: navbarHeight,
+        backgroundImage: `url(${logo})`,
+        backgroundPosition: 'center bottom',
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'auto 95%',
+      }}
+    />
+  );
+}
 
 function MenuButton() {
     const [open, setOpen] = React.useState(false)
