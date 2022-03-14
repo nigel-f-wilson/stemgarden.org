@@ -36,7 +36,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons'
 
 
-const logo = "https://res.cloudinary.com/nola-stem-garden/image/upload/c_scale,h_150,w_150/v1647198083/stemgarden.org/nsgLogoSnipped_li5iap.png"
+const chess_logo = "https://res.cloudinary.com/nola-stem-garden/image/upload/c_scale,h_150,w_150/v1647198083/stemgarden.org/nsgLogoSnipped_li5iap.png"
+
+const leaf_logo = "https://www.logoai.com/oss/icons/2022/03/14/fe7fdb2f7fd12c15c1bfd8441e7c346e.svg"
 
 export default function Navbar(props) {
     return (
@@ -98,7 +100,7 @@ function MobileNavbar(props) {
             STEM Garden
         </Typography>
         </FlexRow>
-        <MenuButton />
+        <MobileMenu />
       </FlexRow>
             
     </AppBar>
@@ -108,11 +110,11 @@ function MobileNavbar(props) {
 function Logo(props) {
   const navbarHeight = "3.0rem"
   return (
-    <Box id="Logo"
+    <Box
       sx={{
         height: navbarHeight,
         width: navbarHeight,
-        backgroundImage: `url(${logo})`,
+        backgroundImage: `url(${chess_logo})`,
         backgroundPosition: 'center bottom',
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'auto 95%',
@@ -121,7 +123,7 @@ function Logo(props) {
   );
 }
 
-function MenuButton() {
+function MobileMenu() {
     const [open, setOpen] = React.useState(false)
 
     const [state, setState] = React.useState({
@@ -135,6 +137,12 @@ function MenuButton() {
         setOpen(prev => !prev)
         setState({ ...state, [anchor]: open });
     };
+    const handleDrawerClose = (anchor, open) => (event) => {
+        if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+            return;
+        }
+        setOpen(false)
+    };
 
     
     return (
@@ -146,17 +154,15 @@ function MenuButton() {
             >
               <FontAwesomeIcon
                   icon={faBars} 
-                  size="md"
                   color='white'
               />
             </IconButton>   
             <Drawer 
-              classes={{ paper: 'paper'}}
-              anchor='right' 
               open={open} 
+              anchor='right' 
               onClose={toggleDrawer('open', false)}
             >
-              <Box role="presentation"
+              <Box role="navigation"
                 onClick={toggleDrawer('right', false)}
                 onKeyDown={toggleDrawer('right', false)}
               >
@@ -203,7 +209,7 @@ function DesktopBrand() {
                 sx={{
                     height: "6rem",
                     paddingRight: "6rem",
-                    backgroundImage: `url(${logo})`,
+                    backgroundImage: `url(${chess_logo})`,
                     backgroundPosition: 'center bottom',
                     backgroundRepeat: 'no-repeat',
                     backgroundSize: 'auto 95%',
