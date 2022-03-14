@@ -60,13 +60,17 @@ function FlexRow(props) {
   // const ma
 
   return (
-    <Container maxWidth={props.maxWidth} sx={{
-      display: 'flex',
-      flexDirection: 'row',
-      alignItems: align,
-      justifyContent: justify,
-      // backgroundColor: '#f00'
-    }} >
+    <Container 
+      disableGutters
+      maxWidth={props.maxWidth} 
+      sx={{
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: align,
+        justifyContent: justify,
+        // backgroundColor: '#f00'
+      }} 
+    >
       { props.children }
     </Container>
   )
