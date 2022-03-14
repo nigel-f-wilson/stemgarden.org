@@ -7,7 +7,13 @@ import { Route, Routes } from "react-router-dom"
 import Landing from './pages/Landing'
 const About = lazy(() => import('./pages/About'))
 const Contact = lazy(() => import('./pages/Contact'))
+
+
 const MathGames = lazy(() => import('./pages/MathGames'))
+const FifteenGame = lazy(() => import('./math-games/fifteen-game/FifteenGame'))
+const ConnectFour = lazy(() => import('./math-games/connect-four/ConnectFour'))
+
+
 const ChessClubs = lazy(() => import('./pages/ChessClubs'))
 const Services = lazy(() => import('./pages/Services'))
 
@@ -26,8 +32,8 @@ export default function Router() {
           <Route path="chess-clubs" element={<ChessClubs />} />
         </Route>
         <Route path="math-games" element={<MathGames />} >
-          <Route path="the-15-game" element={<Services />} />
-          <Route path="connect-four" element={<Services />} />
+          <Route path="the-15-game" element={<FifteenGame />} />
+          <Route path="connect-four" element={<ConnectFour />} />
         </Route>
         {/* <Route path="garden" element={<Garden />} >
           <Route path="what_we_grow" element={<Services />} />  
