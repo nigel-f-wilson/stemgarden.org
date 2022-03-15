@@ -95,6 +95,7 @@ function DesktopMenus() {
             justifyContent: 'space-between',
             alignItems: 'flex-end',
         }}>
+          <Container maxWidth='md' id="navbar-container" >
             <DesktopMenu
                 name="about"
                 items={aboutList}
@@ -107,8 +108,8 @@ function DesktopMenus() {
                 open={openDropdown === "services"}
                 setDropdownState={setDropdownState}
             />
-            <ContactPageLink
-            /> 
+            {/* <ContactPageLink />  */}
+          </Container>
         </Box>
     )
 }
