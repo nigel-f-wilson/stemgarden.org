@@ -28,7 +28,9 @@ export default function Router() {
         <Route path="services" element={<Services />} >
           <Route path="tutoring" element={<Services />} />   {/* <Route path="tutoring" element={<Services activeTab="tutoring" />} /> */}
           <Route path="enrichment" element={<Services />} />
-          <Route path="professional-development" element={<Services />} />
+          <Route path="teacher-training" element={<Services />} />
+          <Route path="web-development" element={<Services />} />
+
           <Route path="chess-clubs" element={<ChessClubs />} />
         </Route>
         <Route path="math-games" element={<MathGames />} >
