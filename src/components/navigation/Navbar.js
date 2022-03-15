@@ -1,22 +1,14 @@
 import React from 'react';
 import { Link as RouterLink } from "react-router-dom";
 
-// import { useScreenWidth } from "../../hooks"
-
 // MY COMPONENTS
 import FlexRow from "../../components/FlexRow";
 import { aboutList, servicesList } from "./menuItems";
+import ServicesList from "./ServicesList";
 
-// Image Imports
-// import logo from "../../images/nsgLogoSnipped.png";
-
-
-
-// MUI imports
 import { common } from '@mui/material/colors';
 import { Container, 
     Box, 
-    Grid,
     Typography,
     AppBar,
     Button,
@@ -32,14 +24,11 @@ import { Container,
     Drawer
 } from "@mui/material"
 
-// ICONS
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons'
 
-
 const chess_logo = "https://res.cloudinary.com/nola-stem-garden/image/upload/c_scale,h_150,w_150/v1647198083/stemgarden.org/nsgLogoSnipped_li5iap.png"
-
-const leaf_logo = "https://www.logoai.com/oss/icons/2022/03/14/fe7fdb2f7fd12c15c1bfd8441e7c346e.svg"
+// const leaf_logo = "https://www.logoai.com/oss/icons/2022/03/14/fe7fdb2f7fd12c15c1bfd8441e7c346e.svg"
 
 export default function Navbar(props) {
     return (
@@ -146,6 +135,7 @@ function MobileMenu() {
                 onKeyDown={toggleDrawer('right', false)}
               >
                 <List sx={{ width: '280px' }}>
+                  <ServicesList />
                     {/* <TeachingServicesList />
                     <GardenNavigationList /> */}
                 </List>
