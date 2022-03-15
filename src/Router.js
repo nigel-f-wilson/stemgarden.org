@@ -25,6 +25,12 @@ export default function Router() {
       <Routes>
         <Route exact path="/" element={<Landing />} />
 
+        <Route path="about" element={<About />} >
+          <Route path="what_we_grow" element={<Services />} />  
+          <Route path="our_story" element={<Services />} />
+          <Route path="buy_our_fruit" element={<Services />} />
+          <Route path="get_involved" element={<ChessClubs />} />
+        </Route>
         <Route path="services" element={<Services />} >
           <Route path="tutoring" element={<Services />} />   {/* <Route path="tutoring" element={<Services activeTab="tutoring" />} /> */}
           <Route path="enrichment" element={<Services />} />
