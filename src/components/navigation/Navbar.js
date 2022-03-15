@@ -5,6 +5,7 @@ import { useScreenWidth } from "../../hooks";
 import DesktopNavbar from "./DesktopNavbar";
 import FlexRow from "../../components/FlexRow";
 import ServicesList from "./ServicesList";
+import { MobileNavbar, DesktopNavbar } from "./_index";
 
 import { Container, 
     Box, 
@@ -37,34 +38,4 @@ export default function Navbar(props) {
       </Box>
     )
 }
-
-function MobileNavbar(props) {
-  const height = "3.0rem"
-  return (
-    <AppBar
-      elevation={4}
-      sx={{
-        height: height,
-        display: 'flex',
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        backgroundColor: "primary.main", 
-        color: "white",
-      }}
-    >
-      <FlexRow justify='space-between' maxWidth='lg' >
-        <FlexRow justify='start'  >
-        <Logo />
-        <Typography sx={{ paddingLeft: '1rem' }} variant='h3'   >
-            STEM Garden
-        </Typography>
-        </FlexRow>
-        <MobileMenu />
-      </FlexRow>
-            
-    </AppBar>
-  );
-}
-
 
