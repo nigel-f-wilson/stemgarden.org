@@ -137,8 +137,12 @@ function Header() {
 function CardGrid(props) {
   return (
     <Grid container 
+      maxWidth='md'
       spacing={2} 
-      sx={{ padding: '3rem 0rem' }}
+      sx={{ 
+        padding: '3rem 0rem',
+        margin: '0 auto'
+      }}
     >
       {
         landingCards.map((cardData, index) => {
@@ -152,7 +156,7 @@ function CardGrid(props) {
     </Grid>
   )
 }
-
+ 
 // {/* 
 //       The STEM Garden is an off-grid urban teaching garden rooted in New Orleans.
 //       We offer private tutoring and small group lessons, both in the garden and online.
