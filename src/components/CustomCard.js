@@ -39,7 +39,7 @@ export default function CustomCard(props) {
               zIndex: 20,
               width: "100%",
               padding: "2% 0 6%",
-              background: "rgb(32,32,32)",
+              backgroundColor: "rgb(32,32,32)",
               background: "linear-gradient(180deg, rgba(32,32,32,1) 80%, rgba(32,32,32,0.5) 93%, rgba(32,32,32,0.1) 100%)",
             }}
         />

@@ -1,25 +1,14 @@
 import React from 'react';
-import { Link as RouterLink } from "react-router-dom";
 
 // MY COMPONENTS
 import FlexRow from "../../components/FlexRow";
-import { aboutList, servicesList } from "./menuItems";
 import ServicesList from "./ServicesList";
 
-import { common } from '@mui/material/colors';
 import { Container, 
     Box, 
     Typography,
     AppBar,
-    Button,
-    ClickAwayListener,
-    Grow,
-    Paper,
-    Popper,
     List,
-    MenuList,
-    ListItem,
-    ListItemText,
     IconButton,
     Drawer
 } from "@mui/material"
@@ -105,12 +94,12 @@ function MobileMenu() {
         setOpen(prev => !prev)
         setState({ ...state, [anchor]: open });
     };
-    const handleDrawerClose = (anchor, open) => (event) => {
-        if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
-            return;
-        }
-        setOpen(false)
-    };
+    // const handleDrawerClose = (anchor, open) => (event) => {
+    //     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+    //         return;
+    //     }
+    //     setOpen(false)
+    // };
 
     
     return (

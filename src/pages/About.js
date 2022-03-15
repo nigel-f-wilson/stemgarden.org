@@ -1,14 +1,13 @@
 import React from 'react'
 
-import { useScreenWidth } from "../hooks"
 
 // MY components
 
 // MY images
 
 // MUI Imports
-import { Container, Box, Typography } from '@mui/material';
-import { common } from '@mui/material/colors';
+// import { Container, Box, Typography } from '@mui/material';
+// import { common } from '@mui/material/colors';
 
 
 // LandingPage is responsible for rendering a Navbar and either the Mobile or Desktop version

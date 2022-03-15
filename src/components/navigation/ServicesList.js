@@ -12,7 +12,7 @@ import {
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { 
-  faBrain,
+  // faBrain,
   // faFlask,
   faChessKnight,
   faGraduationCap,

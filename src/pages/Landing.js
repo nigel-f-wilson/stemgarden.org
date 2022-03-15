@@ -153,10 +153,10 @@ function CardGrid(props) {
   )
 }
 
-{/* 
-      The STEM Garden is an off-grid urban teaching garden rooted in New Orleans.
-      We offer private tutoring and small group lessons, both in the garden and online.
-      We help students excell on the SAT and ACT and meet all Common Core math standards,
-      but we see learning math as so much more than that! We emphacize the playful side of
-      mathematical thinking and make use of many puzzles, games, and hands-on projects to engage young imaginations.
-  </Typography> */}
+// {/* 
+//       The STEM Garden is an off-grid urban teaching garden rooted in New Orleans.
+//       We offer private tutoring and small group lessons, both in the garden and online.
+//       We help students excell on the SAT and ACT and meet all Common Core math standards,
+//       but we see learning math as so much more than that! We emphacize the playful side of
+//       mathematical thinking and make use of many puzzles, games, and hands-on projects to engage young imaginations.
+//   </Typography> */}
