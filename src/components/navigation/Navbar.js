@@ -67,21 +67,6 @@ function MobileNavbar(props) {
   );
 }
 
-function Logo(props) {
-  const navbarHeight = "3.0rem"
-  return (
-    <Box
-      sx={{
-        height: navbarHeight,
-        width: navbarHeight,
-        backgroundImage: `url(${chess_logo})`,
-        backgroundPosition: 'center bottom',
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: 'auto 95%',
-      }}
-    />
-  );
-}
 
 function MobileMenu() {
     const [open, setOpen] = React.useState(false)
