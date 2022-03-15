@@ -82,7 +82,6 @@ const theme = createTheme({
 
 theme.typography.pageHeader = {
   color: theme.palette.common.white,
-
   textAlign: "center",
   textShadow: '0.15rem 0.15rem 0.3rem black',
   fontWeight: 200,
@@ -97,7 +96,7 @@ theme.typography.pageHeader = {
       padding: '12rem 0rem 5rem',
     },
     [theme.breakpoints.up('md')]: {
-      fontSize: '6.0rem',
+      fontSize: '5.5rem',
     },
 }
 
