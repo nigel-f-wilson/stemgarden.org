@@ -37,8 +37,13 @@ const theme = createTheme({
         },
     },
     components: {
-        MuiPaper: {
-            
+        MuiList: {
+            styleOverrides: {
+              root: {
+                // backgroundColor: 'red',
+                paddingTop: '0px',
+              },
+            },
         },
     },
     typography: {
