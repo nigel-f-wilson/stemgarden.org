@@ -10,7 +10,6 @@ import { Container,
     Box, 
     Typography,
     AppBar,
-    List,
     IconButton,
     Drawer
 } from "@mui/material"
