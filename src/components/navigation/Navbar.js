@@ -68,37 +68,3 @@ function MobileNavbar(props) {
 }
 
 
-function MobileMenu() {
-    const [open, setOpen] = React.useState(false)
-
-    const toggleDrawer = (event) => {
-        if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
-            return;
-        }
-        setOpen((prev) => !prev)
-    };
-    
-    return (
-        <Box  >
-            <IconButton 
-                onClick={() => setOpen(true)}
-                aria-controls="simple-menu"
-                aria-haspopup="true"
-            >
-              <FontAwesomeIcon
-                  icon={faBars} 
-                  color='white'
-              />
-            </IconButton>   
-            <Drawer 
-              open={open} 
-              anchor='right' 
-              role="navigation"
-              onClick={toggleDrawer}
-              onKeyDown={toggleDrawer}
-            >
-              <ServicesList />
-            </Drawer>
-        </Box>
-    );
-}

@@ -1,5 +1,8 @@
 import React from 'react';
 import { Link as RouterLink } from "react-router-dom";
+import { useTheme } from "@mui/styles";
+import FlexRow from "../../components/FlexRow";
+
 
 // MY COMPONENTS
 import { aboutList, servicesList } from "./menuItems";
@@ -78,6 +81,8 @@ function Logo(props) {
 }
 
 function MobileMenu() {
+  const theme = useTheme()
+
     const [open, setOpen] = React.useState(false)
 
     const [state, setState] = React.useState({
