@@ -2,186 +2,161 @@ import React from 'react'
 
 import { useScreenWidth } from "../hooks"
 
-// MY components
-import Navbar from "../components/navigation/Navbar";
-// import LandingCards from "../components/LandingCards";
+import CustomCard from "../components/CustomCard"
+import { Container, Box, Grid, Typography } from '@mui/material';
 
 // MY images
-import leaves from "../images/leaves_cropped_for_mobile.jpg";
+// import leafy_background from "../images/leafy_background.jpg";
+const leafy_background = "https://res.cloudinary.com/nola-stem-garden/image/upload/v1647192146/stemgarden.org/leafy_background_wzclfb.jpg"
 
-// MUI Imports
-import { Container, Box, Typography } from '@mui/material';
-import { common } from '@mui/material/colors';
+// Tutoring
+const practicing_math_facts = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_1000,h_1000,c_limit/v1646863130/stemgarden.org/teaching/practicing_math_facts_gnhwkx.jpg"
 
+// Math Games
+// const playing_the_15_game = "https://res.cloudinary.com/nola-stem-garden/image/upload/v1646685339/stemgarden.org/project_screenshots/playing_the_15_game_rcowti.jpg"
+// const playing_connect_four = "https://res.cloudinary.com/nola-stem-garden/image/upload/v1646687130/stemgarden.org/project_screenshots/playing_math_fact_connect_four_zgyzou.jpg"
+const girls_playing_connect_four = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_1000,h_1000,c_limit/v1647052443/stemgarden.org/teaching/connect_four/girls_playing_math_fact_connect_four_j84gqo.jpg"
 
-// LandingPage is responsible for rendering a Navbar and either the Mobile or Desktop version
-// depending on screen width. The Navbar contains its own M.vs.D. rendering logic. 
-export default function LandingPage(props) {
-    const screenWidth = useScreenWidth()
-    return (
-        <React.Fragment >
-            {(screenWidth >= 600) ? <DesktopLandingPage /> : <MobileLandingPage />}  
-        </React.Fragment>
-    )
+// Chess Clubs
+const chess_at_college_track = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_1000,h_1000,c_limit/v1647050134/stemgarden.org/chess/chess_club_college_track_st00uc.jpg"
+// const chess_at_bric = "https://res.cloudinary.com/nola-stem-garden/image/upload/v1647050028/stemgarden.org/chess/chess_club_at_bric_tvycwi.jpg"
+// const chess_demo_board = "https://res.cloudinary.com/nola-stem-garden/image/upload/v1612135192/stemgarden.org/chess/chess_demo_board_qtdzpw.jpg"
+// const simul_at_bric = "https://res.cloudinary.com/nola-stem-garden/image/upload/v1646937461/stemgarden.org/chess/simul_at_bric_nagag0.jpg"
+
+// Enrichment + Hands On
+const guitar_fret_measuring = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_1000,h_1000,c_limit/v1646597930/stemgarden.org/teaching/hands_on/guitar_fret_spacing_jezbuk.jpg"
+const bike_gear_ratio_tutoring = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_1000,h_1000,c_limit/v1647052266/stemgarden.org/teaching/hands_on/bike_gear_ratios_at_tutoring_s6l3ee.jpg"
+
+// What We Grow
+const banana_papaya_turmeric_flower = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_1000,h_1000,c_limit/v1646607021/stemgarden.org/banana_papaya_turmeric_j3f7k9.jpg"
+
+const landingCards = [
+  {
+    title: "Math Tutoring",
+    linkTo: "tutoring-services",
+    imgUrl: practicing_math_facts
+
+  },
+  {
+    title: "Math Games",
+    linkTo: "math-games",
+    // imgUrl: playing_the_15_game,
+    imgUrl: girls_playing_connect_four,
+  },
+  {
+    title: "Chess Clubs",
+    linkTo: "services/tutoring",
+    imgUrl: chess_at_college_track
+  },
+  {
+    title: "STEM Enrichment",
+    linkTo: "services/tutoring",
+    imgUrl: bike_gear_ratio_tutoring,
+  },
+  {
+    title: "What We Grow",
+    linkTo: "about",
+    imgUrl: banana_papaya_turmeric_flower,
+  },
+  {
+    title: "Study Materials",
+    linkTo: "/services/tutoring",
+    imgUrl: guitar_fret_measuring,
+  },
+  {
+    title: "Our Story",
+    linkTo: "/garden/story",
+    imgUrl: guitar_fret_measuring,
+  },
+  {
+    title: "Buy Our Fruit",
+    linkTo: "/garden/for_sale",
+    imgUrl: guitar_fret_measuring,
+  },
+  {
+    title: "Get Involved",
+    linkTo: "/garden/get_involved",
+    imgUrl: guitar_fret_measuring,
+  },
+]
+
+export default function LandingPage() {
+  const screenWidth = useScreenWidth()
+  const smallScreen = screenWidth < 600
+  return (
+    <Background smallScreen={smallScreen} >
+      <Header />
+      <CardGrid />
+    </Background>
+  )
 }
 
-function MobileLandingPage() {
-    return (
-        <Box id="MobileLandingPage"
-            sx={{ 
-                height: 'auto',
-                width: '100%',
-                minHeight: '100vh',
-                backgroundImage: `
-                        linear-gradient(90deg, 
-                            rgba(58,94,22,0.70) 0%, 
-                            rgba(58,94,22,0.80) 100%),
-                        url(${leaves})
-                    `,
-                backgroundPosition: 'center top',
-                backgroundRepeat: 'repeat-y',
-                backgroundSize: 'cover',
-            }}
-            
-        >
-            <Typography  align='center' 
-                color='white' 
-                // component='h1' variant='h2' 
-                sx={{
-                    padding: '4.0rem 3.0rem',
-                    textShadow: '0.15rem 0.15rem 0.3rem black',
-                    fontSize: 'min(2.5rem, 8vw)',
-                    fontWeight: 'light',
+function Background(props) {
+  const gradient = (props.smallScreen) ?
+    "linear-gradient(90deg, rgba(58,94,22,0.80) 0%, rgba(58,99,22,0.80) 100%)"
+    : "linear-gradient(90deg, rgba(58,94,22,0.30) 0%, rgba(58,94,22,0.80) 10%, rgba(58,94,22,0.80) 90%, rgba(58,99,22,0.30) 100%)"
 
-                }}
-            >
-                Sowing the seeds of life&#8209;long learning and DIY&#8209;spirit.
-                {/* with a focus on math, chess, gardening, woodworking, and programming. */}
-            </Typography>
-            <Typography
-                align='justify'
-                color='primary.contrastText'
-                // component='h2'
-                // variant='body1'
-                sx={{
-                    padding: '0.0rem 4.0rem',
-                    textShadow: '0.12rem 0.12rem 0.20rem black',
-                    fontWeight: 'light',
+  const backgroundStyles = {
+    width: '100%',
+    minHeight: '100vh',
+    height: 'auto',
+    backgroundImage: `
+      ${gradient},
+      url(${leafy_background})
+    `,
+    backgroundPosition: 'center top',
+    backgroundRepeat: 'repeat-y',
+    backgroundSize: 'cover',
 
-                }}
-            >
-                The STEM Garden is an off-grid urban teaching garden, rooted in New Orleans.
-                The STEM Garden is dedicated to 
-                We offer private tutoring and small group lessons, both in the garden and online.
-                We help students meet all common core math standards but see learning math as
-                so much more than that! We emphacize the playful side of mathematical thinking and
-                use many puzzles, games, hands-on projects to engage young imaginations.
-            </Typography>
-            <Box p={2} >
-                {/* <LandingCards /> */}
-            </Box>
-        </Box>
-    )
+    margin: '3rem 0rem 0rem',
+    padding: '3rem 1rem',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    textAlign: 'center',
+  }  
+  return (
+    <Box sx={backgroundStyles} >
+      <Container maxWidth='lg'  >
+        { props.children }
+      </Container>
+    </Box>
+  )
 }
 
-
-function DesktopLandingPage(props) {
-    return (
-        <Box
-            id="DesktopLandingPage"
-            sx={{
-                // display: { xs: 'none', md: 'block' },
-                padding: '6rem 0',
-                height: 'auto',
-                minHeight: '100vh',
-                width: '100%',
-                backgroundImage: `
-                    linear-gradient(90deg, 
-                        rgba(58,94,22,0.70) 0%, 
-                        rgba(58,94,22,0.80) 100%),
-                    url(${leaves})
-                `,
-                backgroundPosition: 'center top',
-                backgroundRepeat: 'repeat-y',
-                backgroundSize: 'cover',
-            }}
-        >
-            <Container
-                id="MaxWidthContainer"
-                maxWidth='md'
-                sx={{
-                    height: 'auto',
-                    minHeight: '100vh',
-                    backgroundImage: `
-                        linear-gradient(90deg, 
-                            rgba(58,100,22,0.00) 0%, 
-                            rgba(58,100,22,0.50) 11%,
-                            rgba(58,100,22,0.70) 14%, 
-                            rgba(58,100,22,0.70) 86%,
-                            rgba(58,100,22,0.50) 89%,
-                            rgba(58,100,22,0.00) 100%)
-                    `,
-                    backgroundPosition: 'center top',
-                    backgroundRepeat: 'repeat-y',
-                    backgroundSize: 'cover',
-                    padding: '0rem 9rem',
-                    textAlign: "center",
-                    color: common.white
-                }}
-            >
-                <Typography id="TitleText" variant='h1'
-                    sx={{
-                        padding: '4.0rem 3.0rem',
-                        // textShadow: '0.15rem 0.15rem 0.3rem black',
-                        // fontSize: 'min(2rem, 6vw)',
-                        // fontWeight: 'light',
-                    }}
-                >
-                    Sowing the seeds of life&#8209;long learning and DIY&#8209;spirit.
-                    {/* through integrated teaching of math, physics, chess, gardening, woodworking,
-                    and computer programming. */}
-                </Typography>
-                <Typography
-                    id="TitleText"
-                    align='center'
-                    color='white'
-                    variant='h2'
-                    sx={{
-                        padding: '4.0rem 3.0rem',
-                        textShadow: '0.15rem 0.15rem 0.3rem black',
-                        fontSize: 'min(2rem, 6vw)',
-                        fontWeight: 'light',
-                    }}
-                >
-                    Sowing the seeds of life&#8209;long learning and DIY&#8209;spirit.
-                    {/* through integrated teaching of math, physics, chess, gardening, woodworking,
-                    and computer programming. */}
-                </Typography>
-
-                {/* <Typography
-                    align='justify'
-                    color='white'
-                    // component='h2'
-                    variant='h5'
-                    sx={{
-                        padding: '0.0rem 4.0rem',
-                        textShadow: '0.12rem 0.12rem 0.20rem black',
-                        fontWeight: 'light',
-
-                    }}
-                >
-                    The STEM Garden is an off-grid urban teaching garden rooted in New Orleans.
-                    We offer private tutoring and small group lessons, both in the garden and online.
-                    We help students excell on the SAT and ACT and meet all Common Core math standards,
-                    but we see learning math as so much more than that! We emphacize the playful side of
-                    mathematical thinking and make use of many puzzles, games, and hands-on projects to engage young imaginations.
-                </Typography> */}
-
-                <Box p={2} >
-                    {/* <LandingCards /> */}
-                </Box>
-            </Container>
-        </Box>
-    )
+function Header() {
+  return (
+    <Box sx={{ padding: '0 2rem' }} >
+      <Typography align="center" variant="pageHeader" >
+          Sowing seeds of life&#8209;long learning and DIY&#8209;spirit.
+      </Typography>
+    </Box>
+  )
 }
 
+function CardGrid(props) {
+  return (
+    <Grid container 
+      spacing={2} 
+      sx={{ padding: '3rem 0rem' }}
+    >
+      {
+        landingCards.map((cardData, index) => {
+          return (
+            <Grid item xs={6} sm={4} key={index} >
+              <CustomCard data={cardData}  />
+            </Grid>
+          )
+        })
+      }
+    </Grid>
+  )
+}
+
+// {/* 
+//       The STEM Garden is an off-grid urban teaching garden rooted in New Orleans.
+//       We offer private tutoring and small group lessons, both in the garden and online.
+//       We help students excell on the SAT and ACT and meet all Common Core math standards,
+//       but we see learning math as so much more than that! We emphacize the playful side of
+//       mathematical thinking and make use of many puzzles, games, and hands-on projects to engage young imaginations.
+//   </Typography> */}

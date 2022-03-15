@@ -22,7 +22,7 @@ export default function App() {
     bgcolor: 'primary.main',
     height: '100vh',
     width: '100vw',
-    overflow: 'hidden',
+    overflowX: 'hidden',
   }
 
   return (
@@ -30,7 +30,7 @@ export default function App() {
       <CssBaseline />
       <ThemeProvider theme={theme}>
         <Box id='root' sx={defaultBackground} >
-          <Navbar />
+          <Navbar smallScreen={smallScreen} />
           <Router />
         </Box>
       </ThemeProvider>
