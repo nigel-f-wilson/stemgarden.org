@@ -30,6 +30,10 @@ const bike_gear_ratio_tutoring = "https://res.cloudinary.com/nola-stem-garden/im
 // What We Grow
 const banana_papaya_turmeric_flower = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_1000,h_1000,c_limit/v1646607021/stemgarden.org/banana_papaya_turmeric_j3f7k9.jpg"
 
+const profile_with_hoe = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_1000,h_1000,c_limit/v1647374938/stemgarden.org/nigel/profile-pic_ncluzf.jpg"
+const mushroom_background = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_1000,h_1000,c_limit/v1647375289/stemgarden.org/garden_backgrounds/mushroom_yfjiho.jpg"
+const banana_papaya_pile = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_1000,h_1000,c_limit/v1612135416/stemgarden.org/harvests/banana_papaya_harvest_f9ml5d.jpg"
+
 const landingCards = [
   {
     title: "Math Tutoring",
@@ -66,17 +70,17 @@ const landingCards = [
   {
     title: "Our Story",
     linkTo: "/garden/story",
-    imgUrl: guitar_fret_measuring,
+    imgUrl: mushroom_background,
   },
   {
     title: "Buy Our Fruit",
     linkTo: "/garden/for_sale",
-    imgUrl: guitar_fret_measuring,
+    imgUrl: banana_papaya_pile,
   },
   {
     title: "Get Involved",
     linkTo: "/garden/get_involved",
-    imgUrl: guitar_fret_measuring,
+    imgUrl: profile_with_hoe,
   },
 ]
 
@@ -117,7 +121,7 @@ function Background(props) {
   }  
   return (
     <Box sx={backgroundStyles} >
-      <Container maxWidth='lg'  >
+      <Container maxWidth='md' id='landing' >
         { props.children }
       </Container>
     </Box>
@@ -137,8 +141,8 @@ function Header() {
 function CardGrid(props) {
   return (
     <Grid container 
-      maxWidth='md'
-      spacing={2} 
+      
+      // spacing={2} 
       sx={{ 
         padding: '3rem 0rem',
         margin: '0 auto'
@@ -147,7 +151,7 @@ function CardGrid(props) {
       {
         landingCards.map((cardData, index) => {
           return (
-            <Grid item xs={6} sm={4} key={index} >
+            <Grid item xs={6} sm={4} key={index} padding='0.4rem' >
               <CustomCard data={cardData}  />
             </Grid>
           )
