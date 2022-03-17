@@ -11,6 +11,7 @@ const theme = createTheme({
     palette: {
         white: '#FFFFFF',
         black: '#000000',
+        darkGrey: '#212121',
         connectFourBackground: '#b3e5fc',
         transparent: 'rgba(0, 0, 0, 0)',
         primary: {
@@ -35,6 +36,7 @@ const theme = createTheme({
             disabledBackground: '#2e6b12',
             disabledOpacity: '0.5'
         },
+
     },
     components: {
         MuiList: {
