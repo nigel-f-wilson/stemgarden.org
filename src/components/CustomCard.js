@@ -7,7 +7,7 @@ export default function CustomCard(props) {
   const { title, linkTo, imgUrl } = props.data
 
   const cardStyles = { 
-    backgroundColor: theme.palette.grey[900],
+    backgroundColor: theme.palette.darkGrey,
     color: theme.palette.common.white,
     textDecoration: 'none',
   }
