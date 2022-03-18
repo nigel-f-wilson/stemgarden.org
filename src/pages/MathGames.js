@@ -7,47 +7,44 @@ import CustomCard from "../components/CustomCard"
 import { useTheme } from "@mui/system";
 import { Container, Box, Grid, Typography } from '@mui/material';
 
-// MY images
-// import leafy_background from "../images/leafy_background.jpg";
-const leafy_background = "https://res.cloudinary.com/nola-stem-garden/image/upload/v1647192146/stemgarden.org/leafy_background_wzclfb.jpg"
-
-// Tutoring
-const practicing_math_facts = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_1000,h_1000,c_limit/v1646863130/stemgarden.org/teaching/practicing_math_facts_gnhwkx.jpg"
-
-// Math Games
-// const playing_the_15_game = "https://res.cloudinary.com/nola-stem-garden/image/upload/v1646685339/stemgarden.org/project_screenshots/playing_the_15_game_rcowti.jpg"
-// const playing_connect_four = "https://res.cloudinary.com/nola-stem-garden/image/upload/v1646687130/stemgarden.org/project_screenshots/playing_math_fact_connect_four_zgyzou.jpg"
-const girls_playing_connect_four = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_1000,h_1000,c_limit/v1647052443/stemgarden.org/teaching/connect_four/girls_playing_math_fact_connect_four_j84gqo.jpg"
-
+// Images 
+const connect_four_screenshot = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_1000,h_1000,c_limit/v1647561099/stemgarden.org/project_screenshots/connect-four_y750ue.jpg"
+const tic_tac_toe_screenshot = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_1000,h_1000,c_limit/v1646607861/stemgarden.org/project_screenshots/TicTacToeCoachScreenshot860x800_vvlgl3.png"
+const fifteen_game_screenshot = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_1000,h_1000,c_limit/v1646607861/stemgarden.org/project_screenshots/FifteenGameScreenshot860x800_inrlpn.png"
+const under_construction = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_1000,h_1000,c_limit/v1647561688/stemgarden.org/under_construction_sbiop2.png"
 
 const landingCards = [
   {
     title: "Connect Four",
     // decscription: "",
     linkTo: "tutoring-services",
-    imgUrl: girls_playing_connect_four,
+    imgUrl: connect_four_screenshot,
 
   },
   {
     title: "Tic Tac Toe Coach",
     linkTo: "math-games",
-    // imgUrl: playing_the_15_game,
-    imgUrl: girls_playing_connect_four,
+    imgUrl: tic_tac_toe_screenshot,
   },
   {
     title: "The Fifteen Game",
     linkTo: "services/tutoring",
-    imgUrl: girls_playing_connect_four,
+    imgUrl: fifteen_game_screenshot,
   },
   {
     title: "Quick Quizes",
     linkTo: "services/tutoring",
-    imgUrl: girls_playing_connect_four,
+    imgUrl: under_construction,
   },
   {
     title: "Classic Nim",
     linkTo: "about",
-    imgUrl: girls_playing_connect_four,
+    imgUrl: under_construction,
+  },
+  {
+    title: "Fibonacci Nim",
+    linkTo: "about",
+    imgUrl: under_construction,
   },
  
 ]
@@ -104,6 +101,9 @@ function Header() {
     <Box sx={{ padding: '0 2rem' }} >
       <Typography align="center" variant="pageHeader" >
           Math Games
+      </Typography>
+      <Typography align="center" variant="cardHeader" >
+          
       </Typography>
     </Box>
   )
