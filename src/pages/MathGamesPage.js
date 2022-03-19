@@ -8,7 +8,7 @@ import { Container, Box, Grid, Typography } from '@mui/material';
 
 // Images 
 const connect_four_screenshot = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_1000,h_1000,c_limit/v1647561099/stemgarden.org/project_screenshots/connect-four_y750ue.jpg"
-const connect_four_description = "The classic classic game with a twist. Each time you select a column to drop a chip in you will be presented with a math question. Answer it correctly or your turn will be skipped!"
+const connect_four_description = "The classic game with a twist. Each time you select a column to drop a chip in you will be presented with a math question. Answer it correctly or your turn will be skipped!"
 
 const tic_tac_toe_screenshot = "https://res.cloudinary.com/nola-stem-garden/image/upload/v1647713688/stemgarden.org/project_screenshots/TicTacToeCoachScreenshot860x800_vvlgl3_f6ewfv.png"
 const tic_tac_toe_description = "Play the most underestimated strategy game of all time with a coach that will help you see its true depth. Tic Tac Toe serves as a wonderful tool for introducing kids to mathematical proof, tree diagrams, symmetry, and counting techniqes. "
@@ -22,39 +22,39 @@ const mathGamesCardData = [
   {
     title: "Math Fact Connect Four",
     description: connect_four_description,
-    linkTo: "tutoring-services",
+    linkTo: "connect-four",
     imgUrl: connect_four_screenshot,
     disabled: false
   },
   {
     title: "Tic Tac Toe Coach",
     description: tic_tac_toe_description,
-    linkTo: "math-games",
+    linkTo: "tic-tac-toe",
     imgUrl: tic_tac_toe_screenshot,
     disabled: false
   },
   {
     title: "The Fifteen Game",
     description: fifteen_game_description,
-    linkTo: "services/tutoring",
+    linkTo: "the-15-game",
     imgUrl: fifteen_game_screenshot,
     disabled: false
   },
   {
     title: "Quick Quizes",
-    linkTo: "services/tutoring",
+    linkTo: "the-15-game",
     imgUrl: under_construction,
     disabled: true
   },
   {
     title: "Classic Nim",
-    linkTo: "about",
+    linkTo: "the-15-game",
     imgUrl: under_construction,
     disabled: true
   },
   {
     title: "Fibonacci Nim",
-    linkTo: "about",
+    linkTo: "the-15-game",
     imgUrl: under_construction,
     disabled: true
   },
@@ -94,11 +94,10 @@ function Header() {
       <Typography align="center" variant="pageHeader" >
           Math Games
       </Typography>
-      <Typography align="justify" variant="pageSubheader" >
-          These games have something to offer students at all levels. 
-          Some are just meant to make repetitive practice of foundation facts a little more fun. 
-          Others are designed to help players develop the habit of using efficient mental math tactics. 
-          Finally, there are strategy games with built in lessons on combinatorics and the art of proof.
+      <Typography align="center" variant="pageSubheader"  >
+          These games have something to offer students at all levels! <br/>
+          Some are just for making foundation fact practice more fun. <br/>
+          Others include deeper lessons on combinatorics and proof.
       </Typography>
     </Box>
   )
