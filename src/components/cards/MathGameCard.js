@@ -25,7 +25,7 @@ export default function MathGameCard(props) {
             sx={{  margin: 1, borderRadius: 1 }}
           />
         </Grid>
-        <Grid item xs={6} m={3} mt={1} display='flex' flexDirection='column' justifyContent='space-between' >
+        <Grid item xs={6} m={2} mt={1} display='flex' flexDirection='column' justifyContent='space-between' >
           <Stack>
             <Typography 
             children={title}
