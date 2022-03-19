@@ -42,7 +42,7 @@ export default function Router() {
         </Route>
         <Route path="math-games" element={<MathGamesPage />} >
           <Route path="connect-four" element={<ConnectFour />} />
-          <Route path="tic-tac-toe-coach" element={<TicTacToeCoach />} />
+          <Route path="tic-tac-toe" element={<TicTacToeCoach />} />
           <Route path="the-15-game" element={<FifteenGame />} />
         </Route>
         {/* <Route path="garden" element={<Garden />} >
