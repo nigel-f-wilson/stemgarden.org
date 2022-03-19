@@ -2,11 +2,11 @@ import React from 'react'
 
 import { useScreenWidth } from "../hooks"
 
-import CustomCard from "../components/CustomCard"
+// import Footer from '../components/Footer';
+import LandingCard from "../components/cards/LandingCard"
 import { Container, Box, Grid, Typography } from '@mui/material';
 
 // MY images
-// import leafy_background from "../images/leafy_background.jpg";
 const leafy_background = "https://res.cloudinary.com/nola-stem-garden/image/upload/v1647192146/stemgarden.org/leafy_background_wzclfb.jpg"
 
 // Tutoring
@@ -29,6 +29,10 @@ const bike_gear_ratio_tutoring = "https://res.cloudinary.com/nola-stem-garden/im
 
 // What We Grow
 const banana_papaya_turmeric_flower = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_1000,h_1000,c_limit/v1646607021/stemgarden.org/banana_papaya_turmeric_j3f7k9.jpg"
+
+const profile_with_hoe = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_1000,h_1000,c_limit/v1647374938/stemgarden.org/nigel/profile-pic_ncluzf.jpg"
+const mushroom_background = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_1000,h_1000,c_limit/v1647375289/stemgarden.org/garden_backgrounds/mushroom_yfjiho.jpg"
+const banana_papaya_pile = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_1000,h_1000,c_limit/v1612135416/stemgarden.org/harvests/banana_papaya_harvest_f9ml5d.jpg"
 
 const landingCards = [
   {
@@ -66,17 +70,17 @@ const landingCards = [
   {
     title: "Our Story",
     linkTo: "/garden/story",
-    imgUrl: guitar_fret_measuring,
+    imgUrl: mushroom_background,
   },
   {
     title: "Buy Our Fruit",
     linkTo: "/garden/for_sale",
-    imgUrl: guitar_fret_measuring,
+    imgUrl: banana_papaya_pile,
   },
   {
     title: "Get Involved",
     linkTo: "/garden/get_involved",
-    imgUrl: guitar_fret_measuring,
+    imgUrl: profile_with_hoe,
   },
 ]
 
@@ -84,10 +88,15 @@ export default function LandingPage() {
   const screenWidth = useScreenWidth()
   const smallScreen = screenWidth < 600
   return (
-    <Background smallScreen={smallScreen} >
-      <Header />
-      <CardGrid />
-    </Background>
+    <React.Fragment>
+      <Background smallScreen={smallScreen} >
+        <Header />
+        <CardGrid />
+      </Background>
+      {/* <Footer smallScreen={smallScreen} /> */}
+    </React.Fragment>
+      
+
   )
 }
 
@@ -107,9 +116,6 @@ function Background(props) {
     backgroundPosition: 'center top',
     backgroundRepeat: 'repeat-y',
     backgroundSize: 'cover',
-
-    margin: '3rem 0rem 0rem',
-    padding: '3rem 1rem',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -117,7 +123,7 @@ function Background(props) {
   }  
   return (
     <Box sx={backgroundStyles} >
-      <Container maxWidth='lg'  >
+      <Container maxWidth='md' id='landing' >
         { props.children }
       </Container>
     </Box>
@@ -126,7 +132,7 @@ function Background(props) {
 
 function Header() {
   return (
-    <Box sx={{ padding: '0 2rem' }} >
+    <Box sx={{ padding: '8rem 2rem 2rem' }} >
       <Typography align="center" variant="pageHeader" >
           Sowing seeds of life&#8209;long learning and DIY&#8209;spirit.
       </Typography>
@@ -136,19 +142,12 @@ function Header() {
 
 function CardGrid(props) {
   return (
-    <Grid container 
-      maxWidth='md'
-      spacing={2} 
-      sx={{ 
-        padding: '3rem 0rem',
-        margin: '0 auto'
-      }}
-    >
+    <Grid container padding='0 0 4rem' >
       {
         landingCards.map((cardData, index) => {
           return (
-            <Grid item xs={6} sm={4} key={index} >
-              <CustomCard data={cardData}  />
+            <Grid item xs={6} sm={4} key={index} padding='0.4rem' >
+              <LandingCard data={cardData}  />
             </Grid>
           )
         })
@@ -157,10 +156,3 @@ function CardGrid(props) {
   )
 }
  
-// {/* 
-//       The STEM Garden is an off-grid urban teaching garden rooted in New Orleans.
-//       We offer private tutoring and small group lessons, both in the garden and online.
-//       We help students excell on the SAT and ACT and meet all Common Core math standards,
-//       but we see learning math as so much more than that! We emphacize the playful side of
-//       mathematical thinking and make use of many puzzles, games, and hands-on projects to engage young imaginations.
-//   </Typography> */}
