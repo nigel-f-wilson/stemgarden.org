@@ -221,27 +221,3 @@ function DesktopMenu(props) {
     )
 }
 
-function ContactPageLink() {
-    return (
-        <Button
-            component={RouterLink}
-            to={{
-                pathname: "contact",
-                // state: {
-                //     selectedTab: item.activeTab,
-                // }
-            }}
-            variant="text"
-            sx={{
-                color: "white",
-                textTransform: "none",
-                textAlign: 'center',
-                paddingBottom: '0.5rem',
-            }}
-        >
-            <Typography variant="h5" children="Contact" />
-        </Button>
-    )
-}
-
-
