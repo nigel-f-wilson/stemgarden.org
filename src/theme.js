@@ -11,6 +11,7 @@ const theme = createTheme({
     palette: {
         white: '#FFFFFF',
         black: '#000000',
+        darkGrey: '#212121',
         connectFourBackground: '#b3e5fc',
         transparent: 'rgba(0, 0, 0, 0)',
         primary: {
@@ -35,6 +36,7 @@ const theme = createTheme({
             disabledBackground: '#2e6b12',
             disabledOpacity: '0.5'
         },
+
     },
     components: {
         MuiList: {
@@ -80,28 +82,44 @@ const theme = createTheme({
 
 });
 
+
 theme.typography.pageHeader = {
   color: theme.palette.common.white,
-
   textAlign: "center",
   textShadow: '0.15rem 0.15rem 0.3rem black',
   fontWeight: 200,
-  padding: '7rem 0rem 3rem',
-
   fontSize: '2.0rem',
     '@media (min-width:450px)': {
       fontSize: '3.0rem',
     },
     [theme.breakpoints.up('sm')]: {
       fontSize: '4.0rem',
-      padding: '12rem 0rem 5rem',
     },
     [theme.breakpoints.up('md')]: {
-      fontSize: '6.0rem',
+      fontSize: '5.5rem',
+    },
+}
+// theme.typography.pageHeader = {
+//   color: theme.palette.error.main,
+// }
+theme.typography.pageSubheader = {
+  color: theme.palette.common.white,
+  textShadow: '0.15rem 0.15rem 0.3rem black',
+  fontWeight: 200,
+  fontSize: '0.85rem',
+    '@media (min-width:450px)': {
+      fontSize: '1.0rem',
+    },
+    [theme.breakpoints.up('sm')]: {
+      fontSize: '1.2rem',
+    },
+    [theme.breakpoints.up('md')]: {
+      fontSize: '1.35rem',
     },
 }
 
 theme.typography.cardHeader = {
+  color: theme.palette.common.white,
   textShadow: '0.15rem 0.15rem 0.3rem black',
   fontWeight: 200,
   fontSize: '1.0rem',

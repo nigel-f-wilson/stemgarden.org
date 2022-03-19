@@ -95,6 +95,7 @@ function DesktopMenus() {
             justifyContent: 'space-between',
             alignItems: 'flex-end',
         }}>
+          <Container maxWidth='md' id="navbar-container" >
             <DesktopMenu
                 name="about"
                 items={aboutList}
@@ -107,8 +108,8 @@ function DesktopMenus() {
                 open={openDropdown === "services"}
                 setDropdownState={setDropdownState}
             />
-            <ContactPageLink
-            /> 
+            {/* <ContactPageLink />  */}
+          </Container>
         </Box>
     )
 }
@@ -219,28 +220,4 @@ function DesktopMenu(props) {
         </Box>
     )
 }
-
-function ContactPageLink() {
-    return (
-        <Button
-            component={RouterLink}
-            to={{
-                pathname: "contact",
-                // state: {
-                //     selectedTab: item.activeTab,
-                // }
-            }}
-            variant="text"
-            sx={{
-                color: "white",
-                textTransform: "none",
-                textAlign: 'center',
-                paddingBottom: '0.5rem',
-            }}
-        >
-            <Typography variant="h5" children="Contact" />
-        </Button>
-    )
-}
-
 

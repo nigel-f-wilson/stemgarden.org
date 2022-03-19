@@ -1,13 +1,13 @@
 import React from 'react'
 import { Link as RouterLink } from 'react-router-dom';
 import { Card, CardHeader, CardMedia } from '@mui/material';
-import theme from '../theme';
+import theme from '../../theme';
 
 export default function CustomCard(props) {
   const { title, linkTo, imgUrl } = props.data
 
   const cardStyles = { 
-    backgroundColor: theme.palette.grey[900],
+    backgroundColor: theme.palette.darkGrey,
     color: theme.palette.common.white,
     textDecoration: 'none',
   }
@@ -15,8 +15,6 @@ export default function CustomCard(props) {
     color: theme.palette.common.white,
     textDecoration: 'none',
   }
-
-  console.log(`LINK: `, linkTo);
   return (
     <RouterLink to={linkTo} style={linkStyles} >
       <Card raised style={cardStyles}
