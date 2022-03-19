@@ -26,7 +26,7 @@ import {
 const servicesList = [
   {
     label: "Math Games",
-    linkTo: "services/tutoring",
+    linkTo: "math-games",
     icon: faPuzzlePiece
   },
   {
