@@ -2,54 +2,66 @@ import React from 'react'
 
 import { useScreenWidth } from "../hooks"
 
-import CustomCard from "../components/CustomCard"
+import MathGameCard from "../components/cards/MathGameCard"
 
-import { useTheme } from "@mui/system";
 import { Container, Box, Grid, Typography } from '@mui/material';
 
 // Images 
 const connect_four_screenshot = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_1000,h_1000,c_limit/v1647561099/stemgarden.org/project_screenshots/connect-four_y750ue.jpg"
-const tic_tac_toe_screenshot = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_1000,h_1000,c_limit/v1646607861/stemgarden.org/project_screenshots/TicTacToeCoachScreenshot860x800_vvlgl3.png"
-const fifteen_game_screenshot = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_1000,h_1000,c_limit/v1646607861/stemgarden.org/project_screenshots/FifteenGameScreenshot860x800_inrlpn.png"
+const connect_four_description = "The classic classic game with a twist. Each time you select a column to drop a chip in you will be presented with a math question. Answer it correctly or your turn will be skipped!"
+
+const tic_tac_toe_screenshot = "https://res.cloudinary.com/nola-stem-garden/image/upload/v1647713688/stemgarden.org/project_screenshots/TicTacToeCoachScreenshot860x800_vvlgl3_f6ewfv.png"
+const tic_tac_toe_description = "Play the most underestimated strategy game of all time with a coach that will help you see its true depth. Tic Tac Toe serves as a wonderful tool for introducing kids to mathematical proof, tree diagrams, symmetry, and counting techniqes. "
+
+const fifteen_game_screenshot = "https://res.cloudinary.com/nola-stem-garden/image/upload/v1647714008/stemgarden.org/project_screenshots/Fifteen_Game_Screenshot_cropped_aycwzx.png"
+const fifteen_game_description = "Two players go head to head trying to collect a set of three cards that add up to 15. This game is a fantastic tool for building mental addition skills. For advanced players it has connections to combinations, permutations, and magic squares."
+
 const under_construction = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_1000,h_1000,c_limit/v1647561688/stemgarden.org/under_construction_sbiop2.png"
 
-const landingCards = [
+const mathGamesCardData = [
   {
-    title: "Connect Four",
-    // decscription: "",
+    title: "Math Fact Connect Four",
+    description: connect_four_description,
     linkTo: "tutoring-services",
     imgUrl: connect_four_screenshot,
-
+    disabled: false
   },
   {
     title: "Tic Tac Toe Coach",
+    description: tic_tac_toe_description,
     linkTo: "math-games",
     imgUrl: tic_tac_toe_screenshot,
+    disabled: false
   },
   {
     title: "The Fifteen Game",
+    description: fifteen_game_description,
     linkTo: "services/tutoring",
     imgUrl: fifteen_game_screenshot,
+    disabled: false
   },
   {
     title: "Quick Quizes",
     linkTo: "services/tutoring",
     imgUrl: under_construction,
+    disabled: true
   },
   {
     title: "Classic Nim",
     linkTo: "about",
     imgUrl: under_construction,
+    disabled: true
   },
   {
     title: "Fibonacci Nim",
     linkTo: "about",
     imgUrl: under_construction,
+    disabled: true
   },
  
 ]
 
-export default function MathGames() {
+export default function MathGamesPage() {
   const screenWidth = useScreenWidth()
   const smallScreen = screenWidth < 600
   return (
@@ -61,33 +73,13 @@ export default function MathGames() {
 }
 
 function Background(props) {
-  const theme = useTheme()
-  const backgroundStyles = {
-    width: '100%',
-    minHeight: '100vh',
-    height: 'auto',
-    backgroundColor: theme.palette.darkGrey,
-
-    margin: '3rem 0rem 0rem',
-    padding: '3rem 1rem',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    textAlign: 'center',
-  }  
   return (
     <Box 
       width='100%'
       minHeight='100vh'
-      height= 'auto'
       bgcolor="darkGrey"
-
-      margin='3rem 0rem 0rem'
-      padding='3rem 1rem'
       display='flex'
       flexDirection='column'
-      alignItems='center'
-      textAlign='center'
     >
       <Container maxWidth='md' id='math-games' >
         { props.children }
@@ -98,12 +90,15 @@ function Background(props) {
 
 function Header() {
   return (
-    <Box sx={{ padding: '0 2rem' }} >
+    <Box padding='20% 1rem 0rem' display='flex' flexDirection='column' >
       <Typography align="center" variant="pageHeader" >
           Math Games
       </Typography>
-      <Typography align="center" variant="cardHeader" >
-          
+      <Typography align="justify" variant="pageSubheader" >
+          These games have something to offer students at all levels. 
+          Some are just meant to make repetitive practice of foundation facts a little more fun. 
+          Others are designed to help players develop the habit of using efficient mental math tactics. 
+          Finally, there are strategy games with built in lessons on combinatorics and the art of proof.
       </Typography>
     </Box>
   )
@@ -112,18 +107,16 @@ function Header() {
 function CardGrid(props) {
   return (
     <Grid container 
-      
-      // spacing={2} 
       sx={{ 
         padding: '3rem 0rem',
         margin: '0 auto'
       }}
     >
       {
-        landingCards.map((cardData, index) => {
+        mathGamesCardData.map((cardData, index) => {
           return (
-            <Grid item xs={6} sm={4} key={index} padding='0.4rem' >
-              <CustomCard data={cardData}  />
+            <Grid item xs={12} key={index} padding='0.4rem' >
+              <MathGameCard data={cardData}  />
             </Grid>
           )
         })

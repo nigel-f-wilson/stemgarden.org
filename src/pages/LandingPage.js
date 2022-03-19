@@ -2,11 +2,11 @@ import React from 'react'
 
 import { useScreenWidth } from "../hooks"
 
-import CustomCard from "../components/CustomCard"
+// import Footer from '../components/Footer';
+import LandingCard from "../components/cards/LandingCard"
 import { Container, Box, Grid, Typography } from '@mui/material';
 
 // MY images
-// import leafy_background from "../images/leafy_background.jpg";
 const leafy_background = "https://res.cloudinary.com/nola-stem-garden/image/upload/v1647192146/stemgarden.org/leafy_background_wzclfb.jpg"
 
 // Tutoring
@@ -88,10 +88,15 @@ export default function LandingPage() {
   const screenWidth = useScreenWidth()
   const smallScreen = screenWidth < 600
   return (
-    <Background smallScreen={smallScreen} >
-      <Header />
-      <CardGrid />
-    </Background>
+    <React.Fragment>
+      <Background smallScreen={smallScreen} >
+        <Header />
+        <CardGrid />
+      </Background>
+      {/* <Footer smallScreen={smallScreen} /> */}
+    </React.Fragment>
+      
+
   )
 }
 
@@ -111,9 +116,6 @@ function Background(props) {
     backgroundPosition: 'center top',
     backgroundRepeat: 'repeat-y',
     backgroundSize: 'cover',
-
-    margin: '3rem 0rem 0rem',
-    padding: '3rem 1rem',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -130,7 +132,7 @@ function Background(props) {
 
 function Header() {
   return (
-    <Box sx={{ padding: '0 2rem' }} >
+    <Box sx={{ padding: '8rem 2rem 2rem' }} >
       <Typography align="center" variant="pageHeader" >
           Sowing seeds of life&#8209;long learning and DIY&#8209;spirit.
       </Typography>
@@ -140,19 +142,12 @@ function Header() {
 
 function CardGrid(props) {
   return (
-    <Grid container 
-      
-      // spacing={2} 
-      sx={{ 
-        padding: '3rem 0rem',
-        margin: '0 auto'
-      }}
-    >
+    <Grid container padding='0 0 4rem' >
       {
         landingCards.map((cardData, index) => {
           return (
             <Grid item xs={6} sm={4} key={index} padding='0.4rem' >
-              <CustomCard data={cardData}  />
+              <LandingCard data={cardData}  />
             </Grid>
           )
         })
@@ -161,10 +156,3 @@ function CardGrid(props) {
   )
 }
  
-// {/* 
-//       The STEM Garden is an off-grid urban teaching garden rooted in New Orleans.
-//       We offer private tutoring and small group lessons, both in the garden and online.
-//       We help students excell on the SAT and ACT and meet all Common Core math standards,
-//       but we see learning math as so much more than that! We emphacize the playful side of
-//       mathematical thinking and make use of many puzzles, games, and hands-on projects to engage young imaginations.
-//   </Typography> */}
