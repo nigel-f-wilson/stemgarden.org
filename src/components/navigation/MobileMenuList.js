@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link as RouterLink } from "react-router-dom";
-import { useTheme } from '@mui/styles';
 
 // MATERIAL-UI COMPONENTS
 import { 
@@ -12,11 +11,8 @@ import {
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-
 export default function MobileMenuList(props) {
   const { listData, handleClose } = props
-  // const { handleClose } = props
-  const theme = useTheme()
     
   return (
     <List >
@@ -38,11 +34,11 @@ export default function MobileMenuList(props) {
                 />
               </Box>
               <ListItemText
-                  primary={label}
-                  primaryTypographyProps={{ 
-                    variant: 'h5',
-                    paddingLeft: 1 
-                  }}
+                primary={label}
+                primaryTypographyProps={{ 
+                  variant: 'h5',
+                  paddingLeft: 1 
+                }}
               />
             </ListItem>
           )
