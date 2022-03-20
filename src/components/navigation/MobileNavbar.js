@@ -1,7 +1,7 @@
 import React from 'react';
 
 // MY COMPONENTS
-import MobileMenu from "./MobileMenu";
+import MobileMenu from "./MobileMenuDrawer";
 import Logo from "./Logo";
 
 import {  
@@ -9,7 +9,6 @@ import {
   Typography,
   AppBar,
 } from "@mui/material"
-import { fontFamily } from "@mui/system";
 
 export default function MobileNavbar(props) {
   const { height } = props
