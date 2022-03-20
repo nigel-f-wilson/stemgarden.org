@@ -132,9 +132,9 @@ function Background(props) {
 
 function Header() {
   return (
-    <Box sx={{ padding: '8rem 2rem 2rem' }} >
+    <Box padding='4rem 0rem 2rem' >
       <Typography align="center" variant="pageHeader" >
-          Sowing seeds of life&#8209;long learning and DIY&#8209;spirit.
+          Sowing seeds of<br/>life&#8209;long learning<br/>and DIY&#8209;spirit.
       </Typography>
     </Box>
   )
