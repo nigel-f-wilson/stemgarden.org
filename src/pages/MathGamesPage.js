@@ -87,17 +87,16 @@ function Background(props) {
     </Box>
   )
 }
-
 function Header() {
   return (
-    <Box padding='20% 1rem 0rem' display='flex' flexDirection='column' >
+    <Box padding='4rem 1rem 2rem' display='flex' flexDirection='column' >
       <Typography align="center" variant="pageHeader" >
           Math Games
       </Typography>
       <Typography align="center" variant="pageSubheader"  >
-          These games have something to offer students at all levels! <br/>
-          Some are just for making foundation fact practice more fun. <br/>
-          Others include deeper lessons on combinatorics and proof.
+          These games have something to offer students at all levels!
+          Some aim to make practicing foundation facts a little more fun.
+          Others have built in lessons on combinatorics and proof.
       </Typography>
     </Box>
   )
