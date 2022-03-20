@@ -1,22 +1,14 @@
 import React from 'react';
 
-import DesktopPopper from "./DesktopPopper";
+import DesktopMenuPopover from "./DesktopMenuPopover";
 
 import {  
     Box, 
 } from "@mui/material"
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { aboutListData,servicesListData, resourcesListData } from './lists';
 
-
 export default function DesktopMenus() {
-    const [openDropdown, setOpenDropdown] = React.useState("none")   // "none", "about", "services", "resources"
-
-    const setDropdownState = (newState) => {
-      console.log(`setOpenDropdown state to: ${newState}`)
-      setOpenDropdown(newState)
-    }
  
     return (
         <Box 
@@ -28,23 +20,17 @@ export default function DesktopMenus() {
           justifyContent='space-between'
           alignItems='flex-end'
         >
-          <DesktopPopper
+          <DesktopMenuPopover
             name="about"
             listData={aboutListData}
-            open={openDropdown === "about"}
-            setDropdownState={setDropdownState}
           />
-          <DesktopPopper
+          <DesktopMenuPopover
             name="services"
             listData={servicesListData}
-            open={openDropdown === "services"}
-            setDropdownState={setDropdownState}
           />
-          <DesktopPopper
+          <DesktopMenuPopover
             name="resources"
             listData={resourcesListData}
-            open={openDropdown === "resources"}
-            setDropdownState={setDropdownState}
           />
           {/* <ContactPageLink />  */}
         </Box>
