@@ -40,10 +40,12 @@ export default function Router() {
 
           <Route path="chess-clubs" element={<ChessClubsPage />} />
         </Route>
-        <Route path="math-games" element={<MathGamesPage />} >
+        <Route path="math-games"  >
           <Route path="connect-four" element={<ConnectFour />} />
-          <Route path="tic-tac-toe-coach" element={<TicTacToeCoach />} />
+          <Route path="tic-tac-toe" element={<TicTacToeCoach />} />
           <Route path="the-15-game" element={<FifteenGame />} />
+          <Route index element={<MathGamesPage />} />
+
         </Route>
         {/* <Route path="garden" element={<Garden />} >
           <Route path="what_we_grow" element={<Services />} />  

@@ -82,7 +82,12 @@ const theme = createTheme({
 
 });
 
-
+theme.typography.navbarBrand = {
+  color: theme.palette.common.white,
+  fontWeight: 400,
+  fontFamily: 'Perantent Marker, cursive',
+  fontSize: 32
+}
 theme.typography.pageHeader = {
   color: theme.palette.common.white,
   textAlign: "center",
@@ -96,7 +101,7 @@ theme.typography.pageHeader = {
       fontSize: '4.0rem',
     },
     [theme.breakpoints.up('md')]: {
-      fontSize: '5.5rem',
+      fontSize: '5.0rem',
     },
 }
 // theme.typography.pageHeader = {
@@ -122,10 +127,7 @@ theme.typography.cardHeader = {
   color: theme.palette.common.white,
   textShadow: '0.15rem 0.15rem 0.3rem black',
   fontWeight: 200,
-  fontSize: '1.0rem',
-    '@media (min-width:450px)': {
-      fontSize: '1.4rem',
-    },
+  fontSize: '1.4rem',
     [theme.breakpoints.up('sm')]: {
       fontSize: '1.6rem',
     },
