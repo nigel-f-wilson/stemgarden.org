@@ -23,7 +23,7 @@ export default function Navbar(props) {
         <Box 
           height={(screenWidth >= 600) ? desktopNavbarHeight : mobileNavbarHeight  }
           width='100vw'
-          backgroundColor='primary.main'
+          backgroundColor='red'
         />
       </React.Fragment>
     )
