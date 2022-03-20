@@ -1,13 +1,12 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { 
   faLeaf,
   faPeopleCarry,
   faCamera,
   faPuzzlePiece,
-  faQuestion,
-  faChalkboardTeacher,
+  // faQuestion,
+  // faChalkboardTeacher,
   // faPersonChalkboard, // not free
-  faFlask,
+  // faFlask,
   // faCards,  // not free
   faDice,
   faChessKnight,
