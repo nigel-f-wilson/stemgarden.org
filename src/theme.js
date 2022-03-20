@@ -127,10 +127,7 @@ theme.typography.cardHeader = {
   color: theme.palette.common.white,
   textShadow: '0.15rem 0.15rem 0.3rem black',
   fontWeight: 200,
-  fontSize: '1.0rem',
-    '@media (min-width:450px)': {
-      fontSize: '1.4rem',
-    },
+  fontSize: '1.4rem',
     [theme.breakpoints.up('sm')]: {
       fontSize: '1.6rem',
     },
