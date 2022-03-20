@@ -6,10 +6,15 @@ import {
   faPuzzlePiece,
   faQuestion,
   faChalkboardTeacher,
+  // faPersonChalkboard, // not free
   faFlask,
+  // faCards,  // not free
+  faDice,
   faChessKnight,
   faGraduationCap,
+  // faDisplayCode,  // not free
   faLaptopCode,
+  faCopy,
   // faCalculator,
   // faBrain,
   // faFlask,
@@ -43,7 +48,8 @@ export const aboutListData = [
 export const servicesListData = [
   {
     label: "Math Tutoring",
-    icon: faPuzzlePiece,
+    // icon: faPuzzlePiece,
+    icon: faGraduationCap,
     linkTo: "services/tutoring",
   },
   // {
@@ -78,28 +84,19 @@ export const servicesListData = [
 export const resourcesListData = [
   {
     label: "Math Games",
-    icon: faPuzzlePiece,
+    icon: faDice,
+    // icon: faCards
     linkTo: "math-games",
   },
   {
-    label: "Math Tutoring",
-    icon: faGraduationCap,
+    label: "Puzzles",
+    icon: faPuzzlePiece,
     linkTo: "services/tutoring",
   },
   {
-    label: "Chess Clubs",
-    icon: faChessKnight,
+    label: "Lesson Plans",
+    icon: faCopy,
     linkTo: "services/chess-clubs",
-  },
-  {
-    label: "Teacher Training",
-    icon: faChalkboardTeacher,
-    linkTo: "services/teacher-training",
-  },
-  {
-    label: "Web Development",
-    icon: faLaptopCode,
-    linkTo: "services/web-development",
   },
   
 ]
