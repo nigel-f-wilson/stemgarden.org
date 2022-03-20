@@ -1,51 +1,75 @@
 import React from 'react';
 
 // MY COMPONENTS
-// import { aboutList, servicesList } from "./menuItems";
-import ServicesList from "./ServicesList";
+import MobileMenuList from "./MobileMenuList";
+
 
 // MUI imports
 import { 
     Box, 
     IconButton,
-    Drawer
+    Drawer,
+    Typography
 } from "@mui/material"
 
 // ICONS
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons'
+import { useTheme } from '@emotion/react';
+import { aboutListData, servicesListData, resourcesListData } from './lists';
 
 export default function MobileMenu() {
-    const [open, setOpen] = React.useState(false)
+  const theme = useTheme()
+  const [open, setOpen] = React.useState(false)
 
-    const toggleDrawer = (event) => {
-        if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
-            return;
-        }
-        setOpen((prev) => !prev)
-    };
-    
-    return (
-        <Box  >
-            <IconButton 
-                onClick={() => setOpen(true)}
-                aria-controls="simple-menu"
-                aria-haspopup="true"
-            >
-              <FontAwesomeIcon
-                  icon={faBars} 
-                  color='white'
-              />
-            </IconButton>   
-            <Drawer 
-              open={open} 
-              anchor='right' 
-              role="navigation"
-              onClick={toggleDrawer}
-              onKeyDown={toggleDrawer}
-            >
-              <ServicesList />
-            </Drawer>
+  const toggleDrawer = (event) => {
+      if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+          return;
+      }
+      setOpen((prev) => !prev)
+  };
+  
+  return (
+    <React.Fragment>
+      <IconButton 
+          onClick={() => setOpen(true)}
+          aria-controls="simple-menu"
+          aria-haspopup="true"
+      >
+        <FontAwesomeIcon
+            icon={faBars} 
+            color='white'
+        />
+      </IconButton>   
+      <Drawer 
+        open={open} 
+        anchor='right' 
+        role="navigation"
+        onClick={toggleDrawer}
+        onKeyDown={toggleDrawer}
+      >
+        <Box
+          width='280px'
+          height='100vh'
+          padding={1}
+          color={theme.palette.common.white}
+          backgroundColor={theme.palette.primary.main}
+        >
+          <Typography variant='h3' children='About' />
+          <MobileMenuList listData={aboutListData} handleClose={toggleDrawer} ></MobileMenuList>
+
+          {/* <AboutList /> */}
+          <Typography variant='h3' children='Services' />
+          {/* <MobileMenuList listData={aboutListData} handleClose={toggleDrawer} ></MobileMenuList> */}
+          <MobileMenuList listData={servicesListData} handleClose={toggleDrawer} ></MobileMenuList>
+          {/* <MobileMenuList listData={resourcesListData} handleClose={toggleDrawer} ></MobileMenuList> */}
+          
+
+          {/* <ServicesList /> */}
+
+          {/* <ResourcesList /> */}
         </Box>
+      </Drawer>
+    </React.Fragment>
     );
 }
