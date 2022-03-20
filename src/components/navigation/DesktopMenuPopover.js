@@ -62,10 +62,12 @@ export default function DesktopMenuPopover(props) {
         MenuListProps={{
           autoFocusItem: open, 
           sx: { 
-            border: 'solid white 1px',
             backgroundColor: "primary.main",
             color: 'common.white',
-            pb: 0,
+            pb: 1,
+            boxSizing: 'border-box',
+            borderRadius: 1,
+            border: 'solid white 1px',
           } 
         }}
       >
