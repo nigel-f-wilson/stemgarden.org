@@ -16,17 +16,17 @@ export default function MathGameCard(props) {
     <Card raised style={cardStyles}
       sx={{   borderRadius: 1, }}
     >
-      <Grid container spacing={1} >
-        <Grid item xs={5} >
+      <Grid container p={2} spacing={2} >
+        <Grid item xs={12} sm={5} >
           <CardMedia
             component="img"
             image={imgUrl}
             alt={title}
-            sx={{  margin: 1, borderRadius: 1 }}
+            sx={{ borderRadius: 1 }}
           />
         </Grid>
-        <Grid item xs={6} m={2} mt={1} display='flex' flexDirection='column' justifyContent='space-between' >
-          <Stack>
+        <Grid item xs={12} sm={7}   display='flex' flexDirection='column' justifyContent='space-between' >
+          <Stack p={1} >
             <Typography 
             children={title}
             variant='cardHeader'
@@ -34,8 +34,11 @@ export default function MathGameCard(props) {
           />
           <Typography
             children={description}
+            variant='body1'
+
             color="common.white"
           />
+          
           </Stack>
           <Button 
             component={RouterLink} 
