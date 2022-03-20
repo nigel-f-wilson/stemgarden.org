@@ -3,7 +3,6 @@ import React from 'react';
 // MY COMPONENTS
 import MobileMenuList from "./MobileMenuList";
 
-
 // MUI imports
 import { 
     Box, 
@@ -56,18 +55,21 @@ export default function MobileMenu() {
           backgroundColor={theme.palette.primary.main}
         >
           <Typography variant='h3' children='About' />
-          <MobileMenuList listData={aboutListData} handleClose={toggleDrawer} ></MobileMenuList>
+          <MobileMenuList 
+            listData={aboutListData} 
+            handleClose={toggleDrawer} 
+          />
 
-          {/* <AboutList /> */}
           <Typography variant='h3' children='Services' />
-          {/* <MobileMenuList listData={aboutListData} handleClose={toggleDrawer} ></MobileMenuList> */}
-          <MobileMenuList listData={servicesListData} handleClose={toggleDrawer} ></MobileMenuList>
-          {/* <MobileMenuList listData={resourcesListData} handleClose={toggleDrawer} ></MobileMenuList> */}
-          
-
-          {/* <ServicesList /> */}
-
-          {/* <ResourcesList /> */}
+          <MobileMenuList 
+            listData={servicesListData} 
+            handleClose={toggleDrawer} 
+          />
+          <Typography variant='h3' children='Resources' />
+          <MobileMenuList 
+            listData={resourcesListData} 
+            handleClose={toggleDrawer} 
+          />
         </Box>
       </Drawer>
     </React.Fragment>
