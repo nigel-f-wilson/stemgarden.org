@@ -1,12 +1,10 @@
 import React from 'react'
 
 import { 
-  Container, 
+  // Container, 
   Box, 
   Typography } from '@mui/material';
-import { common } from '@mui/material/colors';
 import theme from '../../theme';
-
 
 
 export default function FifteenGame(props) {
