@@ -2,21 +2,22 @@ import React from 'react';
 
 // MY COMPONENTS
 import MobileMenu from "./MobileMenu";
-import FlexRow from "../../components/FlexRow";
 import Logo from "./Logo";
 
 import {  
-    Typography,
-    AppBar,
+  Box,
+  Typography,
+  AppBar,
 } from "@mui/material"
+import { fontFamily } from "@mui/system";
 
 export default function MobileNavbar(props) {
-  const navbarHeight = "3.0rem"
+  const { height } = props
   return (
     <AppBar
       elevation={4}
       sx={{
-        height: navbarHeight,
+        height: height,
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'space-between',
@@ -25,15 +26,22 @@ export default function MobileNavbar(props) {
         color: "white",
       }}
     >
-      <FlexRow justify='space-between' maxWidth='lg' >
-        <FlexRow justify='start'  >
-        <Logo navbarHeight={navbarHeight} />
-        <Typography sx={{ paddingLeft: '1rem' }} variant='h3'   >
-            STEM Garden
-        </Typography>
-        </FlexRow>
+      <Box display='flex' 
+        justifyContent='space-between' 
+        alignItems='center' 
+        width="100%" 
+      >
+        <Logo navbarHeight={height} />
+        <Typography 
+          variant='navbarBrand'
+          children="STEM Garden"
+          align="center"
+          // fontFamily='Permanent Marker'
+          fontFamily='Special Elite'
+          pt={2}
+        />
         <MobileMenu />
-      </FlexRow>
+      </Box>
     </AppBar>
   );
 }
