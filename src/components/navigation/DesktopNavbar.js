@@ -5,6 +5,8 @@ import { Link as RouterLink } from "react-router-dom";
 // import FlexRow from "../../components/FlexRow";
 import { aboutList, servicesList } from "./menuItems";
 // import ServicesList from "./ServicesList";
+import Logo from "./Logo";
+
 
 import { common } from '@mui/material/colors';
 import { Container, 
@@ -23,79 +25,73 @@ import { Container,
 } from "@mui/material"
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import theme from '../../theme';
 
 const chess_logo = "https://res.cloudinary.com/nola-stem-garden/image/upload/c_scale,h_150,w_150/v1647198083/stemgarden.org/nsgLogoSnipped_li5iap.png"
 // const leaf_logo = "https://www.logoai.com/oss/icons/2022/03/14/fe7fdb2f7fd12c15c1bfd8441e7c346e.svg"
 
-export default function DesktopNavbar() {
-    return (
-        <AppBar id="DesktopNavbar"
-            position="fixed"
-            elevation={3}
-            sx={{ height: "6rem" }}
-        >
-            <Container maxWidth='lg'
-                sx={{
-                    display: 'flex',
-                    flexDirection: 'row',
-                    justifyContent: 'space-between',
-                }}
-            >
-                <DesktopBrand />
-                <DesktopMenus />
-            </Container>
-        </AppBar>
-    );
+export default function DesktopNavbar(props) {
+  const { height } = props
+
+  return (
+    <AppBar
+      position="fixed"
+      elevation={3}
+      sx={{ 
+        height: height,
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'center'
+      }}
+    >
+      <Box 
+        width={theme.breakpoints.values.md}
+        display='flex'
+        flexDirection='row'
+        justifyContent='space-between'
+      >
+        <Logo navbarHeight={height} />
+        <DesktopBrand />
+        <DesktopMenus />
+      </Box>
+    </AppBar>
+  );
 }
+
 function DesktopBrand() {
     return (
-        <Box component={RouterLink} to='/'
-            sx={{
-                textDecoration: 'none',
-                flex: '1 1 45%',
-                display: 'flex',
-            }}
-        >
-            <Box id="Logo"
-                sx={{
-                    height: "6rem",
-                    paddingRight: "6rem",
-                    backgroundImage: `url(${chess_logo})`,
-                    backgroundPosition: 'center bottom',
-                    backgroundRepeat: 'no-repeat',
-                    backgroundSize: 'auto 95%',
-                }}
-            />
-            <Typography id="OrgName"
-                sx={{
-                    textDecoration: 'none',
-                    margin: 'auto 0',
-                    fontSize: '2rem',
-                    lineHeight: '2.2rem',
-                    color: "white",
-                }}
+        <Box  pt={2} >
+            <Typography 
+              variant='navbarBrand'
+              align="left"
+              // fontFamily='Permanent Marker'
+              fontFamily='Special Elite'
+              lineHeight='1.2'
             >
                 STEM<br />Garden
             </Typography>
         </Box>
     )
 }
+
 function DesktopMenus() {
-    const [openDropdown, setOpenDropdown] = React.useState("none")   // "none", "about", "teach", "garden", "contact"
+    const [openDropdown, setOpenDropdown] = React.useState("none")   // "none", "about", "services", "resources"
 
     const setDropdownState = (newState) => {
-        console.log(`setOpenDropdown state to: ${newState}`)
-        setOpenDropdown(newState)
+      // console.log(`setOpenDropdown state to: ${newState}`)
+      setOpenDropdown(newState)
     }
  
     return (
-        <Box sx={{
-            flex: '1 1 55%',
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'flex-end',
-        }}>
-          <Container maxWidth='md' id="navbar-container" >
+        <Box 
+          flexGrow='1'
+          pl={24}
+          pr={4}
+          display='flex'
+          flexDirection='row'
+          justifyContent='space-between'
+          alignItems='flex-end'
+        >
             <DesktopMenu
                 name="about"
                 items={aboutList}
@@ -108,8 +104,11 @@ function DesktopMenus() {
                 open={openDropdown === "services"}
                 setDropdownState={setDropdownState}
             />
+            <DesktopMenu
+                name="resources"
+                
+            />
             {/* <ContactPageLink />  */}
-          </Container>
         </Box>
     )
 }
@@ -120,24 +119,24 @@ function DesktopMenu(props) {
     const anchorRef = React.useRef(null);
 
     const handleClickAway = (event) => {
-        if (anchorRef.current && anchorRef.current.contains(event.target)) {
-            return; // do nothing, not a click "away"
-        }
-        setDropdownState("none")
+      if (anchorRef.current && anchorRef.current.contains(event.target)) {
+          return; // do nothing, not a click "away"
+      }
+      setDropdownState("none")
     }
     const handleToggle = () => {
-        if (open) { setDropdownState("none") }
-        else { setDropdownState(name)}
+      if (open) { setDropdownState("none") }
+      else { setDropdownState(name)}
     }
     const handleClose = () => {
-        setDropdownState("none") 
+      setDropdownState("none") 
     }
     const capitalize = (string) => {
-        return  string[0].toUpperCase() + string.slice(1).toLowerCase()
+      return  string[0].toUpperCase() + string.slice(1).toLowerCase()
     }
 
     return (
-        <Box >
+        <Box border='solid red 1px' >
             <Button
                 onClick={handleToggle}
                 variant="text"
