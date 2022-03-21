@@ -4,7 +4,7 @@ import { Outlet } from 'react-router-dom';
 import { 
   Container, 
   Box, 
-  Typography } from '@mui/material';
+} from '@mui/material';
 import theme from '../../theme';
 
 
