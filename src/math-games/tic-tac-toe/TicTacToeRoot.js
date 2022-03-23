@@ -19,8 +19,7 @@ export default function TicTacToeRoot(props) {
       bgcolor={theme.palette.common.black}
       color={theme.palette.common.white}
     >
-      <Container maxWidth='sm'>
-        {/* <Typography variant='h1'  > Tic Tac Toe Page</Typography> */}
+      <Container maxWidth='sm' disableGutters >
         <Outlet />
       </Container>
     </Box>
