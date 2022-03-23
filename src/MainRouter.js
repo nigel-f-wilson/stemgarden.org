@@ -14,9 +14,9 @@ const ConnectFour = lazy(() => import('./math-games/connect-four/ConnectFour'))
 const FifteenGame = lazy(() => import('./math-games/fifteen-game/FifteenGame'))
 
 const TicTacToeRoot = lazy(() => import('./math-games/tic-tac-toe/TicTacToeRoot'))
-const TicTacToeWelcome = lazy(() => import('./math-games/tic-tac-toe/TicTacToeWelcome'))
-const PlayWithCoach = lazy(() => import('./math-games/tic-tac-toe/PlayWithCoach'))
-const PlayVsBot = lazy(() => import('./math-games/tic-tac-toe/PlayVsBot'))
+const Welcome = lazy(() => import('./math-games/tic-tac-toe/pages/Welcome'))
+const PlayWithCoach = lazy(() => import('./math-games/tic-tac-toe/pages/PlayWithCoach'))
+const PlayVsBot = lazy(() => import('./math-games/tic-tac-toe/pages/PlayVsBot'))
 
 
 
@@ -50,7 +50,7 @@ export default function MainRouter() {
           <Route index element={<MathGamesPage />} />
           <Route path="connect-four" element={<ConnectFour />} />
           <Route path="tic-tac-toe" element={<TicTacToeRoot />} >
-            <Route index element={<TicTacToeWelcome />} />
+            <Route index element={<Welcome />} />
             <Route path="play-with-coach" element={<PlayWithCoach />} />
             <Route path="play-vs-bot" element={<PlayVsBot />} />
           </Route>
