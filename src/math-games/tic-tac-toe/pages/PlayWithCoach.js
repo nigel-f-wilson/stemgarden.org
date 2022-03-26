@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useOutletContext } from "react-router-dom";
 
 import { gameOver, generatePositionToOutcomeMap } from "../logic/gameLogic";
 // import TicTacToeBoard from "../components/Boards/TicTacToeBoard";
@@ -12,10 +13,9 @@ import {
   Box 
 } from '@mui/material';
 
-
 export default function PlayWithCoach(props) {
-  const outcomeMap = generatePositionToOutcomeMap()
-  // const classes = useStyles();
+  const [outcomeMap, setOutcomeMap] = useOutletContext();
+
 
   let startingPosition = "" 
   let [moveList, setMoveList] = useState(startingPosition);
