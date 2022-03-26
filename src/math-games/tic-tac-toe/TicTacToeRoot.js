@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Outlet } from 'react-router-dom';
 
 import { 
@@ -7,20 +7,31 @@ import {
 } from '@mui/material';
 import theme from '../../theme';
 
+import { gameOver, generatePositionToOutcomeMap } from "./logic/gameLogic";
+
+
 
 export default function TicTacToeRoot(props) {
+  const [outcomeMap, setOutcomeMap] = useState(null)
+
+
+
+  useEffect(() => {
+    // let map = await generatePositionToOutcomeMap()
+    let map = generatePositionToOutcomeMap()
+    setOutcomeMap(map)
+  }, [])
   
   return (
     <Box 
-      border='solid red 2px'
       width='100vw' 
-      height='calc(100vh - 96px)'
+      height='calc(100vh - 48px)'
       overflow='hidden'
-      bgcolor={theme.palette.common.black}
-      color={theme.palette.common.white}
+      bgcolor='common.black'
+      color='common.white'
     >
       <Container maxWidth='sm' disableGutters >
-        <Outlet />
+        <Outlet context={[outcomeMap, setOutcomeMap]} />
       </Container>
     </Box>
   )
