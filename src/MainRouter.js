@@ -9,7 +9,7 @@ const AboutPage = lazy(() => import('./pages/AboutPage'))
 const ContactPage = lazy(() => import('./pages/ContactPage'))
 
 
-const MathGamesPage = lazy(() => import('./pages/MathGamesPage'))
+const MathGamesPage = lazy(() => import('./math-games/MathGamesPage'))
 const ConnectFour = lazy(() => import('./math-games/connect-four/ConnectFour'))
 const FifteenGame = lazy(() => import('./math-games/fifteen-game/FifteenGame'))
 

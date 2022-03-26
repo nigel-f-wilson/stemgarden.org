@@ -93,10 +93,10 @@ function Header() {
       <Typography align="center" variant="pageHeader" >
           Math Games
       </Typography>
-      <Typography align="center" variant="pageSubheader"  >
+      <Typography align="justify" variant="pageSubheader" px='8%' >
           These games have something to offer students at all levels!
           Some aim to make practicing foundation facts a little more fun.
-          Others have built in lessons on combinatorics and proof.
+          Others have built in lessons on binary numbers, probability, combinatorics, and proof.
       </Typography>
     </Box>
   )
