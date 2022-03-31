@@ -27,31 +27,41 @@ const inputHeight = "15%"
 
 
 export default function Welcome(props) {
-
-  
   return (
-    <Box 
-      // width='100%' 
-      // height='100%'
-      // overflow='hidden'
-      // bgcolor='common.black'
-      // color='common.white'
-    >
+    <Box>
       <Title />
+      <Subheader />
       <PlayModeButtons />
-
     </Box>
   )
 }
 
 function Title() {
   return (
-    <Typography 
-      children='Tic Tac Toe Trainer'
+    <Typography
       variant='h2' 
       align='center'
       py={2}
+      children='Tic Tac Toe Trainer'
     />
+  )
+}
+function Subheader() {
+  return (
+    <Box p={2} >
+      <Typography 
+        variant='subtitle1'
+        fontSize={18}
+        lineHeight='1.5rem'
+        align='justify'
+      >
+        Tic Tac Toe is perhaps the most underrated strategy game. Almost everybody is familiar
+        with this classic paper and pencil game, but few have discovered its full depth. 
+        Is there a strategy that can be proven to win every time, or not? Can you make a mistake 
+        on the first move of the game? What exactly is a "mistake"? Try and answer these questions
+        as you play against my bot, or select "Play with Coach" for a guided exploration.
+      </Typography>
+    </Box>
   )
 }
 
@@ -60,8 +70,8 @@ function PlayModeButtons() {
     <Box 
       display='flex' 
       justifyContent='space-around' 
-      height='12rem'
-      p={2} 
+      height='13rem'
+      px={4} 
     >
       <BigIconButton 
         label="Play vs. Bot"
@@ -73,13 +83,12 @@ function PlayModeButtons() {
         to='play-with-coach'
         icon={faChalkboardTeacher}
       />
-      
     </Box>
   )
 }
+
 function BigIconButton(props) {
   let { label, to, icon } = props
-
   return (
     <Button
       component={RouterLink}
@@ -88,7 +97,7 @@ function BigIconButton(props) {
       sx={{
         border: "solid white 1px",
         height: "100%",
-        margin: 2,
+        margin: 3,
         textTransform: 'none',
         flexDirection: 'column',
         justifyContent: 'space-evenly'
@@ -104,7 +113,7 @@ function BigIconButton(props) {
         <FontAwesomeIcon
           icon={icon} 
           color='white'
-          size='3x'
+          size='4x'
           sx={{
               width: "10rem",
               fontSize: "6rem",
