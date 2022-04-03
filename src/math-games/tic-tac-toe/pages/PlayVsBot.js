@@ -1,31 +1,68 @@
-import React from 'react'
+import React, { useState } from 'react';
+import { useOutletContext } from "react-router-dom";
 
-import { 
-  Container, 
-  Box, 
-  Typography } from '@mui/material';
-import theme from '../../../theme';
+import { gameOver } from "../logic/gameLogic";
+// import TicTacToeBoard from "../components/Boards/TicTacToeBoard";
+
+// import CoachPanel from "../components/Panels/CoachPanel";
+import Board from "../components/Board";
+import BotPanel from "../components/panels/BotPanel";
+
+import {  Box } from '@mui/material';
+
+export default function PlayVsBot(props) {
+  const [outcomeMap, moveList, setMoveList] = useOutletContext();
+  let [showSolution, setShowSolution] = useState(false);
+
+  // CLICK HANDLERS
+  function handleSquareClick(squareClicked) {
+    if (gameOver(moveList)) {
+      console.log("return without effects from handleSquareClick(). The Game is already over.")
+      return;
+    }
+    if (moveList.includes(squareClicked)) {
+      console.log("return without effects from handleSquareClick(). That square has already been claimed.")
+      return;
+    }
+    let updatedMoveList = moveList.concat(squareClicked)
+    setMoveList(updatedMoveList)
+    setShowSolution(false)
 
 
-export default function TicTacToe(props) {
-  
+  }
+
+  function handleUndoClick() {
+    const shortenedMoveList = moveList.slice(0, moveList.length - 1)
+    setMoveList(shortenedMoveList)
+  }
+
+  function toggleShowSolution() {
+    setShowSolution(showSolution => !showSolution)
+  }
+
   return (
     <Box 
-      border='solid red 2px'
-      width='100vw' 
+      width='100%' 
       height='calc(100vh - 96px)'
       overflow='hidden'
-      bgcolor={theme.palette.common.black}
-      color={theme.palette.common.white}
-
-      zIndex={9000}
+      bgcolor='common.black'
+      color='common.white'
     >
-    <Container maxWidth='md'>
-      <Typography variant='h1'  > Play Vs Bot Page</Typography>
+      <Board 
+        moveList={moveList}
+        showSolution={showSolution}
+        handleSquareClick={handleSquareClick}
+        outcomeMap={outcomeMap}
+      />
 
-    </Container>
+      <BotPanel
+        moveList={moveList}
+        showSolution={showSolution}
+        toggleShowSolution={toggleShowSolution}
+        handleUndoClick={handleUndoClick}
+        outcomeMap={outcomeMap}
+      />
 
     </Box>
   )
 }
-
