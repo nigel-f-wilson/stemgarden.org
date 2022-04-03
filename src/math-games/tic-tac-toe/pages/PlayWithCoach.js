@@ -6,12 +6,9 @@ import { gameOver, generatePositionToOutcomeMap } from "../logic/gameLogic";
 
 // import CoachPanel from "../components/Panels/CoachPanel";
 import Board from "../components/Board";
+import CoachPanel from "../components/CoachPanel";
 
-
-import { 
-  Container, 
-  Box 
-} from '@mui/material';
+import {  Box } from '@mui/material';
 
 export default function PlayWithCoach(props) {
   const [outcomeMap, setOutcomeMap] = useOutletContext();
@@ -19,7 +16,9 @@ export default function PlayWithCoach(props) {
 
   let startingPosition = "" 
   let [moveList, setMoveList] = useState(startingPosition);
-  let [showHints, setShowHints] = useState(false);
+  // let [showHints, setShowHints] = useState(false);
+  let [showHints, setShowHints] = useState(true);
+
   
  // CLICK HANDLERS
   function handleBoardClick(squareClicked) {
@@ -61,13 +60,13 @@ export default function PlayWithCoach(props) {
         outcomeMap={outcomeMap}
       />
 
-      {/* <CoachPanel
+      <CoachPanel
         moveList={moveList}
         showHints={showHints}
         toggleShowHints={toggleShowHints}
         handleUndoClick={handleUndoClick}
         outcomeMap={outcomeMap}
-      /> */}
+      />
 
     </Box>
   )
