@@ -34,10 +34,11 @@ export default function DesktopMenuPopover(props) {
         onClick={handleClick}
         variant="text"
         sx={{
-            color: "white",
-            textTransform: "none",
-            textAlign: 'center',
-            paddingBottom: '0.5rem',
+          paddingLeft: 8,
+          paddingBottom: '0.5rem',
+          color: "white",
+          textTransform: "none",
+          textAlign: 'center',
         }}
         aria-controls={open ? 'menu-list-grow' : undefined}
         aria-haspopup="true"
