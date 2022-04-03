@@ -26,7 +26,7 @@ export default function TicTacToeRoot(props) {
       color='common.white'
     >
       <Container maxWidth='sm' disableGutters >
-        <Outlet context={[outcomeMap, setOutcomeMap]} />
+        <Outlet context={[outcomeMap]} />
       </Container>
     </Box>
   )
