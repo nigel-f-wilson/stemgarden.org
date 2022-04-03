@@ -11,7 +11,7 @@ const red = '#F44'
 const white = '#ddd'
 
 export default function Square(props) {
-  const { icon, color, number, handleBoardClick } = props
+  const { icon, color, number, handleSquareClick } = props
 
 
   let squareIcon;
@@ -68,7 +68,7 @@ export default function Square(props) {
     >
       <Paper
         number={number}
-        onClick={() => handleBoardClick(number.toString())}
+        onClick={() => handleSquareClick(number.toString())}
         sx={{
           width: '100%',
           backgroundColor: paperColor,
