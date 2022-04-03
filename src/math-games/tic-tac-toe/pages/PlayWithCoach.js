@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { useOutletContext } from "react-router-dom";
 
-import { gameOver, generatePositionToOutcomeMap } from "../logic/gameLogic";
+import { gameOver } from "../logic/gameLogic";
 // import TicTacToeBoard from "../components/Boards/TicTacToeBoard";
 
 // import CoachPanel from "../components/Panels/CoachPanel";
 import Board from "../components/Board";
-import CoachPanel from "../components/CoachPanel";
+import CoachPanel from "../components/panels/CoachPanel";
 
 import {  Box } from '@mui/material';
 
@@ -16,12 +16,10 @@ export default function PlayWithCoach(props) {
 
   let startingPosition = "" 
   let [moveList, setMoveList] = useState(startingPosition);
-  // let [showHints, setShowHints] = useState(false);
-  let [showHints, setShowHints] = useState(true);
+  let [showSolution, setShowSolution] = useState(false);
 
-  
- // CLICK HANDLERS
-  function handleBoardClick(squareClicked) {
+  // CLICK HANDLERS
+  function handleSquareClick(squareClicked) {
     if (gameOver(moveList)) {
       console.log("return without effects from handleSquareClick(). The Game is already over.")
       return;
@@ -31,22 +29,21 @@ export default function PlayWithCoach(props) {
       return;
     }
     let updatedMoveList = moveList.concat(squareClicked)
-    setMoveList(updatedMoveList);
+    setMoveList(updatedMoveList)
+    setShowSolution(false)
   }
 
   function handleUndoClick() {
     const shortenedMoveList = moveList.slice(0, moveList.length - 1)
-    setMoveList(shortenedMoveList);
+    setMoveList(shortenedMoveList)
   }
 
-  function toggleShowHints() {
-    // setShowHints(!showHints)
-    setShowHints(showHints => !showHints)
+  function toggleShowSolution() {
+    setShowSolution(showSolution => !showSolution)
   }
 
   return (
     <Box 
-      border='solid red 2px'
       width='100%' 
       height='calc(100vh - 96px)'
       overflow='hidden'
@@ -55,15 +52,15 @@ export default function PlayWithCoach(props) {
     >
       <Board 
         moveList={moveList}
-        showHints={showHints}
-        handleBoardClick={handleBoardClick}
+        showSolution={showSolution}
+        handleSquareClick={handleSquareClick}
         outcomeMap={outcomeMap}
       />
 
       <CoachPanel
         moveList={moveList}
-        showHints={showHints}
-        toggleShowHints={toggleShowHints}
+        showSolution={showSolution}
+        toggleShowSolution={toggleShowSolution}
         handleUndoClick={handleUndoClick}
         outcomeMap={outcomeMap}
       />
