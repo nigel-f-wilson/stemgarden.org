@@ -7,8 +7,8 @@ import {
   // faQuestion,
   // faGuitar,
   // faGamepad,
-  faHourglass,
-  
+  // faHourglass,
+
   // faChalkboardTeacher,
   // faPersonChalkboard, // not free
   // faFlask,
