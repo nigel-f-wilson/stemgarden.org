@@ -5,19 +5,13 @@ import {
   Container, 
   Box, 
 } from '@mui/material';
-import theme from '../../theme';
 
-import { gameOver, generatePositionToOutcomeMap } from "./logic/gameLogic";
-
-
+import { generatePositionToOutcomeMap } from "./logic/gameLogic";
 
 export default function TicTacToeRoot(props) {
   const [outcomeMap, setOutcomeMap] = useState(null)
 
-
-
   useEffect(() => {
-    // let map = await generatePositionToOutcomeMap()
     let map = generatePositionToOutcomeMap()
     setOutcomeMap(map)
     console.log("Outcome Map Generated");
