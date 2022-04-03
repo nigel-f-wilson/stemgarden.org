@@ -11,11 +11,10 @@ import CoachPanel from "../components/panels/CoachPanel";
 import {  Box } from '@mui/material';
 
 export default function PlayWithCoach(props) {
-  const [outcomeMap] = useOutletContext();
+  const [outcomeMap, moveList, setMoveList] = useOutletContext();
 
 
-  let startingPosition = "" 
-  let [moveList, setMoveList] = useState(startingPosition);
+  
   let [showSolution, setShowSolution] = useState(false);
 
   // CLICK HANDLERS
