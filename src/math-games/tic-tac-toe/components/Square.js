@@ -1,121 +1,84 @@
 import React from 'react';
 
-// My Logical Components
-
-// My Components
-
-// MUI  components
-import { Box, Paper, Typography } from '@mui/material';
-
-import ClearIcon from '@mui/icons-material/Clear';
-import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked';
-
+import { Box, Paper } from '@mui/material';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimes, faO, faXmark, faXmarkLarge } from '@fortawesome/free-solid-svg-icons';
+import { faO, faXmark } from '@fortawesome/free-solid-svg-icons';
 
-import { faBars } from '@fortawesome/free-solid-svg-icons'
-
-
-
-// Custom Styling
-// import { makeStyles } from '@material-ui/core/styles';
-// const useStyles = makeStyles((theme) => ({
-//     square: {
-//         width: '15vh',
-//         backgroundColor: theme.palette.common.white,
-//         display: 'flex',
-//         alignItems: 'center',
-//         justifyContent: 'center',
-//     },
-//     iconX: {
-//         width: '100%',
-//         height: '100%',
-//         color: theme.palette.common.black
-//     },
-//     iconO: {
-//         width: '80%',
-//         height: '80%',
-//         color: theme.palette.common.black
-//     },
-//     noColor: {
-//         backgroundColor: '#ddd',
-//     },
-//     win: {
-//         backgroundColor: '#3B3'
-//     },
-//     draw: {
-//         backgroundColor: '#FF3'
-//     },
-//     lose: {
-//         backgroundColor: '#F44'
-//     },
-// }));
+const green = '#3B3' 
+const yellow = '#FF3'
+const red = '#F44'
+const white = '#ddd'
 
 export default function Square(props) {
   const { icon, color, number, handleBoardClick } = props
 
-    let squareIcon;
-    switch (icon) {
-        case 'x':
-            squareIcon = <FontAwesomeIcon icon={faTimes} size='6x' />
-            break;
-        case 'o':
-            squareIcon = <FontAwesomeIcon icon={faO} />
-            break;
-        case '_':
-            squareIcon = <Typography variant='h3' color='textSecondary' >{props.number}</Typography> // 
-            break;
-        default:
-            console.error("Square passed symbol not 'x' 'o' or '_'");
-    }
 
-    // let squareColorClassName;
-    // switch (props.color) {
-    //   case 'claimed':
-    //       squareColorClassName = `${classes.square} ${classes.claimed} `
-    //       break;
-    //   case 'unclaimed':
-    //       squareColorClassName = `${classes.square} ${classes.unclaimed} `
-    //       break;
-    //   case 'noColor':
-    //       squareColorClassName = `${classes.square} ${classes.noColor} `
-    //       break;
-    //   case 'draw':
-    //       squareColorClassName = `${classes.square} ${classes.draw} `
-    //       break;
-    //   case 'win':
-    //       squareColorClassName = `${classes.square} ${classes.win} `
-    //       break;
-    //   case 'lose':
-    //       squareColorClassName = `${classes.square} ${classes.lose} `
-    //       break;
-    //   default:
-    //       squareColorClassName = `${classes.square} `
-    // }
-
-    return (
-      <Box
-        p={1}
-        width='33.3%'
-        height='100%'
-        display='flex'
-      >
-        <Paper
-          // className={squareColorClassName}
-
-          number={number}
-          onClick={() => handleBoardClick(number.toString())}
-          sx={{
-            width: '100%',
-            backgroundColor: 'common.white',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}
-        >
-          {squareIcon}
-      </Paper>
+  let squareIcon;
+  switch (icon) {
+    case 'x':
+      squareIcon = 
+      <Box display='flex' alignItems='center' sx={{fontSize: 67}}>
+        <FontAwesomeIcon icon={faXmark} size='lg' />
       </Box>
-    )
+      break;
+    case 'o':
+      squareIcon = 
+      <Box display='flex' alignItems='center' sx={{fontSize: 55}}>
+        <FontAwesomeIcon icon={faO} size='lg' />
+      </Box>
+      break;
+    case '_':
+      // squareIcon = <Typography variant='h3' color='textSecondary' >{props.number}</Typography> // 
+      break;
+    default:
+      console.error("Square passed symbol not 'x' 'o' or '_'");
+  }
+
+  let paperColor;
+  switch (color) {
+    case 'claimed':
+      paperColor = white
+      break;
+    case 'unclaimed':
+      paperColor = white
+      break;
+    case 'noColor':
+      paperColor = white
+      break;
+    case 'draw':
+      paperColor = yellow
+      break;
+    case 'win':
+      paperColor = green
+      break;
+    case 'lose':
+      paperColor = red
+      break;
+    default:
+      paperColor = white
+  }
+
+  return (
+    <Box
+      p='0.25rem'
+      width='33.3%'
+      height='100%'
+      display='flex'
+    >
+      <Paper
+        number={number}
+        onClick={() => handleBoardClick(number.toString())}
+        sx={{
+          width: '100%',
+          backgroundColor: paperColor,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
+      >
+        {squareIcon}
+    </Paper>
+    </Box>
+  )
 }
