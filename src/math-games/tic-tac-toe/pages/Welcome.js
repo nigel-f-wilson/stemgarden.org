@@ -2,20 +2,11 @@ import React from 'react'
 import { Link as RouterLink } from 'react-router-dom';
 
 // MUI  components
-import { Box, Button, Icon, IconButton, Dialog, Zoom, Typography, Grid } from '@mui/material'
+import { Box, Button, Typography } from '@mui/material'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUserFriends, faRobot, faChalkboardTeacher } from '@fortawesome/free-solid-svg-icons';
+import { faRobot, faChalkboardTeacher } from '@fortawesome/free-solid-svg-icons';
 
-// ICONS
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-// import { faRobot, faUser, faPlus, faTimes, faDivide, faSuperscript } from '@fortawesome/free-solid-svg-icons'
-// const robot = () => { return <FontAwesomeIcon icon={faRobot} /> }
-// const robot = () => { return <FontAwesomeIcon icon={faRobot} /> }
-// const UserIcon = () => { return <FontAwesomeIcon icon={faUser} /> }
-// const PlusIcon = () => { return <FontAwesomeIcon icon={faPlus} /> }
-// const TimesIcon = () => { return <FontAwesomeIcon icon={faTimes} /> }
-// const DivideIcon = () => { return <FontAwesomeIcon icon={faDivide} /> }
 // const SuperscriptIcon = () => { return <FontAwesomeIcon icon={faSuperscript} /> }
 // import { faPlus, faTimes, faDivide, faSuperscript } from '@fortawesome/free-solid-svg-icons'
 
