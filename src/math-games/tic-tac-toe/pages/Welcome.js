@@ -6,16 +6,7 @@ import { Box, Button, Typography } from '@mui/material'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRobot, faChalkboardTeacher } from '@fortawesome/free-solid-svg-icons';
-
-// const SuperscriptIcon = () => { return <FontAwesomeIcon icon={faSuperscript} /> }
 // import { faPlus, faTimes, faDivide, faSuperscript } from '@fortawesome/free-solid-svg-icons'
-
-// Style & Layout Constants
-const opponentHeight = "25%"
-const topicHeight = "35%"
-const difficultyHeight = "25%"
-const inputHeight = "15%"
-
 
 export default function Welcome(props) {
   return (
