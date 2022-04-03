@@ -14,7 +14,7 @@ import { useTheme } from "@mui/system";
 import { Box } from '@mui/material';
 
 export default function Board(props) {
-  const { moveList, outcomeMap, showHints } = props
+  const { moveList, outcomeMap, showSolution, handleSquareClick } = props
   const theme = useTheme()
 
   const [height, setHeight] = useState(100);
@@ -30,7 +30,7 @@ export default function Board(props) {
     
 
   const icons = getIcons(moveList)
-  const colors = getColors(moveList, showHints, outcomeMap)
+  const colors = getColors(moveList, showSolution, outcomeMap)
   const magicSquareNumbers = [2,9,4,7,5,3,6,1,8]
 
   let squares = []
@@ -41,7 +41,7 @@ export default function Board(props) {
         number={num}
         icon={icons[num]}
         color={colors[num]}
-        handleBoardClick={props.handleBoardClick}
+        handleSquareClick={handleSquareClick}
       />
     squares.push(newSquare);
   })
@@ -54,7 +54,7 @@ export default function Board(props) {
       width='100%'
       display='flex'
       justifyContent='center'
-
+      my={1}
     >  
       <Box id='board width container'
         height='100%'
@@ -82,12 +82,12 @@ export default function Board(props) {
   )
 }
 
-function getColors(ml, showHints, outcomeMap) {
+function getColors(ml, showSolution, outcomeMap) {
   let gameStatus = status(ml)
   if (gameStatus === "xWins" || gameStatus === "oWins") {
     return highlightWins(ml)
   }
-  else if (showHints === true) {
+  else if (showSolution === true) {
     return getBoardHints(ml, outcomeMap)
   }
   else {
