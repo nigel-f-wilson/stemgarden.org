@@ -1,43 +1,32 @@
 import React from 'react';
 
-import { moveNumber } from "../../logic/GameLogic";
+import { moveNumber } from "../../logic/gameLogic";
 
 
 // MUI Components
-import Box from '@material-ui/core/Box';
-import Button from '@material-ui/core/Button';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
 
-// MUI Icons
-import UndoIcon from '@material-ui/icons/Undo';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faRotateLeft } from '@fortawesome/free-solid-svg-icons';
 
-// Custom Styling
-import { makeStyles } from '@material-ui/core/styles';
-const useStyles = makeStyles((theme) => ({
-    button: {
-        backgroundColor: theme.palette.primary.main,
-        width: '100%',
-        height: '2.1rem',
-        fontSize: '1rem',
-    },
-}));
+export default function UndoMoveButton(props) {
+  const { moveList, gameOver, handleUndoClick } = props
 
-export default function UndoButton(props) {
-    const classes = useStyles();
-
-    return (
-        <Button
-            className={classes.button}
-            variant="contained"
-            color="primary"
-            onClick={() => props.handleUndoClick()}
-            disabled={props.gameOver || moveNumber(props.moveList) === 1}
-        >
-            <Box mr={2} display="flex" alignContent="center" >
-                <UndoIcon />
-            </Box>
-            Undo
-        </Button>
-    )
+  return (
+    <Button
+      variant="contained"
+      color="primary"
+      onClick={() => handleUndoClick()}
+      disabled={gameOver || moveNumber(moveList) === 1}
+      sx={{ width: '100%' }}
+    >
+      <Box mr={2} display="flex" alignContent="center" >
+        <FontAwesomeIcon icon={faRotateLeft} size='lg' />
+      </Box>
+      Undo
+    </Button>
+  )
 }
 
 
