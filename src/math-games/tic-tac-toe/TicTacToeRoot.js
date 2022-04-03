@@ -20,6 +20,7 @@ export default function TicTacToeRoot(props) {
     // let map = await generatePositionToOutcomeMap()
     let map = generatePositionToOutcomeMap()
     setOutcomeMap(map)
+    console.log("Outcome Map Generated");
   }, [])
   
   return (
