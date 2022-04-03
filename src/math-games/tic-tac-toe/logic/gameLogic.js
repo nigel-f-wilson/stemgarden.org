@@ -62,42 +62,42 @@ export function generatePositionToOutcomeMap() {
 //  Current Game Status: "xWins", "oWins", "draw",  "xNext", or "oNext"
 ////////////////////////////////////////////////////////////////
 export function status(ml) {
-    if (xHasWon(ml)) {
-        return ("xWins")
-    }
-    else if (oHasWon(ml)) {
-        return ("oWins")
-    }
-    else if (ml.length === 9) {
-        return ("draw")
-    }
-    else {
-        return nextPlayer(ml)  // "xNext" || "oNext"
-    }
+  if (xHasWon(ml)) {
+    return ("xWins")
+  }
+  else if (oHasWon(ml)) {
+    return ("oWins")
+  }
+  else if (ml.length === 9) {
+    return ("draw")
+  }
+  else {
+    return nextPlayer(ml)  // "xNext" || "oNext"
+  }
 }
 ////////////////////////////////////////////////////////////////
 // Game Status Helpers: BOOLEAN
 ////////////////////////////////////////////////////////////////
 export function nextPlayer(ml) {
-    return (ml.length % 2 === 0) ? "xNext" : "oNext"
+  return (ml.length % 2 === 0) ? "xNext" : "oNext"
 }
 export function gameOverUsingStatus(status) {
-    return (status === "xWins" || status === "oWins" || status === "draw")
+  return (status === "xWins" || status === "oWins" || status === "draw")
 }
 export function gameOver(ml) {
-    return (ml.length === 9 || gameHasBeenWon(ml)) ? true : false
+  return (ml.length === 9 || gameHasBeenWon(ml)) ? true : false
 }
 function gameHasBeenWon(ml) {
-    return (xHasWon(ml) || oHasWon(ml)) ? true : false
+  return (xHasWon(ml) || oHasWon(ml)) ? true : false
 }
 export function xHasWon(ml) {
-    return sumsOfThree(xNumbers(ml)).includes(15)
+  return sumsOfThree(xNumbers(ml)).includes(15)
 }
 export function oHasWon(ml) {
-    return sumsOfThree(oNumbers(ml)).includes(15)
+  return sumsOfThree(oNumbers(ml)).includes(15)
 }
 export function gameDrawn(ml) {
-    return (ml.length === 9 && !gameHasBeenWon(ml))
+  return (ml.length === 9 && !gameHasBeenWon(ml))
 }
 // function gameWillBeDrawn(ml) {
 //     // TODO
@@ -105,14 +105,16 @@ export function gameDrawn(ml) {
 export function moveNumber(ml) {
     return (ml.length + 1)
 }
+
 export function numbersInWin(ml) {
-    let Xs = xNumbers(ml)
-    let Os = oNumbers(ml)
-    let winningTrios = trioList.filter(trio =>
-        intersect(trio, Xs).length === 3 || intersect(trio, Os).length === 3
-    )
-    return winningTrios.flat()
+  let Xs = xNumbers(ml)
+  let Os = oNumbers(ml)
+  let winningTrios = trioList.filter(trio =>
+      intersect(trio, Xs).length === 3 || intersect(trio, Os).length === 3
+  )
+  return winningTrios.flat()
 }
+
 
 ////////////////////////////////////////////////////////////////
 //  Predicted and Final Game Outcomes: "xWins", "oWins", "draw"
