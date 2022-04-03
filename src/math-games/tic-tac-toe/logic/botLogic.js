@@ -1,7 +1,7 @@
 // X always goes first! X and O will be shorthand for the player who goes First and the player who goes second.
 // PlayerOne and PlayerTwo are NOT markers of who goes first or second in any given game!
 // In the 15 game, PlayerOne and PlayerTWo are distinguished by dark-blue and light-blue
-import { generatePositionToOutcomeMap, sumsOfTwo, complementOf, intersect, gameOver, xNumbers, oNumbers, nextPlayer, availableNumbers } from "./GameLogic";
+import { sumsOfTwo, complementOf, intersect, gameOver, xNumbers, oNumbers, nextPlayer, availableNumbers } from "./gameLogic";
 // const outcomeMap = generatePositionToOutcomeMap()
 
 
