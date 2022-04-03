@@ -1,68 +1,54 @@
 import React, { useState, useRef, useEffect } from 'react';
 
-// My Logical Components
-import { status } from "../logic/gameLogic";
-import {
-    highlightWins,
-    getBoardIcons,
-    getBoardHints,
-} from "../logic/boardLogic";
+import { status, 
+  moveListStringToArray, 
+  numbersInWin, 
+  availableNumbers, 
+} from "../logic/gameLogic";
 
 // My Components
 import Square from "./Square";
 
 // MUI  
 import { useTheme } from "@mui/system";
-import { 
-  Box, 
-} from '@mui/material';
-
+import { Box } from '@mui/material';
 
 export default function Board(props) {
-    const { moveList, outcomeMap } = props
-    const theme = useTheme()
+  const { moveList, outcomeMap, showHints } = props
+  const theme = useTheme()
 
-    const [width, setWidth] = useState(100);
-    const [height, setHeight] = useState(100);
-    const demoRef = useRef();
-
-    useEffect(() => {
+  const [height, setHeight] = useState(100);
+  const boardRef = useRef();
+  useEffect(() => {
     const resizeObserver = new ResizeObserver((event) => {
-      // Depending on the layout, you may need to swap inlineSize with blockSize
-      // https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserverEntry/contentBoxSize
-      setWidth(event[0].contentBoxSize[0].inlineSize);
       setHeight(event[0].contentBoxSize[0].blockSize);
     });
-
-    if (demoRef) {
-      resizeObserver.observe(demoRef.current);
+    if (boardRef) {
+      resizeObserver.observe(boardRef.current);
     }
-  }, [demoRef]);
+  }, [boardRef]);
     
+
+  const icons = getIcons(moveList)
+  const colors = getColors(moveList, showHints, outcomeMap)
   const magicSquareNumbers = [2,9,4,7,5,3,6,1,8]
 
-  let boardIcons = getBoardIcons(moveList)
-  let boardColors = getBoardColors(moveList)
-  
   let squares = []
   magicSquareNumbers.forEach(num => {
     let newSquare =
       <Square
         key={num}
         number={num}
-        icon={boardIcons[num]}
-        color={boardColors[num]}
+        icon={icons[num]}
+        color={colors[num]}
         handleBoardClick={props.handleBoardClick}
       />
     squares.push(newSquare);
   })
 
-  console.log(`SQUARES: ${squares}`);
-
   return (
-    <Box ref={demoRef}
+    <Box ref={boardRef}
       id='board height container'
-      // border='solid green 2px' 
       height={theme.breakpoints.values.sm}
       maxHeight='50%'
       width='100%'
@@ -93,76 +79,59 @@ export default function Board(props) {
         />
       </Box>
     </Box>
-
-      
   )
+}
 
-  function getBoardColors(ml) {
-      let gameStatus = status(ml)
-      if (gameStatus === "xWins" || gameStatus === "oWins") {
-          return highlightWins(ml)
-      }
-      else if (props.showHints === true) {
-          return getBoardHints(ml, outcomeMap)
-      }
-      else {
-          return Array(10).fill('noColor')
-      }
+function getColors(ml, showHints, outcomeMap) {
+  let gameStatus = status(ml)
+  if (gameStatus === "xWins" || gameStatus === "oWins") {
+    return highlightWins(ml)
+  }
+  else if (showHints === true) {
+    return getBoardHints(ml, outcomeMap)
+  }
+  else {
+    return Array(10).fill('noColor')
   }
 }
 
+function getIcons(ml) {
+    let data = Array(10).fill('_');  // Start with an array representing a board of NINE empty squares
+    let mlArray = moveListStringToArray(ml)
+    mlArray.forEach((squareId, turn) => {
+        data[squareId] = (turn % 2 === 0) ? 'x' : 'o'
+    })
+    return data;  
+}
 
+function highlightWins(ml) {
+    let colors = Array(10).fill('noColor')
+    numbersInWin(ml).forEach(num => colors[num] = 'win')
+    return colors
+}
 
-// function Square(props) {
-//     // const classes = useStyles();
+function getBoardHints(ml, outcomeMap) {
+    let colors = Array(10).fill('noColor')
+    availableNumbers(ml).forEach(num => {
+        let outcome = outcomeMap.get(ml + num.toString())
+        colors[num] = getHintColor(outcome, ml)
+    })
+    console.log(`COLORS: ${colors}`)
+    return colors
+}
 
-//     let squareIcon;
-//     switch (props.icon) {
-//         case 'x':
-//             // squareIcon = <ClearIcon className={classes.iconX} />
-//             break;
-//         case 'o':
-//             // squareIcon = <RadioButtonUncheckedIcon className={classes.iconO} />
-//             break;
-//         case '_':
-//             // squareIcon = <Typography variant='h3' color='textSecondary' >{props.number}</Typography> // 
-//             break;
-//         default:
-//             console.error("Square passed symbol not 'x' 'o' or '_'");
-//     }
-
-//     let squareColorClassName;
-//     // switch (props.color) {
-//     //     case 'claimed':
-//     //         squareColorClassName = `${classes.square} ${classes.claimed} `
-//     //         break;
-//     //     case 'unclaimed':
-//     //         squareColorClassName = `${classes.square} ${classes.unclaimed} `
-//     //         break;
-//     //     case 'noColor':
-//     //         squareColorClassName = `${classes.square} ${classes.noColor} `
-//     //         break;
-//     //     case 'draw':
-//     //         squareColorClassName = `${classes.square} ${classes.draw} `
-//     //         break;
-//     //     case 'win':
-//     //         squareColorClassName = `${classes.square} ${classes.win} `
-//     //         break;
-//     //     case 'lose':
-//     //         squareColorClassName = `${classes.square} ${classes.lose} `
-//     //         break;
-//     //     default:
-//     //         squareColorClassName = `${classes.square} `
-//     // }
-
-//     return (
-//         <Paper
-//             number={props.number}
-//             elevation={4}
-//             className={squareColorClassName}
-//             onClick={() => props.handleBoardClick(props.number.toString())}
-//         >
-//             {squareIcon}
-//         </Paper>
-//     )
-//   }
+function getHintColor(outcome, ml) {
+  let gameStatus = status(ml)
+  if (outcome === "draw") {
+    return "draw"
+  }
+  else if (gameStatus === "xNext") {
+    return (outcome === "xWins") ? "win" : "lose"
+  }
+  else if (gameStatus === "oNext") {
+    return (outcome === "oWins") ? "win" : "lose"
+  }
+  else {
+    console.error(`Error in Get Hint Color`);
+  }
+}
