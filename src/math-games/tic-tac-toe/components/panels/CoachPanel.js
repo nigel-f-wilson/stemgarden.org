@@ -6,6 +6,7 @@ import React from 'react';
 import StatusHeader from './StatusHeader';
 import Commentary from "./Commentary";
 
+import HomeButton from "../buttons/HomeButton";
 import UndoMoveButton from "../buttons/UndoMoveButton";
 import ShowSolutionButton from "../buttons/ShowSolutionButton";
 
@@ -37,8 +38,14 @@ export default function CoachPanel(props) {
               showSolution={showSolution}
               toggleShowSolution={toggleShowSolution}
           />
-          <Box id='spacer' px={2} />
+          <Box id='spacer' px={1} />
           <UndoMoveButton
+              gameOver={false}
+              moveList={moveList}
+              handleUndoClick={handleUndoClick}
+          />
+          <Box id='spacer' px={1} />
+          <HomeButton
               gameOver={false}
               moveList={moveList}
               handleUndoClick={handleUndoClick}
