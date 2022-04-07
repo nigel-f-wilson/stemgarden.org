@@ -1,75 +1,34 @@
 import React from 'react';
-
-// Custom Components
-
-// MUI Components
-import { Grid, Button }from '@mui/material';
-
-// import { makeStyles } from '@material-ui/core/styles';
-// const useStyles = makeStyles((theme) => ({
-//     button: {
-//         color: theme.palette.common.white,
-//         backgroundColor: theme.palette.primary.main,
-//         width: '100%',
-//         height: '2.1rem',
-//         fontSize: '1rem',
-//     },
-//     selectedButton: {
-//         color: theme.palette.common.white,
-//         backgroundColor: 'rgba(46, 107, 18, 1.0)',
-//     },
-//     unselectedButton: {
-//         color: '#999999',
-//         backgroundColor: 'rgba(46, 107, 18, 0.5)',
-//     },
-    
-// }));
+import { Box, Button }from '@mui/material';
 
 export default function DifficultyModeButtons(props) {
-  const { difficultyMode, handleDifficultyModeChange } = props
+  const { difficultyMode, changeDifficultyMode } = props
 
-  let easyButton = (
+  const DifficultyModeButton = (props) => {
+    const { mode } = props
+    const selected = (mode === difficultyMode)
+    return (
       <Button
-          // className={`${classes.button} ${difficultyMode === "easy" ? classes.selectedButton : classes.unselectedButton} `}
-          variant={'contained'}
-          onClick={() => handleDifficultyModeChange("easy")}
-      >
-          Easy
-      </Button>
-  )
-
-  let mediumButton = (
-      <Button
-          // className={`${classes.button} ${difficultyMode === "medium" ? classes.selectedButton : classes.unselectedButton} `}
-          variant={'contained'}
-          onClick={() => handleDifficultyModeChange("medium")}
-      >
-          Medium
-      </Button>
-  )
-
-  let hardButton = (
-      <Button
-          // className={`${classes.button} ${difficultyMode === "hard" ? classes.selectedButton : classes.unselectedButton} `}
-          variant={'contained'}
-          onClick={() => handleDifficultyModeChange("hard")}
-      >
-          Hard
-      </Button>
-  )
-
+        label={mode}
+        children={mode}
+        sx={{ flexGrow: 1, mx: 1, border: selected ? 'solid white 3px' : 'none' }}
+        variant={'contained'}
+        onClick={() => changeDifficultyMode(mode)}
+      />
+    )
+  }
 
   return (
-      <Grid container spacing={3} >
-          <Grid item xs={4}  >
-              {easyButton}
-          </Grid>
-          <Grid item xs={4}  >
-              {mediumButton}
-          </Grid>
-          <Grid item xs={4}  >
-              {hardButton}
-          </Grid>
-      </Grid>
+    <Box width='100%' display='flex' justifyContent='space-between' >
+      <DifficultyModeButton 
+        mode='easy'
+      />
+      <DifficultyModeButton 
+        mode='medium'
+      />
+      <DifficultyModeButton 
+        mode='hard'
+      />
+    </Box>         
   )
 }
