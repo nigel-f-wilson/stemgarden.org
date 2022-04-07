@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Button from '@mui/material';
+import { Button } from '@mui/material';
 
 export default function DifficultyModeButtons(props) {
   const { handleBotGoFirstClick } = props
@@ -11,8 +11,8 @@ export default function DifficultyModeButtons(props) {
       onClick={() => handleBotGoFirstClick()}
       disabled={props.moveList.length !== 0}
       sx={{
-        color: theme.palette.common.white,
-        backgroundColor: theme.palette.primary.main,
+        color: 'common.white',
+        backgroundColor: 'primary.main',
         width: '100%',
         height: '2.1rem',
         fontSize: '1rem',
