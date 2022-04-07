@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useOutletContext } from "react-router-dom";
 
-import { gameOver } from "../logic/gameLogic";
+import { status, gameOver } from "../logic/gameLogic";
+import { getBotMove } from "../logic/botLogic";
 // import TicTacToeBoard from "../components/Boards/TicTacToeBoard";
 
 // import CoachPanel from "../components/Panels/CoachPanel";
@@ -12,7 +13,17 @@ import {  Box } from '@mui/material';
 
 export default function PlayVsBot(props) {
   const [outcomeMap, moveList, setMoveList] = useOutletContext();
-  let [showSolution, setShowSolution] = useState(false);
+  const startingPosition = ""
+  
+  
+  let [humanGoesFirst, setHumanGoesFirst] = useState(true);
+    
+
+  let [gameNumber, setGameNumber] = useState(1);
+  let [record, setRecord] = useState([0, 0, 0]);
+
+  let [difficultyMode, setDifficultyMode] = useState("hard") 
+
 
   // CLICK HANDLERS
   function handleSquareClick(squareClicked) {
@@ -26,18 +37,67 @@ export default function PlayVsBot(props) {
     }
     let updatedMoveList = moveList.concat(squareClicked)
     setMoveList(updatedMoveList)
-    setShowSolution(false)
-
-
   }
 
-  function handleUndoClick() {
-    const shortenedMoveList = moveList.slice(0, moveList.length - 1)
-    setMoveList(shortenedMoveList)
+  function handleNewGameClick() {
+    setGameNumber(++gameNumber)
+    setHumanGoesFirst(true)
+    setMoveList(startingPosition)
   }
 
-  function toggleShowSolution() {
-    setShowSolution(showSolution => !showSolution)
+  function handleBotGoFirstClick() {
+    console.assert(moveList.length === 0, `handleLetBotGoFirstClick was called but it is not the frst move of the game!`)
+    setHumanGoesFirst(false)
+    handleBotsTurn('') // if the bot is going first the movelist is empty.
+  }
+
+  function changeDifficultyMode(newDifficulty) {
+    console.log(`Difficulty set to ${newDifficulty}`);
+    setGameNumber(1)
+    setHumanGoesFirst(true)
+    setRecord([0, 0, 0])
+    setMoveList(startingPosition)
+    setDifficultyMode(newDifficulty)
+  }
+
+  // Find and make a move for the Bot with a slight delay. 
+  function handleBotsTurn(moveList) {
+    let botMove = getBotMove(difficultyMode, moveList, humanGoesFirst, outcomeMap)
+    let updatedMoveList = moveList.concat(botMove)
+    setTimeout(() => {
+      setMoveList(updatedMoveList)
+      if (gameOver(updatedMoveList)) {
+        handleGameOver(updatedMoveList)
+        return 1
+      }
+    }, 600)
+  }
+
+  function handleGameOver(ml) {
+    let result = status(ml)
+
+    if (result === "draw") {
+        setRecord([record[0], record[1], ++record[2]])
+    }
+    else if (result === "xWins") {
+        if (humanGoesFirst) {
+            setRecord([++record[0], record[1], record[2]])
+        }
+        else {
+            setRecord([record[0], ++record[1], record[2]])
+        }
+    }
+    else if (result === "oWins") {
+        if (humanGoesFirst) {
+            setRecord([record[0], ++record[1], record[2]])
+        }
+        else {
+            setRecord([++record[0], record[1], record[2]])
+        }
+    }
+    else {
+        console.error(`handleGameOver called with invalid game result: ${result}. `)
+    }
   }
 
   return (
@@ -50,17 +110,19 @@ export default function PlayVsBot(props) {
     >
       <Board 
         moveList={moveList}
-        showSolution={showSolution}
+        showSolution={false}
         handleSquareClick={handleSquareClick}
         outcomeMap={outcomeMap}
       />
 
       <BotPanel
         moveList={moveList}
-        showSolution={showSolution}
-        toggleShowSolution={toggleShowSolution}
-        handleUndoClick={handleUndoClick}
         outcomeMap={outcomeMap}
+        handleNewGameClick={handleNewGameClick}
+        handleBotGoFirstClick={handleBotGoFirstClick}
+        difficultyMode={difficultyMode}
+        changeDifficultyMode={changeDifficultyMode}
+
       />
 
     </Box>
