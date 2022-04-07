@@ -18,10 +18,10 @@ export default function UndoMoveButton(props) {
       variant="contained"
       color="primary"
       onClick={() => handleUndoClick()}
-      disabled={gameOver || moveNumber(moveList) === 1}
+      disabled={gameOver || moveList.length === 0}
       sx={{ width: '50%' }}
     >
-      <Box mr={2} display="flex" alignContent="center" >
+      <Box mr={1} display="flex" alignContent="center" >
         <FontAwesomeIcon icon={faRotateLeft} size='lg' />
       </Box>
       Undo
