@@ -6,14 +6,16 @@ import React from 'react';
 import StatusHeader from './StatusHeader';
 import Commentary from "./Commentary";
 
-import UndoMoveButton from "../buttons/UndoMoveButton";
-import ShowSolutionButton from "../buttons/ShowSolutionButton";
+import HomeButton from "../buttons/HomeButton";
+import DifficultyModeButtons from '../buttons/DifficultyModeButtons';
+import BotGoFirstButton from '../buttons/BotGoFirstButton';
+
 
 // MUI Components
 import { Box, Container } from '@mui/material';
 
 export default function BotPanel(props) {
-    const { moveList, showSolution, toggleShowSolution, handleUndoClick, outcomeMap } = props
+    const { moveList, difficultyMode, changeDifficultyMode, outcomeMap, handleBotGoFirstClick } = props
     
     return (
       <Container 
@@ -27,21 +29,30 @@ export default function BotPanel(props) {
       >
         <Box >
           <StatusHeader moveList={moveList} />
-          <Commentary 
-            moveList={moveList} 
-            outcomeMap={outcomeMap}
-          />
+          
+          
         </Box>
+
+        <DifficultyModeButtons 
+          difficultyMode={difficultyMode}
+          changeDifficultyMode={changeDifficultyMode}
+        />
         <Box display='flex' >
-          <ShowSolutionButton 
+          {/* <ShowSolutionButton 
               showSolution={showSolution}
               toggleShowSolution={toggleShowSolution}
-          />
-          <Box id='spacer' px={2} />
-          <UndoMoveButton
+          /> */}
+          <Box id='spacer' px={1} />
+          <BotGoFirstButton
               gameOver={false}
               moveList={moveList}
-              handleUndoClick={handleUndoClick}
+              handleBotGoFirstClick={handleBotGoFirstClick}
+          />
+          <Box id='spacer' px={1} />
+          <HomeButton
+              gameOver={false}
+              moveList={moveList}
+              handleClick={() => {console.log(`The HOME button is not built yet`)}}
           />
         </Box>
       </Container>
