@@ -5,6 +5,77 @@ import { sumsOfTwo, complementOf, intersect, gameOver, xNumbers, oNumbers, nextP
 // const outcomeMap = generatePositionToOutcomeMap()
 
 
+//////////////////////////////////////////////////////////////     
+//  GET  BOT  MOVE  PROTOCOLS
+////////////////////////////////////////////////////////////// 
+export function getBotMove(difficultyMode, moveList, humanGoesFirst, outcomeMap) {
+  if (difficultyMode === "easy") {
+    return easyProtocol(moveList)
+  }
+  else if (difficultyMode === "medium") {
+    return mediumProtocol(moveList)
+  }
+  else if (difficultyMode === "hard") {
+    return hardProtocol(moveList, humanGoesFirst, outcomeMap)
+  }
+  else {
+    console.error(`getBotMove called with invalid difficulty mode!!!`)
+  }
+}
+// In EASY mode: Bot wins immediately if it can and otherwise selects a random move. 
+function easyProtocol(ml) {
+    if (winningMoves(ml).length > 0) {
+        console.log(`BOT FOUND IMMEDIEATELY WINNING MOVES: ${winningMoves(ml)}`)
+        return selectMoveRandomly(winningMoves(ml))
+    }
+    else {
+        return selectMoveRandomly(availableNumbers(ml))
+    }
+}
+// In MEDIUM mode, Bot wins immediately if possible.
+// In MEDIUM mode, Bot blocks any immediate threats but does not look any further ahead. 
+function mediumProtocol(ml) {
+    let wins = winningMoves(ml)
+    let defensiveMoves = urgentDefensiveMoves(ml)
+    if (wins.length > 0) {
+        console.log(`BOT FOUND IMMEDIATELY WINNING MOVES: ${wins}`)
+        return selectMoveRandomly(wins)
+    }
+    else if (defensiveMoves.length > 0) {
+        console.log(`BOT FOUND URGENT DEFENSIVE MOVES: ${defensiveMoves}`)
+        return selectMoveRandomly(defensiveMoves)
+    }
+    else {
+        return selectMoveRandomly(availableNumbers(ml))
+    }
+}
+
+// In HARD mode Bot looks for forcing moves that will allow it to make double attacks on its next move.
+// In HARD mode Bot avoids letting Player make forcing moves that will lead to double attacks.
+function hardProtocol(moveList, humanGoesFirst, outcomeMap) {
+    console.log(`Outcome Graph Hard Protocol called for move list: [${moveList}]`)
+    console.time('getHardFromGraph')
+    let sorted = sortBotMoves(moveList, humanGoesFirst, outcomeMap)
+    // console.log(`BOT SORTED its choices from position [${ml}]:`)
+    // console.log(`Bot found these Winning Moves: ${sorted.winningForBot}`)  
+    // console.log(`Bot found these Drawing Moves: ${sorted.drawing}`)
+    // console.log(`Bot found these Losing Moves: ${sorted.winningForHuman}`)
+    if (sorted.winningForBot.length > 0) {
+        return selectMoveRandomly(sorted.winningForBot)
+    }
+    else if (sorted.drawing.length > 0) {
+        return selectMoveRandomly(sorted.drawing)
+    }
+    else {
+        console.error(`Bot Found NEITHER Winning NOR Drawing Moves!!! Picking from Losing Moves: ${sorted.winningForHuman} `)
+        return selectMoveRandomly(sorted.winningForHuman)    
+    }
+}
+
+
+
+
+
 /////////////////////////////////////////////////////////////////////////
 // Coach & Bot Logic: Immediately Winning & Urgent Defensive Moves 
 /////////////////////////////////////////////////////////////////////////
@@ -47,57 +118,57 @@ export function drawingMoves(mls) { // For NEXT Player
 }
 
 
-export function winningMovesForBot(mls, humanPlaysX) {
+export function winningMovesForBot(mls, humanGoesFirst) {
     availableNumbers(mls)
     
 }
 
-export function sortBotMoves(ml, humanPlaysX, outcomeMap) {
-    let winningForBot = []
-    let drawing = []
-    let winningForHuman = []
+export function sortBotMoves(ml, humanGoesFirst, outcomeMap) {
+  let winningForBot = []
+  let drawing = []
+  let winningForHuman = []
 
 
-    let validMoves = getValidMoves(ml)
-    validMoves.forEach(move => {
-        let newPosition = ml.concat(move)
-        let outcome = outcomeMap.get(newPosition)
-        if (outcome === "draw") {
-            drawing.push(move)
-        }
-        else if (outcome === "xWins") {
-            if (humanPlaysX) {
-                winningForHuman.push(move)
-            }
-            else {
-                winningForBot.push(move)
-            }
-        }
-        else if (outcome === "oWins") {
-            if (humanPlaysX) {
-                winningForBot.push(move)
-            }
-            else {
-                winningForHuman.push(move)
-            }
-        }
-        else {
-            console.error(`Error in sortBotMoves`)
-        }
-    })
-    return {
-        "winningForBot": winningForBot,
-        "drawing": drawing,
-        "winningForHuman": winningForHuman,
+  let validMoves = getValidMoves(ml)
+  validMoves.forEach(move => {
+    let newPosition = ml.concat(move)
+    let outcome = outcomeMap.get(newPosition)
+    if (outcome === "draw") {
+        drawing.push(move)
     }
+    else if (outcome === "xWins") {
+      if (humanGoesFirst) {
+          winningForHuman.push(move)
+      }
+      else {
+          winningForBot.push(move)
+      }
+    }
+    else if (outcome === "oWins") {
+      if (humanGoesFirst) {
+          winningForBot.push(move)
+      }
+      else {
+          winningForHuman.push(move)
+      }
+    }
+    else {
+        console.error(`Error in sortBotMoves`)
+    }
+  })
+  return {
+      "winningForBot": winningForBot,
+      "drawing": drawing,
+      "winningForHuman": winningForHuman,
+  }
 }
 
 
 ////////////////////////////////////////////////////////////////
 // Isolate each players' claimed numbers: ARRAY(NUM)
 ////////////////////////////////////////////////////////////////
-// function botsNumbers(ml, humanPlaysX) {  // Always the Human
-//     return (humanPlaysX) ? oNumbers(ml) : xNumbers(ml)
+// function botsNumbers(ml, humanGoesFirst) {  // Always the Human
+//     return (humanGoesFirst) ? oNumbers(ml) : xNumbers(ml)
 // }
 
 
