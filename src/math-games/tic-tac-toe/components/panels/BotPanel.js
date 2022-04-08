@@ -6,6 +6,7 @@ import React from 'react';
 import StatusHeader from './StatusHeader';
 import Commentary from "./Commentary";
 
+// import BotGoFirstButton from '../buttons/BotGoFirstButton';
 import HomeButton from "../buttons/HomeButton";
 import DifficultyModeButtons from '../buttons/DifficultyModeButtons';
 import BotGoFirstButton from '../buttons/BotGoFirstButton';
@@ -32,23 +33,22 @@ export default function BotPanel(props) {
           
           
         </Box>
+  const BotGoFirstButton = (props) => {
+    // const { moveList, letBotGoFirst } = props
+    return (
+      <Button
+        variant="contained"
+        color="primary"
+        onClick={() => letBotGoFirst()}
+        disabled={moveList.length !== 0}
+        sx={{
+          flexGrow: 2,
 
         <DifficultyModeButtons 
           difficultyMode={difficultyMode}
           changeDifficultyMode={changeDifficultyMode}
         />
         <Box display='flex' >
-          {/* <ShowSolutionButton 
-              showSolution={showSolution}
-              toggleShowSolution={toggleShowSolution}
-          /> */}
-          <Box id='spacer' px={1} />
-          <BotGoFirstButton
-              gameOver={false}
-              moveList={moveList}
-              handleBotGoFirstClick={handleBotGoFirstClick}
-          />
-          <Box id='spacer' px={1} />
           <HomeButton
               gameOver={false}
               moveList={moveList}
@@ -57,6 +57,9 @@ export default function BotPanel(props) {
         </Box>
       </Container>
     )
+        <BotGoFirstButton
+          letBotGoFirst={letBotGoFirst}
+        />
 }
 
 
