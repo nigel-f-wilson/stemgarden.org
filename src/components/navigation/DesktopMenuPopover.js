@@ -34,10 +34,11 @@ export default function DesktopMenuPopover(props) {
         onClick={handleClick}
         variant="text"
         sx={{
-            color: "white",
-            textTransform: "none",
-            textAlign: 'center',
-            paddingBottom: '0.5rem',
+          paddingLeft: 8,
+          paddingBottom: '0.5rem',
+          color: "white",
+          textTransform: "none",
+          textAlign: 'center',
         }}
         aria-controls={open ? 'menu-list-grow' : undefined}
         aria-haspopup="true"
@@ -62,10 +63,12 @@ export default function DesktopMenuPopover(props) {
         MenuListProps={{
           autoFocusItem: open, 
           sx: { 
-            border: 'solid white 1px',
             backgroundColor: "primary.main",
             color: 'common.white',
-            pb: 0,
+            pb: 1,
+            boxSizing: 'border-box',
+            borderRadius: 1,
+            border: 'solid white 1px',
           } 
         }}
       >

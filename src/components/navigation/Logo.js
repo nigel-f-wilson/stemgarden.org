@@ -15,7 +15,7 @@ export default function Logo(props) {
           height: sideLength,
           width: sideLength,
           backgroundImage: `url(${chess_logo})`,
-          backgroundPosition: 'center bottom',
+          backgroundPosition: 'left bottom',
           backgroundRepeat: 'no-repeat',
           backgroundSize: 'auto 95%',
         }}

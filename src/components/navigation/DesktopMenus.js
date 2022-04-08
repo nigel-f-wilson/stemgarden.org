@@ -12,12 +12,12 @@ export default function DesktopMenus() {
  
     return (
         <Box 
-          flexGrow='1'
-          pl={24}
-          pr={4}
+          flexGrow='1' 
+          pl={8}
+          pr={0}
           display='flex'
           flexDirection='row'
-          justifyContent='space-between'
+          justifyContent='right'
           alignItems='flex-end'
         >
           <DesktopMenuPopover

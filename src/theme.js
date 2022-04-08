@@ -93,7 +93,7 @@ theme.typography.pageHeader = {
   textAlign: "center",
   textShadow: '0.15rem 0.15rem 0.3rem black',
   fontWeight: 200,
-  fontSize: '2.0rem',
+  fontSize: '2.4rem',
     '@media (min-width:450px)': {
       fontSize: '3.0rem',
     },
@@ -104,9 +104,6 @@ theme.typography.pageHeader = {
       fontSize: '5.0rem',
     },
 }
-// theme.typography.pageHeader = {
-//   color: theme.palette.error.main,
-// }
 theme.typography.pageSubheader = {
   color: theme.palette.common.white,
   textShadow: '0.15rem 0.15rem 0.3rem black',
@@ -128,11 +125,14 @@ theme.typography.cardHeader = {
   textShadow: '0.15rem 0.15rem 0.3rem black',
   fontWeight: 200,
   fontSize: '1.4rem',
+  lineHeight: '1.6rem',
     [theme.breakpoints.up('sm')]: {
       fontSize: '1.6rem',
+      lineHeight: '1.9rem',
     },
     [theme.breakpoints.up('md')]: {
       fontSize: '2.0rem',
+      lineHeight: '2.3rem',
     },
 }
 

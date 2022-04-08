@@ -1,5 +1,5 @@
 import React from 'react'
-import Router from './Router'
+import MainRouter from './MainRouter'
 
 import { useScreenWidth } from "./hooks"
 
@@ -31,7 +31,7 @@ export default function App() {
       <ThemeProvider theme={theme}>
         <Box id='root' sx={defaultBackground} >
           <Navbar smallScreen={smallScreen} />
-          <Router />
+          <MainRouter />
         </Box>
       </ThemeProvider>
     </React.Fragment>

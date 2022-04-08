@@ -3,7 +3,12 @@ import {
   faPeopleCarry,
   faCamera,
   faPuzzlePiece,
+  // faYinYang,
   // faQuestion,
+  // faGuitar,
+  // faGamepad,
+  // faHourglass,
+
   // faChalkboardTeacher,
   // faPersonChalkboard, // not free
   // faFlask,

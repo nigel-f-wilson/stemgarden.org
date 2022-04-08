@@ -55,21 +55,13 @@ export default function MobileMenu() {
           backgroundColor={theme.palette.primary.main}
         >
           <Typography variant='h3' children='About' />
-          <MobileMenuList 
-            listData={aboutListData} 
-            handleClose={toggleDrawer} 
-          />
+          <MobileMenuList listData={aboutListData}  />
 
           <Typography variant='h3' children='Services' />
-          <MobileMenuList 
-            listData={servicesListData} 
-            handleClose={toggleDrawer} 
-          />
+          <MobileMenuList listData={servicesListData}  />
+          
           <Typography variant='h3' children='Resources' />
-          <MobileMenuList 
-            listData={resourcesListData} 
-            handleClose={toggleDrawer} 
-          />
+          <MobileMenuList listData={resourcesListData}  />
         </Box>
       </Drawer>
     </React.Fragment>

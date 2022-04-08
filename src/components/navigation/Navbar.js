@@ -3,6 +3,7 @@ import { useScreenWidth } from "../../hooks";
 
 import { MobileNavbar, DesktopNavbar } from "./_index";
 import { Box } from "@mui/material"
+import theme from '../../theme';
 
 export default function Navbar(props) {
     const screenWidth = useScreenWidth()
@@ -14,16 +15,16 @@ export default function Navbar(props) {
     return (
       <React.Fragment>
         <Box 
-          children={(screenWidth >= 600) ? 
+          children={(screenWidth >= theme.breakpoints.values.md) ? 
             <DesktopNavbar height={desktopNavbarHeight} /> : 
             <MobileNavbar height={mobileNavbarHeight} /> } 
           width='100vw'
           backgroundColor='primary.main'
         />
         <Box 
-          height={(screenWidth >= 600) ? desktopNavbarHeight : mobileNavbarHeight  }
+          height={(screenWidth >= theme.breakpoints.values.md) ? desktopNavbarHeight : mobileNavbarHeight  }
           width='100vw'
-          backgroundColor='primary.main'
+          backgroundColor='red'
         />
       </React.Fragment>
     )

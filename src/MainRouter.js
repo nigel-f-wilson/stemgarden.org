@@ -9,10 +9,16 @@ const AboutPage = lazy(() => import('./pages/AboutPage'))
 const ContactPage = lazy(() => import('./pages/ContactPage'))
 
 
-const MathGamesPage = lazy(() => import('./pages/MathGamesPage'))
+const MathGamesPage = lazy(() => import('./math-games/MathGamesPage'))
 const ConnectFour = lazy(() => import('./math-games/connect-four/ConnectFour'))
 const FifteenGame = lazy(() => import('./math-games/fifteen-game/FifteenGame'))
-const TicTacToeCoach = lazy(() => import('./math-games/tic-tac-toe/TicTacToeCoach'))
+
+const TicTacToeRoot = lazy(() => import('./math-games/tic-tac-toe/TicTacToeRoot'))
+const Welcome = lazy(() => import('./math-games/tic-tac-toe/pages/Welcome'))
+const PlayWithCoach = lazy(() => import('./math-games/tic-tac-toe/pages/PlayWithCoach'))
+const PlayVsBot = lazy(() => import('./math-games/tic-tac-toe/pages/PlayVsBot'))
+
+
 
 
 const ChessClubsPage = lazy(() => import('./pages/ChessClubsPage'))
@@ -20,7 +26,7 @@ const ServicesPage = lazy(() => import('./pages/ServicesPage'))
 
 const renderLoader = () => <p>Loading</p>;
 
-export default function Router() {
+export default function MainRouter() {
   return (
     <Suspense fallback={renderLoader()}>
       <Routes>
@@ -41,10 +47,14 @@ export default function Router() {
           <Route path="chess-clubs" element={<ChessClubsPage />} />
         </Route>
         <Route path="math-games"  >
-          <Route path="connect-four" element={<ConnectFour />} />
-          <Route path="tic-tac-toe" element={<TicTacToeCoach />} />
-          <Route path="the-15-game" element={<FifteenGame />} />
           <Route index element={<MathGamesPage />} />
+          <Route path="connect-four" element={<ConnectFour />} />
+          <Route path="tic-tac-toe" element={<TicTacToeRoot />} >
+            <Route index element={<Welcome />} />
+            <Route path="play-with-coach" element={<PlayWithCoach />} />
+            <Route path="play-vs-bot" element={<PlayVsBot />} />
+          </Route>
+          <Route path="the-15-game" element={<FifteenGame />} />
 
         </Route>
         {/* <Route path="garden" element={<Garden />} >
