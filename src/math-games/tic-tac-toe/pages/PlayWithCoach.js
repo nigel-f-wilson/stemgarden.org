@@ -2,22 +2,17 @@ import React, { useState } from 'react';
 import { useOutletContext } from "react-router-dom";
 
 import { gameOver } from "../logic/gameLogic";
-// import TicTacToeBoard from "../components/Boards/TicTacToeBoard";
-
-// import CoachPanel from "../components/Panels/CoachPanel";
 import Board from "../components/Board";
 import CoachPanel from "../components/panels/CoachPanel";
 
-import {  Box } from '@mui/material';
+import { Box } from '@mui/material';
 
 export default function PlayWithCoach(props) {
   const [outcomeMap] = useOutletContext();
 
   const startingPosition = "" 
   const [moveList, setMoveList] = useState(startingPosition)
-  
-  
-  let [showSolution, setShowSolution] = useState(false);
+  const [showSolution, setShowSolution] = useState(false);
 
   // CLICK HANDLERS
   function handleSquareClick(squareClicked) {

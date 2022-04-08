@@ -8,7 +8,7 @@ import BotPanel from "../components/panels/BotPanel";
 
 import { Box } from '@mui/material';
 
-export default function PlayVsBot(props) {
+export default function PlayVsBot() {
   const [outcomeMap] = useOutletContext();
   
   const startingPosition = "" 
@@ -90,7 +90,6 @@ export default function PlayVsBot(props) {
 
   function handleGameOver(ml) {
     let result = status(ml)
-
     if (result === "draw") {
       setWinLossDrawRecord([winLossDrawRecord[0], winLossDrawRecord[1], ++winLossDrawRecord[2]])
     }
@@ -138,7 +137,7 @@ export default function PlayVsBot(props) {
         letBotGoFirst={letBotGoFirst}
         difficultyMode={difficultyMode}
         changeDifficultyMode={changeDifficultyMode}
-
+        gameNumber={gameNumber}
       />
 
     </Box>

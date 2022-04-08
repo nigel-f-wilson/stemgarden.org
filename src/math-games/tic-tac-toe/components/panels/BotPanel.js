@@ -17,7 +17,8 @@ export default function BotPanel(props) {
     difficultyMode, 
     changeDifficultyMode, 
     letBotGoFirst,
-    winLossDrawRecord 
+    winLossDrawRecord,
+    gameNumber 
   } = props
 
   const DifficultyModeButton = (props) => {
@@ -66,7 +67,7 @@ export default function BotPanel(props) {
 
   const StatusHeader = () => {
     const gameStatus = status(moveList);
-    let message = ""
+    let message = `Game Number ${gameNumber}`
     switch (gameStatus) {
       case "xWins":
         message = (humanGoesFirst) ? "Game Over. Human Wins!" : "Game Over. Bot Wins!"
@@ -84,7 +85,6 @@ export default function BotPanel(props) {
         message = (humanGoesFirst) ? "Bot's Turn" : "Human's Turn" 
         break
       default:
-        message = "Error";
     }
     return (
     <Typography 

@@ -1,11 +1,6 @@
 import React from 'react';
 
-import { moveNumber } from "../../logic/gameLogic";
-
-
-// MUI Components
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
+import { Box, Button } from '@mui/material';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRotateLeft } from '@fortawesome/free-solid-svg-icons';
