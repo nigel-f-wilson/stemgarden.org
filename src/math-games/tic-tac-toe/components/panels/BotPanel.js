@@ -8,6 +8,7 @@ import Commentary from "./Commentary";
 
 // import DifficultyModeButtons from '../buttons/DifficultyModeButtons';
 // import BotGoFirstButton from '../buttons/BotGoFirstButton';
+// import NewGameButton from '../buttons/NewGameButton';
 import HomeButton from "../buttons/HomeButton";
 
 
@@ -30,19 +31,26 @@ export default function BotPanel(props) {
       />
     )
   }
+  const NewGameButton = (props) => {
+    const { gameOver, newGame } = props
+    return (
+      <Button
+        variant="contained"
+        color="primary"
+        onClick={() => newGame()}
+        disabled={!gameOver}
         sx={{ 
-          width: '100%',
-          height: '45%',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'space-between',
+          flexGrow: 2,
+          mx: 1
         }}
       >
-        <Box >
-          <StatusHeader moveList={moveList} />
-          
-          
+        <Box mr={2} display="flex" alignContent="center" >
+          <FontAwesomeIcon icon={faRotateLeft} size='lg' />
         </Box>
+        Play&nbsp;Again!
+      </Button>
+    )
+  }
   const BotGoFirstButton = (props) => {
     // const { moveList, letBotGoFirst } = props
     return (
@@ -77,6 +85,12 @@ export default function BotPanel(props) {
         <BotGoFirstButton
           letBotGoFirst={letBotGoFirst}
         />
+        <NewGameButton
+            gameOver={gameOver(moveList)}
+            moveList={moveList}
+            newGame={newGame}
+        />
+        {/* <Box id='spacer' px={1} /> */}
 }
 
 
