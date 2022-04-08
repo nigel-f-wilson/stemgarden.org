@@ -39,20 +39,20 @@ export default function PlayVsBot(props) {
     setMoveList(updatedMoveList)
   }
 
-  function handleNewGameClick() {
+  function newGame() {
     setGameNumber(++gameNumber)
     setHumanGoesFirst(true)
     setMoveList(startingPosition)
   }
 
-  function handleBotGoFirstClick() {
+  function letBotGoFirst() {
     console.assert(moveList.length === 0, `handleLetBotGoFirstClick was called but it is not the frst move of the game!`)
     setHumanGoesFirst(false)
     handleBotsTurn('') // if the bot is going first the movelist is empty.
   }
 
   function changeDifficultyMode(newDifficulty) {
-    console.log(`Difficulty set to ${newDifficulty}`);
+    // console.log(`Difficulty set to ${newDifficulty}`);
     setGameNumber(1)
     setHumanGoesFirst(true)
     setRecord([0, 0, 0])
@@ -118,8 +118,8 @@ export default function PlayVsBot(props) {
       <BotPanel
         moveList={moveList}
         outcomeMap={outcomeMap}
-        handleNewGameClick={handleNewGameClick}
-        handleBotGoFirstClick={handleBotGoFirstClick}
+        newGame={newGame}
+        letBotGoFirst={letBotGoFirst}
         difficultyMode={difficultyMode}
         changeDifficultyMode={changeDifficultyMode}
 
