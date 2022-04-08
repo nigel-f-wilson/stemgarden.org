@@ -1,19 +1,22 @@
 import React from 'react';
 
-
+import { Box, Container, Button } from '@mui/material';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faRotateLeft } from '@fortawesome/free-solid-svg-icons';
 
 // Custom Components
 import StatusHeader from './StatusHeader';
-import Commentary from "./Commentary";
+// import WinLossDrawRecord from './WinLossDrawRecord';
 
+// import Commentary from "./Commentary";
 // import DifficultyModeButtons from '../buttons/DifficultyModeButtons';
 // import BotGoFirstButton from '../buttons/BotGoFirstButton';
 // import NewGameButton from '../buttons/NewGameButton';
 import HomeButton from "../buttons/HomeButton";
 
+// Logic
+import { gameOver } from "../../logic/gameLogic";
 
-// MUI Components
-import { Box, Container } from '@mui/material';
 
 export default function BotPanel(props) {
   const { moveList, newGame, difficultyMode, changeDifficultyMode, outcomeMap, letBotGoFirst } = props
@@ -62,15 +65,29 @@ export default function BotPanel(props) {
         sx={{
           flexGrow: 2,
 
-        <Box display='flex' >
-          <HomeButton
-              gameOver={false}
-              moveList={moveList}
-              handleClick={() => {console.log(`The HOME button is not built yet`)}}
-          />
-        </Box>
-      </Container>
+        }}
+      >
+        Let&nbsp;Bot&nbsp;Go&nbsp;First
+      </Button>
     )
+  }
+
+  return (
+    <Container 
+      sx={{ 
+        width: '100%',
+        height: '45%',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+      }}
+    >
+      <Box >
+        <StatusHeader moveList={moveList} />
+        
+        
+      </Box>
+
       <Box  display='flex' justifyContent='space-between' >
         <DifficultyModeButton 
           mode='easy'
@@ -82,6 +99,7 @@ export default function BotPanel(props) {
           mode='hard'
         />
       </Box>         
+      <Box display='flex' justifyContent='space-between' >
         <BotGoFirstButton
           letBotGoFirst={letBotGoFirst}
         />
@@ -91,6 +109,14 @@ export default function BotPanel(props) {
             newGame={newGame}
         />
         {/* <Box id='spacer' px={1} /> */}
+        <HomeButton
+            gameOver={false}
+            moveList={moveList}
+            handleClick={() => {console.log(`The HOME button is not built yet`)}}
+        />
+      </Box>
+    </Container>
+  )
 }
 
 
