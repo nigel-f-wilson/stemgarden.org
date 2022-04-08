@@ -9,10 +9,6 @@ import {
 import { generatePositionToOutcomeMap } from "./logic/gameLogic";
 
 export default function TicTacToeRoot(props) {
-  
-  const startingPosition = "" 
-  const [moveList, setMoveList] = useState(startingPosition);
-
   const [outcomeMap, setOutcomeMap] = useState(null)
   useEffect(() => {
     let map = generatePositionToOutcomeMap()
@@ -29,7 +25,7 @@ export default function TicTacToeRoot(props) {
       color='common.white'
     >
       <Container maxWidth='sm' disableGutters >
-        <Outlet context={[outcomeMap, moveList, setMoveList]} />
+        <Outlet context={[outcomeMap]} />
       </Container>
     </Box>
   )

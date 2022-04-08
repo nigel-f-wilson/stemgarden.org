@@ -53,75 +53,60 @@ function mediumProtocol(ml) {
 // In HARD mode Bot looks for forcing moves that will allow it to make double attacks on its next move.
 // In HARD mode Bot avoids letting Player make forcing moves that will lead to double attacks.
 function hardProtocol(moveList, humanGoesFirst, outcomeMap) {
-    console.log(`Outcome Graph Hard Protocol called for move list: [${moveList}]`)
-    console.time('getHardFromGraph')
-    let sorted = sortBotMoves(moveList, humanGoesFirst, outcomeMap)
-    // console.log(`BOT SORTED its choices from position [${ml}]:`)
-    // console.log(`Bot found these Winning Moves: ${sorted.winningForBot}`)  
-    // console.log(`Bot found these Drawing Moves: ${sorted.drawing}`)
-    // console.log(`Bot found these Losing Moves: ${sorted.winningForHuman}`)
-    if (sorted.winningForBot.length > 0) {
-        return selectMoveRandomly(sorted.winningForBot)
-    }
-    else if (sorted.drawing.length > 0) {
-        return selectMoveRandomly(sorted.drawing)
-    }
-    else {
-        console.error(`Bot Found NEITHER Winning NOR Drawing Moves!!! Picking from Losing Moves: ${sorted.winningForHuman} `)
-        return selectMoveRandomly(sorted.winningForHuman)    
-    }
+  let sorted = sortBotMoves(moveList, humanGoesFirst, outcomeMap)
+  if (sorted.winningForBot.length > 0) {
+    return selectMoveRandomly(sorted.winningForBot)
+  }
+  else if (sorted.drawing.length > 0) {
+    return selectMoveRandomly(sorted.drawing)
+  }
+  else {
+    return selectMoveRandomly(sorted.winningForHuman)    
+  }
 }
-
-
-
-
 
 /////////////////////////////////////////////////////////////////////////
 // Coach & Bot Logic: Immediately Winning & Urgent Defensive Moves 
 /////////////////////////////////////////////////////////////////////////
 // For NEXT Player on NEXT turn
 export function winningMoves(mls) { 
-    if (nextPlayer(mls) === "xNext") {
-        let complements = sumsOfTwo(xNumbers(mls)).map(sum => complementOf(sum))
-        return intersect(availableNumbers(mls), complements)
-    }
-    else {
-        let complements = sumsOfTwo(oNumbers(mls)).map(sum => complementOf(sum))
-        return intersect(availableNumbers(mls), complements)
-    }
+  if (nextPlayer(mls) === "xNext") {
+    let complements = sumsOfTwo(xNumbers(mls)).map(sum => complementOf(sum))
+    return intersect(availableNumbers(mls), complements)
+  }
+  else {
+    let complements = sumsOfTwo(oNumbers(mls)).map(sum => complementOf(sum))
+    return intersect(availableNumbers(mls), complements)
+  }
 }
 export function urgentDefensiveMoves(mls) {
-    if (nextPlayer(mls) === "xNext") {
-        let complements = sumsOfTwo(oNumbers(mls)).map(sum => complementOf(sum))
-        return intersect(availableNumbers(mls), complements)
-    }
-    else {
-        let complements = sumsOfTwo(xNumbers(mls)).map(sum => complementOf(sum))
-        return intersect(availableNumbers(mls), complements)
-    }
+  if (nextPlayer(mls) === "xNext") {
+    let complements = sumsOfTwo(oNumbers(mls)).map(sum => complementOf(sum))
+    return intersect(availableNumbers(mls), complements)
+  }
+  else {
+    let complements = sumsOfTwo(xNumbers(mls)).map(sum => complementOf(sum))
+    return intersect(availableNumbers(mls), complements)
+  }
 }
 export function doubleAttackingMoves(mls) {
-    let doubleAttackingMoves = availableNumbers(mls).filter(num => urgentDefensiveMoves(mls.concat(num)).length > 1)
-    return doubleAttackingMoves
+  let doubleAttackingMoves = availableNumbers(mls).filter(num => urgentDefensiveMoves(mls.concat(num)).length > 1)
+  return doubleAttackingMoves
 }
-
-
 export function drawingMoves(mls) { // For NEXT Player
-    if (nextPlayer(mls) === "xNext") {
-        let complements = sumsOfTwo(xNumbers(mls)).map(sum => complementOf(sum))
-        return intersect(availableNumbers(mls), complements)
-    }
-    else {
-        let complements = sumsOfTwo(oNumbers(mls)).map(sum => complementOf(sum))
-        return intersect(availableNumbers(mls), complements)
-    }
+  if (nextPlayer(mls) === "xNext") {
+    let complements = sumsOfTwo(xNumbers(mls)).map(sum => complementOf(sum))
+    return intersect(availableNumbers(mls), complements)
+  }
+  else {
+    let complements = sumsOfTwo(oNumbers(mls)).map(sum => complementOf(sum))
+    return intersect(availableNumbers(mls), complements)
+  }
 }
 
-
-export function winningMovesForBot(mls, humanGoesFirst) {
-    availableNumbers(mls)
-    
-}
+// export function winningMovesForBot(mls, humanGoesFirst) {
+//   availableNumbers(mls)
+// }
 
 export function sortBotMoves(ml, humanGoesFirst, outcomeMap) {
   let winningForBot = []

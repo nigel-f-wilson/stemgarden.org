@@ -49,11 +49,11 @@ export function generatePositionToOutcomeMap() {
   let outcomeMap = new Map()
   let list = listOfPossiblePositions
   for (let length = 9; length >= 0; length--) {
-      let positions = list[length]
-      for (let p = 0; p < positions.length; p++) {
-          let ml = positions[p]
-          outcomeMap.set(ml, outcome(ml, outcomeMap))
-      }
+    let positions = list[length]
+    for (let p = 0; p < positions.length; p++) {
+      let ml = positions[p]
+      outcomeMap.set(ml, outcome(ml, outcomeMap))
+    }
   }
   return outcomeMap
 }

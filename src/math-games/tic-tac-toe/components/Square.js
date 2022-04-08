@@ -18,13 +18,13 @@ export default function Square(props) {
   switch (icon) {
     case 'x':
       squareIcon = 
-      <Box display='flex' alignItems='center' sx={{fontSize: 67}}>
+      <Box display='flex' alignItems='center' sx={{fontSize: '12vh'}}>
         <FontAwesomeIcon icon={faXmark} size='lg' />
       </Box>
       break;
     case 'o':
       squareIcon = 
-      <Box display='flex' alignItems='center' sx={{fontSize: 55}}>
+      <Box display='flex' alignItems='center' sx={{fontSize: '10vh'}}>
         <FontAwesomeIcon icon={faO} size='lg' />
       </Box>
       break;

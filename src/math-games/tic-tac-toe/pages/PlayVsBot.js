@@ -1,46 +1,61 @@
 import React, { useState } from 'react';
 import { useOutletContext } from "react-router-dom";
 
-import { status, gameOver } from "../logic/gameLogic";
+import { status, gameOver, nextPlayer  } from "../logic/gameLogic";
 import { getBotMove } from "../logic/botLogic";
-// import TicTacToeBoard from "../components/Boards/TicTacToeBoard";
-
-// import CoachPanel from "../components/Panels/CoachPanel";
 import Board from "../components/Board";
 import BotPanel from "../components/panels/BotPanel";
 
-import {  Box } from '@mui/material';
+import { Box } from '@mui/material';
 
 export default function PlayVsBot(props) {
-  const [outcomeMap, moveList, setMoveList] = useOutletContext();
-  const startingPosition = ""
+  const [outcomeMap] = useOutletContext();
   
+  const startingPosition = "" 
+  const [moveList, setMoveList] = useState(startingPosition)
   
-  let [humanGoesFirst, setHumanGoesFirst] = useState(true);
-    
+  const [humanGoesFirst, setHumanGoesFirst] = useState(true);
+  const [gameNumber, setGameNumber] = useState(1);
+  const [winLossDrawRecord, setWinLossDrawRecord] = useState([0, 0, 0]);
+  const [difficultyMode, setDifficultyMode] = useState("hard") 
 
-  let [gameNumber, setGameNumber] = useState(1);
-  let [record, setRecord] = useState([0, 0, 0]);
-
-  let [difficultyMode, setDifficultyMode] = useState("hard") 
-
+  function humanGoesNext(moveList) {  
+    if (humanGoesFirst) {
+      return (nextPlayer(moveList) === "xNext")
+    } 
+    else {
+      return (nextPlayer(moveList) === "oNext")
+    }
+  }
 
   // CLICK HANDLERS
   function handleSquareClick(squareClicked) {
-    if (gameOver(moveList)) {
-      console.log("return without effects from handleSquareClick(). The Game is already over.")
-      return;
+    if (!humanGoesNext(moveList)) {
+      console.warn("NO EFFECT. Be patient, the bot takes a second to move. ")
+      return 1
     }
-    if (moveList.includes(squareClicked)) {
-      console.log("return without effects from handleSquareClick(). That square has already been claimed.")
-      return;
+    else if (moveList.includes(squareClicked)) {
+      console.warn("NO EFFECT. That number has already been claimed.")
+      return 1
     }
-    let updatedMoveList = moveList.concat(squareClicked)
-    setMoveList(updatedMoveList)
+    else if (gameOver(moveList)) {
+      console.warn("NO EFFECT. The Game is already over.")
+      return 1
+    }
+    else {
+      let updatedMoveList = moveList.concat(squareClicked)
+      setMoveList(updatedMoveList)
+      if (gameOver(updatedMoveList)) {
+        handleGameOver(updatedMoveList)
+      } else {
+        handleBotsTurn(updatedMoveList)
+      }
+      return 0
+    }
   }
 
   function newGame() {
-    setGameNumber(++gameNumber)
+    setGameNumber(gameNumber => ++gameNumber)
     setHumanGoesFirst(true)
     setMoveList(startingPosition)
   }
@@ -52,12 +67,13 @@ export default function PlayVsBot(props) {
   }
 
   function changeDifficultyMode(newDifficulty) {
-    // console.log(`Difficulty set to ${newDifficulty}`);
-    setGameNumber(1)
-    setHumanGoesFirst(true)
-    setRecord([0, 0, 0])
-    setMoveList(startingPosition)
-    setDifficultyMode(newDifficulty)
+    if (newDifficulty !== difficultyMode) {
+      setGameNumber(1)
+      setHumanGoesFirst(true)
+      setWinLossDrawRecord([0, 0, 0])
+      setMoveList(startingPosition)
+      setDifficultyMode(newDifficulty)
+    }
   }
 
   // Find and make a move for the Bot with a slight delay. 
@@ -68,7 +84,6 @@ export default function PlayVsBot(props) {
       setMoveList(updatedMoveList)
       if (gameOver(updatedMoveList)) {
         handleGameOver(updatedMoveList)
-        return 1
       }
     }, 600)
   }
@@ -77,23 +92,23 @@ export default function PlayVsBot(props) {
     let result = status(ml)
 
     if (result === "draw") {
-        setRecord([record[0], record[1], ++record[2]])
+      setWinLossDrawRecord([winLossDrawRecord[0], winLossDrawRecord[1], ++winLossDrawRecord[2]])
     }
     else if (result === "xWins") {
-        if (humanGoesFirst) {
-            setRecord([++record[0], record[1], record[2]])
-        }
-        else {
-            setRecord([record[0], ++record[1], record[2]])
-        }
+      if (humanGoesFirst) {
+        setWinLossDrawRecord([++winLossDrawRecord[0], winLossDrawRecord[1], winLossDrawRecord[2]])
+      }
+      else {
+        setWinLossDrawRecord([winLossDrawRecord[0], ++winLossDrawRecord[1], winLossDrawRecord[2]])
+      }
     }
     else if (result === "oWins") {
-        if (humanGoesFirst) {
-            setRecord([record[0], ++record[1], record[2]])
-        }
-        else {
-            setRecord([++record[0], record[1], record[2]])
-        }
+      if (humanGoesFirst) {
+        setWinLossDrawRecord([winLossDrawRecord[0], ++winLossDrawRecord[1], winLossDrawRecord[2]])
+      }
+      else {
+        setWinLossDrawRecord([++winLossDrawRecord[0], winLossDrawRecord[1], winLossDrawRecord[2]])
+      }
     }
     else {
         console.error(`handleGameOver called with invalid game result: ${result}. `)
@@ -117,7 +132,8 @@ export default function PlayVsBot(props) {
 
       <BotPanel
         moveList={moveList}
-        outcomeMap={outcomeMap}
+        winLossDrawRecord={winLossDrawRecord}
+        humanGoesFirst={humanGoesFirst}
         newGame={newGame}
         letBotGoFirst={letBotGoFirst}
         difficultyMode={difficultyMode}

@@ -11,9 +11,11 @@ import CoachPanel from "../components/panels/CoachPanel";
 import {  Box } from '@mui/material';
 
 export default function PlayWithCoach(props) {
-  const [outcomeMap, moveList, setMoveList] = useOutletContext();
+  const [outcomeMap] = useOutletContext();
 
-
+  const startingPosition = "" 
+  const [moveList, setMoveList] = useState(startingPosition)
+  
   
   let [showSolution, setShowSolution] = useState(false);
 
