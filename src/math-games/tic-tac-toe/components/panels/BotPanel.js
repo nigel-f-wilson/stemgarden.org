@@ -6,20 +6,30 @@ import React from 'react';
 import StatusHeader from './StatusHeader';
 import Commentary from "./Commentary";
 
+// import DifficultyModeButtons from '../buttons/DifficultyModeButtons';
 // import BotGoFirstButton from '../buttons/BotGoFirstButton';
 import HomeButton from "../buttons/HomeButton";
-import DifficultyModeButtons from '../buttons/DifficultyModeButtons';
-import BotGoFirstButton from '../buttons/BotGoFirstButton';
 
 
 // MUI Components
 import { Box, Container } from '@mui/material';
 
 export default function BotPanel(props) {
-    const { moveList, difficultyMode, changeDifficultyMode, outcomeMap, handleBotGoFirstClick } = props
-    
+  const { moveList, newGame, difficultyMode, changeDifficultyMode, outcomeMap, letBotGoFirst } = props
+  
+  const DifficultyModeButton = (props) => {
+    const { mode } = props
+    const selected = (mode === difficultyMode)
     return (
-      <Container 
+      <Button
+        label={mode}
+        children={mode}
+        sx={{ flexGrow: 1, mx: 1, border: selected ? 'solid white 3px' : 'none' }}
+        variant={'contained'}
+        onClick={() => changeDifficultyMode(mode)}
+      />
+    )
+  }
         sx={{ 
           width: '100%',
           height: '45%',
@@ -44,10 +54,6 @@ export default function BotPanel(props) {
         sx={{
           flexGrow: 2,
 
-        <DifficultyModeButtons 
-          difficultyMode={difficultyMode}
-          changeDifficultyMode={changeDifficultyMode}
-        />
         <Box display='flex' >
           <HomeButton
               gameOver={false}
@@ -57,6 +63,17 @@ export default function BotPanel(props) {
         </Box>
       </Container>
     )
+      <Box  display='flex' justifyContent='space-between' >
+        <DifficultyModeButton 
+          mode='easy'
+        />
+        <DifficultyModeButton 
+          mode='medium'
+        />
+        <DifficultyModeButton 
+          mode='hard'
+        />
+      </Box>         
         <BotGoFirstButton
           letBotGoFirst={letBotGoFirst}
         />
