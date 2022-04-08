@@ -17,7 +17,7 @@ export default function HomeButton(props) {
       to='../'
       variant="contained"
       color="primary"
-      sx={{ width: '50%' }}
+      sx={{flexGrow: 1 }}
     >
       <Box mr={1} display="flex" alignContent="center" >
         <FontAwesomeIcon icon={faHouse} size='lg' />
