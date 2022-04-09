@@ -13,7 +13,6 @@ const white = '#ddd'
 export default function Square(props) {
   const { icon, color, number, handleSquareClick } = props
 
-
   let squareIcon;
   switch (icon) {
     case 'x':
@@ -61,8 +60,9 @@ export default function Square(props) {
 
   return (
     <Box
-      p='0.25rem'
+      p='0.35rem'
       width='33.3%'
+      minWidth='100px'
       height='100%'
       display='flex'
     >
