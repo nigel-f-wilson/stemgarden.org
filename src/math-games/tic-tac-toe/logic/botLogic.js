@@ -104,70 +104,49 @@ export function drawingMoves(mls) { // For NEXT Player
   }
 }
 
-// export function winningMovesForBot(mls, humanGoesFirst) {
-//   availableNumbers(mls)
-// }
-
 export function sortBotMoves(ml, humanGoesFirst, outcomeMap) {
   let winningForBot = []
   let drawing = []
   let winningForHuman = []
-
 
   let validMoves = getValidMoves(ml)
   validMoves.forEach(move => {
     let newPosition = ml.concat(move)
     let outcome = outcomeMap.get(newPosition)
     if (outcome === "draw") {
-        drawing.push(move)
+      drawing.push(move)
     }
     else if (outcome === "xWins") {
       if (humanGoesFirst) {
-          winningForHuman.push(move)
+        winningForHuman.push(move)
       }
       else {
-          winningForBot.push(move)
+        winningForBot.push(move)
       }
     }
     else if (outcome === "oWins") {
       if (humanGoesFirst) {
-          winningForBot.push(move)
+        winningForBot.push(move)
       }
       else {
-          winningForHuman.push(move)
+        winningForHuman.push(move)  
       }
     }
     else {
-        console.error(`Error in sortBotMoves`)
+      console.error(`Error in sortBotMoves`)
     }
   })
   return {
-      "winningForBot": winningForBot,
-      "drawing": drawing,
-      "winningForHuman": winningForHuman,
+    "winningForBot": winningForBot,
+    "drawing": drawing,
+    "winningForHuman": winningForHuman,
   }
 }
 
-
-////////////////////////////////////////////////////////////////
-// Isolate each players' claimed numbers: ARRAY(NUM)
-////////////////////////////////////////////////////////////////
-// function botsNumbers(ml, humanGoesFirst) {  // Always the Human
-//     return (humanGoesFirst) ? oNumbers(ml) : xNumbers(ml)
-// }
-
-
 // Randomly selects a move from a list of possible next moves.
 export function selectMoveRandomly(moveSet) {
-    return moveSet[Math.floor(Math.random() * moveSet.length)]
+  return moveSet[Math.floor(Math.random() * moveSet.length)]
 }
-
-/////////////////////////////////////////////////////////////////////////
-// Coach & Bot Logic: Immediately Winning & Urgent Defensive Moves 
-/////////////////////////////////////////////////////////////////////////
-
-
-
 
 ////////////////////////////////////////////////////////////////
 // Get Children and Helpers:  An Array of move list Strings
@@ -181,14 +160,7 @@ export function getChildren(mls) {
 function getValidMoves(mls) {
     return (gameOver(mls)) ? [] : availableNumbers(mls)
 }
-// export function availableNumbers(mls) {
-//     let availableNumbers = new Set([1, 2, 3, 4, 5, 6, 7, 8, 9])
-//     for (let i = 0; i < mls.length; i++) {
-//         availableNumbers.delete(parseInt(mls.charAt(i)))
-//     }
-//     // console.log(`Available Squares: ${availableNumbers}`)
-//     return Array.from(availableNumbers)
-// }
+
 export function getParent(ml) {
     return ml.slice(0, ml.length - 1)
 }

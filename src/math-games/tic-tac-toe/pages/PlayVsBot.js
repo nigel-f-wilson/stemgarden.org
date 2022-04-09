@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useOutletContext } from "react-router-dom";
+// import { useOutletContext } from "react-router-dom";
 
 import { status, gameOver, nextPlayer  } from "../logic/gameLogic";
 import { getBotMove } from "../logic/botLogic";
@@ -8,8 +8,9 @@ import BotPanel from "../components/panels/BotPanel";
 
 import { Box } from '@mui/material';
 
-export default function PlayVsBot() {
-  const [outcomeMap] = useOutletContext();
+export default function PlayVsBot(props) {
+  const { outcomeMap } = props
+  // const [outcomeMap] = useOutletContext();
   
   const startingPosition = "" 
   const [moveList, setMoveList] = useState(startingPosition)

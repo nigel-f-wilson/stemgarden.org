@@ -164,41 +164,36 @@ function predictedOutcome(ml, outcomeMap) {
     return outcome
 }
 
-
-
-
-
 ////////////////////////////////////////////////////////////////
 // Isolate each players' claimed numbers: ARRAY(NUM)
 ////////////////////////////////////////////////////////////////
 export function xNumbers(ml) {
-    return moveListStringToArray(ml).filter((move, turn) => turn % 2 === 0)
+  return moveListStringToArray(ml).filter((move, turn) => turn % 2 === 0)
 }
 export function oNumbers(ml) {
-    return moveListStringToArray(ml).filter((move, turn) => turn % 2 === 1)
+  return moveListStringToArray(ml).filter((move, turn) => turn % 2 === 1)
 }
 
-
 export function moveListStringToArray(ml) {               // "123" --> [1,2,3]
-    return Array.from(ml).map(e => Number(e))
+  return Array.from(ml).map(e => Number(e))
 }
 
 export function getChildren(ml) {
-    let children = []
-    getValidMoves(ml).forEach(move => children.push(ml + move))
-    // this.validMoves(ml).forEach(move => children.push(ml + move))
-    return children
+  let children = []
+  getValidMoves(ml).forEach(move => children.push(ml + move))
+  return children
 }
+
 export function getValidMoves(ml) {
-    return (gameOver(ml)) ? [] : availableNumbers(ml)
+  return (gameOver(ml)) ? [] : availableNumbers(ml)
 }
+
 export function availableNumbers(ml) {
-    let availableNumbers = new Set([1, 2, 3, 4, 5, 6, 7, 8, 9])
-    for (let i = 0; i < ml.length; i++) {
-        availableNumbers.delete(parseInt(ml.charAt(i)))
-    }
-    // console.log(`Available Squares: ${availableNumbers}`)
-    return Array.from(availableNumbers)
+  let availableNumbers = new Set([1, 2, 3, 4, 5, 6, 7, 8, 9])
+  for (let i = 0; i < ml.length; i++) {
+    availableNumbers.delete(parseInt(ml.charAt(i)))
+  }
+  return Array.from(availableNumbers)
 }
 export function getParent(ml) {
     return ml.slice(0, ml.length - 1)
@@ -208,22 +203,22 @@ export function getParent(ml) {
 // Lowest Level Logic
 ////////////////////////////////////////////////////////////////
 export function intersect(listOne, listTwo) {
-    return listOne.filter(item => listTwo.includes(item))
+  return listOne.filter(item => listTwo.includes(item))
 }
 function sumsOfThree(moveSet) {
-    let sums = []
-    if (moveSet.length < 3) {
-        return sums
-    }
-    for (let i = 0; i < moveSet.length - 2; i++) {
-        for (let j = i + 1; j < moveSet.length - 1; j++) {
-            for (let k = j + 1; k < moveSet.length; k++) {
-                let sum = moveSet[i] + moveSet[j] + moveSet[k]
-                sums.push(sum)
-            }
-        }
-    }
-    return sums
+  let sums = []
+  if (moveSet.length < 3) {
+      return sums
+  }
+  for (let i = 0; i < moveSet.length - 2; i++) {
+      for (let j = i + 1; j < moveSet.length - 1; j++) {
+          for (let k = j + 1; k < moveSet.length; k++) {
+              let sum = moveSet[i] + moveSet[j] + moveSet[k]
+              sums.push(sum)
+          }
+      }
+  }
+  return sums
 }
 export function sumsOfTwo(moveSet) {
     let sums = []
