@@ -59,7 +59,8 @@ export default function Board(props) {
       <Box id='board width container'
         height='100%'
         width={height}
-        maxWidth='100%'
+        minWidth={height}
+        // maxWidth='100%'
       >  
         <Box id='row1' 
           children={squares.slice(0,3)}
@@ -96,28 +97,27 @@ function getColors(ml, showSolution, outcomeMap) {
 }
 
 function getIcons(ml) {
-    let data = Array(10).fill('_');  // Start with an array representing a board of NINE empty squares
-    let mlArray = moveListStringToArray(ml)
-    mlArray.forEach((squareId, turn) => {
-        data[squareId] = (turn % 2 === 0) ? 'x' : 'o'
-    })
-    return data;  
+  let data = Array(10).fill('_');  // Start with an array representing a board of NINE empty squares
+  let mlArray = moveListStringToArray(ml)
+  mlArray.forEach((squareId, turn) => {
+      data[squareId] = (turn % 2 === 0) ? 'x' : 'o'
+  })
+  return data;  
 }
 
 function highlightWins(ml) {
-    let colors = Array(10).fill('noColor')
-    numbersInWin(ml).forEach(num => colors[num] = 'win')
-    return colors
+  let colors = Array(10).fill('noColor')
+  numbersInWin(ml).forEach(num => colors[num] = 'win')
+  return colors
 }
 
 function getBoardHints(ml, outcomeMap) {
-    let colors = Array(10).fill('noColor')
-    availableNumbers(ml).forEach(num => {
-        let outcome = outcomeMap.get(ml + num.toString())
-        colors[num] = getHintColor(outcome, ml)
-    })
-    console.log(`COLORS: ${colors}`)
-    return colors
+  let colors = Array(10).fill('noColor')
+  availableNumbers(ml).forEach(num => {
+    let outcome = outcomeMap.get(ml + num.toString())
+    colors[num] = getHintColor(outcome, ml)
+  })
+  return colors
 }
 
 function getHintColor(outcome, ml) {
