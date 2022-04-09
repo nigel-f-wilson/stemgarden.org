@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React from 'react';
 
 import { status, 
   moveListStringToArray, 
@@ -16,17 +16,6 @@ import { Box } from '@mui/material';
 export default function Board(props) {
   const { moveList, outcomeMap, showSolution, handleSquareClick } = props
   const theme = useTheme()
-
-  const [height, setHeight] = useState(100);
-  const boardRef = useRef();
-  useEffect(() => {
-    const resizeObserver = new ResizeObserver((event) => {
-      setHeight(event[0].contentBoxSize[0].blockSize);
-    });
-    if (boardRef) {
-      resizeObserver.observe(boardRef.current);
-    }
-  }, [boardRef]);
     
 
   const icons = getIcons(moveList)
