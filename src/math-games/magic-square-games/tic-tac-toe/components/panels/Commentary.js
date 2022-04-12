@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { nextPlayer, status, getParent } from "../../../magic-square-games.js/magicSquareGameSolution";
+import { nextPlayer, status, getParent } from "../../../magicSquareGameSolution";
 import { winningMoves, urgentDefensiveMoves, doubleAttackingMoves } from "../../botLogic";
 
 

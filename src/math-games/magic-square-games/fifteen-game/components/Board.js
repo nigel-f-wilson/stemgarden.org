@@ -1,44 +1,28 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React from 'react';
 
 import { status, 
   moveListStringToArray, 
   numbersInWin, 
   availableNumbers, 
-} from "../../magic-square-games.js/magicSquareGameSolution";
+} from "../../magicSquareGameSolution";
 
 // My Components
 import Square from "./Square";
 
 // MUI  
-import { useTheme } from "@mui/system"
-import { Box } from '@mui/material'
+import { useTheme } from "@mui/system";
+import { Box } from '@mui/material';
 
 export default function Board(props) {
   const { moveList, outcomeMap, showSolution, handleSquareClick } = props
   const theme = useTheme()
-
-  const [height, setHeight] = useState(100);
-
-  const boardRef = useRef()
-  useEffect(() => {
-    const resizeObserver = new ResizeObserver((event) => {
-      setHeight(event[0].contentBoxSize[0].blockSize)
-    })
-    if (boardRef) {
-      resizeObserver.observe(boardRef.current)
-    }
-    return () => {
-      resizeObserver.disconnect()
-    }
-  }, [boardRef])
     
-
   const icons = getIcons(moveList)
   const colors = getColors(moveList, showSolution, outcomeMap)
-  const magicSquareNumbers = [2,9,4,7,5,3,6,1,8]
-
-  let squares = []
-  magicSquareNumbers.forEach(num => {
+  
+  const cardNumbers = [1,2,3,4,5,6,7,8,9]
+  let cards = []
+  cardNumbers.forEach(num => {
     let newSquare =
       <Square
         key={num}
@@ -47,11 +31,11 @@ export default function Board(props) {
         color={colors[num]}
         handleSquareClick={handleSquareClick}
       />
-    squares.push(newSquare);
+    cards.push(newSquare);
   })
 
   return (
-    <Box ref={boardRef}
+    <Box  
       id='board height container'
       height={theme.breakpoints.values.sm}
       maxHeight='50%'
@@ -62,24 +46,18 @@ export default function Board(props) {
     >  
       <Box id='board width container'
         height='100%'
-        width={height}
-        minWidth={height}
-        // maxWidth='100%'
+        width='100%'
+        border='solid red 2px'
       >  
         <Box id='row1' 
-          children={squares.slice(0,3)}
+          children={cards.slice(0,5)}
           width='100%'
-          height='33.3%' 
+          height='50%' 
           display='flex'
         />
         <Box id='row2' 
-          children={squares.slice(3,6)}
-          height='33%' 
-          display='flex'
-        />
-        <Box id='row3' 
-          children={squares.slice(6,9)}
-          height='33%' 
+          children={cards.slice(5,9)}
+          height='50%' 
           display='flex'
         />
       </Box>

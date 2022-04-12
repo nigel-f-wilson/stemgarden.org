@@ -1,18 +1,13 @@
 import React from 'react';
 
-// Custom Components
-import StatusHeader from './StatusHeader';
-import Commentary from "./Commentary";
-
-import HomeButton from "../buttons/HomeButton";
-// import UndoMoveButton from "../buttons/UndoMoveButton";
-// import ShowSolutionButton from "../buttons/ShowSolutionButton";
-
+import { Box, Container, Button } from '@mui/material';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRotateLeft, faQuestion } from '@fortawesome/free-solid-svg-icons';
 
-// MUI Components
-import { Box, Container, Button } from '@mui/material';
+// Custom Components
+import HomeButton from "../buttons/HomeButton";
+import StatusHeader from './StatusHeader';
+import Commentary from "./Commentary";
 
 export default function CoachPanel(props) {
   const { moveList, showSolution, toggleShowSolution, handleUndoClick, outcomeMap } = props

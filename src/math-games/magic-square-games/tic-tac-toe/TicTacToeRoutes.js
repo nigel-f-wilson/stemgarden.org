@@ -3,7 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 
 import {  Container,  Box } from '@mui/material';
 
-import { generatePositionToOutcomeMap } from "../magic-square-games.js/magicSquareGameSolution";
+import { generatePositionToOutcomeMap } from "../magicSquareGameSolution";
 
 import Welcome from './pages/Welcome'
 const PlayWithCoach = lazy(() => import('./pages/PlayWithCoach'))

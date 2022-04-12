@@ -16,8 +16,8 @@ const MathGamesPage = lazy(() => import('./math-games/MathGamesPage'))
 const ConnectFour = lazy(() => import('./math-games/connect-four/ConnectFour'))
 
 
-const FifteenGameRoutes = lazy(() => import('./math-games/fifteen-game/FifteenGameRoutes'))
-const TicTacToeRoutes = lazy(() => import('./math-games/tic-tac-toe/TicTacToeRoutes'))
+const FifteenGameRoutes = lazy(() => import('./math-games/magic-square-games/fifteen-game/FifteenGameRoutes'))
+const TicTacToeRoutes = lazy(() => import('./math-games/magic-square-games/tic-tac-toe/TicTacToeRoutes'))
 
 
 const ChessClubsPage = lazy(() => import('./pages/ChessClubsPage'))

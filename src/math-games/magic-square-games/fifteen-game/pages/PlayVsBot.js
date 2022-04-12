@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 // import { useOutletContext } from "react-router-dom";
+import { Box } from '@mui/material';
 
-import { status, gameOver, nextPlayer  } from "../logic/gameLogic";
-import { getBotMove } from "../logic/botLogic";
+// My Components
 import Board from "../components/Board";
 import BotPanel from "../components/panels/BotPanel";
 
-import { Box } from '@mui/material';
+// Gmae Logic
+import { status, gameOver, nextPlayer  } from "../../magicSquareGameSolution";
+import { getBotMove } from "../logic/botLogic";
+
 
 export default function PlayVsBot(props) {
   const { outcomeMap } = props

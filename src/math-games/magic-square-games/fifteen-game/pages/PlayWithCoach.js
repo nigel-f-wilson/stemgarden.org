@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import { useOutletContext } from "react-router-dom";
+import { Box } from '@mui/material';
 
-import { gameOver } from "../logic/gameLogic";
+// My Components
 import Board from "../components/Board";
 import CoachPanel from "../components/panels/CoachPanel";
 
-import { Box } from '@mui/material';
+// Game Logic
+import { gameOver } from "../../magicSquareGameSolution";
+
 
 export default function PlayWithCoach(props) {
   const [outcomeMap] = useOutletContext();
