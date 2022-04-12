@@ -4,7 +4,7 @@ import { status,
   moveListStringToArray, 
   numbersInWin, 
   availableNumbers, 
-} from "../logic/gameLogic";
+} from "../../magic-square-games.js/magicSquareGameSolution";
 
 // My Components
 import Square from "./Square";
@@ -17,7 +17,6 @@ export default function Board(props) {
   const { moveList, outcomeMap, showSolution, handleSquareClick } = props
   const theme = useTheme()
     
-
   const icons = getIcons(moveList)
   const colors = getColors(moveList, showSolution, outcomeMap)
   
@@ -36,7 +35,7 @@ export default function Board(props) {
   })
 
   return (
-    <Box ref={boardRef}
+    <Box  
       id='board height container'
       height={theme.breakpoints.values.sm}
       maxHeight='50%'
