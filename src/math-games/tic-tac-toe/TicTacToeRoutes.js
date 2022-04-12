@@ -5,16 +5,20 @@ import {  Container,  Box } from '@mui/material';
 
 import { generatePositionToOutcomeMap } from "../magic-square-games.js/magicSquareGameSolution";
 
-const Welcome = lazy(() => import('./pages/Welcome'))
+import Welcome from './pages/Welcome'
 const PlayWithCoach = lazy(() => import('./pages/PlayWithCoach'))
 const PlayVsBot = lazy(() => import('./pages/PlayVsBot')) 
 
 export default function TicTacToeRoutes(props) {
   const [outcomeMap, setOutcomeMap] = useState(null)
+  
   useEffect(() => {
-    let map = generatePositionToOutcomeMap()
-    setOutcomeMap(map)
-    console.log("Outcome Map Generated");
+    const generateOutcomeMapAsync = async () => {
+      const map = await generatePositionToOutcomeMap()
+      setOutcomeMap(map)
+      console.log("Outcome Map Generated");
+    }
+    generateOutcomeMapAsync()
   }, [])
 
   return (
