@@ -5,20 +5,19 @@ import { Route, Routes } from "react-router-dom"
 // PAGES
 // import { About, Contact, MathGames, ChessClubs, Services } from "./pages/index"
 import LandingPage from './pages/LandingPage'
+
+
+
 const AboutPage = lazy(() => import('./pages/AboutPage'))
 const ContactPage = lazy(() => import('./pages/ContactPage'))
 
 
 const MathGamesPage = lazy(() => import('./math-games/MathGamesPage'))
 const ConnectFour = lazy(() => import('./math-games/connect-four/ConnectFour'))
-const FifteenGame = lazy(() => import('./math-games/fifteen-game/FifteenGame'))
-
-const TicTacToeRoot = lazy(() => import('./math-games/tic-tac-toe/TicTacToeRoot'))
-const Welcome = lazy(() => import('./math-games/tic-tac-toe/pages/Welcome'))
-const PlayWithCoach = lazy(() => import('./math-games/tic-tac-toe/pages/PlayWithCoach'))
-const PlayVsBot = lazy(() => import('./math-games/tic-tac-toe/pages/PlayVsBot'))
 
 
+const FifteenGameRoutes = lazy(() => import('./math-games/magic-square-games/fifteen-game/FifteenGameRoutes'))
+const TicTacToeRoutes = lazy(() => import('./math-games/magic-square-games/tic-tac-toe/TicTacToeRoutes'))
 
 
 const ChessClubsPage = lazy(() => import('./pages/ChessClubsPage'))
@@ -38,23 +37,28 @@ export default function MainRouter() {
           <Route path="buy-our-fruit" element={<ServicesPage />} />
           <Route path="get-involved" element={<ChessClubsPage />} />
         </Route>
+        
         <Route path="services" element={<ServicesPage />} >
           <Route path="tutoring" element={<ServicesPage />} />   {/* <Route path="tutoring" element={<Services activeTab="tutoring" />} /> */}
           <Route path="enrichment" element={<ServicesPage />} />
           <Route path="teacher-training" element={<ServicesPage />} />
           <Route path="web-development" element={<ServicesPage />} />
-
           <Route path="chess-clubs" element={<ChessClubsPage />} />
         </Route>
+        
         <Route path="math-games"  >
           <Route index element={<MathGamesPage />} />
           <Route path="connect-four" element={<ConnectFour />} />
-          <Route path="tic-tac-toe" element={<TicTacToeRoot />} >
+          <Route path="tic-tac-toe/*" element={<TicTacToeRoutes />} />
+          <Route path="the-15-game/*" element={<FifteenGameRoutes />} />
+
+          
+          {/* <Route path="tic-tac-toe" element={<TicTacToeRoot />} >
             <Route index element={<Welcome />} />
             <Route path="play-with-coach" element={<PlayWithCoach />} />
             <Route path="play-vs-bot" element={<PlayVsBot />} />
-          </Route>
-          <Route path="the-15-game" element={<FifteenGame />} />
+          </Route> */}
+          {/* <Route path="the-15-game" element={<FifteenGame />} /> */}
 
         </Route>
         {/* <Route path="garden" element={<Garden />} >
@@ -69,8 +73,8 @@ export default function MainRouter() {
           <Route path="you" element={<Join />} />
         </Route> */}
         <Route path="contact" element={<ContactPage />} />
-    </Routes>
+      </Routes>
 
-      </Suspense>
+    </Suspense>
   );
 }

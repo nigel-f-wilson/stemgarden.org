@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRotateLeft } from '@fortawesome/free-solid-svg-icons';
 
 import HomeButton from "../buttons/HomeButton";
+import DifficultyModeButton from "../buttons/DifficultyModeButton";
 
 // Logic
 import { gameOver, status } from "../../logic/gameLogic";
@@ -21,27 +22,23 @@ export default function BotPanel(props) {
     gameNumber 
   } = props
 
-  const DifficultyModeButton = (props) => {
-    const { mode } = props
-    const selected = (mode === difficultyMode)
+  const DifficultyModeButtons = () => {
     return (
-      <Button
-        label={<Typography children={mode} />}
-        children={mode}
-        sx={{flexGrow: 1, mx: 1, border: selected ? 'solid white 3px' : 'none' }}
-        variant={'contained'}
-        onClick={() => changeDifficultyMode(mode)}
-      />
+      <Box mb={2} height={40} display='flex' justifyContent='space-between' > 
+        <DifficultyModeButton thisButtonsMode='easy'   difficultyMode={difficultyMode} changeDifficultyMode={changeDifficultyMode} />
+        <DifficultyModeButton thisButtonsMode='medium' difficultyMode={difficultyMode} changeDifficultyMode={changeDifficultyMode}  />
+        <DifficultyModeButton thisButtonsMode='hard'   difficultyMode={difficultyMode} changeDifficultyMode={changeDifficultyMode}  />
+      </Box> 
     )
   }
-  const NewGameButton = (props) => {
-    const { gameOver, newGame } = props
+  
+  const NewGameButton = () => {
     return (
       <Button
+        onClick={() => newGame()}
         variant="contained"
         color="primary"
-        onClick={() => newGame()}
-        disabled={!gameOver}
+        disabled={!gameOver(moveList)}
         sx={{ flexGrow: 2, mx: 1 }}
       >
         <Box mr={2} display="flex" alignContent="center" >
@@ -144,7 +141,7 @@ export default function BotPanel(props) {
     <Container 
       sx={{ 
         width: '100%',
-        height: '45%',
+        height: '35vh',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-between',
@@ -155,25 +152,11 @@ export default function BotPanel(props) {
       <WinLossDrawRecord />
         
       <Box>
-        <Box mb={2} height={40} display='flex' justifyContent='space-between' > 
-          <DifficultyModeButton mode='easy' />
-          <DifficultyModeButton mode='medium' />
-          <DifficultyModeButton mode='hard' />
-        </Box>         
+        <DifficultyModeButtons /> 
         <Box display='flex' justifyContent='space-between' height={40} >
-          <BotGoFirstButton
-            letBotGoFirst={letBotGoFirst}
-          />
-          <NewGameButton
-              gameOver={gameOver(moveList)}
-              moveList={moveList}
-              newGame={newGame}
-          />
-          <HomeButton
-              gameOver={false}
-              moveList={moveList}
-              handleClick={() => {console.log(`The HOME button is not built yet`)}}
-          />
+          <BotGoFirstButton />
+          <NewGameButton />
+          <HomeButton />
         </Box>
       </Box>
     </Container>

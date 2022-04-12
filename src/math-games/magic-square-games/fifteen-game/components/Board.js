@@ -1,10 +1,10 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React from 'react';
 
 import { status, 
   moveListStringToArray, 
   numbersInWin, 
   availableNumbers, 
-} from "../logic/gameLogic";
+} from "../../magicSquareGameSolution";
 
 // My Components
 import Square from "./Square";
@@ -16,25 +16,13 @@ import { Box } from '@mui/material';
 export default function Board(props) {
   const { moveList, outcomeMap, showSolution, handleSquareClick } = props
   const theme = useTheme()
-
-  const [height, setHeight] = useState(100);
-  const boardRef = useRef();
-  useEffect(() => {
-    const resizeObserver = new ResizeObserver((event) => {
-      setHeight(event[0].contentBoxSize[0].blockSize);
-    });
-    if (boardRef) {
-      resizeObserver.observe(boardRef.current);
-    }
-  }, [boardRef]);
     
-
   const icons = getIcons(moveList)
   const colors = getColors(moveList, showSolution, outcomeMap)
-  const magicSquareNumbers = [2,9,4,7,5,3,6,1,8]
-
-  let squares = []
-  magicSquareNumbers.forEach(num => {
+  
+  const cardNumbers = [1,2,3,4,5,6,7,8,9]
+  let cards = []
+  cardNumbers.forEach(num => {
     let newSquare =
       <Square
         key={num}
@@ -43,11 +31,11 @@ export default function Board(props) {
         color={colors[num]}
         handleSquareClick={handleSquareClick}
       />
-    squares.push(newSquare);
+    cards.push(newSquare);
   })
 
   return (
-    <Box ref={boardRef}
+    <Box  
       id='board height container'
       height={theme.breakpoints.values.sm}
       maxHeight='50%'
@@ -58,23 +46,18 @@ export default function Board(props) {
     >  
       <Box id='board width container'
         height='100%'
-        width={height}
-        maxWidth='100%'
+        width='100%'
+        border='solid red 2px'
       >  
         <Box id='row1' 
-          children={squares.slice(0,3)}
+          children={cards.slice(0,5)}
           width='100%'
-          height='33.3%' 
+          height='50%' 
           display='flex'
         />
         <Box id='row2' 
-          children={squares.slice(3,6)}
-          height='33%' 
-          display='flex'
-        />
-        <Box id='row3' 
-          children={squares.slice(6,9)}
-          height='33%' 
+          children={cards.slice(5,9)}
+          height='50%' 
           display='flex'
         />
       </Box>
@@ -96,28 +79,27 @@ function getColors(ml, showSolution, outcomeMap) {
 }
 
 function getIcons(ml) {
-    let data = Array(10).fill('_');  // Start with an array representing a board of NINE empty squares
-    let mlArray = moveListStringToArray(ml)
-    mlArray.forEach((squareId, turn) => {
-        data[squareId] = (turn % 2 === 0) ? 'x' : 'o'
-    })
-    return data;  
+  let data = Array(10).fill('_');  // Start with an array representing a board of NINE empty squares
+  let mlArray = moveListStringToArray(ml)
+  mlArray.forEach((squareId, turn) => {
+      data[squareId] = (turn % 2 === 0) ? 'x' : 'o'
+  })
+  return data;  
 }
 
 function highlightWins(ml) {
-    let colors = Array(10).fill('noColor')
-    numbersInWin(ml).forEach(num => colors[num] = 'win')
-    return colors
+  let colors = Array(10).fill('noColor')
+  numbersInWin(ml).forEach(num => colors[num] = 'win')
+  return colors
 }
 
 function getBoardHints(ml, outcomeMap) {
-    let colors = Array(10).fill('noColor')
-    availableNumbers(ml).forEach(num => {
-        let outcome = outcomeMap.get(ml + num.toString())
-        colors[num] = getHintColor(outcome, ml)
-    })
-    console.log(`COLORS: ${colors}`)
-    return colors
+  let colors = Array(10).fill('noColor')
+  availableNumbers(ml).forEach(num => {
+    let outcome = outcomeMap.get(ml + num.toString())
+    colors[num] = getHintColor(outcome, ml)
+  })
+  return colors
 }
 
 function getHintColor(outcome, ml) {

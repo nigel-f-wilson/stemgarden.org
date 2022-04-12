@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Box, Paper } from '@mui/material';
+import { Box, Paper, Typography } from '@mui/material';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faO, faXmark } from '@fortawesome/free-solid-svg-icons';
@@ -12,7 +12,6 @@ const white = '#ddd'
 
 export default function Square(props) {
   const { icon, color, number, handleSquareClick } = props
-
 
   let squareIcon;
   switch (icon) {
@@ -29,7 +28,7 @@ export default function Square(props) {
       </Box>
       break;
     case '_':
-      // squareIcon = <Typography variant='h3' color='textSecondary' >{props.number}</Typography> // 
+      squareIcon = <Typography variant='h3' color='textSecondary' >{props.number}</Typography> // 
       break;
     default:
       console.error("Square passed symbol not 'x' 'o' or '_'");
@@ -61,8 +60,9 @@ export default function Square(props) {
 
   return (
     <Box
-      p='0.25rem'
+      p='0.35rem'
       width='33.3%'
+      minWidth='100px'
       height='100%'
       display='flex'
     >

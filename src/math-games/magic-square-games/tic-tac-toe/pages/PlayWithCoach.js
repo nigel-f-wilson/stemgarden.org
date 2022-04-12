@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
-import { useOutletContext } from "react-router-dom";
+// import { useOutletContext } from "react-router-dom";
 
-import { gameOver } from "../logic/gameLogic";
+import { gameOver } from "../../magicSquareGameSolution";
 import Board from "../components/Board";
 import CoachPanel from "../components/panels/CoachPanel";
 
 import { Box } from '@mui/material';
 
 export default function PlayWithCoach(props) {
-  const [outcomeMap] = useOutletContext();
+  const { outcomeMap } = props
+  // const [outcomeMap] = useOutletContext();
 
   const startingPosition = "" 
   const [moveList, setMoveList] = useState(startingPosition)
@@ -31,6 +32,7 @@ export default function PlayWithCoach(props) {
 
   function handleUndoClick() {
     const shortenedMoveList = moveList.slice(0, moveList.length - 1)
+    setShowSolution(false)
     setMoveList(shortenedMoveList)
   }
 
