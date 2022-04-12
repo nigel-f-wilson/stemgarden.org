@@ -4,29 +4,33 @@ import { status,
   moveListStringToArray, 
   numbersInWin, 
   availableNumbers, 
-} from "../logic/gameLogic";
+} from "../../magic-square-games.js/magicSquareGameSolution";
 
 // My Components
 import Square from "./Square";
 
 // MUI  
-import { useTheme } from "@mui/system";
-import { Box } from '@mui/material';
+import { useTheme } from "@mui/system"
+import { Box } from '@mui/material'
 
 export default function Board(props) {
   const { moveList, outcomeMap, showSolution, handleSquareClick } = props
   const theme = useTheme()
 
   const [height, setHeight] = useState(100);
-  const boardRef = useRef();
+
+  const boardRef = useRef()
   useEffect(() => {
     const resizeObserver = new ResizeObserver((event) => {
-      setHeight(event[0].contentBoxSize[0].blockSize);
-    });
+      setHeight(event[0].contentBoxSize[0].blockSize)
+    })
     if (boardRef) {
-      resizeObserver.observe(boardRef.current);
+      resizeObserver.observe(boardRef.current)
     }
-  }, [boardRef]);
+    return () => {
+      resizeObserver.disconnect()
+    }
+  }, [boardRef])
     
 
   const icons = getIcons(moveList)
