@@ -41,7 +41,7 @@ const mathGamesCardData = [
     disabled: false
   },
   {
-    title: "Quick Quizes",
+    title: "Fluency Checklist",
     linkTo: "the-15-game",
     imgUrl: under_construction,
     disabled: true
