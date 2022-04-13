@@ -2,8 +2,17 @@ import React from 'react';
 import { Box, Typography } from '@mui/material';
 
 
+<<<<<<< Updated upstream:src/math-games/tic-tac-toe/components/panels/Commentary.js
 import { nextPlayer, status, getParent } from "../../logic/gameLogic";
+<<<<<<< Updated upstream:src/math-games/magic-square-games/fifteen-game/components/panels/Commentary.js
 import { winningMoves, urgentDefensiveMoves, doubleAttackingMoves } from "../../botLogic";
+=======
+import { winningMoves, urgentDefensiveMoves, doubleAttackingMoves } from "../../logic/botLogic";
+=======
+import { nextPlayer, status, getParent } from "../../../helpers";
+import { winningMoves, urgentDefensiveMoves, doubleAttackingMoves } from "../../../getBotMove";
+>>>>>>> Stashed changes:src/math-games/magic-square-games/fifteen-game/components/panels/Commentary.js
+>>>>>>> Stashed changes:src/math-games/tic-tac-toe/components/panels/Commentary.js
 
 
 

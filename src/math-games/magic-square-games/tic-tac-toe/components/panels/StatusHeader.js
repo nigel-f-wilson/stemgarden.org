@@ -1,9 +1,17 @@
 import React from 'react';
+<<<<<<< Updated upstream
 
 import { status } from "../../../solution";
 
 // MUI Components
 import { Typography } from '@mui/material';
+=======
+import { Typography } from '@mui/material';
+
+
+import { status } from "../../../helpers";
+
+>>>>>>> Stashed changes
 
 export default function StatusHeader(props) {
   const { moveList, } = props

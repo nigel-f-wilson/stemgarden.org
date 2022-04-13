@@ -1,8 +1,13 @@
 // X always goes first! X and O will be shorthand for the player who goes First and the player who goes second.
 // PlayerOne and PlayerTwo are NOT markers of who goes first or second in any given game!
 // In the 15 game, PlayerOne and PlayerTWo are distinguished by dark-blue and light-blue
+<<<<<<< Updated upstream
 import { intersect } from "../../_helpers/probability";
 import { sumsOfTwo, complementOf, gameOver, xNumbers, oNumbers, nextPlayer, availableNumbers } from "../solution";
+=======
+import { intersect } from "../_helpers/probability";
+import { sumsOfTwo, complementOf, gameOver, xNumbers, oNumbers, nextPlayer, availableNumbers } from "./helpers";
+>>>>>>> Stashed changes
 
 
 //////////////////////////////////////////////////////////////     
@@ -26,10 +31,17 @@ export function getBotMove(difficultyMode, moveList, humanGoesFirst, outcomeMap)
 function easyProtocol(ml) {
     if (winningMoves(ml).length > 0) {
         console.log(`BOT FOUND IMMEDIEATELY WINNING MOVES: ${winningMoves(ml)}`)
+<<<<<<< Updated upstream
         return selectMoveRandomly(winningMoves(ml))
     }
     else {
         return selectMoveRandomly(availableNumbers(ml))
+=======
+        return pickRandomFromArray(winningMoves(ml))
+    }
+    else {
+        return pickRandomFromArray(availableNumbers(ml))
+>>>>>>> Stashed changes
     }
 }
 // In MEDIUM mode, Bot wins immediately if possible.
@@ -39,6 +51,7 @@ function mediumProtocol(ml) {
     let defensiveMoves = urgentDefensiveMoves(ml)
     if (wins.length > 0) {
         console.log(`BOT FOUND IMMEDIATELY WINNING MOVES: ${wins}`)
+<<<<<<< Updated upstream
         return selectMoveRandomly(wins)
     }
     else if (defensiveMoves.length > 0) {
@@ -47,6 +60,16 @@ function mediumProtocol(ml) {
     }
     else {
         return selectMoveRandomly(availableNumbers(ml))
+=======
+        return pickRandomFromArray(wins)
+    }
+    else if (defensiveMoves.length > 0) {
+        console.log(`BOT FOUND URGENT DEFENSIVE MOVES: ${defensiveMoves}`)
+        return pickRandomFromArray(defensiveMoves)
+    }
+    else {
+        return pickRandomFromArray(availableNumbers(ml))
+>>>>>>> Stashed changes
     }
 }
 
@@ -55,6 +78,7 @@ function mediumProtocol(ml) {
 function hardProtocol(moveList, humanGoesFirst, outcomeMap) {
   let sorted = sortBotMoves(moveList, humanGoesFirst, outcomeMap)
   if (sorted.winningForBot.length > 0) {
+<<<<<<< Updated upstream
     return selectMoveRandomly(sorted.winningForBot)
   }
   else if (sorted.drawing.length > 0) {
@@ -62,6 +86,15 @@ function hardProtocol(moveList, humanGoesFirst, outcomeMap) {
   }
   else {
     return selectMoveRandomly(sorted.winningForHuman)    
+=======
+    return pickRandomFromArray(sorted.winningForBot)
+  }
+  else if (sorted.drawing.length > 0) {
+    return pickRandomFromArray(sorted.drawing)
+  }
+  else {
+    return pickRandomFromArray(sorted.winningForHuman)    
+>>>>>>> Stashed changes
   }
 }
 
@@ -144,7 +177,11 @@ export function sortBotMoves(ml, humanGoesFirst, outcomeMap) {
 }
 
 // Randomly selects a move from a list of possible next moves.
+<<<<<<< Updated upstream
 export function selectMoveRandomly(moveSet) {
+=======
+function pickRandomFromArray(moveSet) {
+>>>>>>> Stashed changes
   return moveSet[Math.floor(Math.random() * moveSet.length)]
 }
 
@@ -173,15 +210,26 @@ export function getParent(ml) {
 //     console.log(`BOT MAKING AN OPENING BOOK MOVE.`)
 
 //     if (ml.length === 0) {
+<<<<<<< Updated upstream
 //         return selectMoveRandomly(availableNumbers(ml))
 //     }
 //     else if (ml[0] === 5) {
 //         return selectMoveRandomly([2, 4, 6, 8])
+=======
+//         return pickRandomFromArray(availableNumbers(ml))
+//     }
+//     else if (ml[0] === 5) {
+//         return pickRandomFromArray([2, 4, 6, 8])
+>>>>>>> Stashed changes
 //     }
 //     else if (ml[0] % 2 === 0) {  // If player took a corner, bot must take center.
 //         return [5]
 //     }
 //     else {
+<<<<<<< Updated upstream
 //         return selectMoveRandomly(blockingMoves(ml))
+=======
+//         return pickRandomFromArray(blockingMoves(ml))
+>>>>>>> Stashed changes
 //     }
 // }

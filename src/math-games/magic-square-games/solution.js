@@ -1,6 +1,14 @@
+<<<<<<< Updated upstream:src/math-games/magic-square-games/solution.js
 import { intersect } from "../_helpers/probability";
 
 
+=======
+<<<<<<< Updated upstream:src/math-games/tic-tac-toe/logic/gameLogic.js
+=======
+
+
+>>>>>>> Stashed changes:src/math-games/magic-square-games/solution.js
+>>>>>>> Stashed changes:src/math-games/tic-tac-toe/logic/gameLogic.js
 // X always goes first! X and O will be shorthand for the player who goes First and the player who goes second.
 // PlayerOne and PlayerTwo are NOT markers of who goes first or second in any given game!
 // In the 15 game, PlayerOne and PlayerTWo are distinguished by dark-blue and light-blue
@@ -61,6 +69,7 @@ export async function generatePositionToOutcomeMap() {
   return outcomeMap
 }
 
+<<<<<<< Updated upstream:src/math-games/tic-tac-toe/logic/gameLogic.js
 ////////////////////////////////////////////////////////////////
 //  Current Game Status: "xWins", "oWins", "draw",  "xNext", or "oNext"
 ////////////////////////////////////////////////////////////////
@@ -233,3 +242,29 @@ export function sumsOfTwo(moveSet) {
 }
 
 
+<<<<<<< Updated upstream:src/math-games/magic-square-games/solution.js
+=======
+
+// function factorial(num) {
+//     console.assert(num >= 0 && num <=9, `Factorial called with a number out of this game's range!`)
+//     let product = 1
+//     for (let i = 1; i <= num; i++) {
+//         product = product * i
+//     }
+//     return product
+//     // This led to a fun research rabbit hole about how to more efficiently compute factorials using Paschals Triangle
+// }
+
+// function inEfficientUnclaimedNumbers(ml) {
+//     let unclaimedNumbers = [];
+//     for (let i = 1; i <= 9; i++) {
+//         if (!ml.includes(i)) {
+//             unclaimedNumbers.push(i)
+//         }
+//     }
+//     // console.log(`List Empty Squares: ${emptySquaresList}`)
+//     return unclaimedNumbers;
+// }
+=======
+>>>>>>> Stashed changes:src/math-games/magic-square-games/solution.js
+>>>>>>> Stashed changes:src/math-games/tic-tac-toe/logic/gameLogic.js

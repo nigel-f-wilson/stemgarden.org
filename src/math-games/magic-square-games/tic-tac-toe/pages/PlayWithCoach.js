@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 // import { useOutletContext } from "react-router-dom";
 
+<<<<<<< Updated upstream
 import { gameOver } from "../../solution";
+=======
+import { gameOver } from "../../helpers";
+>>>>>>> Stashed changes
 import Board from "../components/Board";
 import CoachPanel from "../components/panels/CoachPanel";
 
