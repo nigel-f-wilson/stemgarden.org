@@ -7,8 +7,13 @@ import Board from "../components/Board";
 import BotPanel from "../components/panels/BotPanel";
 
 // Game Logic
+<<<<<<< Updated upstream
 import { status, gameOver, nextPlayer  } from "../../solution";
 import { getBotMove } from "../botLogic";
+=======
+import { status, gameOver, nextPlayer  } from "../../helpers";
+import { getBotMove } from "../../getBotMove";
+>>>>>>> Stashed changes
 
 
 export default function PlayVsBot(props) {
