@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { status } from "../../../magicSquareGameSolution";
+import { status } from "../../../solution";
 
 // MUI Components
 import { Typography } from '@mui/material';

@@ -4,7 +4,7 @@ import { status,
   moveListStringToArray, 
   numbersInWin, 
   availableNumbers, 
-} from "../../magicSquareGameSolution";
+} from "../../solution";
 
 // My Components
 import Square from "./Square";

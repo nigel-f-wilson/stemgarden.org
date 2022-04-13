@@ -1,3 +1,6 @@
+import { intersect } from "../_helpers/probability";
+
+
 // X always goes first! X and O will be shorthand for the player who goes First and the player who goes second.
 // PlayerOne and PlayerTwo are NOT markers of who goes first or second in any given game!
 // In the 15 game, PlayerOne and PlayerTWo are distinguished by dark-blue and light-blue
@@ -45,7 +48,7 @@ function getListOfPossiblePositions() {
 
 
 // export const outcomeMap = generatePositionToOutcomeMap()
-export function generatePositionToOutcomeMap() {
+export async function generatePositionToOutcomeMap() {
   let outcomeMap = new Map()
   let list = listOfPossiblePositions
   for (let length = 9; length >= 0; length--) {
@@ -99,9 +102,6 @@ export function oHasWon(ml) {
 export function gameDrawn(ml) {
   return (ml.length === 9 && !gameHasBeenWon(ml))
 }
-// function gameWillBeDrawn(ml) {
-//     // TODO
-// }
 export function moveNumber(ml) {
     return (ml.length + 1)
 }
@@ -110,7 +110,7 @@ export function numbersInWin(ml) {
   let Xs = xNumbers(ml)
   let Os = oNumbers(ml)
   let winningTrios = trioList.filter(trio =>
-      intersect(trio, Xs).length === 3 || intersect(trio, Os).length === 3
+    intersect(trio, Xs).length === 3 || intersect(trio, Os).length === 3
   )
   return winningTrios.flat()
 }
@@ -202,9 +202,7 @@ export function getParent(ml) {
 ////////////////////////////////////////////////////////////////
 // Lowest Level Logic
 ////////////////////////////////////////////////////////////////
-export function intersect(listOne, listTwo) {
-  return listOne.filter(item => listTwo.includes(item))
-}
+
 function sumsOfThree(moveSet) {
   let sums = []
   if (moveSet.length < 3) {
@@ -235,24 +233,3 @@ export function sumsOfTwo(moveSet) {
 }
 
 
-
-// function factorial(num) {
-//     console.assert(num >= 0 && num <=9, `Factorial called with a number out of this game's range!`)
-//     let product = 1
-//     for (let i = 1; i <= num; i++) {
-//         product = product * i
-//     }
-//     return product
-//     // This led to a fun research rabbit hole about how to more efficiently compute factorials using Paschals Triangle
-// }
-
-// function inEfficientUnclaimedNumbers(ml) {
-//     let unclaimedNumbers = [];
-//     for (let i = 1; i <= 9; i++) {
-//         if (!ml.includes(i)) {
-//             unclaimedNumbers.push(i)
-//         }
-//     }
-//     // console.log(`List Empty Squares: ${emptySquaresList}`)
-//     return unclaimedNumbers;
-// }

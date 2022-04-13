@@ -1,10 +1,11 @@
 import React from 'react';
+import { Box, Typography } from '@mui/material';
+
 
 import { nextPlayer, status, getParent } from "../../logic/gameLogic";
-import { winningMoves, urgentDefensiveMoves, doubleAttackingMoves } from "../../logic/botLogic";
+import { winningMoves, urgentDefensiveMoves, doubleAttackingMoves } from "../../botLogic";
 
 
-import { Box, Typography } from '@mui/material';
 
 export default function Commentary(props) {
   const { moveList, outcomeMap } = props

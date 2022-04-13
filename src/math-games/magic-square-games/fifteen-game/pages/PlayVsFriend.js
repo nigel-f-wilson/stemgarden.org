@@ -1,16 +1,16 @@
+import { Box } from '@mui/material';
 import React, { useState } from 'react';
-// import { useOutletContext } from "react-router-dom";
 
-import { status, gameOver, nextPlayer  } from "../logic/gameLogic";
-import { getBotMove } from "../logic/botLogic";
+// My Components
 import Board from "../components/Board";
 import BotPanel from "../components/panels/BotPanel";
 
-import { Box } from '@mui/material';
+// Game Logic
+import { status, gameOver, nextPlayer  } from "../../solution";
+import { getBotMove } from "../botLogic";
 
 export default function PlayVsFriend(props) {
   const { outcomeMap } = props
-  // const [outcomeMap] = useOutletContext();
   
   const startingPosition = "" 
   const [moveList, setMoveList] = useState(startingPosition)

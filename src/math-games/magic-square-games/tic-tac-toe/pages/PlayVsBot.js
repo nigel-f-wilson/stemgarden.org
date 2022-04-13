@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 // import { useOutletContext } from "react-router-dom";
 
-import { status, gameOver, nextPlayer  } from "../../magicSquareGameSolution";
+import { status, gameOver, nextPlayer  } from "../../solution";
 import { getBotMove } from "../botLogic";
 import Board from "../components/Board";
 import BotPanel from "../components/panels/BotPanel";

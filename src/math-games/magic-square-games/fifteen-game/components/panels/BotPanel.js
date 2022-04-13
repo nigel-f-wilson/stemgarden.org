@@ -1,6 +1,6 @@
 import React from 'react';
-
 import { Box, Container, Button, Typography } from '@mui/material';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRotateLeft } from '@fortawesome/free-solid-svg-icons';
 
@@ -8,7 +8,7 @@ import HomeButton from "../buttons/HomeButton";
 import DifficultyModeButton from "../buttons/DifficultyModeButton";
 
 // Logic
-import { gameOver, status } from "../../logic/gameLogic";
+import { gameOver, status } from "../../../solution";
 
 export default function BotPanel(props) {
   const { 
