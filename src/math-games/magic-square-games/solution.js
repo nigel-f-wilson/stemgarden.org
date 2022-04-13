@@ -1,43 +1,6 @@
-<<<<<<< Updated upstream:src/math-games/magic-square-games/solution.js
 import { intersect } from "../_helpers/probability";
+import { trioList } from "./helpers";
 
-
-=======
-<<<<<<< Updated upstream:src/math-games/tic-tac-toe/logic/gameLogic.js
-=======
-
-
->>>>>>> Stashed changes:src/math-games/magic-square-games/solution.js
->>>>>>> Stashed changes:src/math-games/tic-tac-toe/logic/gameLogic.js
-// X always goes first! X and O will be shorthand for the player who goes First and the player who goes second.
-// PlayerOne and PlayerTwo are NOT markers of who goes first or second in any given game!
-// In the 15 game, PlayerOne and PlayerTWo are distinguished by dark-blue and light-blue
-
-// All functions exported from this module are used by PlayVsHuman.js PlayVsBot.js PlayWithCoach 
-// There is some potential to add back in the 15 gameusing these same Game Logic helpers and a different version of the board.
-
-// Most functions here assume they will be called with a Move List String as the sole parameter. (just the exported ones?)
-
-////////////////////////////////////////////////////////////////
-// Constants: Trio List & Possible Positions & Outcome Maps
-////////////////////////////////////////////////////////////////
-export const trioList = generateTrioList()
-function generateTrioList() {
-    let trioList = []
-    for (let i = 1; i <= 7; i++) {
-        for (let j = i + 1; j <= 8; j++) {
-            let k = complementOf(i + j)
-            if (k > j && k <= 9) {
-                let newTrio = [i, j, k]
-                trioList.push(newTrio)
-            }
-        }
-    }
-    return trioList
-}
-export function complementOf(sumOfTwo) {
-    return (15 - sumOfTwo)
-}
 
 const listOfPossiblePositions = getListOfPossiblePositions()
 function getListOfPossiblePositions() {
@@ -69,7 +32,6 @@ export async function generatePositionToOutcomeMap() {
   return outcomeMap
 }
 
-<<<<<<< Updated upstream:src/math-games/tic-tac-toe/logic/gameLogic.js
 ////////////////////////////////////////////////////////////////
 //  Current Game Status: "xWins", "oWins", "draw",  "xNext", or "oNext"
 ////////////////////////////////////////////////////////////////
@@ -241,30 +203,3 @@ export function sumsOfTwo(moveSet) {
     return sums
 }
 
-
-<<<<<<< Updated upstream:src/math-games/magic-square-games/solution.js
-=======
-
-// function factorial(num) {
-//     console.assert(num >= 0 && num <=9, `Factorial called with a number out of this game's range!`)
-//     let product = 1
-//     for (let i = 1; i <= num; i++) {
-//         product = product * i
-//     }
-//     return product
-//     // This led to a fun research rabbit hole about how to more efficiently compute factorials using Paschals Triangle
-// }
-
-// function inEfficientUnclaimedNumbers(ml) {
-//     let unclaimedNumbers = [];
-//     for (let i = 1; i <= 9; i++) {
-//         if (!ml.includes(i)) {
-//             unclaimedNumbers.push(i)
-//         }
-//     }
-//     // console.log(`List Empty Squares: ${emptySquaresList}`)
-//     return unclaimedNumbers;
-// }
-=======
->>>>>>> Stashed changes:src/math-games/magic-square-games/solution.js
->>>>>>> Stashed changes:src/math-games/tic-tac-toe/logic/gameLogic.js

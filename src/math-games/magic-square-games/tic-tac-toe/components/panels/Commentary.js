@@ -1,12 +1,7 @@
 import React from 'react';
 
-<<<<<<< Updated upstream
-import { nextPlayer, status, getParent } from "../../../solution";
-import { winningMoves, urgentDefensiveMoves, doubleAttackingMoves } from "../../botLogic";
-=======
 import { nextPlayer, status, getParent } from "../../../helpers";
 import { winningMoves, urgentDefensiveMoves, doubleAttackingMoves } from "../../../getBotMove";
->>>>>>> Stashed changes
 
 
 import { Box, Typography } from '@mui/material';

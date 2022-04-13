@@ -1,18 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 
-<<<<<<< Updated upstream:src/math-games/tic-tac-toe/components/Board.js
-import { status, 
-  moveListStringToArray, 
-  numbersInWin, 
-  availableNumbers, 
-<<<<<<< Updated upstream:src/math-games/magic-square-games/tic-tac-toe/components/Board.js
-} from "../../solution";
-=======
-} from "../logic/gameLogic";
-=======
 import { status, moveListStringToArray, numbersInWin, availableNumbers } from "../../helpers";
->>>>>>> Stashed changes:src/math-games/magic-square-games/tic-tac-toe/components/Board.js
->>>>>>> Stashed changes:src/math-games/tic-tac-toe/components/Board.js
 
 // My Components
 import Square from "./Square";

@@ -8,19 +8,7 @@ import HomeButton from "../buttons/HomeButton";
 import DifficultyModeButton from "../buttons/DifficultyModeButton";
 
 // Logic
-<<<<<<< Updated upstream
-<<<<<<<< Updated upstream:src/math-games/magic-square-games/fifteen-game/components/panels/BotPanel.js
-import { gameOver, status } from "../../../solution";
-========
-<<<<<<< Updated upstream:src/math-games/tic-tac-toe/components/panels/BotPanel.js
-import { gameOver, status } from "../../logic/gameLogic";
-=======
 import { gameOver, status } from "../../../helpers";
->>>>>>> Stashed changes:src/math-games/magic-square-games/tic-tac-toe/components/panels/BotPanel.js
->>>>>>>> Stashed changes:src/math-games/tic-tac-toe/components/panels/BotPanel.js
-=======
-import { gameOver, status } from "../../../helpers";
->>>>>>> Stashed changes
 
 export default function BotPanel(props) {
   const { 

@@ -6,15 +6,7 @@ import { useTheme } from "@mui/system";
 // My Components
 import Square from "./Square";
 
-<<<<<<< Updated upstream
-import { status, 
-  moveListStringToArray, 
-  numbersInWin, 
-  availableNumbers, 
-} from "../../solution";
-=======
 import { status, moveListStringToArray, numbersInWin, availableNumbers } from "../../helpers";
->>>>>>> Stashed changes
 
 
 export default function Board(props) {
