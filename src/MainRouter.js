@@ -13,7 +13,11 @@ const ContactPage = lazy(() => import('./pages/ContactPage'))
 
 
 const MathGamesPage = lazy(() => import('./math-games/MathGamesPage'))
-const ConnectFour = lazy(() => import('./math-games/connect-four/ConnectFour'))
+
+
+
+// const ConnectFour = lazy(() => import('./math-games/connect-four/ConnectFour'))
+const ConnectFour = lazy(() => import('./math-games/connect-four/ConnectFourRoutes'))
 
 
 const FifteenGameRoutes = lazy(() => import('./math-games/magic-square-games/fifteen-game/FifteenGameRoutes'))
