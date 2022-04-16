@@ -2,7 +2,6 @@ import React, { lazy, useState, useEffect } from 'react'
 import { Routes, Route } from 'react-router-dom';
 import {  Container,  Box } from '@mui/material';
 
-import { generatePositionToOutcomeMap } from "../solution";
 
 // My Components
 // import App from './App'
@@ -28,16 +27,8 @@ import { useScreenWidth, useScreenHeight } from "../../hooks"
 
 
 export default function ConnectFourRoutes(props) {
-  const [outcomeMap, setOutcomeMap] = useState(null)
-  
   useEffect(() => {
-    const generateOutcomeMapAsync = async () => {
-      const map = await generatePositionToOutcomeMap()
-      setOutcomeMap(map)
-      console.log("Outcome Map Generated");
     }
-    generateOutcomeMapAsync()
-  }, [])
 
   return (
     <Box 
