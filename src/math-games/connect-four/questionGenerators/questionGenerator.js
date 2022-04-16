@@ -19,13 +19,12 @@ let generatorFuntions = new Map([
     ['multiply', getMultiplyingQuestion]
 ])
 
-
 export function generateQuestion(topic, difficulty) {
-    return new Promise((resolve, reject) => {
-        let question = (generatorFuntions.get(topic)(difficulty))
-        console.log(`Generated an "${difficulty}" ${topic} Question --> ${JSON.stringify(question, null, 4)}`);
-        resolve(question)
-    });
+  return new Promise((resolve, reject) => {
+    let question = (generatorFuntions.get(topic)(difficulty))
+    console.log(`Generated an "${difficulty}" ${topic} Question --> ${JSON.stringify(question, null, 4)}`);
+    resolve(question)
+  });
 }
 
 // function getSequencesQuestion(difficulty) {

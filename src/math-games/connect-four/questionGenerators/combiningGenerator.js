@@ -1,5 +1,5 @@
-// Exports helper for when questionGenerator has selected the "combining" topic
-import { randomInt, chooseRandomFromArray } from "../lowLevelHelpers";
+import { randomInt, chooseRandomFromArray } from "../../_helpers/low-level";
+
 
 const missingMinuendInstructions = [
     "Minus how many?",

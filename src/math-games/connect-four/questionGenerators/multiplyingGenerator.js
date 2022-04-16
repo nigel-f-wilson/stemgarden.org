@@ -1,5 +1,4 @@
-// Exports helpers for when questionGenerator has selected the "multiplying" topic
-import { randomInt, chooseRandomFromArray } from "../lowLevelHelpers";
+import { randomInt, chooseRandomFromArray } from "../../_helpers/low-level";
 
 
 export function getMultiplyingQuestion(difficulty) {

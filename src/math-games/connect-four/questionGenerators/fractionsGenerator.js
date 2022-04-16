@@ -1,6 +1,5 @@
-// Exports helpers for when questionGenerator has selected the "fractions" topic
+import { randomInt, chooseRandomFromArray } from "../../_helpers/low-level";
 
-import { randomInt, chooseRandomFromArray } from "../lowLevelHelpers";
 
 
 function getFractionsQuestion(difficulty) {
