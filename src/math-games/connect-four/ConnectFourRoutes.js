@@ -27,6 +27,13 @@ import { useScreenWidth, useScreenHeight } from "../../hooks"
 
 
 export default function ConnectFourRoutes(props) {
+  // SETTINGS
+  const defaultSettings = {
+    opponent: 'human',
+    topics: ['combine', 'multiply'],    // One of 'doubleTriple', 'halfThird'
+    difficultyMode: "increasing"        // One of "easy" "medium" "hard" "increasing"
+  }
+  const [settings, setSettings] = useState(defaultSettings)
   useEffect(() => {
     }
 
