@@ -1,8 +1,6 @@
 import { lineToCellsMap, cellToLinesMap } from './winningLineMaps'
 import { intersect } from "../_helpers/probability";
 
-module.exports = { gameIsOver, playerOnesMoves, playerTwosMoves, getBoardData, getColumnData, getLowestUnclaimedCell, nextPlayer, nextPlayersMoves, nextPlayerColor }
-
 export function gameIsOver(gameStatus) {
   return (gameStatus === 'playerOneWins' || gameStatus === 'playerTwoWins' || gameStatus === 'gameDrawn')
 }
@@ -50,7 +48,7 @@ export function nextPlayer(gameStatus) {
 } 
 export function nextPlayersMoves(gameStatus, moveList) {
     if (gameIsOver(gameStatus)) {
-        console.error(`Do not call nextPlayersMoves() when the game is over.`);
+      console.error(`Do not call nextPlayersMoves() when the game is over.`);
     }
     return (gameStatus === "playerOnesTurn") ? playerOnesMoves(moveList) : playerTwosMoves(moveList)
 }
@@ -70,25 +68,25 @@ export function nextPlayerColor(gameStatus) {
 // Returns ENUM: 'playerOnesTurn', 'playerTwosTurn', 'playerOneWins', 'playerTwoWins', 'gameOverDraw'
 // This function efficiently checks to see if the last move created a win for the player who made it.
 export function getGameStatus(moveList) {
-    let lastPlayerToMove = (moveList.length % 2 === 1) ? "playerOne" : "playerTwo"
-    let lastPlayersMoves = (lastPlayerToMove === "playerOne") ? playerOnesMoves(moveList) : playerTwosMoves(moveList)
-    let lastMoveMade = Number(lastPlayersMoves.slice(-1))
-    let linesAffectedByLastMove = cellToLinesMap.get(lastMoveMade)
-    for (let i = 0; i < linesAffectedByLastMove.length; i++) {
-        let line = linesAffectedByLastMove[i]
-        let cellsInLine = lineToCellsMap.get(line)
-        // For added efficiency I could at this point remove the lastMoveMade from cells in line and in the next line look for intersections of length 3.
-        if (intersect(cellsInLine, lastPlayersMoves).length === 4) {
-            return (lastPlayerToMove === 'playerOne') ? 'playerOneWins' : 'playerTwoWins'
-        }
+  let lastPlayerToMove = (moveList.length % 2 === 1) ? "playerOne" : "playerTwo"
+  let lastPlayersMoves = (lastPlayerToMove === "playerOne") ? playerOnesMoves(moveList) : playerTwosMoves(moveList)
+  let lastMoveMade = Number(lastPlayersMoves.slice(-1))
+  let linesAffectedByLastMove = cellToLinesMap.get(lastMoveMade)
+  for (let i = 0; i < linesAffectedByLastMove.length; i++) {
+    let line = linesAffectedByLastMove[i]
+    let cellsInLine = lineToCellsMap.get(line)
+    // For added efficiency I could at this point remove the lastMoveMade from cells in line and in the next line look for intersections of length 3.
+    if (intersect(cellsInLine, lastPlayersMoves).length === 4) {
+      return (lastPlayerToMove === 'playerOne') ? 'playerOneWins' : 'playerTwoWins'
     }
-    let nonSkippedTurns = moveList.filter(cellId => cellId !== -1)
-    if (nonSkippedTurns.length >= 42) {
-        return 'gameOverDraw'
-    }
-    else {
-        return (moveList.length % 2 === 0) ? 'playerOnesTurn' : 'playerTwosTurn'
-    }
+  }
+  let nonSkippedTurns = moveList.filter(cellId => cellId !== -1)
+  if (nonSkippedTurns.length === 42) {
+    return 'gameOverDraw'
+  }
+  else {
+    return (moveList.length % 2 === 0) ? 'playerOnesTurn' : 'playerTwosTurn'
+  }
 }
 
 
