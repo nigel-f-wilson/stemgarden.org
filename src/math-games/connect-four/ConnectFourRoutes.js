@@ -44,6 +44,10 @@ export default function ConnectFourRoutes(props) {
     setBoardData(updatedBoardData(moveList))
   },[moveList])
 
+  // useEffect(() => {
+  //   handleBotsTurn(moveList)
+  // },[gameStatus])
+
     }
   function updatedBoardData(moveList) {
     let newBoardData = boardData.slice()
