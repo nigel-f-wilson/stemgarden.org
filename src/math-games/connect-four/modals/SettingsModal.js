@@ -1,7 +1,7 @@
 import React from 'react'
 
 // MUI  components
-import { Box, Button, IconButton, Dialog, Zoom, Typography, Grid } from '@material-ui/core'
+import { Box, Button, IconButton, Dialog, Zoom, Typography, Grid } from '@mui/material'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserFriends, faRobot } from '@fortawesome/free-solid-svg-icons';
@@ -35,7 +35,7 @@ export function SettingsModal(props) {
         startNewGame,
         cancelNewGame,
         opponent,
-        mathTopics,
+        topics,
         difficultyMode,
         toggleCombine,
         toggleMultiply,
@@ -43,7 +43,7 @@ export function SettingsModal(props) {
         selectDifficulty
     } = props
 
-    let noneSelectedError = Object.values(mathTopics).filter((v) => v).length === 0;
+    let noneSelectedError = Object.values(topics).filter((v) => v).length === 0;
     
     return (
         <Dialog
@@ -67,7 +67,7 @@ export function SettingsModal(props) {
             }}
         >
             <OpponentSelector />
-            <MathTopicSelector />
+            <TopicSelector />
             <DifficultyModeSelector />
             <StartAndCancelButtons 
                 cancelNewGame={cancelNewGame}
@@ -146,7 +146,7 @@ export function SettingsModal(props) {
 
     }
 
-    function MathTopicSelector() {
+    function TopicSelector() {
         
         return (
             <Box sx={{
@@ -185,7 +185,7 @@ export function SettingsModal(props) {
             </Box>
         )
         function CombineButton() {
-            let selected = (mathTopics.combine === true)
+            let selected = (topics.combine === true)
             return (
                 <Button
                     onClick={toggleCombine}
@@ -198,7 +198,7 @@ export function SettingsModal(props) {
             )
         }
         function MultiplyButton() {
-            let selected = (mathTopics.multiply === true)
+            let selected = (topics.multiply === true)
             return (
                 <Button
                     onClick={toggleMultiply}
@@ -299,7 +299,7 @@ export function SettingsModal(props) {
         const { startNewGame } = props
         return (
             <Button
-                onClick={() => startNewGame(mathTopics, difficultyMode, opponent)}
+                onClick={() => startNewGame(topics, difficultyMode, opponent)}
                 variant='contained'
                 disabled={noneSelectedError}
                 sx={{

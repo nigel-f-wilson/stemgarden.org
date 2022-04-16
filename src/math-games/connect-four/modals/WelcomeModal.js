@@ -1,9 +1,7 @@
-
-
 import React from 'react'
 
 // MUI  components
-import { Box, Button, Typography, Zoom, Dialog,  } from '@material-ui/core';
+import { Box, Button, Typography, Zoom, Dialog,  } from '@mui/material';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Zoom ref={ref} {...props} />;

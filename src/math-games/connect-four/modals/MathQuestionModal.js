@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 // MUI  components
-import { Box, Button, Dialog, Zoom, Typography, FormControl, InputLabel, OutlinedInput } from '@material-ui/core'
+import { Box, Button, Dialog, Zoom, Typography, FormControl, InputLabel, OutlinedInput } from '@mui/material'
 
 // Style & Layout Constants
 const instructionsHeight = "33%"
