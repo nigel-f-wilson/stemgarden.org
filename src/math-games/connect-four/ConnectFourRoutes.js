@@ -34,8 +34,35 @@ export default function ConnectFourRoutes(props) {
     difficultyMode: "increasing"        // One of "easy" "medium" "hard" "increasing"
   }
   const [settings, setSettings] = useState(defaultSettings)
+
+  // GAME State
+  const [moveList, setMoveList] = useState([])  // The ids of the cells claimed in order with -1 indicating skipped turns
+  const [gameStatus, setGameStatus] = useState('playerOnesTurn')  // Enum ['playerOnesTurn', 'playerTwosTurn', 'playerOneWins', 'playerTwoWins', 'gameOverDraw'
+  const [boardData, setBoardData] = useState(new Array(42).fill('unclaimed')) // Indices correspond to cell ids, each value is one of "unclaimed" "playerOne" or "playerTwo"
   useEffect(() => {
+    setGameStatus(updatedGameStatus(moveList))
+    setBoardData(updatedBoardData(moveList))
+  },[moveList])
+
     }
+  function updatedBoardData(moveList) {
+    let newBoardData = boardData.slice()
+    const lastMove = moveList.slice(-1)
+    if (lastMove === -1) {
+      return newBoardData  
+    }
+    else {
+      const currentStatus = newBoardData[lastMove] 
+      if (currentStatus === 'unclaimed') {
+        newBoardData[lastMove] = nextPlayer()
+      }
+      else {
+        newBoardData[lastMove] = 'unclaimed'
+      }
+    }
+    return newBoardData
+  }
+  
 
   return (
     <Box 
