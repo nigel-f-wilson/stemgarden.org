@@ -95,7 +95,7 @@ theme.typography.navbarBrand = {
   color: theme.palette.common.white,
   fontWeight: 400,
   fontFamily: 'Perantent Marker, cursive',
-  fontSize: 32
+  fontSize: 32,
 }
 theme.typography.pageHeader = {
   color: theme.palette.common.white,
