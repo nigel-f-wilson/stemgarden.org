@@ -11,12 +11,12 @@ import { ThemeProvider } from '@mui/material/styles';
 // MUI  components
 import { Box, CssBaseline } from '@mui/material';
 import Navbar from './components/navigation/Navbar';
+import { PageLayoutContextProvider } from './contexts';
 
 
 
 export default function App() {
-  const screenWidth = useScreenWidth()
-  const smallScreen = screenWidth < 600
+  
 
   const defaultBackground = {
     bgcolor: 'primary.main',
@@ -29,10 +29,12 @@ export default function App() {
     <React.Fragment>
       <CssBaseline />
       <ThemeProvider theme={theme}>
-        <Box id='root' sx={defaultBackground} >
-          <Navbar smallScreen={smallScreen} />
-          <MainRouter />
-        </Box>
+        <PageLayoutContextProvider >
+          <Box id='root' sx={defaultBackground} >
+            <Navbar />
+            <MainRouter />
+          </Box>
+        </PageLayoutContextProvider>
       </ThemeProvider>
     </React.Fragment>
   );
