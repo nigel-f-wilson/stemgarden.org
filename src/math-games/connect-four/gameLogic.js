@@ -67,7 +67,7 @@ export function nextPlayerColor(gameStatus) {
 
 // Returns ENUM: 'playerOnesTurn', 'playerTwosTurn', 'playerOneWins', 'playerTwoWins', 'gameOverDraw'
 // This function efficiently checks to see if the last move created a win for the player who made it.
-export function getGameStatus(moveList) {
+export function updatedGameStatus(moveList) {
   let lastPlayerToMove = (moveList.length % 2 === 1) ? "playerOne" : "playerTwo"
   let lastPlayersMoves = (lastPlayerToMove === "playerOne") ? playerOnesMoves(moveList) : playerTwosMoves(moveList)
   let lastMoveMade = Number(lastPlayersMoves.slice(-1))
