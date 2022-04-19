@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
 import { Box, Container, Slide, Typography, Zoom } from '@mui/material'
 
 // Logic
 import { gameIsOver, nextPlayerColor } from './gameLogic'
+
+// CONTEXT 
+import { LayoutContext } from "./contexts";
 
 // Style & Layout Constants
 const oneSixth = '16.665%'
@@ -20,6 +23,9 @@ let columnNumbers = [0, 1, 2, 3, 4, 5, 6]
 
 export function GameBoard(props) {
   const { moveList, handleColumnClick, gameStatus } = props
+
+  const layout = useContext(LayoutContext)
+  const { boardSideLength } = layout
 
   function getColumnChipColors(columnIndex) {
     let chipColors = boardChipColors().filter((player, cellId) => cellId % 7 === columnIndex)
@@ -43,8 +49,8 @@ export function GameBoard(props) {
       sx={{
         position: 'absolute',
         top: 0,
-        height: '95%',
-        width: '95%',
+        height: boardSideLength,
+        width: boardSideLength,
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'flex-end'

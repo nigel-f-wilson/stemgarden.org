@@ -1,7 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 
 // MUI  components
 import { Box, Button, Dialog, Zoom, Typography, FormControl, InputLabel, OutlinedInput } from '@mui/material'
+
+// CONTEXT 
+import { LayoutContext } from "../contexts";
 
 // Style & Layout Constants
 const instructionsHeight = "33%"
@@ -13,12 +16,10 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 })
 
 export function MathQuestionModal(props) {
-    let { question, 
-        open,
-        headerText,
-        nextPlayerColor,
-        handleAnswerSubmit, 
-        boardSideLength } = props 
+    let { question, open, headerText, nextPlayerColor, handleAnswerSubmit } = props 
+
+    const layout = useContext(LayoutContext)
+    const { boardSideLength } = layout
     
     let { correctAnswer, equationString, inputType } = question
     let borderColor = `chip.${nextPlayerColor}`
