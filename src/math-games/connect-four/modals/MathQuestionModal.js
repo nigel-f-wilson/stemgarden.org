@@ -4,7 +4,9 @@ import React, { useState, useContext } from 'react'
 import { Box, Button, Dialog, Zoom, Typography, FormControl, InputLabel, OutlinedInput } from '@mui/material'
 
 // CONTEXT 
-import { LayoutContext } from "../contexts";
+import { PageLayoutContext } from "../../../contexts";
+
+// import { LayoutContext } from "../contexts";
 
 // Style & Layout Constants
 const instructionsHeight = "33%"
@@ -18,8 +20,10 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 export function MathQuestionModal(props) {
     let { question, open, headerText, nextPlayerColor, handleAnswerSubmit } = props 
 
-    const layout = useContext(LayoutContext)
-    const { boardSideLength } = layout
+    
+  // LAYOUT CONTEXT
+  const { maxSquareSideLength } = useContext(PageLayoutContext)
+
     
     let { correctAnswer, equationString, inputType } = question
     let borderColor = `chip.${nextPlayerColor}`
@@ -40,9 +44,9 @@ export function MathQuestionModal(props) {
                     border: `solid green 0.5rem`,
                     // border: `solid ${borderColor} 5px`,
                     borderColor: borderColor,
-                    margin: `${0.05 * boardSideLength}px`,
-                    height: `${0.9 * boardSideLength}px`,
-                    width: `${0.9 * boardSideLength}px`,
+                    margin: `${0.05 * maxSquareSideLength}px`,
+                    height: `${0.9 * maxSquareSideLength}px`,
+                    width: `${0.9 * maxSquareSideLength}px`,
                     borderRadius: '50%',
                     justifySelf: 'flex-start',
                     alignSelf: 'flex-start'

@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserFriends, faRobot } from '@fortawesome/free-solid-svg-icons';
 
 // CONTEXT 
-import { LayoutContext } from "../contexts";
+import { PageLayoutContext } from "../../../contexts";
 
 // ICONS
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -33,9 +33,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 export function SettingsModal(props) {
   const { open, startNewGame, cancelNewGame } = props
 
-  const layout = useContext(LayoutContext)
-  const { boardSideLength } = layout
-
+  const { maxSquareSideLength } = useContext(PageLayoutContext)
   
   const [settings, setSettings] = useState(props.settings)
 
@@ -70,17 +68,17 @@ export function SettingsModal(props) {
       TransitionComponent={Transition}
       fullWidth={true}
       maxWidth='md'
+      
       PaperProps={{
         sx: {
-          height: `${0.85 * boardSideLength}px`,
-          width: `${0.7 * boardSideLength}px`,
+          height: `${0.85 * maxSquareSideLength}px`,
+          width: `${0.7 * maxSquareSideLength}px`,
           minHeight: "550px",
           minWidth: "375px",
-          borderRadius: '3rem',
-          justifySelf: 'flex-start',
-          alignSelf: 'flex-start',
-          px: 2,
-          py: 2
+          display: 'flex',
+          p: 3,
+          borderRadius: 6,
+          overflowY: "hidden",
         }
       }}
     >

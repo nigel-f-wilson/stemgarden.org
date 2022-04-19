@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { Box, Button, Typography, Zoom, Dialog,  } from '@mui/material';
 
 // CONTEXT 
-import { LayoutContext } from "../contexts";
+import { PageLayoutContext } from "../../../contexts";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Zoom ref={ref} {...props} />;
@@ -11,9 +11,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 export function WelcomeModal(props) {
     let { open, openSettingsModal } = props
 
-    const layout = useContext(LayoutContext)
-    // console.log(`LAYOUT CONTEXT: ${JSON.stringify(layout, null, 4)}`);
-    const { boardSideLength } = layout
+    const { maxSquareSideLength } = useContext(PageLayoutContext)
 
     return (
         <Dialog
@@ -24,17 +22,13 @@ export function WelcomeModal(props) {
           maxWidth='md'
           PaperProps={{
             sx: {
-              height: `${0.85 * boardSideLength}px`,
-              width: `${0.7 * boardSideLength}px`,
+              height: `${0.85 * maxSquareSideLength}px`,
+              width: `${0.7 * maxSquareSideLength}px`,
               minHeight: "550px",
               minWidth: "375px",
-              borderRadius: 6,
-              justifySelf: 'flex-start',
-              alignSelf: 'flex-start',
               display: 'flex',
-              justifyContent: 'stretch',
-              // alignItems: 'center',
               p: 3,
+              borderRadius: 6,
               overflowY: "scroll",
               "msOverflowStyle": "none",    /* IE and Edge */
               "scrollbarWidth": "none",       /* Firefox */
