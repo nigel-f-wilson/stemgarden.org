@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 // MY COMPONENTS
 import MobileMenu from "./MobileMenuDrawer";
@@ -9,14 +9,15 @@ import {
   Typography,
   AppBar,
 } from "@mui/material"
+import { PageLayoutContext } from '../../contexts';
 
-export default function MobileNavbar(props) {
-  const { height } = props
+export default function MobileNavbar() {
+  const { navbarHeightPx } = useContext(PageLayoutContext)
   return (
     <AppBar
       elevation={4}
       sx={{
-        height: height,
+        height: navbarHeightPx,
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'space-between',
@@ -30,7 +31,7 @@ export default function MobileNavbar(props) {
         alignItems='center' 
         width="100%" 
       >
-        <Logo navbarHeight={height} />
+        <Logo />
         <Typography 
           variant='navbarBrand'
           children="STEM Garden"
