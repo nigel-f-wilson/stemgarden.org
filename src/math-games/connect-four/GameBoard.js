@@ -3,10 +3,10 @@ import PropTypes from 'prop-types'
 import { Box, Container, Slide, Typography, Zoom } from '@mui/material'
 
 // Logic
-import { gameIsOver, nextPlayerColor } from './gameLogic'
+import { gameIsOver } from './gameLogic'
 
 // CONTEXT 
-import { LayoutContext } from "./contexts";
+import { PageLayoutContext } from "../../contexts";
 
 // Style & Layout Constants
 const oneSixth = '16.665%'
@@ -22,10 +22,10 @@ let rowNumbers = [0, 1, 2, 3, 4, 5]
 let columnNumbers = [0, 1, 2, 3, 4, 5, 6]
 
 export function GameBoard(props) {
-  const { moveList, handleColumnClick, gameStatus } = props
+  const { moveList, handleColumnClick, gameStatus, nextPlayerColor } = props
 
-  const layout = useContext(LayoutContext)
-  const { boardSideLength } = layout
+  const { maxSquareSideLength } = useContext(PageLayoutContext)
+  const boardSideLength = maxSquareSideLength
 
   function getColumnChipColors(columnIndex) {
     let chipColors = boardChipColors().filter((player, cellId) => cellId % 7 === columnIndex)
@@ -65,7 +65,7 @@ export function GameBoard(props) {
             index={columnIndex}
             chipColors={chipColors}
             gameStatus={gameStatus}
-            nextPlayerColor={nextPlayerColor(gameStatus)}
+            nextPlayerColor={nextPlayerColor}
             handleColumnClick={handleColumnClick}
           />
         )
