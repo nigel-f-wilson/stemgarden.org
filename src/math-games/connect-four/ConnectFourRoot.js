@@ -1,4 +1,4 @@
-import React, { useState, useEffect, createContext } from 'react'
+import React, { useState, useEffect, useContext, createContext } from 'react'
 import { Box } from '@mui/material';
 
 
@@ -10,17 +10,15 @@ import { SettingsModal } from "./modals/SettingsModal";
 import { MathQuestionModal } from "./modals/MathQuestionModal";
 
 // Game Logic
-import { gameIsOver, updatedGameStatus, nextPlayerColor, playerOnesMoves, playerTwosMoves } from './gameLogic'
+import { gameIsOver, updatedGameStatus, playerOnesMoves, playerTwosMoves } from './gameLogic'
 import { generateQuestion, testQuestion } from './questionGenerators/questionGenerator'
 import { chooseRandomFromArray } from '../_helpers/low-level'
 import { getBotMove } from "./getBotMove";
 
 import { waysToSayCorrect } from "../_helpers/commentary";
 
-// Custom Hooks
-import { useScreenWidth, useScreenHeight } from "../../hooks"
-
-import { LayoutContextProvider } from "./contexts";
+// LAYOUT
+import { PageLayoutContext } from "../../contexts";
 
 export default function ConnectFourRoutes(props) {
   // SETTINGS
@@ -53,10 +51,8 @@ export default function ConnectFourRoutes(props) {
   
 
   // LAYOUT CONTEXT
-  // const height = useScreenHeight()
-  // const width = useScreenWidth()
-  // const boardSideLength = (height <= width) ? height : width
-  // const LayoutContext = createContext(boardSideLength)
+  const { maxSquareSideLength } = useContext(PageLayoutContext)
+  const boardSideLength = maxSquareSideLength
 
 
   ///////////////////////////////////////////////////////
@@ -154,7 +150,9 @@ export default function ConnectFourRoutes(props) {
   function nextPlayer() {
     return (moveList.length % 2 === 0) ? "playerOne" : "playerTwo"
   }
-
+  function nextPlayerColor() {
+    return (gameStatus === "playerOnesTurn") ? "playerOne" : gameStatus === "playerTwosTurn" ? "playerTwo" : "unclaimed"
+  }
 
   
   function handleAnswerSubmit(playersAnswer) {
@@ -255,12 +253,12 @@ export default function ConnectFourRoutes(props) {
   
 
   return (
-    <LayoutContextProvider >
+    // <LayoutContextProvider >
 
       <Box 
-        // border='solid red 2px'
-        width='100vw' 
-        height='calc(100vh - 96px)'
+        border='solid red 2px'
+        width='100%' 
+        height='calc(100% - 120px)'
         overflow='hidden'
         bgcolor='connectFour.background'
         color='connectFour.board'
@@ -308,23 +306,23 @@ export default function ConnectFourRoutes(props) {
 
             <MathQuestionModal
                 open={(openModal === "question")}
-                nextPlayerColor={nextPlayerColor(gameStatus)}
+                nextPlayerColor={nextPlayerColor()}
                 gameStatus={gameStatus}
                 question={question}
                 headerText={headerText}
                 handleAnswerSubmit={handleAnswerSubmit}
             />
 
-            <GameBoard
-                moveList={moveList}
-                gameStatus={gameStatus}
-                handleColumnClick={handleColumnClick}
-            />
-            
+            {/* <GameBoard
+              moveList={moveList}
+              gameStatus={gameStatus}
+              handleColumnClick={handleColumnClick}
+              nextPlayerColor={nextPlayerColor()}
+            /> */}
                 
         {/* </Box> */}
       </Box>
-    </LayoutContextProvider>
+    // </LayoutContextProvider>
 
   )
 }

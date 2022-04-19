@@ -6,8 +6,6 @@ import { Route, Routes } from "react-router-dom"
 // import { About, Contact, MathGames, ChessClubs, Services } from "./pages/index"
 import LandingPage from './pages/LandingPage'
 
-
-
 const AboutPage = lazy(() => import('./pages/AboutPage'))
 const ContactPage = lazy(() => import('./pages/ContactPage'))
 
@@ -17,7 +15,7 @@ const MathGamesPage = lazy(() => import('./math-games/MathGamesPage'))
 
 
 // const ConnectFour = lazy(() => import('./math-games/connect-four/ConnectFour'))
-const ConnectFour = lazy(() => import('./math-games/connect-four/ConnectFourRoutes'))
+const ConnectFour = lazy(() => import('./math-games/connect-four/ConnectFourRoot'))
 
 
 const FifteenGameRoutes = lazy(() => import('./math-games/magic-square-games/fifteen-game/FifteenGameRoutes'))
