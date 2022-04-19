@@ -9,10 +9,16 @@ import { createTheme, responsiveFontSizes } from '@mui/material/styles';
 
 const theme = createTheme({
   palette: {
+    connectFour: {
+      board: '#0039cb',       // blue
+      playerOne: '#d50000',   // red
+      playerTwo: '#ffea00',   // yellow
+      background: '#b3e5fc',  // light blue 
+      text: '#000000',        // black
+    },
     backgrounds: {
       light: '#FFFFFF',
       dark: '#212121',
-      connectFour: '#b3e5fc',
     },
     white: '#FFFFFF',
     black: '#000000',
