@@ -212,48 +212,15 @@ export default function ConnectFourRoutes(props) {
   //   }
   // }
 
-  function toggleTopic(topic) {
-    let updatedTopicsArray = []
-    const selected = settings.topics.includes(topic)
-    if (selected) {
-      updatedTopicsArray = settings.topics.filter(item => item !== topic)
-      setSettings(prev => { return {...prev, topics: updatedTopicsArray }})
-    }
-    else {
-      updatedTopicsArray = settings.topics.concat(topic)
-      setSettings(prev => { return {...prev, topics: updatedTopicsArray }})
-    }
-
-    
-  }
-  // function toggleCombine() {
-  //   setSettings(prev => {...prev, topics})
-  // }
-  // function toggleMultiply() {
-  //   setMathTopics(prev => { return { ...prev, multiply: !prev.multiply } })
-  // }
-  function selectOpponent(opponent) {
-    // setOpponent(opponent)
-    setSettings(prev => { return {...prev, opponent: opponent }})
-  }
-  function selectDifficulty(difficulty) {
-    // setDifficultyMode(difficulty)
-    setSettings(prev => { return {...prev, difficulty: difficulty }})
-  }
+  
 
   
-  // Takes a settings opbect with same three fileds required as in defaultSettings
+  // Takes a settings object with same three fileds required as in defaultSettings
   function startNewGame(settings) {
-    const { opponent, topics, difficultyMode } = settings
-    console.log(`STARTING NEW GAME with ...`);
-    console.log(`opponent: "${opponent}"`);
-    console.log(`mathTopics: "${JSON.stringify(topics, null, 4)}", `);
-    console.log(`difficultyMode: "${difficultyMode}"`);
-
+    // console.log(`STARTING NEW GAME with SETTINGS: ${JSON.stringify(settings, null, 4)}`);
     setSettings(settings)
-    
     setMoveList([])
-    // setGameStatus('playerOnesTurn')
+    setGameStatus('playerOnesTurn')
     setOpenModal("none")
     setActiveCell(null)
   }

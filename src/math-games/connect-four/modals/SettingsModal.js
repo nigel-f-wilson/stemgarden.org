@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { useState, useContext } from 'react'
 
 // MUI  components
-import { Box, Button, IconButton, Dialog, Zoom, Typography, Grid } from '@mui/material'
+import { Box, Button, IconButton, Dialog, Zoom, Typography } from '@mui/material'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserFriends, faRobot } from '@fortawesome/free-solid-svg-icons';
+
+// CONTEXT 
+import { LayoutContext } from "../contexts";
 
 // ICONS
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -24,294 +27,225 @@ const difficultyHeight = "25%"
 const inputHeight = "15%"
 
 const Transition = React.forwardRef(function Transition(props, ref) {
-    return <Zoom ref={ref} {...props} />;
+  return <Zoom ref={ref} {...props} />;
 })
 
-
 export function SettingsModal(props) {
-    let { 
-        open,
-        boardSideLength,
-        startNewGame,
-        cancelNewGame,
-        opponent,
-        topics,
-        difficultyMode,
-        toggleCombine,
-        toggleMultiply,
-        selectOpponent,
-        selectDifficulty
-    } = props
+  const { open, startNewGame, cancelNewGame } = props
 
-    let noneSelectedError = Object.values(topics).filter((v) => v).length === 0;
-    
+  const layout = useContext(LayoutContext)
+  const { boardSideLength } = layout
+
+  
+  const [settings, setSettings] = useState(props.settings)
+
+  let noneSelectedError = settings.topics.length === 0;
+
+
+  function toggleTopic(topic) {
+    let updatedTopicsArray = []
+    const selected = settings.topics.includes(topic)
+    if (selected) {
+      updatedTopicsArray = settings.topics.filter(item => item !== topic)
+      setSettings(prev => { return {...prev, topics: updatedTopicsArray }})
+    }
+    else {
+      updatedTopicsArray = settings.topics.concat(topic)
+      setSettings(prev => { return {...prev, topics: updatedTopicsArray }})
+    }
+  }
+
+  function selectOpponent(opponent) {
+    setSettings(prev => { return {...prev , opponent: opponent}})
+  }
+
+  function selectDifficulty(difficultyMode) {
+    setSettings(prev => { return {...prev, difficultyMode: difficultyMode}})
+  }
+  
+  return (
+    <Dialog
+      open={open}
+      aria-describedby="game settings dialog"
+      TransitionComponent={Transition}
+      fullWidth={true}
+      maxWidth='md'
+      PaperProps={{
+        sx: {
+          height: `${0.85 * boardSideLength}px`,
+          width: `${0.7 * boardSideLength}px`,
+          minHeight: "550px",
+          minWidth: "375px",
+          borderRadius: '3rem',
+          justifySelf: 'flex-start',
+          alignSelf: 'flex-start',
+          px: 2,
+          py: 2
+        }
+      }}
+    >
+      <OpponentSelector />
+      <TopicSelector />
+      <DifficultyModeSelector />
+      <Box  
+        borderTop='solid green 3px'
+        borderColor='primary.main'
+        height={inputHeight}
+        display='flex'
+        justifyContent='flex-end'
+        mt={3}
+        mb={1}
+        pt={2}
+        pr={1}
+      >
+        <CancelButton cancelNewGame={cancelNewGame} />
+        <StartGameButton startNewGame={startNewGame} />
+      </Box>
+    </Dialog>
+  )
+
+  function OpponentSelector() {
+    const OpponentIconButton = (props) => {
+      const { opponent, icon } = props
+      let selected = (settings.opponent === opponent)
+      return (
+        <IconButton
+          children={<FontAwesomeIcon icon={icon} size="2x" />}
+          onClick={() => selectOpponent(opponent)}
+          color={selected ? "primary" : "secondary"}
+        />
+      )
+    }
     return (
-        <Dialog
-            open={open}
-            aria-describedby="game settings dialog"
-            TransitionComponent={Transition}
-            fullWidth={true}
-            maxWidth='md'
-            PaperProps={{
-                sx: {
-                    height: `${0.85 * boardSideLength}px`,
-                    width: `${0.7 * boardSideLength}px`,
-                    minHeight: "550px",
-                    minWidth: "375px",
-                    borderRadius: '3rem',
-                    justifySelf: 'flex-start',
-                    alignSelf: 'flex-start',
-                    px: 2,
-                    py: 2
-                }
-            }}
-        >
-            <OpponentSelector />
-            <TopicSelector />
-            <DifficultyModeSelector />
-            <StartAndCancelButtons 
-                cancelNewGame={cancelNewGame}
-                startNewGame={startNewGame}
-            />
-            
-
-        </Dialog>
+      <Box  
+        height={opponentHeight}  
+        display='flex' 
+        flexDirection='column' 
+      >
+        <Typography
+          variant='h5'
+          align="center"
+          pb={3}
+          children="Play vs. Human or Bot?"
+        />
+        <Box display='flex' flexDirection='row' justifyContent='space-evenly' >
+          <OpponentIconButton opponent='human' icon={faUserFriends} />
+          <OpponentIconButton opponent='bot' icon={faRobot} />
+        </Box>
+      </Box>
     )
-
-
-    function OpponentSelector() {
-        return (
-            <Box sx={{ 
-                // border: 'solid red 1px',
-                height: opponentHeight, 
-                display: 'flex', 
-                flexDirection: 'column' 
-                }} >
-                <Typography 
-                    variant='h5'
-                    align="center"
-                >
-                    Play vs. Human or Bot?
-                </Typography>
-                <Grid container spacing={2} sx={{ height: '100%', p: "0 2rem" }} >
-                    <Grid item xs={6} >
-                        <PlayVsHumanButton   />
-                    </Grid>
-                    <Grid item xs={6} >
-                        <PlayVsBotButton />
-                    </Grid>
-                </Grid>
-
-
-            </Box>
-        )
-
-        function PlayVsHumanButton(props){
-            return (
-                <IconButton
-                    // onClick={() => { opponent = "human" }}
-                    onClick={() => selectOpponent("human")}
-                    sx={{
-                        height: "100%",
-                        width: '100%'
-                    }}
-                    color={(opponent === "human") ? "primary" : "secondary"}
-                >
-                    <FontAwesomeIcon
-                        icon={faUserFriends}
-                        size="2x"
-                    />
-                </IconButton>
-            )
-        }
-        function PlayVsBotButton(props) {
-            return (
-                <IconButton
-                    // onClick={() => {opponent = "bot"}}
-                    onClick={() => selectOpponent("bot")}
-                    sx={{ 
-                        height: "100%",
-                        width: '100%' 
-                    }}
-                    color={(opponent === "bot") ? "primary" : "secondary"}
-
-                >
-                    <FontAwesomeIcon
-                        icon={faRobot}
-                        size="2x"
-                    />
-                </IconButton>
-            )
-        }
-
+  }
+  
+  function TopicSelector() {
+    const TopicButton = (props) => {
+      const { topic, label } = props
+      const selected = (settings.topics.includes(topic))
+      return (
+        <Button
+          onClick={() => toggleTopic(topic)}
+          variant={selected ? "contained" : "outlined"}
+          sx={{ width: '100%', my: 1}}
+          children={label}
+        />
+      )
     }
+    const InvalidSelectionHelperText = () => {
+      return (
+        <Typography
+          children="*** You must select at least one topic."
+          variant='body1'
+          align="center"
+          color="error"
+          display={noneSelectedError ? "flex" : "none"}
+          gutterBottom
+        />
+      )
+    }
+    return (
+        <Box  
+          height={topicHeight}  
+          display='flex' 
+          flexDirection='column' 
+        >
+          <Typography
+            variant='h5'
+            align="center"
+            pb={3}
+            children="What math topics should we include?"
+          />
+            <TopicButton topic='combine' label="Combine & Split Up" />
+            <TopicButton topic='multiply' label="Multiply & Factor" />
+            <InvalidSelectionHelperText />
+        </Box>
+    )
+  }
 
-    function TopicSelector() {
-        
-        return (
-            <Box sx={{
-                // border: 'solid red 1px',
-                height: topicHeight,  
-                display: 'flex', 
-                flexDirection: 'column' 
-            }}>
-                <Typography
-                    variant='h5'
-                    align="center"
-                    gutterBottom
-                >
-                    What math topics should we include?
-                </Typography>
-                <Grid container spacing={1} px="2rem" >
-                    <Grid item xs={12} >
-                        <CombineButton />
-                    </Grid>
-                    <Grid item xs={12} >
-                        <MultiplyButton />
-                    </Grid>
-                    <Grid item xs={12} sx={{ py: 0 }}>
-                        <Typography
-                            variant='body1'
-                            align="center"
-                            color="error"
-                            display={noneSelectedError ? "flex" : "none"}
-                            gutterBottom
-                        >
-                            *** You must select at least one topic.
-                        </Typography>
-                    </Grid>
-                </Grid>
-                
-            </Box>
-        )
-        function CombineButton() {
-            let selected = (topics.combine === true)
-            return (
-                <Button
-                    onClick={toggleCombine}
-                    variant={selected ? "contained" : "outlined"}
-                    sx={{ width: '100%' }}
-                    children={
-                        "Combine & Split Up"
-                    }
-                />
-            )
-        }
-        function MultiplyButton() {
-            let selected = (topics.multiply === true)
-            return (
-                <Button
-                    onClick={toggleMultiply}
-                    variant={selected ? "contained" : "outlined"}
-                    sx={{ width: '100%' }}
-                    children={
-                        "Multiply & Factor"
-                    }
-                />
-            )
-        }
+  function DifficultyModeSelector() {
+    const DifficultyModeButton = (props) => {
+      const { mode } = props
+      const selected = (settings.difficultyMode === mode)
+      return (
+        <Button
+          onClick={() => selectDifficulty(mode)}
+          variant={selected ? "contained" : "outlined"}
+          sx={{
+            flex: '2 0 25%', 
+            m: 1
+          }}
+          children={(mode === "increasing") ? "increasing difficulty" : `${mode}`}
+        />
+      )
     }
+    return (
+      <Box height={difficultyHeight} display='flex' flexDirection='column' >
+        <Typography variant='h5' align="center" pb={3}
+          children="How hard should the questions be?"
+        />
+        <Box  
+          display='flex'
+          justifyContent='space-between'
+        >
+          <DifficultyModeButton mode="easy" />
+          <DifficultyModeButton mode="medium" />
+          <DifficultyModeButton mode="hard" />
+        </Box>
+        <Box display='flex' >
+          <DifficultyModeButton mode="increasing" />
+        </Box>
+      </Box>
+    )
+  }
 
-    function DifficultyModeSelector() {
-        return (
-            <Box sx={{
-                height: difficultyHeight,
-                display: 'flex',
-                flexDirection: 'column'
-            }}>
-                <Typography
-                    variant='h5'
-                    align="center"
-                    gutterBottom
-                >
-                    How hard should the questions be?
-                </Typography>
-                <Grid container spacing={1} px="2rem" >
-                    <Grid item xs={4} >
-                        <DifficultyModeButton mode="easy" />
-                    </Grid>
-                    <Grid item xs={4} >
-                        <DifficultyModeButton mode="medium" />
-                    </Grid>
-                    <Grid item xs={4} >
-                        <DifficultyModeButton mode="hard" />
-                    </Grid>
-                    <Grid item xs={12} >
-                        <DifficultyModeButton mode="increasing" />
-                    </Grid>
-                </Grid>
-            </Box>
-        )
-        function DifficultyModeButton(props) {
-            let { mode } = props
-            return (
-                <Button
-                    onClick={() => selectDifficulty(mode)}
-                    variant={(difficultyMode === mode) ? "contained" : "outlined"}
-                    sx={{
-                        width: "100%"
-                    }}
-                    children={(mode === "increasing") ? "increasing difficulty" : `${mode}`}
-                />
-            )
-        }
-    }
-
-    function StartAndCancelButtons() {
-        return(
-            <Box sx={{
-                borderTop: `solid green 3px`,
-                borderColor: 'primary.main',
-                height: inputHeight,
-                display: 'flex',
-                justifyContent: 'flex-end',
-                mt: 3,
-                mb: 1,
-                pt: 2,
-                pr: 1,
-            }}>
-                <CancelButton
-                    cancelNewGame={cancelNewGame}
-                />
-                <StartGameButton
-                    startNewGame={startNewGame}
-                />
-            </Box>
-        )
-    }
-    function CancelButton(props) {
-        const { cancelNewGame } = props
-        return (
-            <Button
-                onClick={cancelNewGame}
-                variant='outlined'
-                // color="error"
-                disabled={noneSelectedError}
-                sx={{
-                    m: 1,
-                    width: '42%'
-                }}
-                children="Cancel"
-            />
-        )
-    }
-    function StartGameButton(props) {
-        const { startNewGame } = props
-        return (
-            <Button
-                onClick={() => startNewGame(topics, difficultyMode, opponent)}
-                variant='contained'
-                disabled={noneSelectedError}
-                sx={{
-                    m: 1,
-                    width: '42%'
-                }}
-                children="Start Game"
-            />
-        )
-    }
-
-    
+  function CancelButton(props) {
+      const { cancelNewGame } = props
+      return (
+          <Button
+              onClick={cancelNewGame}
+              variant='outlined'
+              // color="error"
+              disabled={noneSelectedError}
+              sx={{
+                  m: 1,
+                  width: '42%'
+              }}
+              children="Cancel"
+          />
+      )
+  }
+  function StartGameButton() {
+    return (
+      <Button
+        onClick={() => startNewGame(settings)}
+        variant='contained'
+        disabled={noneSelectedError}
+        sx={{
+            m: 1,
+            width: '42%'
+        }}
+        children="Start Game"
+      />
+    )
+  }
 }
 
 
