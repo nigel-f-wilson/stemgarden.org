@@ -1,21 +1,16 @@
-import React, { lazy, useState, useEffect } from 'react'
-import { Routes, Route } from 'react-router-dom';
-import {  Container,  Box } from '@mui/material';
+import React, { useState, useEffect, createContext } from 'react'
+import { Box } from '@mui/material';
 
 
 // My Components
-// import App from './App'
 import { GameBoard } from "./GameBoard";
 import { WelcomeModal } from "./modals/WelcomeModal";
 import { InGameMenu } from "./modals/InGameMenu";
 import { SettingsModal } from "./modals/SettingsModal";
 import { MathQuestionModal } from "./modals/MathQuestionModal";
-// import Welcome from './pages/Welcome'
-// const PlayWithCoach = lazy(() => import('./pages/PlayWithCoach'))
-// const PlayVsBot = lazy(() => import('./pages/PlayVsBot')) 
 
 // Game Logic
-import { gameIsOver, getGameStatus as updatedGameStatus, nextPlayersMoves, nextPlayerColor, playerOnesMoves, playerTwosMoves } from './gameLogic'
+import { gameIsOver, updatedGameStatus, nextPlayerColor, playerOnesMoves, playerTwosMoves } from './gameLogic'
 import { generateQuestion, testQuestion } from './questionGenerators/questionGenerator'
 import { chooseRandomFromArray } from '../_helpers/low-level'
 import { getBotMove } from "./getBotMove";
@@ -25,6 +20,7 @@ import { waysToSayCorrect } from "../_helpers/commentary";
 // Custom Hooks
 import { useScreenWidth, useScreenHeight } from "../../hooks"
 
+import { LayoutContextProvider } from "./contexts";
 
 export default function ConnectFourRoutes(props) {
   // SETTINGS
@@ -56,11 +52,12 @@ export default function ConnectFourRoutes(props) {
   const [headerText, setHeaderText] = React.useState("")
   
 
-  // LAYOUT
-  const height = useScreenHeight()
-  // console.log(`height ${height}`);
-  const width = useScreenWidth()
-  const boardSideLength = (height <= width) ? height : width
+  // LAYOUT CONTEXT
+  // const height = useScreenHeight()
+  // const width = useScreenWidth()
+  // const boardSideLength = (height <= width) ? height : width
+  // const LayoutContext = createContext(boardSideLength)
+
 
   ///////////////////////////////////////////////////////
   // CLICK HANDLERS
@@ -75,12 +72,12 @@ export default function ConnectFourRoutes(props) {
       console.log(`handleColumnClick() had NO EFFECT since column is full!`)
       return
     }
-    openMathQuestionModal(lowestUnclaimedCellInColumn)
+    openMathQuestionModal(cell)
   }
 
   function lowestUnclaimedCellInColumn(columnIndex) {
     let columnData = getColumnData(columnIndex)
-    console.log(`Column Data: ${columnData}`);
+    // console.log(`Column Data: ${columnData}`);
     let lowestUnclaimedRow = columnData.indexOf("unclaimed")
     let lowestUnclaimedCell = (lowestUnclaimedRow === -1) ? -1 : (lowestUnclaimedRow * 7 + columnIndex)
     console.log(`lowestUnclaimedCell in col ${columnIndex} is cell "${lowestUnclaimedCell}"`);
@@ -150,9 +147,8 @@ export default function ConnectFourRoutes(props) {
   }
 
   function getScore(player = nextPlayer()) {
-    const ml = moveList
-    const moves = (player === "playerOne") ? playerOnesMoves(ml) : playerTwosMoves(ml)
-    return moves.length
+    const thisPlayersMoves = (player === "playerOne") ? playerOnesMoves(moveList) : playerTwosMoves(moveList)
+    return thisPlayersMoves.length
   }
 
   function nextPlayer() {
@@ -289,95 +285,79 @@ export default function ConnectFourRoutes(props) {
     setOpenModal("menu")
   }
 
-  const App = () => {
-    return (
-      <Box 
-      border='solid green 2px'
-      id='play-page' 
-              sx={{
-                  height:  boardSideLength,
-                  width:  boardSideLength,
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'center',
-                  position: 'relative'
-          }}>
-
-              <WelcomeModal
-                  open={(openModal === "welcome")}
-                  openSettingsModal={openSettingsModal}
-                  boardSideLength={boardSideLength}
-              />
-
-              <InGameMenu
-                  open={(openModal === "menu")}
-                  openSettingsModal={openSettingsModal}
-                  openInGameMenu={openInGameMenu}
-                  handleNewGameClick={handleNewGameClick}
-                  handleUndoClick={undoMove}
-              />
-
-              <SettingsModal 
-                  open={(openModal === "settings")}
-                  startNewGame={startNewGame}
-                  cancelNewGame={cancelNewGame}
-                  boardSideLength={boardSideLength}
-
-                  opponent={settings.opponent}
-                  topics={settings.topics}
-                  difficultyMode={settings.difficultyMode}
-
-                  toggleTopic={toggleTopic}
-                  toggleCombine={toggleTopic}
-                  toggleMultiply={toggleTopic}
-                  // toggleCombine={toggleCombine}
-                  // toggleMultiply={toggleMultiply}
-                  selectOpponent={selectOpponent}
-                  selectDifficulty={selectDifficulty}
-
-              />
-
-              <MathQuestionModal
-                  open={(openModal === "question")}
-                  nextPlayerColor={nextPlayerColor(gameStatus)}
-                  gameStatus={gameStatus}
-                  question={question}
-                  headerText={headerText}
-                  handleAnswerSubmit={handleAnswerSubmit}
-                  boardSideLength={boardSideLength}
-              />
-
-              <GameBoard
-                  moveList={moveList}
-                  gameStatus={gameStatus}
-                  handleColumnClick={handleColumnClick}
-              />
-              
-          </Box>
-    )
-  }
+  
 
   return (
-    <Box 
-      border='solid red 2px'
-      width='100vw' 
-      height='calc(100vh - 96px)'
-      overflow='hidden'
-      bgcolor='backgrounds.connectFour'
-      color='common.white'
-      sx={{
-        overflow: 'hidden',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'flex-start',
-      }}
-    >
-      <Routes >
-        <Route index element={<App />} />
-        {/* <Route path="play-with-coach" element={<PlayWithCoach outcomeMap={outcomeMap} />} /> */}
-        {/* <Route path="play-vs-bot" element={<PlayVsBot outcomeMap={outcomeMap} />} /> */}
-      </Routes>
-    </Box>
+    <LayoutContextProvider >
+
+      <Box 
+        // border='solid red 2px'
+        width='100vw' 
+        height='calc(100vh - 96px)'
+        overflow='hidden'
+        bgcolor='connectFour.background'
+        color='connectFour.board'
+        display='flex'
+        flexDirection='column'
+        alignItems='center'
+        justifyContent='flex-start'
+      >
+        {/* <Routes >
+          <Route index element={<App />} />
+          <Route path="welcome" element={<WelcomeModal />} />
+          <Route path="settings" element={<SettingsModal />} />
+        </Routes> */}
+        {/* <Box 
+          border='solid green 2px'
+          id='play-page' 
+          sx={{
+            // height:  boardSideLength,
+            // width:  boardSideLength,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            position: 'relative'
+          }}
+        > */}
+          <WelcomeModal
+            open={(openModal === "welcome")}
+            openSettingsModal={openSettingsModal}
+          />
+
+          <SettingsModal 
+            open={(openModal === "settings")}
+            settings={settings}
+            startNewGame={startNewGame}
+            cancelNewGame={cancelNewGame}
+          />
+
+            {/* <InGameMenu
+                open={(openModal === "menu")}
+                openSettingsModal={openSettingsModal}
+                openInGameMenu={openInGameMenu}
+                handleNewGameClick={handleNewGameClick}
+                handleUndoClick={undoMove}
+            /> */}
+
+            <MathQuestionModal
+                open={(openModal === "question")}
+                nextPlayerColor={nextPlayerColor(gameStatus)}
+                gameStatus={gameStatus}
+                question={question}
+                headerText={headerText}
+                handleAnswerSubmit={handleAnswerSubmit}
+            />
+
+            <GameBoard
+                moveList={moveList}
+                gameStatus={gameStatus}
+                handleColumnClick={handleColumnClick}
+            />
+            
+                
+        {/* </Box> */}
+      </Box>
+    </LayoutContextProvider>
+
   )
 }
