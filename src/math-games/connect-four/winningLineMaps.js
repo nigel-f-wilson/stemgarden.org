@@ -23,7 +23,6 @@ export const cellToLinesMap = generateCellToLinesMap()
 
 
 function generateLineToCellsMap() {
-    console.warn(`generateLineToCellsMap was called.  This compute heavy function should only run once per game.`)
     let map = new Map()
     let currentLineId = 0
     for (let cell = 0; cell < totalCells; cell++) {
@@ -44,8 +43,8 @@ function generateLineToCellsMap() {
             map.set(currentLineId++, line)
         }
     }
-    console.log(`Mapped each of the ${map.size} LineIds to the set of Cells in it.`)
-    console.log([...map.entries()])
+    // console.log(`Mapped each of the ${map.size} LineIds to the set of Cells in it.`)
+    // console.log([...map.entries()])
     return map
 }
 function verticalLineByStartCell(cellId) {
@@ -88,7 +87,6 @@ function downslashLineByStartCell(cellId) {
 
 
 function generateCellToLinesMap() {
-    console.warn(`cellToLinesMap was called.  This is a compute heavy function which should run once per game.`)
     let cellToLinesMap = new Map()
     for (let cell = 0; cell < totalCells; cell++) {
         cellToLinesMap.set(cell, [])
@@ -100,10 +98,8 @@ function generateCellToLinesMap() {
             cellToLinesMap.set(cell, prevLinesList.concat(lineId))
         })
     }
-    console.log(`Mapped each of the ${totalCells} CellIds to the set of all Lines that include it.`)
-    console.log([...cellToLinesMap.entries()])
-
-    // cellsToLinesMap.forEach(logMapElement);
+    // console.log(`Mapped each of the ${totalCells} CellIds to the set of all Lines that include it.`)
+    // console.log([...cellToLinesMap.entries()])
     return cellToLinesMap
 }
 
@@ -137,7 +133,7 @@ function getRowByCellId(id) {
 function getColByCellId(id) {
     return (id % cellsPerRow)
 }
-function getCellIdByRowCol(row, col) {
-    return (row * cellsPerRow + col);
-}
+// function getCellIdByRowCol(row, col) {
+//     return (row * cellsPerRow + col);
+// }
 
