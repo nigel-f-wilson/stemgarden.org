@@ -8,6 +8,7 @@ import { faUserFriends, faRobot } from '@fortawesome/free-solid-svg-icons';
 
 // CONTEXT 
 import { PageLayoutContext } from "../../../contexts";
+import { ConnectFourContext } from "../ConnectFourContext";
 
 // ICONS
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -34,8 +35,14 @@ export function SettingsModal(props) {
   const { open, startNewGame, cancelNewGame } = props
 
   const { maxSquareSideLength } = useContext(PageLayoutContext)
+
+
+  const { 
+    settings, setSettings,
   
-  const [settings, setSettings] = useState(props.settings)
+  } = useContext(ConnectFourContext)
+  
+  // const [settings, setSettings] = useState(props.settings)
 
   let noneSelectedError = settings.topics.length === 0;
 
