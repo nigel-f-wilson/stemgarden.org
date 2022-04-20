@@ -64,9 +64,14 @@ export const ConnectFourContextProvider = props => {
   const [gameIsOver, setGameIsOver] = useState(false)
 
   useEffect(() => {
+    // setGameStatus(updatedGameStatus(moveList))
+    // setBoardData(updatedBoardData(moveList, boardData))
+    // setNextPlayer(getNextPlayer(moveList))
+
     setGameStatus(updatedGameStatus(moveList))
-    setBoardData(updatedBoardData(moveList, boardData))
+    setBoardData(getBoardData(moveList))
     setNextPlayer(getNextPlayer(moveList))
+
     // setGameStatus((moveList) => updatedGameStatus(moveList))
     // setBoardData((moveList, boardData) => updatedBoardData(moveList, boardData))
     // setNextPlayer((moveList) => getNextPlayer(moveList))
@@ -107,34 +112,36 @@ export const ConnectFourContextProvider = props => {
 // Returns ENUM: 'playerOnesTurn', 'playerTwosTurn', 'playerOneWins', 'playerTwoWins', 'gameOverDraw'
 // This function efficiently checks to see if the last move created a win for the player who made it.
 export function updatedGameStatus(moveList) {
+  console.log(`Updating Game Status with MOVE LIST --> ${moveList}`);
+
   if (moveList.length === 0) {
     return 'playerOnesTurn'
   }
-  let lastPlayerToMove = (moveList.length % 2 === 1) ? "playerOne" : "playerTwo"
-  let lastPlayersMoves = (lastPlayerToMove === "playerOne") ? playerOnesMoves(moveList) : playerTwosMoves(moveList)
-  let lastMoveMade = Number(lastPlayersMoves.slice(-1))
+  // let lastPlayerToMove = (moveList.length % 2 === 1) ? "playerOne" : "playerTwo"
+  // let lastPlayersMoves = (lastPlayerToMove === "playerOne") ? playerOnesMoves(moveList) : playerTwosMoves(moveList)
+  let lastMoveMade = moveList.slice(-1)
   let linesAffectedByLastMove = cellToLinesMap.get(lastMoveMade)
 
-console.log(`lastPlayerToMove --> ${lastPlayerToMove}`);
-console.log(`lastPlayersMoves --> ${lastPlayersMoves}`);
+// console.log(`lastPlayerToMove --> ${lastPlayerToMove}`);
+// console.log(`lastPlayersMoves --> ${lastPlayersMoves}`);
 console.log(`lastMoveMade --> ${lastMoveMade}`);
 console.log(`linesAffectedByLastMove --> ${linesAffectedByLastMove}`);
 
 
-  for (let i = 0; i < linesAffectedByLastMove.length; i++) {
-    let line = linesAffectedByLastMove[i]
-    let cellsInLine = lineToCellsMap.get(line)
-    // For added efficiency I could at this point remove the lastMoveMade from cells in line and in the next line look for intersections of length 3.
-    if (intersect(cellsInLine, lastPlayersMoves).length === 4) {
-      return (lastPlayerToMove === 'playerOne') ? 'playerOneWins' : 'playerTwoWins'
-    }
-  }
-  if (gameDrawn(moveList)) {
-    return 'gameOverDraw'
-  }
-  else {
-    return (moveList.length % 2 === 0) ? 'playerOnesTurn' : 'playerTwosTurn'
-  }
+  // for (let i = 0; i < linesAffectedByLastMove.length; i++) {
+  //   let line = linesAffectedByLastMove[i]
+  //   let cellsInLine = lineToCellsMap.get(line)
+  //   // For added efficiency I could at this point remove the lastMoveMade from cells in line and in the next line look for intersections of length 3.
+  //   if (intersect(cellsInLine, lastPlayersMoves).length === 4) {
+  //     return (lastPlayerToMove === 'playerOne') ? 'playerOneWins' : 'playerTwoWins'
+  //   }
+  // }
+  // if (gameDrawn(moveList)) {
+  //   return 'gameOverDraw'
+  // }
+  // else {
+  //   return (moveList.length % 2 === 0) ? 'playerOnesTurn' : 'playerTwosTurn'
+  // }
 }
 
 function gameDrawn(moveList) {
@@ -148,23 +155,23 @@ export function cellIsUnclaimed(cellId, moveList) {
 }
 
 
-function updatedBoardData(moveList, prevBoardData) {
-  let newBoardData = prevBoardData.slice()
-  const lastMove = moveList.slice(-1)
-  if (lastMove === -1) {
-    return newBoardData  
-  }
-  else {
-    const currentStatus = newBoardData[lastMove] 
-    if (currentStatus === 'unclaimed') {
-      newBoardData[lastMove] = getNextPlayer(moveList)
-    }
-    else {
-      newBoardData[lastMove] = 'unclaimed'
-    }
-  }
-  return newBoardData
-}
+// function updatedBoardData(moveList, prevBoardData) {
+//   let newBoardData = prevBoardData.slice()
+//   const lastMove = moveList.slice(-1)
+//   if (lastMove === -1) {
+//     return newBoardData  
+//   }
+//   else {
+//     const currentStatus = newBoardData[lastMove] 
+//     if (currentStatus === 'unclaimed') {
+//       newBoardData[lastMove] = getNextPlayer(moveList)
+//     }
+//     else {
+//       newBoardData[lastMove] = 'unclaimed'
+//     }
+//   }
+//   return newBoardData
+// }
 
 function getNextPlayer(moveList) {
   return (moveList.length % 2 === 0) ? "playerOne" : "playerTwo"
@@ -211,14 +218,14 @@ export function getColumnLetter(columnIndex) {
 // }
 
 export function getBoardData(moveList) {
-    let data = new Array(42).fill("unclaimed")
-    moveList.forEach((move, turn) => {
-        if (move !== -1) {
-            let player = turn % 2 === 0 ? "playerOne" : "playerTwo"
-            data[move] = player
-        }
-    })
-    return data
+  let data = new Array(42).fill("unclaimed")
+  moveList.forEach((move, turn) => {
+    if (move !== -1) {
+      let player = turn % 2 === 0 ? "playerOne" : "playerTwo"
+      data[move] = player
+    }
+  })
+  return data
 }
 // const boardData = getBoardData(moveList)  I don't like that getColumnData is called 7 times and each time it calls getBoardData rather than caching this result and reusing it, updating it automatically only when the moveList updates. useEffect could help?
 // No, simply elevating state will help. there is no reason my state needs to mbe soooo sparse... practically just the moveList.  I'll leave all the moveList updater functions as they are but add a uesEffect hook on the component that holds that state which
