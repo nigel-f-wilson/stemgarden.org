@@ -5,6 +5,7 @@ import { Box, Button, Dialog, Zoom, Typography, FormControl, InputLabel, Outline
 
 // CONTEXT 
 import { PageLayoutContext } from "../../../contexts";
+import { ConnectFourContext } from "../ConnectFourContext";
 
 // import { LayoutContext } from "../contexts";
 
@@ -18,15 +19,16 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 })
 
 export function MathQuestionModal(props) {
-    let { question, open, headerText, nextPlayerColor, handleAnswerSubmit } = props 
+    let { open, question, headerText,  handleAnswerSubmit } = props 
 
     
   // LAYOUT CONTEXT
   const { maxSquareSideLength } = useContext(PageLayoutContext)
+  const { nextPlayer } = useContext(ConnectFourContext)
 
     
-    let { correctAnswer, equationString, inputType } = question
-    let borderColor = `chip.${nextPlayerColor}`
+    const { correctAnswer, equationString, inputType } = question
+    let borderColor = `connectFour.${nextPlayer}`
 
     return (
         <Dialog 
@@ -39,27 +41,24 @@ export function MathQuestionModal(props) {
             fullWidth={true}
             maxWidth='md'
             PaperProps={{
-                sx: {
-                    // border: `solid ${nextPlayerColor(gameStatus)} 5px`,
-                    border: `solid green 0.5rem`,
-                    // border: `solid ${borderColor} 5px`,
-                    borderColor: borderColor,
-                    margin: `${0.05 * maxSquareSideLength}px`,
-                    height: `${0.9 * maxSquareSideLength}px`,
-                    width: `${0.9 * maxSquareSideLength}px`,
-                    borderRadius: '50%',
-                    justifySelf: 'flex-start',
-                    alignSelf: 'flex-start'
-
-                }
+              sx: {
+                border: `solid white 12px`,
+                borderColor: borderColor,
+                margin: `${0.05 * maxSquareSideLength}px`,
+                height: `${0.9 * maxSquareSideLength}px`,
+                width: `${0.9 * maxSquareSideLength}px`,
+                borderRadius: '50%',
+                justifySelf: 'flex-start',
+                alignSelf: 'flex-start'
+              }
             }}
         >
             <HeaderText headerText={headerText} />
             <QuestionEquation equationString={equationString} />
             <AnswerInputComponent 
-                inputType={inputType}
-                correctAnswer={correctAnswer}
-                handleAnswerSubmit={handleAnswerSubmit}
+              inputType={inputType}
+              correctAnswer={correctAnswer}
+              handleAnswerSubmit={handleAnswerSubmit}
             />
         </Dialog>
     )
