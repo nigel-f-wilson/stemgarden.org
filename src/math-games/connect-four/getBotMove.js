@@ -1,4 +1,6 @@
-import { getLowestUnclaimedCell, playerOnesMoves, playerTwosMoves, cellIsUnclaimed } from './gameLogic';
+// import { getLowestUnclaimedCell, playerOnesMoves, playerTwosMoves, cellIsUnclaimed } from './gameLogic';
+import { getLowestUnclaimedCell, playerOnesMoves, playerTwosMoves, cellIsUnclaimed } from './ConnectFourContext';
+
 import { lineToCellsMap, numberOfLines } from "./winningLineMaps";
 import { chooseRandomFromArray} from '../_helpers/low-level';
 import { intersect } from '../_helpers/probability';
