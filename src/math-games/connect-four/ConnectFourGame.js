@@ -164,8 +164,8 @@ export default function ConnectFourGame(props) {
     if (settings.opponent === "bot" && !gameIsOver) {
       let botMove = getBotMove(updatedMoveList)
       let moveListAfterBot = updatedMoveList.concat(botMove)
-      let gameStatusAfterBot = updatedGameStatus(moveListAfterBot)
-      console.log(`Adding Bot Move: ${botMove} to the moveList. Game status: ${gameStatusAfterBot}`);
+      // let gameStatusAfterBot = updatedGameStatus(moveListAfterBot)
+      console.log(`Adding Bot Move: ${botMove} to the moveList.`);
       setTimeout(() => {
         setMoveList(moveListAfterBot)
         // setGameStatus(gameStatusAfterBot)
