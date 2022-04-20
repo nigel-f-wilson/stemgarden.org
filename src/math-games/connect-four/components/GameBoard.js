@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
-import { Box, Button, Slide, Typography, Zoom } from '@mui/material'
+import { Box, Typography } from '@mui/material'
 
 
 // My Components
@@ -40,68 +40,38 @@ export function GameBoard(props) {
       flexDirection='row'
       alignItems='flex-end'
     >
-      <InfoHeaderRow gameStatus={gameStatus} oneSeventh={oneSeventh} />  
-      <ChipColumns 
-        boardData={boardData} 
-        gameStatus={gameStatus}
-        nextPlayer={nextPlayer}
-        columnNumbers={columnNumbers} 
-        handleColumnClick={handleColumnClick}
-        lastMoveMade={lastMoveMade}
-        gameBoardConstants={gameBoardConstants}
-      />
-      <RoundedBorder 
-        oneSeventh={oneSeventh}
-        sixSevenths={sixSevenths}
-      />
-    </Box>
-  )
-}
-
-  
-
-function ChipColumns(props) {
-  const { boardData, gameStatus, nextPlayer, columnNumbers, handleColumnClick, lastMoveMade, gameBoardConstants } = props
-
-  function getColumnChipColors(columnIndex) {
-    return boardData.filter((player, cellId) => cellId % 7 === columnIndex)
-  }
-
-  return (
-    <React.Fragment>
+      <InfoHeaderRow />  
       {columnNumbers.map((columnIndex) => {
-        let chipColors = getColumnChipColors(columnIndex)
-        
-        {/* console.log(`COLUMN DATA: ${chipColors}`) */}
         return (
           <Column 
             key={columnIndex}
             index={columnIndex}
-            chipColors={chipColors}
-            gameStatus={gameStatus}
-            nextPlayer={nextPlayer}
             handleColumnClick={handleColumnClick}
-            lastMoveMade={lastMoveMade}
-            gameBoardConstants={gameBoardConstants}
           />
         )
-      })} 
-    </React.Fragment>
-      
+      })}
+      <RoundedBorder />
+    </Box>
   )
 }
+
+
 
 
 
 
 function Column(props) {
-  const { index, chipColors, gameStatus, nextPlayer, handleColumnClick, lastMoveMade, gameBoardConstants } = props
+  const { index, handleColumnClick } = props
+  const { moveList, boardData, gameStatus, gameIsOver, nextPlayer, gameBoardConstants } = useContext(ConnectFourContext)
   const { columnLetters, oneSeventh } = gameBoardConstants
 
-  const { moveList, boardData,  gameIsOver } = useContext(ConnectFourContext)
+  const chipColors = []
+
 
 
   let columnLetter = gameIsOver ? '' : columnLetters[index]
+
+  let lastMoveMade = moveList.slice(-1)
   
   return (
     <Box id="column" 
@@ -123,9 +93,7 @@ function Column(props) {
         chipColors={chipColors} 
         lastMoveMade={lastMoveMade}
       />
-      <ColumnOfSquaresWithHoles 
-        gameBoardConstants={gameBoardConstants} 
-      />
+      <ColumnOfSquaresWithHoles />
     </Box>
   );
 }
