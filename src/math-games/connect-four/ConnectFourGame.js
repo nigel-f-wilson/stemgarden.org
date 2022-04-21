@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useContext } from 'react' // useState, useEffect, 
 import { Box } from '@mui/material';
 
 
@@ -40,8 +40,10 @@ export default function ConnectFourGame(props) {
     // activeCell,
     // question,
     // headerText
+    gameBoardConstants
   
   } = useContext(ConnectFourContext)
+  const { rowNumbers } = gameBoardConstants
 
   const [openModal, setOpenModal] = React.useState("welcome") // Enum: "none", "question", "settings", "welcome", "inGameMenu"
   const [activeCell, setActiveCell] = React.useState(null) 
@@ -56,7 +58,7 @@ export default function ConnectFourGame(props) {
   // CLICK HANDLERS
   ///////////////////////////////////////////////////////
   function handleColumnClick(columnIndex) {
-    console.log(`MOVE LIST: ${moveList}`);
+    console.log(`handleColumnClick for col ${columnIndex} with MOVE LIST: ${moveList}`);
     if (gameIsOver) {
       console.log(`handleColumnClick() had NO EFFECT since game is already over!`)
       return 
@@ -70,19 +72,26 @@ export default function ConnectFourGame(props) {
   }
 
   function lowestUnclaimedCellInColumn(columnIndex) {
+    const cellsInColumn = rowNumbers.map(row => 7 * row + columnIndex)
+    const columnData = cellsInColumn.map(cellId => boardData[cellId])
+    const lowestUnclaimedCell = columnData.indexOf('unclaimmed')
     // let columnData = getColumnData(columnIndex)
     // console.log(`Column Data: ${columnData}`);
 
 
     // let lowestUnclaimedRow = columnData.find(cell => cell.claimStatus !== "unclaimed")
     // let lowestUnclaimedCell = (lowestUnclaimedRow === -1) ? -1 : (lowestUnclaimedRow * 7 + columnIndex)
-    let lowestUnclaimedCell = boardData.find((claimStatus, cellId) => (cellId % 7 === columnIndex && claimStatus === "unclaimed"))
+    // let lowestUnclaimedCell = boardData.find((claimStatus, cellId) => (cellId % 7 === columnIndex && claimStatus === "unclaimed"))
 
-
-    console.log(`lowestUnclaimedCell in col ${columnIndex} is cell "${JSON.stringify(lowestUnclaimedCell, null, 4)}"`);
-    return lowestUnclaimedCell.cellId
+    console.log(`cellsInColumn in col ${columnIndex}: [${cellsInColumn}]"`);
+    console.log(`columnData in col ${columnIndex}: [${columnData}]"`);
+    console.log(`lowestUnclaimedCell in col ${columnIndex} is cell "${lowestUnclaimedCell}"`);
+    return lowestUnclaimedCell
   }
 
+  function getCellsInColumn(columnIndex) {
+    
+  }
   
   // function getColumnData(columnIndex) {
   //   let columnData = []
