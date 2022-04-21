@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Box } from '@mui/material'
+import { ConnectFourContext } from "../ConnectFourContext";
 
 export function RoundedBorder(props) {
-  const { oneSeventh, sixSevenths } = props
+  const { gameBoardConstants } = useContext(ConnectFourContext)
+  const { oneSeventh, sixSevenths } = gameBoardConstants
   
   return (
     <Box 
