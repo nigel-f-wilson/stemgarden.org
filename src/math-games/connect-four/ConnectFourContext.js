@@ -2,21 +2,10 @@ import React, { useState, useEffect, createContext, useContext } from "react";
 
 import { PageLayoutContext } from "../../contexts";
 
-// import { updatedGameStatus } from './gameLogic'
-import { lineToCellsMap, cellToLinesMap } from './winningLineMaps'
-import { intersect } from "../_helpers/probability";
+// import { lineToCellsMap, cellToLinesMap } from './winningLineMaps'
+// import { intersect } from "../_helpers/probability";
+import { cellToLinesMap } from './winningLineMaps'
 
-
-
-// export const AppStateContext = createContext();
-
-// const AppStateContextProvider = props => {
-//   const [appState, setAppState] = useState({
-//     cartOpen: false
-//   });
-
-//   return <AppStateContext.Provider value={{ appState, setAppState }}>{props.children}</AppStateContext.Provider>;
-// };
 
 
 export const ConnectFourContext = createContext();
@@ -117,6 +106,9 @@ export function updatedGameStatus(moveList) {
   if (moveList.length === 0) {
     return 'playerOnesTurn'
   }
+  else if (gameDrawn(moveList)) {
+    return 'gameOverDraw'
+  }
   // let lastPlayerToMove = (moveList.length % 2 === 1) ? "playerOne" : "playerTwo"
   // let lastPlayersMoves = (lastPlayerToMove === "playerOne") ? playerOnesMoves(moveList) : playerTwosMoves(moveList)
   let lastMoveMade = moveList.slice(-1)
@@ -145,8 +137,13 @@ console.log(`linesAffectedByLastMove --> ${linesAffectedByLastMove}`);
 }
 
 function gameDrawn(moveList) {
-  let nonSkippedTurns = moveList.filter(cellId => cellId !== -1)
-  return (nonSkippedTurns.length === 42)
+  if (moveList.length < 42) {
+    return false
+  }
+  else {
+    let nonSkippedTurns = moveList.filter(cellId => cellId !== -1)
+    return (nonSkippedTurns.length === 42)
+  }
 }
 
 
