@@ -5,7 +5,7 @@ import { ConnectFourContext } from "../ConnectFourContext";
 
 export function ColumnOfSquaresWithHoles(props) {
   const { gameBoardConstants } = useContext(ConnectFourContext)
-  const { rowNumbers, oneSixth, oneSeventh, sixSevenths, chipSizeRelativeToSquare, } = gameBoardConstants
+  const { zIndex, rowNumbers, oneSixth, oneSeventh, sixSevenths, chipSizeRelativeToSquare, } = gameBoardConstants
 
   return (
     <Box id="columnOfSquares"
@@ -14,7 +14,7 @@ export function ColumnOfSquaresWithHoles(props) {
       bgcolor='transparent'
       width='100%'
       height={sixSevenths}
-      zIndex='board'
+      zIndex={zIndex.board}
       display='flex'
       flexDirection='column-reverse'
     >
