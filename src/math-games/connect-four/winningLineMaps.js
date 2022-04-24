@@ -1,6 +1,6 @@
 // A "line" is a set of four cellIds that together form a win.
 // There are four 'types' of Line: 'vertical', 'horizontal', 'upslash', 'downslash'
-// There are 64 lines and 42 cells. 
+// There are 69 lines and 42 cells. 
 // This module exports two high-level constants that map these two types of id to one another.
 // 1) lineIdToCellIdsMap  could be renamed "cellsInLine". It takes a lineId 0-63 and gives back the four cells in it.
 // 2) cellIdToLineIdsMap  could be renamed "linesThatIncludeCell". It takes a cellId 0-41 and gives back the 3 to 13 lines that cell is part of.
@@ -9,44 +9,55 @@
 const cellsPerCol = 6;
 const cellsPerRow = 7;
 const totalCells = cellsPerCol * cellsPerRow;
-// const linesPerCol = (cellsPerCol >= 4) ? (cellsPerCol - 3) : 0;
-// const linesPerRow = (cellsPerRow >= 4) ? (cellsPerRow - 3) : 0;
-// const numberOfVerticalLines = linesPerCol * cellsPerRow;
-// const numberOfHorizontalLines = linesPerRow * cellsPerCol;
-// const numberOfUpslashLines = linesPerCol * linesPerRow;
-// const numberOfDownslashLines = linesPerCol * linesPerRow;
 
+export const cellsInLine = getCellsInLinesArray()
 
-export const lineToCellsMap = generateLineToCellsMap()
-export const numberOfLines = lineToCellsMap.size
-export const cellToLinesMap = generateCellToLinesMap()
-
-
-function generateLineToCellsMap() {
-    let map = new Map()
-    let currentLineId = 0
-    for (let cell = 0; cell < totalCells; cell++) {
-        if (isStartOfVerticalLine(cell)) {
-            let line = verticalLineByStartCell(cell)
-            map.set(currentLineId++, line)
-        }
-        if (isStartOfHorizontalLine(cell)) {
-            let line = horizontalLineByStartCell(cell)
-            map.set(currentLineId++, line)
-        }
-        if (isStartOfUpslashLine(cell)) {
-            let line = upslashLineByStartCell(cell)
-            map.set(currentLineId++, line)
-        }
-        if (isStartOfDownslashLine(cell)) {
-            let line = downslashLineByStartCell(cell)
-            map.set(currentLineId++, line)
-        }
+function getCellsInLinesArray() {
+  let array = []
+  let currentLineId = 0
+  // To go effectively through each line we will actually go through each cell and in the process of doing so go through 
+  // each of the four types of line it could be the 'starting' cell of.  
+  for (let cell = 0; cell < totalCells; cell++) {
+    if (isStartOfVerticalLine(cell)) {
+      let line = verticalLineByStartCell(cell)
+      array[currentLineId++] = line
     }
-    // console.log(`Mapped each of the ${map.size} LineIds to the set of Cells in it.`)
-    // console.log([...map.entries()])
-    return map
+    if (isStartOfHorizontalLine(cell)) {
+      let line = horizontalLineByStartCell(cell)
+      array[currentLineId++] = line
+    }
+    if (isStartOfUpslashLine(cell)) {
+      let line = upslashLineByStartCell(cell)
+      array[currentLineId++] = line
+    }
+    if (isStartOfDownslashLine(cell)) {
+      let line = downslashLineByStartCell(cell)
+      array[currentLineId++] = line
+    }
+  }
+  console.log(`Mapped each of the ${array.length} LineIds to the set of Cells in it --> `)
+  // console.log(array);
+  return array
 }
+
+export const numberOfLines = cellsInLine.length
+
+export const linesThatContainCell = getCellsContainingLinesArray()
+
+function getCellsContainingLinesArray() {
+  let array = new Array(totalCells).fill([])
+  for (let lineId = 0; lineId < numberOfLines; lineId++) {
+    let cells = cellsInLine[lineId]
+    // console.log(`Looking at line ${lineId} found cells in line to be: [${cells}]`);
+    cells.forEach(cell => {
+      array[cell] = array[cell].concat(lineId)
+    })
+  }
+  console.log(`Mapped each of the ${totalCells} CellIds to the set of all Lines that include it.`)
+  // console.log(array)
+  return array
+}
+
 function verticalLineByStartCell(cellId) {
     let line = [
         cellId + (0 * cellsPerRow),
@@ -85,25 +96,6 @@ function downslashLineByStartCell(cellId) {
 }
 
 
-
-function generateCellToLinesMap() {
-    let cellToLinesMap = new Map()
-    for (let cell = 0; cell < totalCells; cell++) {
-        cellToLinesMap.set(cell, [])
-    }
-    for (let lineId = 0; lineId < numberOfLines; lineId++) {
-        let cellsInLine = lineToCellsMap.get(lineId)
-        cellsInLine.forEach(cell => {
-            let prevLinesList = cellToLinesMap.get(cell)
-            cellToLinesMap.set(cell, prevLinesList.concat(lineId))
-        })
-    }
-    // console.log(`Mapped each of the ${totalCells} CellIds to the set of all Lines that include it.`)
-    // console.log([...cellToLinesMap.entries()])
-    return cellToLinesMap
-}
-
-// FIRST level BOOLEAN LINE helpers             // Currently there is only a Cell.js functional Component, however if I defined a Cell Class I would think that I could turn these functions that take cellId as a parameter and turn them into something that 'reads better' like Cell.isStartOfVerticalLine() written on the Cell object so that it has built in access to the relevant cellId and can be used in a no-parameter fashion. ??? 
 function isStartOfVerticalLine(cellId) {
     const rowNumber = getRowByCellId(cellId)
     return (cellsPerCol - rowNumber >= 4)
