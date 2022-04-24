@@ -19,7 +19,8 @@ export function NewGameAndUndoButtons(props) {
       width='100%'
       display='flex'
       justifyContent='space-evenly'
-      alignItems='flex-end'
+      alignItems='center'
+      px={4}
     >
       <NewGameButton  openSettingsModal={openSettingsModal} />
       <UndoMoveButton undoMove={undoMove} />
@@ -36,7 +37,7 @@ function NewGameButton(props) {
       onClick={() => openSettingsModal()}
       sx={{
         flex: '1 0 25%',
-        mx: 2
+        mx: 1
       }}
     >
       New&nbsp;Game
@@ -53,7 +54,7 @@ function UndoMoveButton(props) {
       onClick={() => undoMove()}
       sx={{
         flex: '1 0 25%',
-        mx: 2
+        mx: 1
       }}
     >
         Undo&nbsp;Move
