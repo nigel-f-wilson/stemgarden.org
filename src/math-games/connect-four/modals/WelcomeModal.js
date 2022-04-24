@@ -39,13 +39,15 @@ export function WelcomeModal(props) {
           }}
         >
             
-          <Typography variant='h3' align="center" >
-              Welcome to Math Fact Connect Four!
+          <Typography variant='h4' align="center" >
+            Math Fact Connect Four
           </Typography>
           
           <PlayNowButton openSettingsModal={openSettingsModal} />
 
-          <Typography variant='h4'  >
+          {/* TODO --> Add "sign in and play" beside "play without signing in" */}
+
+          <Typography variant='h5'  >
             Rules of Play
           </Typography>
           <Typography gutterBottom  >
@@ -55,7 +57,7 @@ export function WelcomeModal(props) {
             But there's a catch: A math quetion will pop up when you selecet a column and you must answer it correctly or your turn will be skipped!
           </Typography>
           
-          <Typography variant='h4'>
+          <Typography variant='h5'>
               Suggested Use
           </Typography>
           <Typography gutterBottom  >
@@ -65,7 +67,7 @@ export function WelcomeModal(props) {
           </Typography>
           <Typography gutterBottom  >
             All the questions in this game were designed to be solved mentally.
-            Use your fingers if you have to! Just don't fall back to relying on the same boring old paper-and-pencil procedures.
+            Use your fingers if you have to, but no paper-and-pencil! 
             Push yourself to try new mental math strategies like "stepping stones" and "factor it first".
           </Typography>
           <Typography gutterBottom  >
@@ -74,7 +76,7 @@ export function WelcomeModal(props) {
             useful when working with younger students. 
           </Typography>
 
-          <Typography variant='h4' >
+          <Typography variant='h5' >
               Note on Time Limits
           </Typography>
           <Typography gutterBottom  >
@@ -90,7 +92,7 @@ export function WelcomeModal(props) {
             Speed is just a pleasant side-effect of lots of practice.
           </Typography>
 
-          <Typography variant='h4' >
+          <Typography variant='h5' >
               Thanks
           </Typography>
           <Typography gutterBottom  >
@@ -100,11 +102,11 @@ export function WelcomeModal(props) {
               want to convert it to a free web app so I could share it with other teachers and students.
           </Typography>
 
-          <Typography variant='h4' pt={1}  >
+          <Typography variant='h5'  >
               Dig Deeper
           </Typography>
           <Typography gutterBottom  >
-              The code for this project is all open-source so if your are curious how it works behind the scenes just visit my GitHub page.
+              The code for this project is all open-source so if your are curious how it works behind the scenes visit my <a href='https://github.com/nolastemgarden' >GitHub</a> page.
               If you find a mistake or have an idea for how to improve this game, please open an issue.
           </Typography>
           <Typography color="text.primary" >
