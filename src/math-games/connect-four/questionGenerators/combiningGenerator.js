@@ -10,7 +10,7 @@ const missingMinuendInstructions = [
 
 export function getCombiningQuestion(difficulty) {
     console.assert((difficulty === "easy" || difficulty === "medium" || difficulty === "hard"), `getCombiningQuestion recieved invalid difficulty ${difficulty}` )
-    console.log(`Generating Combining Question of difficulty "${difficulty}"`)
+    // console.log(`Generating Combining Question of difficulty "${difficulty}"`)
     
     let types = [
         missingSumTwo,

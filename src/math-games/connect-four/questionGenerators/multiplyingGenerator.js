@@ -3,7 +3,7 @@ import { randomInt, chooseRandomFromArray } from "../../_helpers/low-level";
 
 export function getMultiplyingQuestion(difficulty) {
     console.assert((difficulty === "easy" || difficulty === "medium" || difficulty === "hard"), `getMultiplyingQuestion recieved invalid difficulty ${difficulty}`)
-    console.log(`Generating Multiplying Question of difficulty "${difficulty}"`)
+    // console.log(`Generating Multiplying Question of difficulty "${difficulty}"`)
     
     let types = [
         missingProductTwo,
