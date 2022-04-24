@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useContext } from 'react'
 
 // MUI  components
 import { Box, Button, IconButton, Dialog, Zoom, Typography } from '@mui/material'
@@ -7,7 +7,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserFriends, faRobot } from '@fortawesome/free-solid-svg-icons';
 
 // CONTEXT 
-import { PageLayoutContext } from "../../../contexts";
 import { ConnectFourContext } from "../ConnectFourContext";
 
 // ICONS
@@ -21,11 +20,6 @@ import { ConnectFourContext } from "../ConnectFourContext";
 // const SuperscriptIcon = () => { return <FontAwesomeIcon icon={faSuperscript} /> }
 // import { faPlus, faTimes, faDivide, faSuperscript } from '@fortawesome/free-solid-svg-icons'
 
-// Style & Layout Constants
-const opponentHeight = "25%"
-const topicHeight = "35%"
-const difficultyHeight = "25%"
-const inputHeight = "15%"
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Zoom ref={ref} {...props} />;
@@ -33,19 +27,9 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 export function SettingsModal(props) {
   const { open, startNewGame, cancelNewGame } = props
-
-  const { maxSquareSideLength } = useContext(PageLayoutContext)
-
-
-  const { 
-    settings, setSettings,
-  
-  } = useContext(ConnectFourContext)
-  
-  // const [settings, setSettings] = useState(props.settings)
+  const { settings, setSettings } = useContext(ConnectFourContext)
 
   let noneSelectedError = settings.topics.length === 0;
-
 
   function toggleTopic(topic) {
     let updatedTopicsArray = []
@@ -78,34 +62,24 @@ export function SettingsModal(props) {
       
       PaperProps={{
         sx: {
-          height: `${0.85 * maxSquareSideLength}px`,
-          width: `${0.7 * maxSquareSideLength}px`,
-          minHeight: "550px",
-          minWidth: "375px",
+          // height: `${0.9 * maxSquareSideLength}px`,
+          // width: `${0.75 * maxSquareSideLength}px`,
+          height: '90%',
+          width: '85%',
+          maxHeight: '600px',
+          maxWidth: '450px',
           display: 'flex',
           p: 3,
           borderRadius: 6,
-          overflowY: "hidden",
+          overflowY: "scroll",
         }
       }}
     >
       <OpponentSelector />
       <TopicSelector />
       <DifficultyModeSelector />
-      <Box  
-        borderTop='solid green 3px'
-        borderColor='primary.main'
-        height={inputHeight}
-        display='flex'
-        justifyContent='flex-end'
-        mt={3}
-        mb={1}
-        pt={2}
-        pr={1}
-      >
-        <CancelButton cancelNewGame={cancelNewGame} />
-        <StartGameButton startNewGame={startNewGame} />
-      </Box>
+      <StartAndCancelButtons />
+      
     </Dialog>
   )
 
@@ -117,23 +91,22 @@ export function SettingsModal(props) {
         <IconButton
           children={<FontAwesomeIcon icon={icon} size="2x" />}
           onClick={() => selectOpponent(opponent)}
-          color={selected ? "primary" : "secondary"}
+          color={selected ? "primary" : "secondary"} 
         />
       )
     }
     return (
       <Box  
-        height={opponentHeight}  
         display='flex' 
+        flex='1 1 25%'
         flexDirection='column' 
       >
         <Typography
           variant='h5'
           align="center"
-          pb={3}
           children="Play vs. Human or Bot?"
         />
-        <Box display='flex' flexDirection='row' justifyContent='space-evenly' >
+        <Box display='flex' flexDirection='row' justifyContent='space-evenly' p={1} >
           <OpponentIconButton opponent='human' icon={faUserFriends} />
           <OpponentIconButton opponent='bot' icon={faRobot} />
         </Box>
@@ -149,7 +122,7 @@ export function SettingsModal(props) {
         <Button
           onClick={() => toggleTopic(topic)}
           variant={selected ? "contained" : "outlined"}
-          sx={{ width: '100%', my: 1}}
+          sx={{ m: '0.25rem' }}
           children={label}
         />
       )
@@ -160,22 +133,21 @@ export function SettingsModal(props) {
           children="*** You must select at least one topic."
           variant='body1'
           align="center"
-          color="error"
-          display={noneSelectedError ? "flex" : "none"}
+          color={noneSelectedError ? "error" : "transparent"}
+          // display={noneSelectedError ? "flex" : "none"}
           gutterBottom
         />
       )
     }
     return (
         <Box  
-          height={topicHeight}  
           display='flex' 
+          flex='1 1 25%'  
           flexDirection='column' 
         >
           <Typography
             variant='h5'
             align="center"
-            pb={3}
             children="What math topics should we include?"
           />
             <TopicButton topic='combine' label="Combine & Split Up" />
@@ -195,15 +167,20 @@ export function SettingsModal(props) {
           variant={selected ? "contained" : "outlined"}
           sx={{
             flex: '2 0 25%', 
-            m: 1
+            m: '0.25rem'
           }}
           children={(mode === "increasing") ? "increasing difficulty" : `${mode}`}
         />
       )
     }
     return (
-      <Box height={difficultyHeight} display='flex' flexDirection='column' >
-        <Typography variant='h5' align="center" pb={3}
+      <Box 
+        display='flex' 
+        flex='1 1 25%'
+        flexDirection='column' 
+        pb={2}
+      >
+        <Typography variant='h5' align="center"
           children="How hard should the questions be?"
         />
         <Box  
@@ -221,21 +198,36 @@ export function SettingsModal(props) {
     )
   }
 
+  function StartAndCancelButtons() {
+    return (
+      <Box  
+        borderTop='solid green 3px'
+        borderColor='primary.main'
+        display='flex'
+        flex='1 1 20%'
+        justifyContent='center'
+      >
+        <CancelButton cancelNewGame={cancelNewGame} />
+        <StartGameButton startNewGame={startNewGame} />
+      </Box>
+    )
+  }
+
   function CancelButton(props) {
-      const { cancelNewGame } = props
-      return (
-          <Button
-              onClick={cancelNewGame}
-              variant='outlined'
-              // color="error"
-              disabled={noneSelectedError}
-              sx={{
-                  m: 1,
-                  width: '42%'
-              }}
-              children="Cancel"
-          />
-      )
+    const { cancelNewGame } = props
+    return (
+      <Button
+        onClick={cancelNewGame}
+        variant='outlined'
+        disabled={noneSelectedError}
+        sx={{
+          m: 1,
+          mt: 3,
+          width: '40%'
+        }}
+        children="Cancel"
+      />
+    )
   }
   function StartGameButton() {
     return (
@@ -244,8 +236,9 @@ export function SettingsModal(props) {
         variant='contained'
         disabled={noneSelectedError}
         sx={{
-            m: 1,
-            width: '42%'
+          m: 1,
+          mt: 3,
+          width: '40%'
         }}
         children="Start Game"
       />
