@@ -66,7 +66,7 @@ export function MathQuestionModal(props) {
     function HeaderText(props) {
         return (
             <Typography id="Instructions"
-                variant='h3'
+                variant='h4'
                 sx={{
                     height: instructionsHeight,
                     width: '100%',
