@@ -6,9 +6,9 @@ import { Box } from '@mui/material';
 import Board from "../components/Board";
 import BotPanel from "../components/panels/BotPanel";
 
-// Gmae Logic
-import { status, gameOver, nextPlayer  } from "../../magicSquareGameSolution";
-import { getBotMove } from "../logic/botLogic";
+// Game Logic
+import { status, gameOver, nextPlayer  } from "../../helpers";
+import { getBotMove } from "../../getBotMove";
 
 
 export default function PlayVsBot(props) {

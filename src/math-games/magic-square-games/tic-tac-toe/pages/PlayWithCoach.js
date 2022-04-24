@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 // import { useOutletContext } from "react-router-dom";
 
-import { gameOver } from "../../magicSquareGameSolution";
+import { gameOver } from "../../helpers";
 import Board from "../components/Board";
 import CoachPanel from "../components/panels/CoachPanel";
 

@@ -8,77 +8,82 @@
 import { createTheme, responsiveFontSizes } from '@mui/material/styles';
 
 const theme = createTheme({
-    palette: {
-        white: '#FFFFFF',
-        black: '#000000',
-        darkGrey: '#212121',
-        connectFourBackground: '#b3e5fc',
-        transparent: 'rgba(0, 0, 0, 0)',
-        primary: {
-            light: '#669944',
-            main: '#2e6b12',
-            dark: '#004000',
-            contrastText: '#FFFFFF'
-        },
-        secondary: {
-            light: '#FFFFF',
-            main: '#669944',
-            dark: '#777777',
-            contrastText: '#000000'
-        },
-        text: {
-            primary: 'rgba(0, 0, 0, 0.87)',
-            secondary: 'rgba(0, 0, 0, 0.54)',
-            disabled: 'rgba(0, 0, 0, 0.38)',
-            hint: 'rgba(0, 0, 0, 0.38)',
-        },
-        action: {
-            disabledBackground: '#2e6b12',
-            disabledOpacity: '0.5'
-        },
-
+  palette: {
+    connectFour: {
+      board: '#0039cb',       // blue
+      playerOne: '#d50000',   // red
+      playerTwo: '#ffea00',   // yellow
+      background: '#b3e5fc',  // light blue 
+      text: '#000000',        // black
     },
-    components: {
-        MuiList: {
-            styleOverrides: {
-              root: {
-                // backgroundColor: 'red',
-                paddingTop: '0px',
-              },
-            },
-        },
+    backgrounds: {
+      light: '#FFFFFF',
+      dark: '#212121',
     },
-    typography: {
-      h1: {
-        textShadow: '0.15rem 0.15rem 0.3rem black',
-        fontWeight: 200,
+    white: '#FFFFFF',
+    black: '#000000',
+    darkGrey: '#212121',
+    
+    transparent: 'rgba(0, 0, 0, 0)',
+    primary: {
+      light: '#669944',
+      main: '#2e6b12',
+      dark: '#004000',
+      contrastText: '#FFFFFF'
+    },
+    secondary: {
+      light: '#FFFFF',
+      main: '#669944',
+      dark: '#777777',
+      contrastText: '#000000'
+    },
+    text: {
+      primary: 'rgba(0, 0, 0, 0.87)',
+      secondary: 'rgba(0, 0, 0, 0.54)',
+      disabled: 'rgba(0, 0, 0, 0.38)',
+      hint: 'rgba(0, 0, 0, 0.38)',
+    },
+    action: {
+        disabledBackground: '#2e6b12',
+        disabledOpacity: '0.5'
+    },
+  },
+  components: {
+    MuiList: {
+      styleOverrides: {
+        root: {
+          paddingTop: '0px',
+        },
       },
-      pageHeader: { 
-        // color: theme.palette.common.white
-
-        textAlign: "center",
-
-        textShadow: '0.15rem 0.15rem 0.3rem black',
-        fontWeight: 200,
-      },
-      cardHeader: { 
-        textShadow: '0.15rem 0.15rem 0.3rem black',
-        fontWeight: 200,
-      },
-      button: {
-        fontSize: '1.0rem',
-        fontWeight: '700'
-      }
     },
-    status: {
+  },
+  typography: {
+    h1: {
+      fontWeight: 200,
+    },
+    pageHeader: { 
+      textAlign: "center",
+      textShadow: '0.15rem 0.15rem 0.3rem black',
+      fontWeight: 200,
+    },
+    cardHeader: { 
+      textShadow: '0.15rem 0.15rem 0.3rem black',
+      fontWeight: 200,
+    },
+    button: {
+      fontSize: '1.0rem',
+      fontWeight: '700'
+    }
+  },
+  status: {
 
-    },
-    shape: {
-        borderRadius: 8,
-    },
-    spacing: 8,
-    transitions: {    },
-    zIndex: { }
+  },
+  shape: {
+    borderRadius: 8,
+  },
+  spacing: 8,
+  transitions: {    },
+  zIndex: { }
 
 });
 
@@ -86,7 +91,7 @@ theme.typography.navbarBrand = {
   color: theme.palette.common.white,
   fontWeight: 400,
   fontFamily: 'Perantent Marker, cursive',
-  fontSize: 32
+  fontSize: 32,
 }
 theme.typography.pageHeader = {
   color: theme.palette.common.white,

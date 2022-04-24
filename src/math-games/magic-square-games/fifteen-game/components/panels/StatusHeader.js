@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { status } from "../../logic/gameLogic";
+import { status } from "../../../helpers";
 
 // MUI Components
 import { Typography } from '@mui/material';

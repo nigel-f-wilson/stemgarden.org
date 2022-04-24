@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { nextPlayer, status, getParent } from "../../../magicSquareGameSolution";
-import { winningMoves, urgentDefensiveMoves, doubleAttackingMoves } from "../../botLogic";
+import { nextPlayer, status, getParent } from "../../../helpers";
+import { winningMoves, urgentDefensiveMoves, doubleAttackingMoves } from "../../../getBotMove";
 
 
 import { Box, Typography } from '@mui/material';

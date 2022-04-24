@@ -1,32 +1,24 @@
-import React from 'react';
-import { useScreenWidth } from "../../hooks";
+import React, { useContext } from 'react';
+import { PageLayoutContext } from "../../contexts";
 
 import { MobileNavbar, DesktopNavbar } from "./_index";
 import { Box } from "@mui/material"
-import theme from '../../theme';
 
 export default function Navbar(props) {
-    const screenWidth = useScreenWidth()
-    
-    const mobileNavbarHeight = 48
-    const desktopNavbarHeight = 96
+  const { navbarStyle, navbarHeightPx } = useContext(PageLayoutContext)
 
-    
-    return (
-      <React.Fragment>
-        <Box 
-          children={(screenWidth >= theme.breakpoints.values.md) ? 
-            <DesktopNavbar height={desktopNavbarHeight} /> : 
-            <MobileNavbar height={mobileNavbarHeight} /> } 
-          width='100vw'
-          backgroundColor='primary.main'
-        />
-        <Box 
-          height={(screenWidth >= theme.breakpoints.values.md) ? desktopNavbarHeight : mobileNavbarHeight  }
-          width='100vw'
-          backgroundColor='red'
-        />
-      </React.Fragment>
-    )
+  return (
+    <React.Fragment>
+      <Box 
+        children={(navbarStyle === 'mobile') ?  <MobileNavbar /> : <DesktopNavbar /> } 
+        // width='100vw'
+        bgcolor='primary.main'
+      />
+      <Box 
+        height={navbarHeightPx - 1}
+        bgcolor='primary.main'
+      />
+    </React.Fragment>
+  )
 }
 

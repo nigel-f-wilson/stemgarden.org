@@ -1,7 +1,5 @@
 import React from 'react'
 import { Link as RouterLink } from 'react-router-dom';
-
-// MUI  components
 import { Box, Button, Typography } from '@mui/material'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

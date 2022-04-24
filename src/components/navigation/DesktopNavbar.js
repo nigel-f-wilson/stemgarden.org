@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 // MY COMPONENTS
 import DesktopMenus from "./DesktopMenus";
@@ -11,16 +11,17 @@ import {
 } from "@mui/material"
 
 import theme from '../../theme';
+import { PageLayoutContext } from '../../contexts';
 
-export default function DesktopNavbar(props) {
-  const { height } = props
+export default function DesktopNavbar() {
+  const { navbarHeight } = useContext(PageLayoutContext)
 
   return (
     <AppBar
       position="fixed"
       elevation={3}
       sx={{ 
-        height: height,
+        height: navbarHeight,
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'center'
@@ -32,7 +33,7 @@ export default function DesktopNavbar(props) {
         flexDirection='row'
         justifyContent='space-between'
       >
-        <Logo navbarHeight={height} />
+        <Logo />
         <DesktopBrand />
         <DesktopMenus />
       </Box>
@@ -41,18 +42,16 @@ export default function DesktopNavbar(props) {
 }
 
 function DesktopBrand() {
-    return (
-        <Box  pt={2} >
-            <Typography 
-              variant='navbarBrand'
-              align="left"
-              // fontFamily='Permanent Marker'
-              fontFamily='Special Elite'
-              lineHeight='1.2'
-            >
-                STEM<br />Garden
-            </Typography>
-        </Box>
-    )
+  return (
+    <Box  pt={2} >
+      <Typography 
+        variant='navbarBrand'
+        fontFamily='Special Elite'
+        lineHeight='1.2'
+      >
+        STEM<br />Garden
+      </Typography>
+    </Box>
+  )
 }
 

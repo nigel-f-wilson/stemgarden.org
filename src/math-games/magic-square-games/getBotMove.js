@@ -1,8 +1,8 @@
 // X always goes first! X and O will be shorthand for the player who goes First and the player who goes second.
 // PlayerOne and PlayerTwo are NOT markers of who goes first or second in any given game!
 // In the 15 game, PlayerOne and PlayerTWo are distinguished by dark-blue and light-blue
-import { intersect } from "../../_helpers/probability";
-import { sumsOfTwo, complementOf, gameOver, xNumbers, oNumbers, nextPlayer, availableNumbers } from "../solution";
+import { intersect } from "../_helpers/probability";
+import { sumsOfTwo, complementOf, gameOver, xNumbers, oNumbers, nextPlayer, availableNumbers } from "./helpers";
 
 
 //////////////////////////////////////////////////////////////     
@@ -26,10 +26,10 @@ export function getBotMove(difficultyMode, moveList, humanGoesFirst, outcomeMap)
 function easyProtocol(ml) {
     if (winningMoves(ml).length > 0) {
         console.log(`BOT FOUND IMMEDIEATELY WINNING MOVES: ${winningMoves(ml)}`)
-        return selectMoveRandomly(winningMoves(ml))
+        return pickRandomFromArray(winningMoves(ml))
     }
     else {
-        return selectMoveRandomly(availableNumbers(ml))
+        return pickRandomFromArray(availableNumbers(ml))
     }
 }
 // In MEDIUM mode, Bot wins immediately if possible.
@@ -39,14 +39,14 @@ function mediumProtocol(ml) {
     let defensiveMoves = urgentDefensiveMoves(ml)
     if (wins.length > 0) {
         console.log(`BOT FOUND IMMEDIATELY WINNING MOVES: ${wins}`)
-        return selectMoveRandomly(wins)
+        return pickRandomFromArray(wins)
     }
     else if (defensiveMoves.length > 0) {
         console.log(`BOT FOUND URGENT DEFENSIVE MOVES: ${defensiveMoves}`)
-        return selectMoveRandomly(defensiveMoves)
+        return pickRandomFromArray(defensiveMoves)
     }
     else {
-        return selectMoveRandomly(availableNumbers(ml))
+        return pickRandomFromArray(availableNumbers(ml))
     }
 }
 
@@ -55,13 +55,13 @@ function mediumProtocol(ml) {
 function hardProtocol(moveList, humanGoesFirst, outcomeMap) {
   let sorted = sortBotMoves(moveList, humanGoesFirst, outcomeMap)
   if (sorted.winningForBot.length > 0) {
-    return selectMoveRandomly(sorted.winningForBot)
+    return pickRandomFromArray(sorted.winningForBot)
   }
   else if (sorted.drawing.length > 0) {
-    return selectMoveRandomly(sorted.drawing)
+    return pickRandomFromArray(sorted.drawing)
   }
   else {
-    return selectMoveRandomly(sorted.winningForHuman)    
+    return pickRandomFromArray(sorted.winningForHuman)    
   }
 }
 
@@ -144,7 +144,7 @@ export function sortBotMoves(ml, humanGoesFirst, outcomeMap) {
 }
 
 // Randomly selects a move from a list of possible next moves.
-export function selectMoveRandomly(moveSet) {
+function pickRandomFromArray(moveSet) {
   return moveSet[Math.floor(Math.random() * moveSet.length)]
 }
 
@@ -173,15 +173,15 @@ export function getParent(ml) {
 //     console.log(`BOT MAKING AN OPENING BOOK MOVE.`)
 
 //     if (ml.length === 0) {
-//         return selectMoveRandomly(availableNumbers(ml))
+//         return pickRandomFromArray(availableNumbers(ml))
 //     }
 //     else if (ml[0] === 5) {
-//         return selectMoveRandomly([2, 4, 6, 8])
+//         return pickRandomFromArray([2, 4, 6, 8])
 //     }
 //     else if (ml[0] % 2 === 0) {  // If player took a corner, bot must take center.
 //         return [5]
 //     }
 //     else {
-//         return selectMoveRandomly(blockingMoves(ml))
+//         return pickRandomFromArray(blockingMoves(ml))
 //     }
 // }

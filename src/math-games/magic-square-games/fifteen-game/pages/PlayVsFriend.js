@@ -1,16 +1,34 @@
+import { Box } from '@mui/material';
 import React, { useState } from 'react';
-// import { useOutletContext } from "react-router-dom";
+<<<<<<< Updated upstream:src/math-games/magic-square-games/fifteen-game/pages/PlayVsFriend.js
+=======
+<<<<<<< Updated upstream:src/math-games/tic-tac-toe/pages/PlayVsBot.js
+import { useOutletContext } from "react-router-dom";
+=======
+import { Box } from '@mui/material';
+>>>>>>> Stashed changes:src/math-games/magic-square-games/fifteen-game/pages/PlayVsFriend.js
+>>>>>>> Stashed changes:src/math-games/tic-tac-toe/pages/PlayVsBot.js
 
-import { status, gameOver, nextPlayer  } from "../logic/gameLogic";
-import { getBotMove } from "../logic/botLogic";
+// My Components
 import Board from "../components/Board";
 import BotPanel from "../components/panels/BotPanel";
 
+<<<<<<< Updated upstream:src/math-games/magic-square-games/fifteen-game/pages/PlayVsFriend.js
+// Game Logic
+import { status, gameOver, nextPlayer  } from "../../solution";
+import { getBotMove } from "../botLogic";
+=======
+<<<<<<< Updated upstream:src/math-games/tic-tac-toe/pages/PlayVsBot.js
 import { Box } from '@mui/material';
+=======
+// Game Logic
+import { status, gameOver, nextPlayer  } from "../../helpers";
+import { getBotMove } from "../../getBotMove";
+>>>>>>> Stashed changes:src/math-games/magic-square-games/fifteen-game/pages/PlayVsFriend.js
+>>>>>>> Stashed changes:src/math-games/tic-tac-toe/pages/PlayVsBot.js
 
 export default function PlayVsFriend(props) {
   const { outcomeMap } = props
-  // const [outcomeMap] = useOutletContext();
   
   const startingPosition = "" 
   const [moveList, setMoveList] = useState(startingPosition)

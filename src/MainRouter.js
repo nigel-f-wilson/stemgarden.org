@@ -6,14 +6,16 @@ import { Route, Routes } from "react-router-dom"
 // import { About, Contact, MathGames, ChessClubs, Services } from "./pages/index"
 import LandingPage from './pages/LandingPage'
 
-
-
 const AboutPage = lazy(() => import('./pages/AboutPage'))
 const ContactPage = lazy(() => import('./pages/ContactPage'))
 
 
 const MathGamesPage = lazy(() => import('./math-games/MathGamesPage'))
-const ConnectFour = lazy(() => import('./math-games/connect-four/ConnectFour'))
+
+
+
+// const ConnectFour = lazy(() => import('./math-games/connect-four/ConnectFour'))
+const ConnectFourRoot = lazy(() => import('./math-games/connect-four/ConnectFourRoot'))
 
 
 const FifteenGameRoutes = lazy(() => import('./math-games/magic-square-games/fifteen-game/FifteenGameRoutes'))
@@ -48,7 +50,7 @@ export default function MainRouter() {
         
         <Route path="math-games"  >
           <Route index element={<MathGamesPage />} />
-          <Route path="connect-four" element={<ConnectFour />} />
+          <Route path="connect-four" element={<ConnectFourRoot />} />
           <Route path="tic-tac-toe/*" element={<TicTacToeRoutes />} />
           <Route path="the-15-game/*" element={<FifteenGameRoutes />} />
 

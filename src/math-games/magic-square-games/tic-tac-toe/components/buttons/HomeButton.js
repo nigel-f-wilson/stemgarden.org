@@ -1,9 +1,6 @@
 import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
-
-// MUI Components
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
+import { Box, Button } from '@mui/material';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHouse } from '@fortawesome/free-solid-svg-icons';

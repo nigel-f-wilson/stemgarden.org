@@ -1,13 +1,14 @@
 import React, { lazy, useState, useEffect } from 'react'
 import { Routes, Route } from 'react-router-dom';
-
 import {  Container,  Box } from '@mui/material';
 
-import { generatePositionToOutcomeMap } from "../magicSquareGameSolution";
+import { generatePositionToOutcomeMap } from "../solution";
 
+// My Components
 import Welcome from './pages/Welcome'
 const PlayWithCoach = lazy(() => import('./pages/PlayWithCoach'))
 const PlayVsBot = lazy(() => import('./pages/PlayVsBot')) 
+
 
 export default function TicTacToeRoutes(props) {
   const [outcomeMap, setOutcomeMap] = useState(null)

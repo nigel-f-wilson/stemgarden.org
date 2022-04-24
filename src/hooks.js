@@ -8,27 +8,30 @@ import { useState, useEffect, useRef } from 'react'
 // }
 // Hook
 export function useHover() {
-    const [value, setValue] = useState(false);
-    const ref = useRef(null);
-    const handleMouseOver = () => setValue(true);
-    const handleMouseOut = () => setValue(false);
-    useEffect(
-        () => {
-            const node = ref.current;
-            if (node) {
-                node.addEventListener("mouseover", handleMouseOver);
-                node.addEventListener("mouseout", handleMouseOut);
-                return () => {
-                    node.removeEventListener("mouseover", handleMouseOver);
-                    node.removeEventListener("mouseout", handleMouseOut);
-                };
-            }
-        }
-        // [ref.current] // Recall only if ref changes
-    );
-    return [ref, value];
+  const [value, setValue] = useState(false);
+  const ref = useRef(null);
+  const handleMouseOver = () => setValue(true);
+  const handleMouseOut = () => setValue(false);
+  useEffect(() => {
+    const node = ref.current;
+    if (node) {
+        node.addEventListener("mouseover", handleMouseOver);
+        node.addEventListener("mouseout", handleMouseOut);
+        return () => {
+            node.removeEventListener("mouseover", handleMouseOver);
+            node.removeEventListener("mouseout", handleMouseOut);
+        };
+    }
+  },
+  // [ref.current] // Recall only if ref changes
+  );
+  return [ref, value];
 }
 
+
+// May want to change these hooks to use the Client Height property of the root <html> element.  
+// I think that the window.innerHeight currently used is counting height I don't actually want. 
+// document.documentElement.clientWidth & document.documentElement.clientHeight
 export function useScreenHeight() {
     const [screenHeight, setScreenHeight] = useState(window.innerHeight)
 
@@ -42,15 +45,15 @@ export function useScreenHeight() {
 }
 
 export function useScreenWidth() {
-    const [screenWidth, setScreenWidth] = useState(window.innerWidth)
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth)
 
-    useEffect(() => {
-        const handleScreenSizeChange = () => setScreenWidth(window.innerWidth)
-        window.addEventListener('resize', handleScreenSizeChange)
-        return () => window.removeEventListener('resize', handleScreenSizeChange)
-    }, []);
+  useEffect(() => {
+    const handleScreenSizeChange = () => setScreenWidth(window.innerWidth)
+    window.addEventListener('resize', handleScreenSizeChange)
+    return () => window.removeEventListener('resize', handleScreenSizeChange)
+  }, []);
 
-    return screenWidth;
+  return screenWidth;
 }
 
 export function useScreenOrientation() {

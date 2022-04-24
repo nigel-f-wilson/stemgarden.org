@@ -1,17 +1,13 @@
 import React from 'react';
+import { Box } from '@mui/material';
+import { useTheme } from "@mui/system";
 
-import { status, 
-  moveListStringToArray, 
-  numbersInWin, 
-  availableNumbers, 
-} from "../../magicSquareGameSolution";
 
 // My Components
 import Square from "./Square";
 
-// MUI  
-import { useTheme } from "@mui/system";
-import { Box } from '@mui/material';
+import { status, moveListStringToArray, numbersInWin, availableNumbers } from "../../helpers";
+
 
 export default function Board(props) {
   const { moveList, outcomeMap, showSolution, handleSquareClick } = props

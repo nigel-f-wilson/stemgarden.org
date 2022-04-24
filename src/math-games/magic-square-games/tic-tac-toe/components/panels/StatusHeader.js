@@ -1,9 +1,9 @@
 import React from 'react';
-
-import { status } from "../../../magicSquareGameSolution";
-
-// MUI Components
 import { Typography } from '@mui/material';
+
+
+import { status } from "../../../helpers";
+
 
 export default function StatusHeader(props) {
   const { moveList, } = props

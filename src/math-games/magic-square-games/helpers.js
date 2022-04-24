@@ -1,15 +1,6 @@
-// X always goes first! X and O will be shorthand for the player who goes First and the player who goes second.
-// PlayerOne and PlayerTwo are NOT markers of who goes first or second in any given game!
-// In the 15 game, PlayerOne and PlayerTWo are distinguished by dark-blue and light-blue
+import { intersect } from "../_helpers/probability";
 
-// All functions exported from this module are used by PlayVsHuman.js PlayVsBot.js PlayWithCoach 
-// There is some potential to add back in the 15 gameusing these same Game Logic helpers and a different version of the board.
 
-// Most functions here assume they will be called with a Move List String as the sole parameter. (just the exported ones?)
-
-////////////////////////////////////////////////////////////////
-// Constants: Trio List & Possible Positions & Outcome Maps
-////////////////////////////////////////////////////////////////
 export const trioList = generateTrioList()
 function generateTrioList() {
     let trioList = []
@@ -24,38 +15,9 @@ function generateTrioList() {
     }
     return trioList
 }
+
 export function complementOf(sumOfTwo) {
     return (15 - sumOfTwo)
-}
-
-const listOfPossiblePositions = getListOfPossiblePositions()
-function getListOfPossiblePositions() {
-  // Returns an array of arrays of strings
-  // Layer 1) indices 0 thru 9 correspond to the lengths of the move lists contained there
-  // Layer 2) an array containing all valid move lists of that length
-  // Layer 3) Move List string representations
-  let positionsList = [[""]]
-  for (let parentLength = 0; parentLength < 9; parentLength++) {
-      let parentPositions = positionsList[parentLength]
-      let childPositions = parentPositions.map(parent => getChildren(parent)).flat()
-      positionsList.push(childPositions)
-  }
-  return positionsList
-}
-
-
-// export const outcomeMap = generatePositionToOutcomeMap()
-export function generatePositionToOutcomeMap() {
-  let outcomeMap = new Map()
-  let list = listOfPossiblePositions
-  for (let length = 9; length >= 0; length--) {
-    let positions = list[length]
-    for (let p = 0; p < positions.length; p++) {
-      let ml = positions[p]
-      outcomeMap.set(ml, outcome(ml, outcomeMap))
-    }
-  }
-  return outcomeMap
 }
 
 ////////////////////////////////////////////////////////////////
@@ -99,18 +61,16 @@ export function oHasWon(ml) {
 export function gameDrawn(ml) {
   return (ml.length === 9 && !gameHasBeenWon(ml))
 }
-// function gameWillBeDrawn(ml) {
-//     // TODO
-// }
 export function moveNumber(ml) {
-    return (ml.length + 1)
+  return (ml.length + 1)
 }
+
 
 export function numbersInWin(ml) {
   let Xs = xNumbers(ml)
   let Os = oNumbers(ml)
   let winningTrios = trioList.filter(trio =>
-      intersect(trio, Xs).length === 3 || intersect(trio, Os).length === 3
+    intersect(trio, Xs).length === 3 || intersect(trio, Os).length === 3
   )
   return winningTrios.flat()
 }
@@ -202,9 +162,7 @@ export function getParent(ml) {
 ////////////////////////////////////////////////////////////////
 // Lowest Level Logic
 ////////////////////////////////////////////////////////////////
-export function intersect(listOne, listTwo) {
-  return listOne.filter(item => listTwo.includes(item))
-}
+
 function sumsOfThree(moveSet) {
   let sums = []
   if (moveSet.length < 3) {
@@ -235,24 +193,3 @@ export function sumsOfTwo(moveSet) {
 }
 
 
-
-// function factorial(num) {
-//     console.assert(num >= 0 && num <=9, `Factorial called with a number out of this game's range!`)
-//     let product = 1
-//     for (let i = 1; i <= num; i++) {
-//         product = product * i
-//     }
-//     return product
-//     // This led to a fun research rabbit hole about how to more efficiently compute factorials using Paschals Triangle
-// }
-
-// function inEfficientUnclaimedNumbers(ml) {
-//     let unclaimedNumbers = [];
-//     for (let i = 1; i <= 9; i++) {
-//         if (!ml.includes(i)) {
-//             unclaimedNumbers.push(i)
-//         }
-//     }
-//     // console.log(`List Empty Squares: ${emptySquaresList}`)
-//     return unclaimedNumbers;
-// }
