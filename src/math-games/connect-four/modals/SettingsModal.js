@@ -229,7 +229,8 @@ export function SettingsModal(props) {
       />
     )
   }
-  function StartGameButton() {
+  function StartGameButton(props) {
+    const { startNewGame } = props
     return (
       <Button
         onClick={() => startNewGame(settings)}
