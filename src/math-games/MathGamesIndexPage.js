@@ -61,7 +61,7 @@ const mathGamesCardData = [
  
 ]
 
-export default function MathGamesPage() {
+export default function MathGamesIndexPage() {
   const screenWidth = useScreenWidth()
   const smallScreen = screenWidth < 600
   return (
