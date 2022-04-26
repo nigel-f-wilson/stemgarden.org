@@ -13,9 +13,10 @@ import React from 'react'
 
 // LandingPage is responsible for rendering a Navbar and either the Mobile or Desktop version
 // depending on screen width. The Navbar contains its own M.vs.D. rendering logic. 
-export default function ChessClubs(props) {
+export default function ChessClubsPage(props) {
   return (
     <React.Fragment >
+    ChessClubsPage
     </React.Fragment>
   )
 }
