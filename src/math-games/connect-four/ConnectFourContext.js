@@ -70,7 +70,6 @@ export const ConnectFourContextProvider = props => {
     setLowestUnclaimedCells(getLowestUnclaimedCells(moveList))
 
     setActiveCell(null) 
-    setOpenModal("none")
     setHeaderText("")
 
   },[moveList])

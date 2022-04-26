@@ -133,6 +133,7 @@ export default function ConnectFourController(props) {
     // console.log(`STARTING NEW GAME with SETTINGS: ${JSON.stringify(settings, null, 4)}`);
     setSettings(settings)
     setMoveList([])
+    setOpenModal("none")
   }
 
   function cancelNewGame() {
