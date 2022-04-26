@@ -49,8 +49,7 @@ export default function MobileMenu() {
       >
         <Box
           width='280px'
-          height='100vh'
-          padding={1}
+          p={2}
           color={theme.palette.common.white}
           backgroundColor={theme.palette.primary.main}
         >
