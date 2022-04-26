@@ -6,11 +6,10 @@ import { Route, Routes } from "react-router-dom"
 // import { About, Contact, MathGames, ChessClubs, Services } from "./pages/index"
 import LandingPage from './pages/LandingPage'
 
-const AboutPage = lazy(() => import('./pages/about/AboutPage'))
 const ContactPage = lazy(() => import('./pages/ContactPage'))
 
 
-const MathGamesPage = lazy(() => import('./math-games/MathGamesPage'))
+const MathGamesIndexPage = lazy(() => import('./math-games/MathGamesIndexPage'))
 
 
 
@@ -21,10 +20,13 @@ const ConnectFourRoot = lazy(() => import('./math-games/connect-four/ConnectFour
 const FifteenGameRoutes = lazy(() => import('./math-games/magic-square-games/fifteen-game/FifteenGameRoutes'))
 const TicTacToeRoutes = lazy(() => import('./math-games/magic-square-games/tic-tac-toe/TicTacToeRoutes'))
 
-
+const ServicesIndexPage = lazy(() => import('./pages/services/_ServicesIndexPage'))
+const TutoringPage = lazy(() => import('./pages/services/_ServicesIndexPage'))
 const ChessClubsPage = lazy(() => import('./pages/services/ChessClubsPage'))
-const ServicesPage = lazy(() => import('./pages/services/ServicesPage'))
+const WebDevelopmentPage = lazy(() => import('./pages/services/WebDevelopmentPage'))
 
+
+const AboutIndexPage = lazy(() => import('./pages/about/_AboutIndexPage'))
 const OurStoryPage = lazy(() => import('./pages/about/OurStoryPage'))
 const WhatWeGrowPage = lazy(() => import('./pages/about/WhatWeGrowPage'))
 const GetInvolvedPage = lazy(() => import('./pages/about/GetInvolvedPage'))
@@ -39,7 +41,7 @@ export default function MainRouter() {
         <Route exact path="/" element={<LandingPage />} />
 
         <Route path="about" >
-          <Route index element={<AboutPage />} />
+          <Route index element={<AboutIndexPage />} />
           <Route path="our-story" element={<OurStoryPage />} />
           <Route path="what-we-grow" element={<WhatWeGrowPage />} />  
           <Route path="get-involved" element={<GetInvolvedPage />} />
@@ -47,16 +49,16 @@ export default function MainRouter() {
         </Route>
         
         <Route path="services"  >
-          <Route index element={<ServicesPage />} />
-          <Route path="tutoring" element={<ServicesPage />} />   {/* <Route path="tutoring" element={<Services activeTab="tutoring" />} /> */}
-          <Route path="enrichment" element={<ServicesPage />} />
-          <Route path="teacher-training" element={<ServicesPage />} />
-          <Route path="web-development" element={<ServicesPage />} />
+          <Route index element={<ServicesIndexPage />} />
+          <Route path="tutoring" element={<TutoringPage />} />   {/* <Route path="tutoring" element={<Services activeTab="tutoring" />} /> */}
+          <Route path="enrichment" element={<ServicesIndexPage />} />
+          <Route path="teacher-training" element={<ServicesIndexPage />} />
+          <Route path="web-development" element={<WebDevelopmentPage />} />
           <Route path="chess-clubs" element={<ChessClubsPage />} />
         </Route>
         
         <Route path="math-games"  >
-          <Route index element={<MathGamesPage />} />
+          <Route index element={<MathGamesIndexPage />} />
           <Route path="connect-four" element={<ConnectFourRoot />} />
           <Route path="tic-tac-toe/*" element={<TicTacToeRoutes />} />
           <Route path="the-15-game/*" element={<FifteenGameRoutes />} />
