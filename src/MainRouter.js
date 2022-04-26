@@ -33,11 +33,12 @@ export default function MainRouter() {
       <Routes>
         <Route exact path="/" element={<LandingPage />} />
 
-        <Route path="about" element={<AboutPage />} >
-          <Route path="what-we-grow" element={<ServicesPage />} />  
-          <Route path="our-story" element={<ServicesPage />} />
-          <Route path="buy-our-fruit" element={<ServicesPage />} />
-          <Route path="get-involved" element={<ChessClubsPage />} />
+        <Route path="about" >
+          <Route index element={<AboutPage />} />
+          <Route path="our-story" element={<OurStoryPage />} />
+          <Route path="what-we-grow" element={<WhatWeGrowPage />} />  
+          <Route path="get-involved" element={<GetInvolvedPage />} />
+          {/* <Route path="buy-our-fruit" element={<BuyOurFruitPage />} /> */}
         </Route>
         
         <Route path="services" element={<ServicesPage />} >
