@@ -99,6 +99,7 @@ theme.typography.pageHeader = {
   textShadow: '0.15rem 0.15rem 0.3rem black',
   fontWeight: 200,
   fontSize: '2.4rem',
+  // lineHeight: '2.6rem',
     '@media (min-width:450px)': {
       fontSize: '3.0rem',
     },
@@ -107,6 +108,8 @@ theme.typography.pageHeader = {
     },
     [theme.breakpoints.up('md')]: {
       fontSize: '5.0rem',
+      // lineHeight: '2.6rem',
+
     },
 }
 theme.typography.pageSubheader = {
