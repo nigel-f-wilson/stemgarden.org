@@ -41,7 +41,7 @@ export const PageLayoutContextProvider = props => {
     maxSquareSideLength
   }
 
-  console.log(`ROOT PAGE LAYOUT CONTEXT: ${JSON.stringify(layout, null, 4)}`);
+  // console.log(`ROOT PAGE LAYOUT CONTEXT: ${JSON.stringify(layout, null, 4)}`);
   
   return (
     <PageLayoutContext.Provider 

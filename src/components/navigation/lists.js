@@ -34,12 +34,12 @@ export const aboutListData = [
   {
     label: 'What We Grow',
     icon: faCamera,
-    linkTo: "about/gallery",
+    linkTo: "about/what-we-grow",
   },
   {
     label: 'Get Involved',
     icon: faPeopleCarry,
-    linkTo: "get-involved",
+    linkTo: "about/get-involved",
   },
   // {
   //   label: 'Philosophy',

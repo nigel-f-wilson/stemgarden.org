@@ -1,7 +1,6 @@
 import React, { useContext } from 'react' 
 import { Box } from '@mui/material';
 
-import { chooseRandomFromArray} from '../_helpers/low-level';
 
 // My Components
 import { MaxSquareArea } from "./components/MaxSquareArea";
@@ -13,8 +12,9 @@ import { NewGameAndUndoButtons } from "./components/NewGameAndUndoButtons";
 
 // Game Logic
 import { generateQuestion } from './questionGenerators/questionGenerator'
-
 import { waysToSayCorrect } from "../_helpers/commentary";
+import { chooseRandomFromArray } from '../_helpers/low-level';
+
 
 // CONTEXT
 import { PageLayoutContext } from "../../contexts";
@@ -83,10 +83,6 @@ export default function ConnectFourController(props) {
     setTimeout(() => {
       setMoveList(updatedMoveList)
     }, 1850)
-
-    // if () {
-
-    // }
 
     // Handle Bot'sTurn
     if (settings.opponent === "bot" && updatedGameStatus === 'playerTwosTurn') {
