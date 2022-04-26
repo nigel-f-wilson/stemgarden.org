@@ -6,7 +6,7 @@ import { Route, Routes } from "react-router-dom"
 // import { About, Contact, MathGames, ChessClubs, Services } from "./pages/index"
 import LandingPage from './pages/LandingPage'
 
-const AboutPage = lazy(() => import('./pages/AboutPage'))
+const AboutPage = lazy(() => import('./pages/about/AboutPage'))
 const ContactPage = lazy(() => import('./pages/ContactPage'))
 
 
@@ -22,8 +22,13 @@ const FifteenGameRoutes = lazy(() => import('./math-games/magic-square-games/fif
 const TicTacToeRoutes = lazy(() => import('./math-games/magic-square-games/tic-tac-toe/TicTacToeRoutes'))
 
 
-const ChessClubsPage = lazy(() => import('./pages/ChessClubsPage'))
-const ServicesPage = lazy(() => import('./pages/ServicesPage'))
+const ChessClubsPage = lazy(() => import('./pages/services/ChessClubsPage'))
+const ServicesPage = lazy(() => import('./pages/services/ServicesPage'))
+
+const OurStoryPage = lazy(() => import('./pages/about/OurStoryPage'))
+const WhatWeGrowPage = lazy(() => import('./pages/about/WhatWeGrowPage'))
+const GetInvolvedPage = lazy(() => import('./pages/about/GetInvolvedPage'))
+
 
 const renderLoader = () => <p>Loading</p>;
 
@@ -41,7 +46,8 @@ export default function MainRouter() {
           {/* <Route path="buy-our-fruit" element={<BuyOurFruitPage />} /> */}
         </Route>
         
-        <Route path="services" element={<ServicesPage />} >
+        <Route path="services"  >
+          <Route index element={<ServicesPage />} />
           <Route path="tutoring" element={<ServicesPage />} />   {/* <Route path="tutoring" element={<Services activeTab="tutoring" />} /> */}
           <Route path="enrichment" element={<ServicesPage />} />
           <Route path="teacher-training" element={<ServicesPage />} />
