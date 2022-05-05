@@ -14,7 +14,7 @@ const instructionsHeight = "33%"
 const equationHeight = "32%"
 const inputHeight = "35%"
 
-const Transition = React.forwardRef(function Transition(props, ref) {
+const ZoomTransition = React.forwardRef(function Transition(props, ref) {
     return <Zoom ref={ref} {...props} />;
 })
 
@@ -23,7 +23,7 @@ export function MathQuestionModal(props) {
 
     
   // LAYOUT CONTEXT
-  const { maxSquareSideLength } = useContext(PageLayoutContext)
+  const { maxSquareSideLength, navbarHeightPx } = useContext(PageLayoutContext)
   const { nextPlayer } = useContext(ConnectFourContext)
 
     
@@ -37,19 +37,17 @@ export function MathQuestionModal(props) {
             open={open}
             onBackdropClick={() => {}}  // disable close on bg click
             aria-describedby="math-question-dialog"
-            TransitionComponent={Transition}
-            fullWidth={true}
-            maxWidth='md'
+            TransitionComponent={ZoomTransition}
             PaperProps={{
               sx: {
                 border: `solid white 12px`,
                 borderColor: borderColor,
                 margin: `${0.05 * maxSquareSideLength}px`,
+                marginTop: `${navbarHeightPx}px`,
                 height: `${0.9 * maxSquareSideLength}px`,
                 width: `${0.9 * maxSquareSideLength}px`,
+                maxWidth: '100%',
                 borderRadius: '50%',
-                justifySelf: 'flex-start',
-                alignSelf: 'flex-start'
               }
             }}
         >
