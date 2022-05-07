@@ -1,4 +1,7 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { Box, Container, Typography } from '@mui/material';
+
+import { PageLayoutContext } from "../../contexts";
 
 export default function TutoringPage(props) {
   return (
@@ -104,14 +107,47 @@ function Testimony() {
         citation="Julie Richelson, MBA Student at UNO"
       />
 
+      <Quote
+        quote="I highly recommend Nigel without reservation! He brought much preparation and care to his teaching while encouraging his students' solving ability and thirst for knowledge with an upbeat attitude."
+        citation="William Mains, Parent of a 7th grader at WSNO"
+      />
 
-// LandingPage is responsible for rendering a Navbar and either the Mobile or Desktop version
-// depending on screen width. The Navbar contains its own M.vs.D. rendering logic. 
-export default function TutoringPage(props) {
-  return (
-    <React.Fragment >
-     Tutoring Page
-    </React.Fragment>
+      <Quote
+        quote="While Nigel was our math teacher at the Waldorf School of New Orleans, our students were very engaged. It was the most excited I had ever seen them to go to math. The lessons he developed and taught our 4th-8th graders were so interesting and thought provoking."
+        citation="Jill Contento, Faculty Chair WSNO"
+      />
+
+
+    </Box>
   )
 }
 
+function Quote(props) {
+  const { quote, citation } = props
+  return (
+    <Box p={1} >
+      <Typography  variant="body1" align='justify' color='white' >
+        "{quote}"
+      </Typography>
+      <Typography  variant="body1" align='right' color='white' >
+        - {citation}
+      </Typography>
+    </Box>
+  )
+}
+
+function Experience() {
+  return (
+    <Box pb='2rem' display='flex' flexDirection='column' >
+      <Typography  variant="pageSubheader" >
+        Experience
+      </Typography>
+      <Typography  variant="body1" align='justify' color='white'  >
+        I had my first teaching experiences at chess club when I was still a kid. In 2015, I earned my Bachelors degree in 
+        secondary Math Education from Ohio University after completing an internship with Step-By-Step scool in Noida, India. 
+        Since then, I have been teaching in New Orleans in schools, after school programs, and as a private tutor.  I have helped
+        my students succeed at everything from foundational number sense to college level courses in calculus, statistics, and physics.
+      </Typography>
+    </Box>
+  )
+}
