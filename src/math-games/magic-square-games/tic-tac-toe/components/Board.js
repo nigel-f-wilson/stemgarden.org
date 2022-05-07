@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 
-import { status, moveListStringToArray, numbersInWin, availableNumbers } from "../../helpers";
+import { status, moveListStringToArray, numbersInWin, availableNumbers } from "../../magicSquareHelpers";
 
 // My Components
 import Square from "./Square";

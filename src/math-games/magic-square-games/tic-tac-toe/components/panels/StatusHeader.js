@@ -2,7 +2,7 @@ import React from 'react';
 import { Typography } from '@mui/material';
 
 
-import { status } from "../../../helpers";
+import { status } from "../../../magicSquareHelpers";
 
 
 export default function StatusHeader(props) {

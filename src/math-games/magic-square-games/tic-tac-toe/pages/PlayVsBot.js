@@ -7,7 +7,7 @@ import Board from "../components/Board"
 import BotPanel from "../components/panels/BotPanel"
 
 // Game Logic
-import { status, gameOver, nextPlayer  } from "../../helpers";
+import { status, gameOver, nextPlayer  } from "../../magicSquareHelpers";
 import { getBotMove } from "../../getBotMove";
 
 export default function PlayVsBot(props) {

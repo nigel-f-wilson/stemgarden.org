@@ -1,19 +1,16 @@
 import React, { useState } from 'react';
-// import { useOutletContext } from "react-router-dom";
 import { Box } from '@mui/material';
 
 // My Components
-import Board from "../components/Board";
+import FifteenGameBoard from "../components/FifteenGameBoard";
 import BotPanel from "../components/panels/BotPanel";
 
 // Game Logic
-import { status, gameOver, nextPlayer  } from "../../helpers";
+import { status, gameOver, nextPlayer  } from "../../magicSquareHelpers";
 import { getBotMove } from "../../getBotMove";
-
 
 export default function PlayVsBot(props) {
   const { outcomeMap } = props
-  // const [outcomeMap] = useOutletContext();
   
   const startingPosition = "" 
   const [moveList, setMoveList] = useState(startingPosition)
@@ -33,12 +30,15 @@ export default function PlayVsBot(props) {
   }
 
   // CLICK HANDLERS
-  function handleSquareClick(squareClicked) {
+  function handleNumberCardClick(numberCardClicked) {
+    console.log(`handleNumberCardClick called with square clicked ${numberCardClicked}`)
+    console.log( typeof numberCardClicked)
+    
     if (!humanGoesNext(moveList)) {
       console.warn("NO EFFECT. Be patient, the bot takes a second to move. ")
       return 1
     }
-    else if (moveList.includes(squareClicked)) {
+    else if (moveList.includes(numberCardClicked)) {
       console.warn("NO EFFECT. That number has already been claimed.")
       return 1
     }
@@ -47,7 +47,7 @@ export default function PlayVsBot(props) {
       return 1
     }
     else {
-      let updatedMoveList = moveList.concat(squareClicked)
+      let updatedMoveList = moveList.concat(numberCardClicked)
       setMoveList(updatedMoveList)
       if (gameOver(updatedMoveList)) {
         handleGameOver(updatedMoveList)
@@ -126,11 +126,11 @@ export default function PlayVsBot(props) {
       bgcolor='common.black'
       color='common.white'
     >
-      <Board 
+      <FifteenGameBoard 
         moveList={moveList}
-        showSolution={false}
-        handleSquareClick={handleSquareClick}
-        outcomeMap={outcomeMap}
+        // showSolution={false}
+        handleNumberCardClick={handleNumberCardClick}
+        // outcomeMap={outcomeMap}
       />
 
       <BotPanel
