@@ -1,6 +1,6 @@
 import React, { lazy, useState, useEffect } from 'react'
 import { Routes, Route } from 'react-router-dom';
-import {  Container,  Box } from '@mui/material';
+import { Container, Box } from '@mui/material';
 
 import { generatePositionToOutcomeMap } from "../solution";
 
