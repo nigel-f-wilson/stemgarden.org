@@ -111,7 +111,12 @@ function PageHeader() {
 
 
 function MathGameCard(props) {
-  const { title, description, linkTo, imgUrl, disabled } = props.data
+  const { 
+    title, 
+    linkTo, 
+    imgUrl, 
+    disabled 
+  } = props.data
 
   return (
     <Card raised
