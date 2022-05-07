@@ -57,10 +57,13 @@ function Offering() {
   return (
     <Box pb='2rem' display='flex' flexDirection='column' >
       <Typography  variant="pageSubheader" >
-        Offering
+        Offering & Booking
       </Typography>
       <Typography  variant="body1" align='justify' color='white' >
         I offer one-on-one tutoring and small group lessons in math and physics. I teach in person and over Zoom. In person lessons are offered in New Orleans, Louisiana and Athens, Ohio depending on the time of year. 
+      </Typography>
+      <Typography  variant="body1" align='justify' color='white' >
+        To schedule a lesson, email nigel@stemgarden.org 
       </Typography>
     </Box>
   )
