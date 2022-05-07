@@ -9,11 +9,19 @@ import { createTheme, responsiveFontSizes } from '@mui/material/styles';
 
 const theme = createTheme({
   palette: {
+    transparent: 'rgba(0, 0, 0, 0)',
     connectFour: {
       board: '#0039cb',       // blue
       playerOne: '#d50000',   // red
       playerTwo: '#ffea00',   // yellow
       background: '#b3e5fc',  // light blue 
+      text: '#000000',        // black
+    },
+    magicSquareGames: {
+      playerOne: '#ffea00',   // yellow
+      playerTwo: '#1020ff',   // blue
+      unclaimed: '#fff',      // white
+      highlightWins: '#009900', // green
       text: '#000000',        // black
     },
     backgrounds: {
@@ -24,7 +32,6 @@ const theme = createTheme({
     black: '#000000',
     darkGrey: '#212121',
     
-    transparent: 'rgba(0, 0, 0, 0)',
     primary: {
       light: '#669944',
       main: '#2e6b12',
