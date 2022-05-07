@@ -2,9 +2,6 @@ import React from 'react'
 
 import { Link as RouterLink } from 'react-router-dom';
 import { Box, Container, Grid, Card, CardMedia, Typography, Button, Stack } from '@mui/material';
-import theme from '../theme';
-
-
 // import MathGameCard from "../components/cards/MathGameCard"
 
 // Images 
