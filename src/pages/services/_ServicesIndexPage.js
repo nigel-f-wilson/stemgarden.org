@@ -35,7 +35,7 @@ const servicesCardData = [
     title: "STEM Enrichment",
     description: 'Make academic learning stick with memorable hands-on projects.',
     linkTo: "enrichment",
-    imgUrl: bike_gear_ratio_tutoring,
+    imgUrl: guitar_fret_measuring,
     disabled: false,
     buttonLabel: "Do More",
   },
