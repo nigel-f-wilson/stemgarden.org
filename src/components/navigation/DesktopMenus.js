@@ -6,7 +6,7 @@ import {
     Box, 
 } from "@mui/material"
 
-import { aboutListData,servicesListData, resourcesListData } from './lists';
+import { aboutListData, servicesListData, resourcesListData } from './navigationListData';
 
 export default function DesktopMenus() {
  

@@ -134,7 +134,7 @@ function Header() {
   return (
     <Box padding='4rem 0rem 2rem' >
       <Typography align="center" variant="pageHeader" >
-          Sowing seeds of<br/>life&#8209;long learning<br/>and DIY&#8209;spirit.
+          Our Story
       </Typography>
     </Box>
   )

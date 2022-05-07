@@ -15,7 +15,8 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons'
 import { useTheme } from '@emotion/react';
-import { aboutListData, servicesListData, resourcesListData } from './lists';
+import { aboutListData, servicesListData, resourcesListData } from './navigationListData';
+
 
 export default function MobileMenu() {
   const theme = useTheme()
