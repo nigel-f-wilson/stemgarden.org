@@ -4,13 +4,10 @@ import { Box, Container, Grid, Card, CardMedia, Typography, Button, Stack } from
 
 import { PageLayoutContext } from "../../contexts";
 
+// const under_construction = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_1000,h_1000,c_limit/v1647561688/stemgarden.org/under_construction_sbiop2.png"
 
 // Tutoring
 const practicing_math_facts = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_1000,h_1000,c_limit/v1646863130/stemgarden.org/teaching/practicing_math_facts_gnhwkx.jpg"
-
-const connect_four_screenshot = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_1000,h_1000,c_limit/v1647561099/stemgarden.org/project_screenshots/connect-four_y750ue.jpg"
-
-// const under_construction = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_1000,h_1000,c_limit/v1647561688/stemgarden.org/under_construction_sbiop2.png"
 
 // Chess Clubs
 // const chess_at_college_track = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_1000,h_1000,c_limit/v1647050134/stemgarden.org/chess/chess_club_college_track_st00uc.jpg"
@@ -18,15 +15,12 @@ const connect_four_screenshot = "https://res.cloudinary.com/nola-stem-garden/ima
 const chess_demo_board = "https://res.cloudinary.com/nola-stem-garden/image/upload/v1612135192/stemgarden.org/chess/chess_demo_board_qtdzpw.jpg"
 // const simul_at_bric = "https://res.cloudinary.com/nola-stem-garden/image/upload/v1646937461/stemgarden.org/chess/simul_at_bric_nagag0.jpg"
 
-
 // Web Development 
 const code_screenshot = "https://res.cloudinary.com/nola-stem-garden/image/upload/v1651934086/stemgarden.org/Code_Screenshot_thruye.png"
 
 // Enrichment + Hands On
 const guitar_fret_measuring = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_1000,h_1000,c_limit/v1646597930/stemgarden.org/teaching/hands_on/guitar_fret_spacing_jezbuk.jpg"
 const bike_gear_ratio_tutoring = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_1000,h_1000,c_limit/v1647052266/stemgarden.org/teaching/hands_on/bike_gear_ratios_at_tutoring_s6l3ee.jpg"
-
-
 
 const servicesCardData = [
   {
