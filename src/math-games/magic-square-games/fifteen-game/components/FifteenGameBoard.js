@@ -6,7 +6,7 @@ import { useTheme } from "@mui/system";
 import NumberCard from "./NumberCard";
 
 // Magic Square Helpers
-import { status, numbersInWin, availableNumbers } from "../../magicSquareHelpers";
+import { numbersInWin } from "../../magicSquareHelpers";
 
 export default function FifteenGameBoard(props) {
   const theme = useTheme()
@@ -83,33 +83,3 @@ function getCardClaimStatus(cardNum, moveList) {
   }
 }
 
-function highlightWins(ml) {
-  let colors = Array(10).fill('noColor')
-  numbersInWin(ml).forEach(num => colors[num] = 'win')
-  return colors
-}
-
-function getBoardHints(ml, outcomeMap) {
-  let colors = Array(10).fill('noColor')
-  availableNumbers(ml).forEach(num => {
-    let outcome = outcomeMap.get(ml + num.toString())
-    colors[num] = getHintColor(outcome, ml)
-  })
-  return colors
-}
-
-function getHintColor(outcome, ml) {
-  let gameStatus = status(ml)
-  if (outcome === "draw") {
-    return "draw"
-  }
-  else if (gameStatus === "xNext") {
-    return (outcome === "xWins") ? "win" : "lose"
-  }
-  else if (gameStatus === "oNext") {
-    return (outcome === "oWins") ? "win" : "lose"
-  }
-  else {
-    console.error(`Error in Get Hint Color`);
-  }
-}
