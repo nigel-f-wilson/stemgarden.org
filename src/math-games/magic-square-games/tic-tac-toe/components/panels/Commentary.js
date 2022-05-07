@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { nextPlayer, status, getParent } from "../../../helpers";
+import { nextPlayer, status, getParent } from "../../../magicSquareHelpers";
 import { winningMoves, urgentDefensiveMoves, doubleAttackingMoves } from "../../../getBotMove";
 
 
