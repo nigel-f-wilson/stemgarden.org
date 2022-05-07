@@ -2,32 +2,41 @@ import React from 'react';
 import { Box } from '@mui/material';
 import { useTheme } from "@mui/system";
 
-
 // My Components
-import Square from "./Square";
+import NumberCard from "./NumberCard";
 
-import { status, moveListStringToArray, numbersInWin, availableNumbers } from "../../helpers";
+// Magic Square Helpers
+import { status, numbersInWin, availableNumbers } from "../../magicSquareHelpers";
 
-
-export default function Board(props) {
-  const { moveList, outcomeMap, showSolution, handleSquareClick } = props
+export default function FifteenGameBoard(props) {
   const theme = useTheme()
-    
-  const icons = getIcons(moveList)
-  const colors = getColors(moveList, showSolution, outcomeMap)
+  const { moveList, handleNumberCardClick } = props
   
   const cardNumbers = [1,2,3,4,5,6,7,8,9]
-  let cards = []
-  cardNumbers.forEach(num => {
-    let newSquare =
-      <Square
-        key={num}
-        number={num}
-        icon={icons[num]}
-        color={colors[num]}
-        handleSquareClick={handleSquareClick}
+  const cardsWithWinBorder = numbersInWin(moveList)
+  const cardsData = cardNumbers.map(num => {
+    let claimStatus = getCardClaimStatus(num, moveList)
+    let isInWin = cardsWithWinBorder.includes(num)
+    
+    return ({
+      key: num,
+      number: num,
+      claimStatus: claimStatus,
+      isInWin: isInWin
+    })
+  })
+  
+  let cards = cardsData.map(card => {
+    return (
+      <NumberCard
+        key={card.number}
+        number={card.number}
+        claimStatus={card.claimStatus}
+        isInWin={card.isInWin}
+        borderColor={card.borderColor}
+        handleNumberCardClick={handleNumberCardClick}
       />
-    cards.push(newSquare);
+    )
   })
 
   return (
@@ -36,51 +45,42 @@ export default function Board(props) {
       height={theme.breakpoints.values.sm}
       maxHeight='50%'
       width='100%'
+      maxWidth='100vw'
       display='flex'
-      justifyContent='center'
-      my={1}
+      padding='0.5rem'
     >  
       <Box id='board width container'
         height='100%'
         width='100%'
-        border='solid red 2px'
       >  
         <Box id='row1' 
           children={cards.slice(0,5)}
           width='100%'
           height='50%' 
           display='flex'
+          justifyContent='center'
         />
         <Box id='row2' 
           children={cards.slice(5,9)}
           height='50%' 
           display='flex'
+          justifyContent='center'
+          marginX='10%'
         />
       </Box>
     </Box>
   )
 }
 
-function getColors(ml, showSolution, outcomeMap) {
-  let gameStatus = status(ml)
-  if (gameStatus === "xWins" || gameStatus === "oWins") {
-    return highlightWins(ml)
-  }
-  else if (showSolution === true) {
-    return getBoardHints(ml, outcomeMap)
+
+function getCardClaimStatus(cardNum, moveList) {
+  let turn = moveList.indexOf(cardNum)
+  if (turn === -1) {
+    return 'unclaimed'
   }
   else {
-    return Array(10).fill('noColor')
+    return (turn % 2 === 0) ? 'playerOne' : 'playerTwo'
   }
-}
-
-function getIcons(ml) {
-  let data = Array(10).fill('_');  // Start with an array representing a board of NINE empty squares
-  let mlArray = moveListStringToArray(ml)
-  mlArray.forEach((squareId, turn) => {
-      data[squareId] = (turn % 2 === 0) ? 'x' : 'o'
-  })
-  return data;  
 }
 
 function highlightWins(ml) {

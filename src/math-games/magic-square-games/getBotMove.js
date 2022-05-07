@@ -2,7 +2,7 @@
 // PlayerOne and PlayerTwo are NOT markers of who goes first or second in any given game!
 // In the 15 game, PlayerOne and PlayerTWo are distinguished by dark-blue and light-blue
 import { intersect } from "../_helpers/probability";
-import { sumsOfTwo, complementOf, gameOver, xNumbers, oNumbers, nextPlayer, availableNumbers } from "./helpers";
+import { sumsOfTwo, complementOf, gameOver, xNumbers, oNumbers, nextPlayer, availableNumbers } from "./magicSquareHelpers";
 
 
 //////////////////////////////////////////////////////////////     

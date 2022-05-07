@@ -1,5 +1,5 @@
 import { intersect } from "../_helpers/probability";
-import { trioList } from "./helpers";
+import { trioList } from "./magicSquareHelpers";
 
 
 const listOfPossiblePositions = getListOfPossiblePositions()
