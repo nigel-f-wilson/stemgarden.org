@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useContext } from 'react'
 
-import { useScreenWidth } from "../hooks"
+import { PageLayoutContext } from "../contexts";
 
 // import Footer from '../components/Footer';
 import LandingCard from "../components/cards/LandingCard"
@@ -37,13 +37,13 @@ const banana_papaya_pile = "https://res.cloudinary.com/nola-stem-garden/image/up
 const landingCards = [
   {
     title: "Math Tutoring",
-    linkTo: "tutoring-services",
+    linkTo: "services/tutoring",
     imgUrl: practicing_math_facts
 
   },
   {
     title: "Math Games",
-    linkTo: "math-games",
+    linkTo: "resources/math-games",
     // imgUrl: playing_the_15_game,
     imgUrl: girls_playing_connect_four,
   },
@@ -85,11 +85,10 @@ const landingCards = [
 ]
 
 export default function LandingPage() {
-  const screenWidth = useScreenWidth()
-  const smallScreen = screenWidth < 600
+  const narrowScreen = useContext(PageLayoutContext)
   return (
     <React.Fragment>
-      <Background smallScreen={smallScreen} >
+      <Background narrowScreen={narrowScreen} >
         <Header />
         <CardGrid />
       </Background>
@@ -101,7 +100,8 @@ export default function LandingPage() {
 }
 
 function Background(props) {
-  const gradient = (props.smallScreen) ?
+  const { narrowScreen } = props
+  const gradient = (narrowScreen) ?
     "linear-gradient(90deg, rgba(58,94,22,0.80) 0%, rgba(58,99,22,0.80) 100%)"
     : "linear-gradient(90deg, rgba(58,94,22,0.30) 0%, rgba(58,94,22,0.80) 10%, rgba(58,94,22,0.80) 90%, rgba(58,99,22,0.30) 100%)"
 

@@ -3,17 +3,17 @@ import { intersect } from "../_helpers/probability";
 
 export const trioList = generateTrioList()
 function generateTrioList() {
-    let trioList = []
-    for (let i = 1; i <= 7; i++) {
-        for (let j = i + 1; j <= 8; j++) {
-            let k = complementOf(i + j)
-            if (k > j && k <= 9) {
-                let newTrio = [i, j, k]
-                trioList.push(newTrio)
-            }
-        }
+  let trioList = []
+  for (let i = 1; i <= 7; i++) {
+    for (let j = i + 1; j <= 8; j++) {
+      let k = complementOf(i + j)
+      if (k > j && k <= 9) {
+        let newTrio = [i, j, k]
+        trioList.push(newTrio)
+      }
     }
-    return trioList
+  }
+  return trioList
 }
 
 export function complementOf(sumOfTwo) {

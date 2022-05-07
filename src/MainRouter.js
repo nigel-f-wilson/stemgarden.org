@@ -21,7 +21,9 @@ const FifteenGameRoutes = lazy(() => import('./math-games/magic-square-games/fif
 const TicTacToeRoutes = lazy(() => import('./math-games/magic-square-games/tic-tac-toe/TicTacToeRoutes'))
 
 const ServicesIndexPage = lazy(() => import('./pages/services/_ServicesIndexPage'))
-const TutoringPage = lazy(() => import('./pages/services/_ServicesIndexPage'))
+const TutoringPage = lazy(() => import('./pages/services/TutoringPage'))
+const EnrichmentPage = lazy(() => import('./pages/services/EnrichmentPage'))
+const TeacherTrainingPage = lazy(() => import('./pages/services/TeacherTrainingPage'))
 const ChessClubsPage = lazy(() => import('./pages/services/ChessClubsPage'))
 const WebDevelopmentPage = lazy(() => import('./pages/services/WebDevelopmentPage'))
 
@@ -51,13 +53,14 @@ export default function MainRouter() {
         <Route path="services"  >
           <Route index element={<ServicesIndexPage />} />
           <Route path="tutoring" element={<TutoringPage />} />   {/* <Route path="tutoring" element={<Services activeTab="tutoring" />} /> */}
-          <Route path="enrichment" element={<ServicesIndexPage />} />
-          <Route path="teacher-training" element={<ServicesIndexPage />} />
+          <Route path="enrichment" element={<EnrichmentPage />} />
+          <Route path="teacher-training" element={<TeacherTrainingPage />} />
           <Route path="web-development" element={<WebDevelopmentPage />} />
           <Route path="chess-clubs" element={<ChessClubsPage />} />
         </Route>
         
-        <Route path="math-games"  >
+        <Route path="resources" >
+          <Route path="math-games"  >
           <Route index element={<MathGamesIndexPage />} />
           <Route path="connect-four" element={<ConnectFourRoot />} />
           <Route path="tic-tac-toe/*" element={<TicTacToeRoutes />} />
@@ -71,6 +74,7 @@ export default function MainRouter() {
           </Route> */}
           {/* <Route path="the-15-game" element={<FifteenGame />} /> */}
 
+        </Route>
         </Route>
         {/* <Route path="garden" element={<Garden />} >
           <Route path="what_we_grow" element={<Services />} />  

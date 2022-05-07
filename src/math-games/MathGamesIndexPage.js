@@ -1,10 +1,8 @@
 import React from 'react'
 
-import { useScreenWidth } from "../hooks"
-
-import MathGameCard from "../components/cards/MathGameCard"
-
-import { Container, Box, Grid, Typography } from '@mui/material';
+import { Link as RouterLink } from 'react-router-dom';
+import { Box, Container, Grid, Card, CardMedia, Typography, Button, Stack } from '@mui/material';
+// import MathGameCard from "../components/cards/MathGameCard"
 
 // Images 
 const connect_four_screenshot = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_1000,h_1000,c_limit/v1647561099/stemgarden.org/project_screenshots/connect-four_y750ue.jpg"
@@ -62,12 +60,21 @@ const mathGamesCardData = [
 ]
 
 export default function MathGamesIndexPage() {
-  const screenWidth = useScreenWidth()
-  const smallScreen = screenWidth < 600
+  // const { narrowScreen } = useContext(PageLayoutContext)
   return (
-    <Background smallScreen={smallScreen} >
-      <Header />
-      <CardGrid />
+    <Background >
+      <PageHeader />
+      <Grid container spacing={2} >
+      {
+        mathGamesCardData.map((cardData, index) => {
+          return (
+            <Grid item xs={6} md={4} key={index} >
+              <MathGameCard data={cardData}  />
+            </Grid>
+          )
+        })
+      }
+    </Grid>
     </Background>
   )
 }
@@ -87,9 +94,9 @@ function Background(props) {
     </Box>
   )
 }
-function Header() {
+function PageHeader() {
   return (
-    <Box padding='4rem 1rem 2rem' display='flex' flexDirection='column' >
+    <Box padding='2rem 1rem 3rem' display='flex' flexDirection='column' >
       <Typography align="center" variant="pageHeader" >
           Math Games
       </Typography>
@@ -102,31 +109,37 @@ function Header() {
   )
 }
 
-function CardGrid(props) {
+
+function MathGameCard(props) {
+  const { title, description, linkTo, imgUrl, disabled } = props.data
+
   return (
-    <Grid container 
-      sx={{ 
-        padding: '3rem 0rem',
-        margin: '0 auto'
+    <Card raised
+      sx={{ height: '100%', borderRadius: 1, 
+        bgcolor: 'black'
       }}
     >
-      {
-        mathGamesCardData.map((cardData, index) => {
-          return (
-            <Grid item xs={12} key={index} padding='0.4rem' >
-              <MathGameCard data={cardData}  />
-            </Grid>
-          )
-        })
-      }
-    </Grid>
+      <Stack height='100%' display='flex' justifyContent='space-between' p={1} >
+        <Typography 
+          children={title}
+          color="white"
+          align='center'
+          fontSize='1.2rem'
+        />
+        <CardMedia
+          component="img"
+          image={imgUrl}
+          alt={title}
+        />
+        <Button 
+          component={RouterLink} 
+          to={linkTo}
+          disabled={disabled}
+          children="Play Now!"
+          variant='contained'
+          sx={{ mt: 1 }}
+        />
+      </Stack>
+    </Card>
   )
 }
- 
-// {/* 
-//       The STEM Garden is an off-grid urban teaching garden rooted in New Orleans.
-//       We offer private tutoring and small group lessons, both in the garden and online.
-//       We help students excell on the SAT and ACT and meet all Common Core math standards,
-//       but we see learning math as so much more than that! We emphacize the playful side of
-//       mathematical thinking and make use of many puzzles, games, and hands-on projects to engage young imaginations.
-//   </Typography> */}
