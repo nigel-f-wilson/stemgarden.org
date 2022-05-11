@@ -1,8 +1,14 @@
-import React from 'react'
-
+import React, { useContext } from 'react'
 import { Link as RouterLink } from 'react-router-dom';
 import { Box, Container, Grid, Card, CardMedia, Typography, Button, Stack } from '@mui/material';
 // import MathGameCard from "../components/cards/MathGameCard"
+
+import { AppContext } from "../AppContext";
+
+import Background from "../components/backgrounds/Background";
+import PageTitle from "../components/text/PageTitle";
+import PageSubtitle from "../components/text/PageSubtitle";
+
 
 // Images 
 const connect_four_screenshot = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_1000,h_1000,c_limit/v1647561099/stemgarden.org/project_screenshots/connect-four_y750ue.jpg"
@@ -60,51 +66,40 @@ const mathGamesCardData = [
 ]
 
 export default function MathGamesIndexPage() {
-  // const { narrowScreen } = useContext(PageLayoutContext)
+  const { colorTheme, narrowScreen } = useContext(AppContext)
+  
+  console.log(`MathGames page had colortTheme: ${colorTheme}`);
+  console.log(`MathGames page had narrowScreen: ${narrowScreen}`);
+  
+  
   return (
-    <Background >
-      <PageHeader />
-      <Grid container spacing={2} >
-      {
-        mathGamesCardData.map((cardData, index) => {
-          return (
-            <Grid item xs={6} md={4} key={index} >
-              <MathGameCard data={cardData}  />
-            </Grid>
-          )
-        })
-      }
-    </Grid>
+    <Background>
+      <Container maxWidth="md" >
+        <PageHeader />
+        <Grid container spacing={2} >
+          {
+            mathGamesCardData.map((cardData, index) => {
+              return (
+                <Grid item xs={6} md={4} key={index} >
+                  <MathGameCard data={cardData}  />
+                </Grid>
+              )
+            })
+          }
+        </Grid>
+      </Container>
     </Background>
   )
 }
 
-function Background(props) {
-  return (
-    <Box 
-      width='100%'
-      minHeight='100vh'
-      bgcolor="darkGrey"
-      display='flex'
-      flexDirection='column'
-    >
-      <Container maxWidth='md' id='math-games' >
-        { props.children }
-      </Container>
-    </Box>
-  )
-}
 function PageHeader() {
   return (
-    <Box padding='2rem 1rem 3rem' display='flex' flexDirection='column' >
-      <Typography align="center" variant="pageHeader" >
-          Math Games
-      </Typography>
-      <Typography align="justify" variant="pageSubheader" px='8%' >
-          These games have something to offer students at all levels!
-          Some aim to make practicing foundation facts a little more fun.
-          Others have built in lessons on binary numbers, probability, combinatorics, and proof.
-      </Typography>
+    <Box pb='3rem' display='flex' flexDirection='column' >
+      <PageTitle text="Math Games" />
+      <PageSubtitle text="These games have something to offer students at all levels!
+        Some aim to make practicing foundation facts a little more fun.
+        Others have built in lessons on binary numbers, probability, combinatorics, and proof."
+      />
     </Box>
   )
 }
