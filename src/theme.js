@@ -100,7 +100,7 @@ theme.typography.navbarBrand = {
   fontFamily: 'Perantent Marker, cursive',
   fontSize: 32,
 }
-theme.typography.pageHeader = {
+theme.typography.pageTitle = {
   color: theme.palette.common.white,
   textAlign: "center",
   textShadow: '0.15rem 0.15rem 0.3rem black',
