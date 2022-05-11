@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 
-import { PageLayoutContext } from "../contexts";
+import { AppContext } from "../AppContext";
 
 // import Footer from '../components/Footer';
 import LandingCard from "../components/cards/LandingCard"
@@ -85,7 +85,7 @@ const landingCards = [
 ]
 
 export default function LandingPage() {
-  const narrowScreen = useContext(PageLayoutContext)
+  const { narrowScreen } = useContext(AppContext)
   return (
     <React.Fragment>
       <Background narrowScreen={narrowScreen} >
