@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { Box, Button, Typography, Zoom, Dialog,  } from '@mui/material';
 
 // CONTEXT 
-import { PageLayoutContext } from "../../../contexts";
+import { AppContext } from "../../../AppContext";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Zoom ref={ref} {...props} />;
@@ -11,7 +11,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 export function WelcomeModal(props) {
     let { open, openSettingsModal } = props
 
-    const { maxSquareSideLength } = useContext(PageLayoutContext)
+    const { maxSquareSideLength } = useContext(AppContext)
 
     return (
         <Dialog
