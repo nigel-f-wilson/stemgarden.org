@@ -90,17 +90,17 @@ export const resourcesListData = [
     label: "Math Games",
     icon: faDice,
     // icon: faCards
-    linkTo: "math-games",
+    linkTo: "resources/math-games",
   },
   {
     label: "Puzzles",
     icon: faPuzzlePiece,
-    linkTo: "services/tutoring",
+    linkTo: "resources/puzzles",
   },
   {
     label: "Lesson Plans",
     icon: faCopy,
-    linkTo: "services/chess-clubs",
+    linkTo: "resources/lesson-plans",
   },
   
 ]
