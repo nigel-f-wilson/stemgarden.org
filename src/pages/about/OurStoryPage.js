@@ -3,61 +3,68 @@ import { Box, Container, Typography } from '@mui/material';
 
 import { AppContext } from "../../AppContext";
 
-export default function TutoringPage(props) {
+import Background from "../../components/backgrounds/Background";
+import PageTitle from '../../components/text/PageTitle';
+import Section from "../../components/text/Section";
+
+export default function OurStoryPage(props) {
+  
   return (
     <Background >
-      <PageHeader />
-      <Offering />
-      <Subjects />
-      <Pricing />
-      <Testimony />
-      <Experience />
+      <Container maxWidth='md' >
+        <PageTitle text="Our Story" />
+
+        <FoundingSection />
+        <LivingSection />
+        <SolarAndRainSection />
+
+        <Subjects />
+        <Pricing />
+        <Testimony />
+        <Experience />
+      </Container>
     </Background>
   )
 }
 
-function Background(props) {
-  const { narrowScreen } = useContext(AppContext)
-  const padding = narrowScreen ? '0rem' : '2rem 1rem 3rem'
+function FoundingSection() {
+  const headerText = "The STEM Garden was founded in 2016 ..."
+  const par1 = "Shortly after completing my bachelor's in math education at Ohio University, I moved to New Orleans. I wanted to find out what all the buzz around charter schools was about but I was also excited to be able to garden year round."
+  const par2 = "I bought the first half of the garden in an online auction two months after moving to New Orleans. I had been gardening for three years at that point, working in a different place each summer. I had learned that gardening is about much more than taking care of plants, it is about taking care of soil, and that is something that you just can't do if you change location every year."
+   
   return (
-    <Box 
-      width='100%'
-      minHeight='100vh'
-      bgcolor="darkGrey"
-      display='flex'
-      flexDirection='column'
-      padding={padding}
-    >
-      <Container maxWidth='sm'>
-        { props.children }
-      </Container>
-    </Box>
-  )
-}
-function PageHeader() {
-  return (
-    <Box pb='2rem' display='flex' flexDirection='column' >
-      <Typography align="center" variant="pageHeader" >
-        Our Story
-      </Typography>
-    </Box>
+    <Section 
+      headerText={headerText}
+      paragraphs={[ par1, par2 ]}
+    />
   )
 }
 
-
-function Offering() {
+function LivingSection() {
+  const headerText = "Building an off-grid urban homestead"
+  const par1 = "When I bought the garden it was an overgrown trash pit. When I first began cleaning up the site I was living out of my van. Over the next five years the garden gradually became a more comfortable place to live. I built a toolshed, a screened-in kitchen, and two tiny houses on trailers. I stubbornly avoided monthly bills and dependence on any infrastructure I did not thoroughly understand. I believe in radically shortening supply chains, that, when it comes to meeting our basic needs, bringing the production as close as possible to the consumer is a good thing. It makes systems both more efficient and more resilient.   as clsoe to home  got into solar power and rain water catch systems. with one panel and battery and expanded the system as I could afford to. Similarly, I " 
+  const par2 = "manure"
+   
   return (
-    <Box pb='2rem' display='flex' flexDirection='column' >
-      <Typography  variant="pageSubheader" >
-        Offering & Booking
-      </Typography>
-      <Typography  variant="body1" align='justify' color='white' >
-        I offer one-on-one tutoring and small group lessons in math and physics. I teach in person and over Zoom. In person lessons are offered in New Orleans, Louisiana and Athens, Ohio depending on the time of year. 
-      </Typography>
-      <Typography  variant="body1" align='justify' color='white' >
-        To schedule a lesson, email nigel@stemgarden.org 
-      </Typography>
-    </Box>
+    <Section 
+      headerText={headerText}
+      paragraphs={[ par1, par2 ]}
+
+    />
+  )
+}
+
+function SolarAndRainSection() {
+  const headerText = "Solar Power and Rain Catch"
+  const par1 = "When I bought the garden it was an overgrown trash pit. When I first began cleaning up the site I was living out of my van. Over the next five years the garden gradually became a more comfortable place to live. I built a toolshed, a screened-in kitchen, and two tiny houses on trailers. I stubbornly avoided monthly bills and dependence on any infrastructure I did not thoroughly understand. I believe in radically shortening supply chains, that, when it comes to meeting our basic needs, bringing the production as close as possible to the consumer is a good thing. It makes systems both more efficient and more resilient.   as clsoe to home  got into solar power and rain water catch systems. with one panel and battery and expanded the system as I could afford to. Similarly, I " 
+  const par2 = ""
+   
+  return (
+    <Section 
+      headerText={headerText}
+      paragraphs={[ par1, par2 ]}
+
+    />
   )
 }
 
