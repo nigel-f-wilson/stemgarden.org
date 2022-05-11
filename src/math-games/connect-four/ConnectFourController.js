@@ -17,12 +17,12 @@ import { chooseRandomFromArray } from '../_helpers/low-level';
 
 
 // CONTEXT
-import { PageLayoutContext } from "../../contexts";
+import { AppContext } from "../../AppContext";
 import { ConnectFourContext } from "./ConnectFourContext";
 import { getGameStatus, getBotMove } from "./moveListHelpers";
 
 export default function ConnectFourController(props) {
-  const { availableHeight  } = useContext(PageLayoutContext)
+  const { availableHeight  } = useContext(AppContext)
   const { 
     settings, setSettings,
     moveList, setMoveList,
