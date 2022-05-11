@@ -1,6 +1,5 @@
 import React, { createContext } from "react";
 
-
 // Custom Hooks
 import { useScreenWidth, useScreenHeight } from "./hooks"
 
@@ -15,9 +14,9 @@ import { useScreenWidth, useScreenHeight } from "./hooks"
 // };
 
 
-export const PageLayoutContext = createContext();
+export const AppContext = createContext();
 
-export const PageLayoutContextProvider = props => {
+export const AppContextProvider = props => {
   let screenHeight = useScreenHeight()
   let screenWidth = useScreenWidth()
   
@@ -44,7 +43,7 @@ export const PageLayoutContextProvider = props => {
   // console.log(`ROOT PAGE LAYOUT CONTEXT: ${JSON.stringify(layout, null, 4)}`);
   
   return (
-    <PageLayoutContext.Provider 
+    <AppContext.Provider 
       value={layout} 
       children={props.children}
     />

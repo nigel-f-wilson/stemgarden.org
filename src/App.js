@@ -5,18 +5,17 @@ import { Box, CssBaseline } from '@mui/material';
 import MainRouter from './MainRouter'
 import Navbar from './components/navigation/Navbar';
 
-
 // THEME & Layout Context
 import theme from "./theme"
 import { ThemeProvider } from '@mui/material/styles';
-import { PageLayoutContextProvider } from './contexts';
+import { AppContextProvider } from './AppContext';
 
 export default function App() {
   return (
     <React.Fragment>
       <CssBaseline />
       <ThemeProvider theme={theme}>
-        <PageLayoutContextProvider >
+        <AppContextProvider >
           <Box id='root' 
             bgcolor='primary.main'
             height='100vh'
@@ -26,7 +25,7 @@ export default function App() {
             <Navbar />
             <MainRouter />
           </Box>
-        </PageLayoutContextProvider>
+        </AppContextProvider>
       </ThemeProvider>
     </React.Fragment>
   );
