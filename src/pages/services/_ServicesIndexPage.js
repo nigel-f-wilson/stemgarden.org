@@ -2,13 +2,13 @@ import React, { useContext } from 'react'
 import { Link as RouterLink } from 'react-router-dom';
 import { Box, Container, Grid, Card, CardMedia, Typography, Button, Stack } from '@mui/material';
 
-import { PageLayoutContext } from "../../contexts";
+import { AppContext } from "../../AppContext";
 
 
 // Tutoring
 const practicing_math_facts = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_1000,h_1000,c_limit/v1646863130/stemgarden.org/teaching/practicing_math_facts_gnhwkx.jpg"
 
-const connect_four_screenshot = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_1000,h_1000,c_limit/v1647561099/stemgarden.org/project_screenshots/connect-four_y750ue.jpg"
+// const connect_four_screenshot = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_1000,h_1000,c_limit/v1647561099/stemgarden.org/project_screenshots/connect-four_y750ue.jpg"
 
 // const under_construction = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_1000,h_1000,c_limit/v1647561688/stemgarden.org/under_construction_sbiop2.png"
 
@@ -23,7 +23,7 @@ const chess_demo_board = "https://res.cloudinary.com/nola-stem-garden/image/uplo
 const code_screenshot = "https://res.cloudinary.com/nola-stem-garden/image/upload/v1651934086/stemgarden.org/Code_Screenshot_thruye.png"
 
 // Enrichment + Hands On
-const guitar_fret_measuring = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_1000,h_1000,c_limit/v1646597930/stemgarden.org/teaching/hands_on/guitar_fret_spacing_jezbuk.jpg"
+// const guitar_fret_measuring = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_1000,h_1000,c_limit/v1646597930/stemgarden.org/teaching/hands_on/guitar_fret_spacing_jezbuk.jpg"
 const bike_gear_ratio_tutoring = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_1000,h_1000,c_limit/v1647052266/stemgarden.org/teaching/hands_on/bike_gear_ratios_at_tutoring_s6l3ee.jpg"
 
 
@@ -98,7 +98,7 @@ export default function ServicesIndexPage() {
 }
 
 function Background(props) {
-  const { narrowScreen } = useContext(PageLayoutContext)
+  const { narrowScreen } = useContext(AppContext)
   const padding = narrowScreen ? '0rem' : '2rem 1rem 3rem'
   return (
     <Box 
