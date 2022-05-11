@@ -1,13 +1,12 @@
-import React, { useContext } from 'react'
+import React from 'react'
+import { Box, Grid } from '@mui/material';
 
-import { AppContext } from "../AppContext";
 
 // import Footer from '../components/Footer';
+import LeafyBackground from "../components/backgrounds/LeafyBackground";
 import LandingCard from "../components/cards/LandingCard"
-import { Container, Box, Grid, Typography } from '@mui/material';
+import PageTitle from "../components/text/PageTitle";
 
-// MY images
-const leafy_background = "https://res.cloudinary.com/nola-stem-garden/image/upload/v1647192146/stemgarden.org/leafy_background_wzclfb.jpg"
 
 // Tutoring
 const practicing_math_facts = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_1000,h_1000,c_limit/v1646863130/stemgarden.org/teaching/practicing_math_facts_gnhwkx.jpg"
@@ -85,13 +84,13 @@ const landingCards = [
 ]
 
 export default function LandingPage() {
-  const { narrowScreen } = useContext(AppContext)
+  // const { narrowScreen } = useContext(AppContext)
   return (
     <React.Fragment>
-      <Background narrowScreen={narrowScreen} >
+      <LeafyBackground >
         <Header />
         <CardGrid />
-      </Background>
+      </LeafyBackground>
       {/* <Footer smallScreen={smallScreen} /> */}
     </React.Fragment>
       
@@ -99,43 +98,14 @@ export default function LandingPage() {
   )
 }
 
-function Background(props) {
-  const { narrowScreen } = props
-  const gradient = (narrowScreen) ?
-    "linear-gradient(90deg, rgba(58,94,22,0.80) 0%, rgba(58,99,22,0.80) 100%)"
-    : "linear-gradient(90deg, rgba(58,94,22,0.30) 0%, rgba(58,94,22,0.80) 10%, rgba(58,94,22,0.80) 90%, rgba(58,99,22,0.30) 100%)"
 
-  const backgroundStyles = {
-    width: '100%',
-    minHeight: '100vh',
-    height: 'auto',
-    backgroundImage: `
-      ${gradient},
-      url(${leafy_background})
-    `,
-    backgroundPosition: 'center top',
-    backgroundRepeat: 'repeat-y',
-    backgroundSize: 'cover',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    textAlign: 'center',
-  }  
-  return (
-    <Box sx={backgroundStyles} >
-      <Container maxWidth='md' id='landing' >
-        { props.children }
-      </Container>
-    </Box>
-  )
-}
 
 function Header() {
   return (
     <Box padding='4rem 0rem 2rem' >
-      <Typography align="center" variant="pageHeader" >
-          Sowing seeds of<br/>life&#8209;long learning<br/>and DIY&#8209;spirit.
-      </Typography>
+      <PageTitle title="Sowing seeds of" />
+      <PageTitle title="life-long learning" />
+      <PageTitle title="and DIY-spirit" />
     </Box>
   )
 }
