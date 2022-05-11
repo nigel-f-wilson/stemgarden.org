@@ -1,28 +1,40 @@
 import React, { useContext } from 'react'
-import { Box, Container } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 
 import { AppContext } from ".././../AppContext";
 
 export default function Section(props) {
-  const { colorTheme, headerText, pragraphs } = props
+  const { headerText, paragraphs } = props
 
-  const { narrowScreen } = useContext(AppContext)
-  const padding = narrowScreen ? '0rem' : '2rem 1rem 3rem'
-  const bgcolor = (colorTheme === "dark") ? "darkGrey" : "white"
+  const { colorTheme } = useContext(AppContext)
+  const textColor = (colorTheme === "dark") ? "white" : "black"
+  
   return (
-    <Box 
-      width='100%'
-      minHeight='100vh'
-      bgcolor={bgcolor}
-      display='flex'
-      flexDirection='column'
-      padding={padding}
-    >
-      <Container maxWidth='sm'>
-        { props.children }
-      </Container>
+    <Box pb='1rem' display='flex' flexDirection='column' >
+      <Typography  
+        children={headerText}
+        color={textColor}
+        variant="pageSubheader" 
+        gutterBottom
+      />
+      {
+        paragraphs.map(paragraph => {
+          return (
+            <Typography  
+              color={textColor} 
+              children={paragraph}
+              variant="body1" 
+              align='justify' 
+              gutterBottom
+            />
+          )
+        })
+      }
     </Box>
   )
 }
 
 // PropTypes  paragraphs should be and array of strings
+function Subjects() {
+  
+}
