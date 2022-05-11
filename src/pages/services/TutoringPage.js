@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { Box, Container, Typography } from '@mui/material';
 
-import { PageLayoutContext } from "../../contexts";
+import { AppContext } from "../../AppContext";
 
 export default function TutoringPage(props) {
   return (
@@ -17,7 +17,7 @@ export default function TutoringPage(props) {
 }
 
 function Background(props) {
-  const { narrowScreen } = useContext(PageLayoutContext)
+  const { narrowScreen } = useContext(AppContext)
   const padding = narrowScreen ? '0rem' : '2rem 1rem 3rem'
   return (
     <Box 
