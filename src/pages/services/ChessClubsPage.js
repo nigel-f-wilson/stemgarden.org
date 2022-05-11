@@ -1,7 +1,7 @@
 import React from 'react'
 import { Box, Typography } from '@mui/material';
 
-import Background from "../../components/Background";
+import Background from "../../components/backgrounds/Background";
 import PageTitle from "../../components/text/PageTitle";
 import Section from "../../components/text/Section";
 
