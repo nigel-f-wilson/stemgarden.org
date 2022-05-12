@@ -1,11 +1,12 @@
 import React from 'react'
-import { Box, Grid } from '@mui/material';
-
+import { Link as RouterLink } from 'react-router-dom';
+import { Box, Grid, Card, CardHeader, CardMedia } from '@mui/material';
+import theme from '../../theme';
 
 // import Footer from '../components/Footer';
-import LeafyBackground from "../components/backgrounds/LeafyBackground";
+import { PageTitle } from "../components/text";
+import { LeafyBackground } from "../components/backgrounds";
 import LandingCard from "../components/cards/LandingCard"
-import PageTitle from "../components/text/PageTitle";
 
 
 // Tutoring
@@ -84,7 +85,6 @@ const landingCards = [
 ]
 
 export default function LandingPage() {
-  // const { narrowScreen } = useContext(AppContext)
   return (
     <React.Fragment>
       <LeafyBackground >
@@ -93,19 +93,15 @@ export default function LandingPage() {
       </LeafyBackground>
       {/* <Footer smallScreen={smallScreen} /> */}
     </React.Fragment>
-      
-
   )
 }
-
-
 
 function Header() {
   return (
     <Box padding='4rem 0rem 2rem' >
-      <PageTitle title="Sowing seeds of" />
-      <PageTitle title="life-long learning" />
-      <PageTitle title="and DIY-spirit" />
+      <PageTitle text="Sowing seeds of" />
+      <PageTitle text="life-long learning" />
+      <PageTitle text="and DIY-spirit" />
     </Box>
   )
 }
@@ -125,4 +121,58 @@ function CardGrid(props) {
     </Grid>
   )
 }
- 
+
+
+export default function LandingCard(props) {
+  const { title, linkTo, imgUrl } = props.data
+
+  const cardStyles = { 
+    backgroundColor: theme.palette.darkGrey,
+    color: theme.palette.common.white,
+    textDecoration: 'none',
+  }
+  const linkStyles = { 
+    color: theme.palette.common.white,
+    textDecoration: 'none',
+  }
+  return (
+    <RouterLink to={linkTo} style={linkStyles} >
+      <Card raised style={cardStyles}
+        sx={{ 
+          position: 'relative', 
+          paddingTop: '112%',
+          borderRadius: "1rem"
+        }}
+      >
+        <CardHeader 
+          title={title}
+          titleTypographyProps={{
+            align: 'center', 
+            variant: 'cardHeader',
+            noWrap: true,
+          }}
+          sx={{ 
+            position: 'absolute', 
+            top: 0,
+            zIndex: 20,
+            width: "100%",
+            padding: "2% 0 6%",
+            backgroundColor: "rgb(32,32,32)",
+            background: "linear-gradient(180deg, rgba(32,32,32,1) 80%, rgba(32,32,32,0.5) 93%, rgba(32,32,32,0.1) 100%)",
+            }}
+        />
+        <CardMedia
+          component="img"
+          image={imgUrl}
+          alt={title}
+          sx={{ 
+            position: 'absolute', 
+            bottom: "0%",
+            zIndex: 10
+          }}
+        />
+      </Card>
+    </RouterLink>
+  )
+}
+
