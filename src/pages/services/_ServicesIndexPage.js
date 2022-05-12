@@ -22,7 +22,7 @@ const chess_demo_board = "https://res.cloudinary.com/nola-stem-garden/image/uplo
 const code_screenshot = "https://res.cloudinary.com/nola-stem-garden/image/upload/v1651934086/stemgarden.org/Code_Screenshot_thruye.png"
 
 // Enrichment + Hands On
-// const guitar_fret_measuring = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_1000,h_1000,c_limit/v1646597930/stemgarden.org/teaching/hands_on/guitar_fret_spacing_jezbuk.jpg"
+const guitar_fret_measuring = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_1000,h_1000,c_limit/v1646597930/stemgarden.org/teaching/hands_on/guitar_fret_spacing_jezbuk.jpg"
 const bike_gear_ratio_tutoring = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_1000,h_1000,c_limit/v1647052266/stemgarden.org/teaching/hands_on/bike_gear_ratios_at_tutoring_s6l3ee.jpg"
 
 const servicesCardData = [
