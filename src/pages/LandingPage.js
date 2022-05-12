@@ -1,13 +1,11 @@
 import React from 'react'
 import { Link as RouterLink } from 'react-router-dom';
 import { Box, Grid, Card, CardHeader, CardMedia } from '@mui/material';
-import theme from '../../theme';
+import theme from '../theme';
 
 // import Footer from '../components/Footer';
 import { PageTitle } from "../components/text";
 import { LeafyBackground } from "../components/backgrounds";
-import LandingCard from "../components/cards/LandingCard"
-
 
 // Tutoring
 const practicing_math_facts = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_1000,h_1000,c_limit/v1646863130/stemgarden.org/teaching/practicing_math_facts_gnhwkx.jpg"
@@ -123,7 +121,7 @@ function CardGrid(props) {
 }
 
 
-export default function LandingCard(props) {
+function LandingCard(props) {
   const { title, linkTo, imgUrl } = props.data
 
   const cardStyles = { 
