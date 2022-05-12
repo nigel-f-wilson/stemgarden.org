@@ -1,7 +1,6 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { Box, Container, Typography } from '@mui/material';
 
-import { AppContext } from "../../AppContext";
 
 import Background from "../../components/backgrounds/Background";
 import PageTitle from '../../components/text/PageTitle';
