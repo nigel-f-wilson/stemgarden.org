@@ -1,13 +1,11 @@
-import React, { useContext } from 'react'
-
-import { PageLayoutContext } from "../contexts";
+import React from 'react'
+import { Link as RouterLink } from 'react-router-dom';
+import { Box, Grid, Card, CardHeader, CardMedia } from '@mui/material';
+import theme from '../theme';
 
 // import Footer from '../components/Footer';
-import LandingCard from "../components/cards/LandingCard"
-import { Container, Box, Grid, Typography } from '@mui/material';
-
-// MY images
-const leafy_background = "https://res.cloudinary.com/nola-stem-garden/image/upload/v1647192146/stemgarden.org/leafy_background_wzclfb.jpg"
+import { PageTitle } from "../components/text";
+import { LeafyBackground } from "../components/backgrounds";
 
 // Tutoring
 const practicing_math_facts = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_1000,h_1000,c_limit/v1646863130/stemgarden.org/teaching/practicing_math_facts_gnhwkx.jpg"
@@ -85,57 +83,23 @@ const landingCards = [
 ]
 
 export default function LandingPage() {
-  const narrowScreen = useContext(PageLayoutContext)
   return (
     <React.Fragment>
-      <Background narrowScreen={narrowScreen} >
+      <LeafyBackground >
         <Header />
         <CardGrid />
-      </Background>
+      </LeafyBackground>
       {/* <Footer smallScreen={smallScreen} /> */}
     </React.Fragment>
-      
-
-  )
-}
-
-function Background(props) {
-  const { narrowScreen } = props
-  const gradient = (narrowScreen) ?
-    "linear-gradient(90deg, rgba(58,94,22,0.80) 0%, rgba(58,99,22,0.80) 100%)"
-    : "linear-gradient(90deg, rgba(58,94,22,0.30) 0%, rgba(58,94,22,0.80) 10%, rgba(58,94,22,0.80) 90%, rgba(58,99,22,0.30) 100%)"
-
-  const backgroundStyles = {
-    width: '100%',
-    minHeight: '100vh',
-    height: 'auto',
-    backgroundImage: `
-      ${gradient},
-      url(${leafy_background})
-    `,
-    backgroundPosition: 'center top',
-    backgroundRepeat: 'repeat-y',
-    backgroundSize: 'cover',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    textAlign: 'center',
-  }  
-  return (
-    <Box sx={backgroundStyles} >
-      <Container maxWidth='md' id='landing' >
-        { props.children }
-      </Container>
-    </Box>
   )
 }
 
 function Header() {
   return (
     <Box padding='4rem 0rem 2rem' >
-      <Typography align="center" variant="pageHeader" >
-          Sowing seeds of<br/>life&#8209;long learning<br/>and DIY&#8209;spirit.
-      </Typography>
+      <PageTitle text="Sowing seeds of" />
+      <PageTitle text="life-long learning" />
+      <PageTitle text="and DIY-spirit" />
     </Box>
   )
 }
@@ -155,4 +119,58 @@ function CardGrid(props) {
     </Grid>
   )
 }
- 
+
+
+function LandingCard(props) {
+  const { title, linkTo, imgUrl } = props.data
+
+  const cardStyles = { 
+    backgroundColor: theme.palette.darkGrey,
+    color: theme.palette.common.white,
+    textDecoration: 'none',
+  }
+  const linkStyles = { 
+    color: theme.palette.common.white,
+    textDecoration: 'none',
+  }
+  return (
+    <RouterLink to={linkTo} style={linkStyles} >
+      <Card raised style={cardStyles}
+        sx={{ 
+          position: 'relative', 
+          paddingTop: '112%',
+          borderRadius: "1rem"
+        }}
+      >
+        <CardHeader 
+          title={title}
+          titleTypographyProps={{
+            align: 'center', 
+            variant: 'cardHeader',
+            noWrap: true,
+          }}
+          sx={{ 
+            position: 'absolute', 
+            top: 0,
+            zIndex: 20,
+            width: "100%",
+            padding: "2% 0 6%",
+            backgroundColor: "rgb(32,32,32)",
+            background: "linear-gradient(180deg, rgba(32,32,32,1) 80%, rgba(32,32,32,0.5) 93%, rgba(32,32,32,0.1) 100%)",
+            }}
+        />
+        <CardMedia
+          component="img"
+          image={imgUrl}
+          alt={title}
+          sx={{ 
+            position: 'absolute', 
+            bottom: "0%",
+            zIndex: 10
+          }}
+        />
+      </Card>
+    </RouterLink>
+  )
+}
+

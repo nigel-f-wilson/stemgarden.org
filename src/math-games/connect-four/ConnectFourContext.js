@@ -1,5 +1,5 @@
 import React, { useState, useEffect, createContext, useContext } from "react";
-import { PageLayoutContext } from "../../contexts";
+import { AppContext } from "../../AppContext";
 
 import { 
   getBoardData,
@@ -13,7 +13,7 @@ export const ConnectFourContext = createContext();
 // ConnectFourContext.displayName("Connect Four Context")
 
 export const ConnectFourContextProvider = props => {
-  const { maxSquareSideLength } = useContext(PageLayoutContext)
+  const { maxSquareSideLength } = useContext(AppContext)
 
   const gameBoardConstants = {
     oneSixth: '16.665%',

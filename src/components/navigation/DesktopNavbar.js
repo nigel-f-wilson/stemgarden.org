@@ -11,10 +11,10 @@ import {
 } from "@mui/material"
 
 import theme from '../../theme';
-import { PageLayoutContext } from '../../contexts';
+import { AppContext } from '../../AppContext';
 
 export default function DesktopNavbar() {
-  const { navbarHeight } = useContext(PageLayoutContext)
+  const { navbarHeight } = useContext(AppContext)
 
   return (
     <AppBar

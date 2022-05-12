@@ -2,13 +2,16 @@ import React, { useContext } from 'react'
 import { Link as RouterLink } from 'react-router-dom';
 import { Box, Container, Grid, Card, CardMedia, Typography, Button, Stack } from '@mui/material';
 
-import { PageLayoutContext } from "../../contexts";
+import { AppContext } from "../../AppContext";
 
 // const under_construction = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_1000,h_1000,c_limit/v1647561688/stemgarden.org/under_construction_sbiop2.png"
 
 // Tutoring
 const practicing_math_facts = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_1000,h_1000,c_limit/v1646863130/stemgarden.org/teaching/practicing_math_facts_gnhwkx.jpg"
 
+// const connect_four_screenshot = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_1000,h_1000,c_limit/v1647561099/stemgarden.org/project_screenshots/connect-four_y750ue.jpg"
+
+// const under_construction = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_1000,h_1000,c_limit/v1647561688/stemgarden.org/under_construction_sbiop2.png"
 // Chess Clubs
 // const chess_at_college_track = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_1000,h_1000,c_limit/v1647050134/stemgarden.org/chess/chess_club_college_track_st00uc.jpg"
 // const chess_at_bric = "https://res.cloudinary.com/nola-stem-garden/image/upload/v1647050028/stemgarden.org/chess/chess_club_at_bric_tvycwi.jpg"
@@ -92,7 +95,7 @@ export default function ServicesIndexPage() {
 }
 
 function Background(props) {
-  const { narrowScreen } = useContext(PageLayoutContext)
+  const { narrowScreen } = useContext(AppContext)
   const padding = narrowScreen ? '0rem' : '2rem 1rem 3rem'
   return (
     <Box 

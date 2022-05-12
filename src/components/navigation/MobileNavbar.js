@@ -9,10 +9,10 @@ import {
   Typography,
   AppBar,
 } from "@mui/material"
-import { PageLayoutContext } from '../../contexts';
+import { AppContext } from '../../AppContext';
 
 export default function MobileNavbar() {
-  const { navbarHeightPx } = useContext(PageLayoutContext)
+  const { navbarHeightPx } = useContext(AppContext)
   return (
     <AppBar
       elevation={4}

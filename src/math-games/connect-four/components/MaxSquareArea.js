@@ -1,10 +1,10 @@
 import React, { useContext } from 'react'
 import { Box } from '@mui/material'
 
-import { PageLayoutContext } from "../../../contexts";
+import { AppContext } from "../../../AppContext";
 
 export function MaxSquareArea(props) {
-  const { maxSquareSideLength } = useContext(PageLayoutContext)
+  const { maxSquareSideLength } = useContext(AppContext)
   return (
     <Box 
       children={props.children}
