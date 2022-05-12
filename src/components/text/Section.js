@@ -18,9 +18,10 @@ export default function Section(props) {
         gutterBottom
       />
       {
-        paragraphs.map(paragraph => {
+        paragraphs.map((paragraph, index) => {
           return (
-            <Typography  
+            <Typography 
+              key={`${headerText}-paragraph-${index}`}
               color={textColor} 
               children={paragraph}
               variant="body1" 
@@ -32,9 +33,4 @@ export default function Section(props) {
       }
     </Box>
   )
-}
-
-// PropTypes  paragraphs should be and array of strings
-function Subjects() {
-  
 }
