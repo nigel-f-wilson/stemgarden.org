@@ -6,12 +6,9 @@ import { AppContext } from "../../AppContext";
 export default function Background(props) {
   const { colorTheme, narrowScreen } = useContext(AppContext)
   
-  console.log(`Background had colortTheme: ${colorTheme}`);
-  console.log(`Background had narrowScreen: ${narrowScreen}`);
-  
-  
   const padding = narrowScreen ? '0rem' : '2rem 1rem 3rem'
   const bgcolor = (colorTheme === "dark") ? "darkGrey" : "white"
+  
   return (
     <Box 
       width='100%'
