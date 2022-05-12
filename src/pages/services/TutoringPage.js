@@ -95,47 +95,6 @@ function Pricing() {
   )
 }
 
-function Testimony() {
-  return (
-    <Box pb='2rem' display='flex' flexDirection='column' >
-      <Typography  variant="pageSubheader" >
-        Testimony
-      </Typography>
-
-      <Quote
-        quote="I wouldn't have made it through my first semester of grad school without Nigel. I had tried several other tutors before him so I can say he has a unique tallent for breaking concepts down clearly. After working with him, I could even explain the concepts to the other people in my study group. He listened to me vent about my professor, then redirected to keep me positive and on track."
-        citation="Julie Richelson, MBA Student at UNO"
-      />
-
-      <Quote
-        quote="I highly recommend Nigel without reservation! He brought much preparation and care to his teaching while encouraging his students' solving ability and thirst for knowledge with an upbeat attitude."
-        citation="William Mains, Parent of a 7th grader at WSNO"
-      />
-
-      <Quote
-        quote="While Nigel was our math teacher at the Waldorf School of New Orleans, our students were very engaged. It was the most excited I had ever seen them to go to math. The lessons he developed and taught our 4th-8th graders were so interesting and thought provoking."
-        citation="Jill Contento, Faculty Chair WSNO"
-      />
-
-
-    </Box>
-  )
-}
-
-function Quote(props) {
-  const { quote, citation } = props
-  return (
-    <Box p={1} >
-      <Typography  variant="body1" align='justify' color='white' >
-        "{quote}"
-      </Typography>
-      <Typography  variant="body1" align='right' color='white' >
-        - {citation}
-      </Typography>
-    </Box>
-  )
-}
-
 function Experience() {
   return (
     <Box pb='2rem' display='flex' flexDirection='column' >
