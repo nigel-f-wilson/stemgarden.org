@@ -1,36 +1,84 @@
 import React, { useContext } from 'react'
-import { Box, Typography } from '@mui/material';
+import { Box, Grid, Typography } from '@mui/material';
 
-import { AppContext } from ".././../AppContext";
+import theme from "../../theme";
+import { AppContext } from "../../AppContext";
+import { PageSubtitle } from "../text";
 
 export default function Section(props) {
-  const { headerText, paragraphs } = props
+  const { headerText, paragraphs, imgUrl, imgAlign } = props
 
   const { colorTheme } = useContext(AppContext)
   const textColor = (colorTheme === "dark") ? "white" : "black"
+  const direction = (imgAlign === "right") ? "row" :'row-reverse'
+
+  const imageStyles = {
+    width: '100%',
+    // minHeight: '100vh',
+    height: 'auto',
+    backgroundImage: `url(${imgUrl})`,
+    backgroundPosition: 'center top',
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover',
+    borderRadius: '1rem'
+    // display: 'flex',
+    // flexDirection: 'column',
+    // alignItems: 'center',
+    // textAlign: 'center',
+  }  
   
   return (
     <Box pb='1rem' display='flex' flexDirection='column' >
-      <Typography  
-        children={headerText}
-        color={textColor}
-        variant="pageSubheader" 
-        gutterBottom
-      />
-      {
-        paragraphs.map((paragraph, index) => {
-          return (
-            <Typography 
-              key={`${headerText}-paragraph-${index}`}
-              color={textColor} 
-              children={paragraph}
-              variant="body1" 
-              align='justify' 
-              gutterBottom
-            />
-          )
-        })
-      }
+      
+      
+      
+      <Grid container spacing={4} flexDirection={direction} mb="1rem" >
+        <Grid item xs={12} sm={8} 
+          sx={{ 
+            mb: 0, 
+            [theme.breakpoints.up('sm')]: {
+              m: 'auto 0',                      // center text vertically
+            },
+          }}
+        >
+          <PageSubtitle 
+            text={headerText}
+            align="left"
+          />
+          {
+            paragraphs.map((paragraph, index) => {
+              return (
+                <Typography 
+                  key={`${headerText}-paragraph-${index}`}
+                  color={textColor} 
+                  children={paragraph}
+                  variant="body1" 
+                  align='justify' 
+                  gutterBottom
+                />
+              )
+            })
+          }
+        </Grid>
+        <Grid item xs={12} sm={4}  >
+          <Box 
+            minHeight='270px'
+            backgroundRepeat='no-repeat'
+            backgroundSize='cover'
+            sx={imageStyles}
+          />
+          {/* <CardMedia
+            component="img"
+            image={imgUrl}
+            alt={headerText}
+            sx={{ 
+              position: 'absolute', 
+              bottom: "0%",
+              zIndex: 10
+            }}
+          /> */}
+        </Grid>
+      </Grid>
     </Box>
   )
 }
