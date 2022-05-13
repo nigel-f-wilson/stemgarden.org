@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Container } from '@mui/material';
+import { Container } from '@mui/material';
 
 import { Background } from "../../components/backgrounds";
 import { PageTitle, Section } from '../../components/text';
@@ -9,9 +9,7 @@ export default function OurStoryPage(props) {
   return (
     <Background >
       <Container maxWidth='md' >
-        <Box pb={4} >
-          <PageTitle text="Our Story"  />
-        </Box>
+        <PageTitle text="Our Story" paddingBottom={4} />
 
         <FoundingSection />
         <LivingSection />
