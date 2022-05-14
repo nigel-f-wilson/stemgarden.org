@@ -4,6 +4,7 @@ import { Box } from '@mui/material';
 import { AppContext } from "../../AppContext";
 
 export default function Background(props) {
+  const { children } = props
   const { colorTheme, narrowScreen } = useContext(AppContext)
   
   const padding = narrowScreen ? '0rem' : '2rem 1rem 3rem'
@@ -17,8 +18,9 @@ export default function Background(props) {
       display='flex'
       flexDirection='column'
       padding={padding}
+      // overflow="scroll"
     >
-      { props.children }
+      { children }
     </Box>
   )
 }
