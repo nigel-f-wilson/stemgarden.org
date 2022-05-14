@@ -20,7 +20,8 @@ export default function App() {
             bgcolor='primary.main'
             height='100vh'
             width='100vw'
-            overflowX='hidden'
+            // overflow='hidden'
+            overflow='scroll'
           >
             <Navbar />
             <MainRouter />
