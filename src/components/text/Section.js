@@ -14,30 +14,22 @@ export default function Section(props) {
 
   const imageStyles = {
     width: '100%',
-    // minHeight: '100vh',
     height: 'auto',
     backgroundImage: `url(${imgUrl})`,
     backgroundPosition: 'center top',
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
     borderRadius: '1rem'
-    // display: 'flex',
-    // flexDirection: 'column',
-    // alignItems: 'center',
-    // textAlign: 'center',
   }  
   
   return (
     <Box pb='1rem' display='flex' flexDirection='column' >
-      
-      
-      
       <Grid container spacing={4} flexDirection={direction} mb="1rem" >
         <Grid item xs={12} sm={8} 
           sx={{ 
             mb: 0, 
             [theme.breakpoints.up('sm')]: {
-              m: 'auto 0',                      // center text vertically
+              m: '0 0 auto',                      // center text vertically
             },
           }}
         >
