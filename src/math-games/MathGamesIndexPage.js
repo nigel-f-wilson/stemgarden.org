@@ -68,10 +68,6 @@ const mathGamesCardData = [
 export default function MathGamesIndexPage() {
   const { colorTheme, narrowScreen } = useContext(AppContext)
   
-  console.log(`MathGames page had colortTheme: ${colorTheme}`);
-  console.log(`MathGames page had narrowScreen: ${narrowScreen}`);
-  
-  
   return (
     <Background>
       <Container maxWidth="md" >
