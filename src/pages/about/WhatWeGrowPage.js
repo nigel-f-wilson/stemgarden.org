@@ -103,8 +103,10 @@ function CropSelector(props) {
       {/* <Grid container spacing={1} > */}
         {
           crops.map(crop => {
+            {/* const key = `select_${crop.name}_button` */}
             return (
               <CropSelectorButton 
+                key={`select_${crop.name}_button`}
                 crop={crop}  
                 selectedCrop={selectedCrop}
                 setSelectedCrop={setSelectedCrop} 
@@ -125,8 +127,9 @@ function CropSelector(props) {
 
 function CropSelectorButton(props) {
   const { crop, selectedCrop, setSelectedCrop } = props
+  const { name, imgUrl } = crop
 
-  const selected = (crop === selectedCrop)
+  const selected = (name === selectedCrop)
   const border = selected ? 'solid yellow 2px': 'none'
 
   const imageStyles = {
