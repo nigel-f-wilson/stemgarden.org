@@ -25,8 +25,15 @@ const banana = 'https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h
 const fig = 'https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1646606908/stemgarden.org/harvests/fig_harvest_rcmtsu.jpg'
 const fig_2 = 'https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1612190789/nolastemgarden/fig/fig_harvest_qmwyxm.jpg'
 
+// 
+const loquat_bunch = 'https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1652702918/stemgarden.org/harvests/loquat_harvest_lfyeee.jpg'
+const loquat_pile = 'https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1652703028/stemgarden.org/harvests/loquat_pile_sryz1n.jpg'
+
 // Turmeric
 const turmeric = 'https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1612135511/stemgarden.org/harvests/turmeric_harvest_iwfpqu.jpg'
+
+// Other Harvests
+const tomato_cuke_harvest = 'https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1652701628/stemgarden.org/harvests/tomato_cuke_harvest_h3ymvj.jpg'
 
 export default function WhatWeGrowPage(props) {
   // const [selectedCrop, setSelectedCrop] = useState('none')
