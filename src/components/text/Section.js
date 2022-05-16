@@ -15,6 +15,7 @@ export default function Section(props) {
   const imageStyles = {
     width: '100%',
     height: 'auto',
+    minHeight: '270px',
     backgroundImage: `url(${imgUrl})`,
     backgroundPosition: 'center top',
     backgroundRepeat: 'no-repeat',
@@ -53,12 +54,7 @@ export default function Section(props) {
           }
         </Grid>
         <Grid item xs={12} sm={4}  >
-          <Box 
-            minHeight='270px'
-            backgroundRepeat='no-repeat'
-            backgroundSize='cover'
-            sx={imageStyles}
-          />
+          <Box sx={imageStyles} />
           {/* <CardMedia
             component="img"
             image={imgUrl}
