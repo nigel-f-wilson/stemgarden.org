@@ -6,16 +6,9 @@ import { AppContext } from "../../AppContext";
 export default function PageHeader(props) {
   const { title, subtitle } = props
 
-  // const Title = () => {
-  //   return (title) ? <PageTitle text={title} gutterBottom /> : null
-  // }
-  // const Subtitle = () => {
-  //   return (subtitle) ? <PageSubtitle text={subtitle}  align='center' /> : null
-  // }
-
   return (
     <Box p='2rem 10%' >
-      <PageTitle text={title} gutterBottom />
+      <PageTitle text={title} gutterBottom={subtitle} />
       <PageSubtitle text={subtitle}  />
     </Box>
   )
@@ -34,7 +27,6 @@ export function PageTitle(props) {
       color={textColor}
       align="center" 
       sx={{
-        // padding: padding,
         padding: padding, 
         textShadow: '0.15rem 0.15rem 0.3rem black',
         fontWeight: 200,
