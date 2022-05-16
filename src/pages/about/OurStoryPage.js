@@ -4,6 +4,8 @@ import { Container } from '@mui/material';
 import { Background } from "../../components/backgrounds";
 import { PageTitle, Section } from '../../components/text';
 
+const early_days_trash_pile = 'https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1612190892/nolastemgarden/early_days/mattresses_emfztm.jpg'
+
 export default function OurStoryPage(props) {
   
   return (
