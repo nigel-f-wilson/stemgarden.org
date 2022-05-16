@@ -60,7 +60,27 @@ export default function WhatWeGrowPage(props) {
   
 }
 
-  const crops = ["banana", "papaya", "fig", "turmeric", "loquat", "other" ]
+const crops = [
+  { 
+    name: "banana",
+    imgUrl: banana  
+  },{ 
+    name: "papaya",
+    imgUrl: papaya_fruit_halved  
+  },{ 
+    name: "fig",
+    imgUrl: fig_2 
+  },{ 
+    name: "turmeric",
+    imgUrl: turmeric  
+  },{ 
+    name: "loquat",
+    imgUrl: loquat_bunch  
+  },{ 
+    name: "other",
+    imgUrl: tomato_cuke_harvest 
+  }
+]
 
 
 function CropSelector(props) {
