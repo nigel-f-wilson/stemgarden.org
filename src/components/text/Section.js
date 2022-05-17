@@ -29,9 +29,7 @@ export default function Section(props) {
         <Grid item xs={12} sm={8} 
           sx={{ 
             mb: 0, 
-            [theme.breakpoints.up('sm')]: {
-              m: '0 0 auto',                      // center text vertically
-            },
+            [theme.breakpoints.up('sm')]: { m: '0 0 auto' },
           }}
         >
           <PageSubtitle 
@@ -55,16 +53,6 @@ export default function Section(props) {
         </Grid>
         <Grid item xs={12} sm={4}  >
           <Box sx={imageStyles} />
-          {/* <CardMedia
-            component="img"
-            image={imgUrl}
-            alt={headerText}
-            sx={{ 
-              position: 'absolute', 
-              bottom: "0%",
-              zIndex: 10
-            }}
-          /> */}
         </Grid>
       </Grid>
     </Box>
