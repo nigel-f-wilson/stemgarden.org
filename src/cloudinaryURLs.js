@@ -1,5 +1,5 @@
 // What We Grow
-export const banana_papaya_turmeric_flower = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1646607021/stemgarden.org/banana_papaya_turmeric_j3f7k9.jpg"
+export const banana_papaya_turmeric_flower = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1612135337/stemgarden.org/harvests/banana_papaya_turmeric_s1uclh.jpg"
 export const profile_with_hoe = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1647374938/stemgarden.org/nigel/profile-pic_ncluzf.jpg"
 export const mushroom_background = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1647375289/stemgarden.org/garden_backgrounds/mushroom_yfjiho.jpg"
 
@@ -34,3 +34,4 @@ export const turmeric_flower = 'https://res.cloudinary.com/nola-stem-garden/imag
 export const tomato_cuke_harvest = 'https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1652701628/stemgarden.org/harvests/tomato_cuke_harvest_h3ymvj.jpg'
 export const cucumber_pile = 'https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1652730445/stemgarden.org/harvests/cucumber_pile_fd91a2.jpg'
 export const tobacco_plant = 'https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1652730424/stemgarden.org/harvests/tobacco_plant_yiy4r6.jpg'
+export const basket_of_raddishes = 'https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1652701631/stemgarden.org/harvests/radishes_qpz2ou.jpg'
