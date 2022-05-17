@@ -4,21 +4,18 @@ import { Box, Grid, Container, Typography, Tooltip } from '@mui/material';
 import { AppContext } from "../../AppContext";
 
 import { Background } from "../../components/backgrounds";
-import { PageHeader, Section } from "../../components/text";
+import { PageHeader } from "../../components/text";
 import theme from '../../theme';
 
 import { 
   banana_papaya_turmeric_flower,
   basket_of_raddishes,
-  mushroom_background, 
   papaya_fruit_whole,
   papaya_fruit_halved,
   papaya_flower,
-  papayas_on_tree,
   banana_hands,
   banana_flower,
   banana_papaya_pile, 
-  fig,
   fig_2,
   fig_missing_bite,
   three_figs,
@@ -101,21 +98,19 @@ const crops = [
 
 function CropDetail(props) {
   const { selectedCrop } = props
-  const crop = crops.find(element => element.name === selectedCrop)
-  console.log(`${JSON.stringify(crop)}`);
+  const { colorTheme } = useContext(AppContext)
+  const textColor = (colorTheme === "dark") ? "white" : "black"
 
   let detailImgUrl1 = tobacco_plant
   let detailImgUrl2 = banana_papaya_turmeric_flower
   let detailText = "This page includes information about the crops we grow the most of. We grow a much wider variety than what is shown here. These are the crops that we currently grow enough of to sell. Select a thumbnail for more details on that crop." 
- 
+
+  const crop = crops.find(element => element.name === selectedCrop)
   if (crop) {
     detailImgUrl1 = crop.detailImgUrl1
     detailImgUrl2 = crop.detailImgUrl2
     detailText = crop.detailText 
   }
-
-  const { colorTheme } = useContext(AppContext)
-  const textColor = (colorTheme === "dark") ? "white" : "black"
 
   const imageStyles = {
     width: '100%',
@@ -127,12 +122,12 @@ function CropDetail(props) {
   }  
   
   return (
-    <Grid container columns={{ xs: 24, sm: 24, md: 24 }} spacing={4} my={1} >
+    <Grid container columns={{ xs: 12, sm: 12, md: 24 }} spacing={4} my={1} >
       
-      <Grid item xs={24} sm={12} md={7} order={{ xs: 2, md: 1 }} >
+      <Grid item xs={12} sm={6} md={7} order={{ xs: 2, md: 1 }} >
         <Box sx={{ backgroundImage: `url(${detailImgUrl1})`, ...imageStyles}} />
       </Grid>
-      <Grid item xs={24} md={10} order={{ xs: 1, md: 2 }} >
+      <Grid item xs={12} sm={12} md={10} order={{ xs: 1, md: 2 }} >
         <Typography 
           color={textColor} 
           children={detailText}
@@ -140,7 +135,7 @@ function CropDetail(props) {
           gutterBottom
         />
       </Grid>
-      <Grid item xs={24} sm={12} md={7} order={{ xs: 3 }} >
+      <Grid item xs={12} sm={6} md={7} order={{ xs: 3 }} >
         <Box sx={{ backgroundImage: `url(${detailImgUrl2})`, ...imageStyles}} />
       </Grid>
     </Grid>
