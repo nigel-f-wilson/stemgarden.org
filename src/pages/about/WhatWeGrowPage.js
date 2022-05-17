@@ -7,52 +7,51 @@ import { Background } from "../../components/backgrounds";
 import { PageHeader, Section } from "../../components/text";
 import theme from '../../theme';
 
-// What We Grow
-const banana_papaya_turmeric_flower = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1646607021/stemgarden.org/banana_papaya_turmeric_j3f7k9.jpg"
+import { 
+  banana_papaya_turmeric_flower,
+  profile_with_hoe, 
+  mushroom_background, 
+  papaya_fruit_whole,
+  papaya_fruit_halved,
+  papaya_flower,
+  papayas_on_tree,
+  banana_hands,
+  banana_flower,
+  banana_papaya_pile, 
+  fig,
+  fig_2,
+  fig_missing_bite,
+  three_figs,
+  loquat_bunch,
+  loquat_pile,
+  loquats_on_tree,
+  turmeric_harvest,
+  turmeric_flower,
+  tomato_cuke_harvest,
+  cucumber_pile,
+  tobacco_plant
+} from "../../cloudinaryURLs";
 
-const profile_with_hoe = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1647374938/stemgarden.org/nigel/profile-pic_ncluzf.jpg"
-const mushroom_background = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1647375289/stemgarden.org/garden_backgrounds/mushroom_yfjiho.jpg"
-const banana_papaya_pile = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1612135416/stemgarden.org/harvests/banana_papaya_harvest_f9ml5d.jpg"
-
-// Papaya
-const papaya_fruit_whole = 'https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1612135460/stemgarden.org/harvests/papaya_fruit_mirz2m.jpg'
-const papaya_fruit_halved = 'https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1612135462/stemgarden.org/harvests/papaya_halved_sazzwm.jpg'
-
-// Banana
-const banana = 'https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1612190844/nolastemgarden/banana/banana_bunch_iusnwi.jpg'
-
-// Fig 
-const fig = 'https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1646606908/stemgarden.org/harvests/fig_harvest_rcmtsu.jpg'
-const fig_2 = 'https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1612190789/nolastemgarden/fig/fig_harvest_qmwyxm.jpg'
-
-// 
-const loquat_bunch = 'https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1652702918/stemgarden.org/harvests/loquat_harvest_lfyeee.jpg'
-const loquat_pile = 'https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1652703028/stemgarden.org/harvests/loquat_pile_sryz1n.jpg'
-
-// Turmeric
-const turmeric = 'https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1612135511/stemgarden.org/harvests/turmeric_harvest_iwfpqu.jpg'
-
-// Other Harvests
-const tomato_cuke_harvest = 'https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1652701628/stemgarden.org/harvests/tomato_cuke_harvest_h3ymvj.jpg'
 
 export default function WhatWeGrowPage(props) {
-  // const [selectedCrop, setSelectedCrop] = useState('none')
-  const [selectedCrop, setSelectedCrop] = useState('papaya')
+  const [selectedCrop, setSelectedCrop] = useState("none_selected")
 
-
-  // const {  } = useContext(AppContext)
+  const capitalizedCropName = (selectedCrop === "none_selected") ? 
+    "What We Grow" : 
+    selectedCrop[0].toUpperCase().concat(selectedCrop.slice(1))
   
   return (
     <Background >
       <Container maxWidth='md' >
-        <PageHeader title="What We Grow" />
+        <PageHeader title={capitalizedCropName} />
 
         <CropSelector 
           selectedCrop={selectedCrop} 
           setSelectedCrop={setSelectedCrop} 
-
         />
-
+        <CropDetail 
+          selectedCrop={selectedCrop} 
+        />
       </Container>
     </Background>
   )
@@ -63,64 +62,126 @@ export default function WhatWeGrowPage(props) {
 const crops = [
   { 
     name: "banana",
-    imgUrl: banana  
+    imgUrl: banana_hands,
+    detailImgUrl1: banana_flower,    
+    detailImgUrl2: banana_papaya_pile,
+    detailText: 'The garden is surrounded by a wall of banana "trees", which are actually a type of grass with no woody parts.The juicy stalks are made up of tightly clustered leaves and can be easily cut with a machete. Cut stalks will regrow, but each stalk will only bear fruit once. The root cluster survives ans sends up new stalks, called "pups" to replace those that reach maturity and die. While blooming, one of the bright red leaves of the "bell" opens each day to reveal a row of flowers that will turn into a "hand" of bananas.',
   },{ 
     name: "papaya",
-    imgUrl: papaya_fruit_halved  
+    imgUrl: papaya_fruit_halved,
+    detailImgUrl1: papaya_fruit_whole,    
+    detailImgUrl2: papaya_flower,
+    detailText: "Ripe papaya are a beutiful deep orange color but they can also be shredded and made into a salad while still green. Most papaya sold at grocery stores in the U.S. are picked prematurely to improve shelf-life, but as a result they never fully ripen. I leave the fruits on the trees until they are ready to eat. This way they get much sweeter and develop a more interesting flavor. Papaya is a key ingredient in my homegrown fruit smoothies. I sell them green, ripe, or frozen in quart bags.",
   },{ 
     name: "fig",
-    imgUrl: fig_2 
+    imgUrl: three_figs,
+    detailImgUrl1: fig_missing_bite,    
+    detailImgUrl2: fig_2,
+    detailText: 'Figs are available throughout the summer. They are pollenated by wasps, not bees or butterflies. We sell the fruit, fresh and frozen, as well as rooted cuttings for those who want to grow their own fig trees.',
   },{ 
     name: "turmeric",
-    imgUrl: turmeric  
+    imgUrl: turmeric_harvest,
+    detailImgUrl1: turmeric_flower,    
+    detailImgUrl2: turmeric_harvest,
+    detailText: 'Native to India, Turmeric is very happy with the climate in New Orleans. It commands a high price per pound while still being a relatively low maintenance crop. Its broad leaves help shade out weeds and other competition and unlike the fruits we grow, which need picked daily when they are in season, turmeric only requires a few days of hands on work each year. I sell turmeric flowers for use in salads in July. Freshly dug turmeric is available year round but it keeps best when harvested at the end of the dry season. Each October, I dig up all the turmeric, break apart the big root clusters. I replant about 20% of the rhizomes the same day and make the rest available for sale.',
   },{ 
     name: "loquat",
-    imgUrl: loquat_bunch  
+    imgUrl: loquat_bunch,
+    detailImgUrl1: loquat_pile,    
+    detailImgUrl2: loquats_on_tree,
+    detailText: "Not related to Cumquats! Loquats are also known as Japanese plums or 'Misbeliefs' because the fruit ripens so early in the year you almost wouldn't believe it! Loquats bloom in December and January, providing an excellent food source for honey bees during an otherwise scarce time of year. By late February the trees are covered in delicious fruit. They can be found all over New Orleans, being a popular ornamental tree in landscapes. I sell the fruit whole and my partner makes a delicious sorbet from the rest.",
   },{ 
     name: "other",
-    imgUrl: tomato_cuke_harvest 
+    imgUrl: tomato_cuke_harvest,
+    detailImgUrl1: cucumber_pile,    
+    detailImgUrl2: tobacco_plant,
+    detailText: 'Most of the crops listed on this page come from established trees but we also grow a rotation of seasonal veggies. Cucumbers, green beans, raddishes, mustard greens, okra, and tobacco are the most prolific. I have experimented with a much wider variety over the years and settled on these crops because they thrive with the least amount of help. We select varieties that are naturally resistant to fungal diseases and bugs because this allows us to avoid using chemical pesticides.',
   }
 ]
 
+function CropDetail(props) {
+  const { selectedCrop } = props
+  const crop = crops.find(element => element.name === selectedCrop)
+  console.log(`${JSON.stringify(crop)}`);
+
+  let detailImgUrl1 = ""
+  let detailImgUrl2 = ""
+  let detailText = "Select a crop picture for more details. This page includes information about the crops we grow the most of. We grow a much wider variety than shown here. " 
+ 
+  if (crop) {
+    detailImgUrl1 = crop.detailImgUrl1
+    detailImgUrl2 = crop.detailImgUrl2
+    detailText = crop.detailText 
+  }
+
+  const { colorTheme } = useContext(AppContext)
+  const textColor = (colorTheme === "dark") ? "white" : "black"
+
+  const imageOneStyles = {
+    width: '100%',
+    height: 'auto',
+    minHeight: '240px',
+    backgroundImage: `url(${detailImgUrl1})`,
+    backgroundPosition: 'center top',
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover',
+    borderRadius: '1rem'
+  }  
+  const imageTwoStyles = {
+    width: '100%',
+    height: 'auto',
+    minHeight: '240px',
+    backgroundImage: `url(${detailImgUrl2})`,
+    backgroundPosition: 'center top',
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover',
+    borderRadius: '1rem'
+  }  
+  
+  return (
+    <Grid container spacing={4} mb="1rem" >
+      
+      <Grid item xs={12} md={3}  >
+        <Box sx={imageOneStyles} />
+      </Grid>
+      <Grid item xs={12} md={6}  >
+        <Typography 
+          color={textColor} 
+          children={detailText}
+          align='justify' 
+          gutterBottom
+        />
+      </Grid>
+      <Grid item xs={12} md={3}  >
+        <Box sx={imageTwoStyles} />
+      </Grid>
+    </Grid>
+  )
+}
 
 function CropSelector(props) {
   const { selectedCrop, setSelectedCrop } = props
-
-
-    
   return (
     <Container maxWidth='sm' disableGutters >
       <Box 
-      display='flex'
-      flexWrap='wrap'
-      // flexFlow='row wrap'
-      justifyContent='center'
-      border='solid red 1px'
-      // height='100px'
-
-      // sx={{ [theme.breakpoints.down('sm')]: { height: '200px' } }}
-    >
-      {/* <Grid container spacing={1} > */}
+        display='flex'
+        flexWrap='wrap'
+        justifyContent='center'
+        mb={1}
+      >
         {
           crops.map(crop => {
-            {/* const key = `select_${crop.name}_button` */}
             return (
               <CropSelectorButton 
                 key={`select_${crop.name}_button`}
                 crop={crop}  
                 selectedCrop={selectedCrop}
                 setSelectedCrop={setSelectedCrop} 
-
               />
             )
-
           })
         }
-
-      {/* </Grid> */}
-
-
-    </Box>
+      </Box>
     </Container>
   )
 }
@@ -130,54 +191,41 @@ function CropSelectorButton(props) {
   const { name, imgUrl } = crop
 
   const selected = (name === selectedCrop)
-  const border = selected ? 'solid yellow 2px': 'none'
+  const border = selected ? 'solid yellow 3px': 'none'
 
   const imageStyles = {
     width: '100%',
     height: '100%',
-    // backgroundImage: `url(${imgUrl})`,
+    backgroundImage: `url(${imgUrl})`,
     backgroundPosition: 'center top',
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
-    borderRadius: '1rem'
+    borderRadius: '1rem',
   }  
 
   return (
-    // <Grid item xs={4} md={2} sx={{ minHeight: '100%', border: 'solid yellow 2px' }} >
+    <Box 
+      sx={{ 
+        [theme.breakpoints.down('sm')]: {width: '33%', paddingTop: '33%'},
+        [theme.breakpoints.up('sm')]: {width: '16%', paddingTop: '16%'} 
+      }}
+      position='relative'
+    >
       <Box 
-        // width='33%'
-        // marginBottom='20px'
-        sx={{ 
-          [theme.breakpoints.down('sm')]: {width: '33%', paddingTop: '33%'},
-          [theme.breakpoints.up('sm')]: {width: '16%', paddingTop: '16%'} 
-
-        }}
-        position='relative'
-
-        // minHeight='100px'
-        // border='solid blue 2px'
-        // margin='auto'
-        // padding='8px'
+        position='absolute'
+        top='0'
+        width='100%'
+        padding='4px'
+        height='100%'
+        boxSizing='border-box'
       >
         <Box 
-          position='absolute'
-          top='0'
-          width='100%'
-          padding='4px'
-          // minHeight='100px'
-          // border='solid green 2px'
-          height='100%'
-          // margin='auto'
-        >
-          <Box 
-            onClick={() => { setSelectedCrop(crop) }}
-            border={border}
-            sx={imageStyles}
-
-          />
-        </Box>
+          onClick={() => { setSelectedCrop(name) }}
+          border={border}
+          sx={imageStyles}
+        />
       </Box>
-    // </Grid>
+    </Box>
   )
 }
 
