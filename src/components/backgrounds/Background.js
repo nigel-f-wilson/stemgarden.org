@@ -4,9 +4,9 @@ import { Box } from '@mui/material';
 import { AppContext } from "../../AppContext";
 
 export default function Background(props) {
-  const { colorTheme, narrowScreen } = useContext(AppContext)
+  const { children } = props
+  const { colorTheme } = useContext(AppContext)
   
-  const padding = narrowScreen ? '0rem' : '2rem 1rem 3rem'
   const bgcolor = (colorTheme === "dark") ? "darkGrey" : "white"
   
   return (
@@ -16,9 +16,8 @@ export default function Background(props) {
       bgcolor={bgcolor}
       display='flex'
       flexDirection='column'
-      padding={padding}
     >
-      { props.children }
+      { children }
     </Box>
   )
 }

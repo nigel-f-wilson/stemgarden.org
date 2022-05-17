@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { Box, Container } from '@mui/material';
+import { Box } from '@mui/material';
 
 import { AppContext } from "../../AppContext";
 
@@ -7,14 +7,21 @@ import { AppContext } from "../../AppContext";
 const leafy_background = "https://res.cloudinary.com/nola-stem-garden/image/upload/v1647192146/stemgarden.org/leafy_background_wzclfb.jpg"
 
 export default function LeafyBackground(props) {
+  const { children } = props
   const { narrowScreen } = useContext(AppContext)
+
+  // var parent = document.getElementById('scrollParent');
+  // var child = document.getElementById('scrollChild');
+  // const paddingRight = child.offsetWidth - child.clientWidth + "px";
+
+  // console.log(`scroll bar width: ${paddingRight}`);
 
   const gradient = (narrowScreen) ?
     "linear-gradient(90deg, rgba(58,94,22,0.80) 0%, rgba(58,99,22,0.80) 100%)"
     : "linear-gradient(90deg, rgba(58,94,22,0.30) 0%, rgba(58,94,22,0.80) 10%, rgba(58,94,22,0.80) 90%, rgba(58,99,22,0.30) 100%)"
 
   const backgroundStyles = {
-    width: '100%',
+    width: 'auto',
     minHeight: '100vh',
     height: 'auto',
     backgroundImage: `
@@ -28,12 +35,19 @@ export default function LeafyBackground(props) {
     flexDirection: 'column',
     alignItems: 'center',
     textAlign: 'center',
+    // paddingRight: paddingRight,
   }  
   return (
-    <Box sx={backgroundStyles} >
-      <Container maxWidth='md' id='landing' >
-        { props.children }
-      </Container>
-    </Box>
+    // <Box id="scrollParent" >
+      <Box 
+        id="scrollChild"
+        sx={backgroundStyles} 
+        children={children}
+        // mr="-50px" /* maximum width of scrollbar */
+        // pr="50px" /* maximum width of scrollbar */
+        // overflowY="scroll"
+      />
+    // </Box> 
+      
   )
 }

@@ -1,9 +1,7 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { Link as RouterLink } from 'react-router-dom';
 import { Box, Container, Grid, Card, CardMedia, Typography, Button, Stack } from '@mui/material';
 // import MathGameCard from "../components/cards/MathGameCard"
-
-import { AppContext } from "../AppContext";
 
 import Background from "../components/backgrounds/Background";
 import PageTitle from "../components/text/PageTitle";
@@ -66,11 +64,6 @@ const mathGamesCardData = [
 ]
 
 export default function MathGamesIndexPage() {
-  const { colorTheme, narrowScreen } = useContext(AppContext)
-  
-  console.log(`MathGames page had colortTheme: ${colorTheme}`);
-  console.log(`MathGames page had narrowScreen: ${narrowScreen}`);
-  
   
   return (
     <Background>

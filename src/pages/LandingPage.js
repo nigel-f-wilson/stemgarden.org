@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link as RouterLink } from 'react-router-dom';
-import { Box, Grid, Card, CardHeader, CardMedia } from '@mui/material';
+import { Box, Grid, Container, Card, CardHeader, CardMedia } from '@mui/material';
 import theme from '../theme';
 
 // import Footer from '../components/Footer';
@@ -86,8 +86,11 @@ export default function LandingPage() {
   return (
     <React.Fragment>
       <LeafyBackground >
-        <Header />
-        <CardGrid />
+        <Container maxWidth='md' id='landing' >
+          <Header />
+          <CardGrid />
+        </Container>
+        
       </LeafyBackground>
       {/* <Footer smallScreen={smallScreen} /> */}
     </React.Fragment>

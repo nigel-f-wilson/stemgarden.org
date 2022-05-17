@@ -1,40 +1,42 @@
 import React, { lazy, Suspense  } from 'react'
-
 import { Route, Routes } from "react-router-dom"
 
+import { HalfMalf } from 'react-spinner-animated';
+import 'react-spinner-animated/dist/index.css'
+
+
 // PAGES
-// import { About, Contact, MathGames, ChessClubs, Services } from "./pages/index"
 import LandingPage from './pages/LandingPage'
 
 const ContactPage = lazy(() => import('./pages/ContactPage'))
 
-
 const MathGamesIndexPage = lazy(() => import('./math-games/MathGamesIndexPage'))
-
-
-
-// const ConnectFour = lazy(() => import('./math-games/connect-four/ConnectFour'))
 const ConnectFourRoot = lazy(() => import('./math-games/connect-four/ConnectFourRoot'))
-
-
 const FifteenGameRoutes = lazy(() => import('./math-games/magic-square-games/fifteen-game/FifteenGameRoutes'))
 const TicTacToeRoutes = lazy(() => import('./math-games/magic-square-games/tic-tac-toe/TicTacToeRoutes'))
 
-const ServicesIndexPage = lazy(() => import('./pages/services/_ServicesIndexPage'))
+const ServicesIndexPage = lazy(() => import('./pages/services/ServicesIndexPage'))
 const TutoringPage = lazy(() => import('./pages/services/TutoringPage'))
 const EnrichmentPage = lazy(() => import('./pages/services/EnrichmentPage'))
 const TeacherTrainingPage = lazy(() => import('./pages/services/TeacherTrainingPage'))
 const ChessClubsPage = lazy(() => import('./pages/services/ChessClubsPage'))
 const WebDevelopmentPage = lazy(() => import('./pages/services/WebDevelopmentPage'))
-
+// const {
+//   ServicesIndexPage,
+//   TutoringPage,
+//   EnrichmentPage,
+//   TeacherTrainingPage,
+//   ChessClubsPage,
+//   WebDevelopmentPage
+// } = lazy(() => import('./pages'))
 
 const AboutIndexPage = lazy(() => import('./pages/about/_AboutIndexPage'))
 const OurStoryPage = lazy(() => import('./pages/about/OurStoryPage'))
 const WhatWeGrowPage = lazy(() => import('./pages/about/WhatWeGrowPage'))
 const GetInvolvedPage = lazy(() => import('./pages/about/GetInvolvedPage'))
 
+const renderLoader = () => <HalfMalf />
 
-const renderLoader = () => <p>Loading</p>;
 
 export default function MainRouter() {
   return (
