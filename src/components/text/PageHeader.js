@@ -31,7 +31,7 @@ export function PageTitle(props) {
         textShadow: '0.15rem 0.15rem 0.3rem black',
         fontWeight: 200,
         fontSize: '2.6rem',
-        lineHeight: '3.0rem',
+        lineHeight: '2.8rem',
         '@media (min-width: 450px)': {
           fontSize: '3.0rem',
           lineHeight: '3.5rem',
