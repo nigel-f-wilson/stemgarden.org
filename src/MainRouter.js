@@ -8,30 +8,30 @@ import LandingPage from './pages/LandingPage'
 
 const ContactPage = lazy(() => import('./pages/ContactPage'))
 
+// ABOUT
+const AboutIndexPage = lazy(() => import('./pages/about/AboutIndexPage'))
+const OurStoryPage = lazy(() => import('./pages/about/OurStoryPage'))
+const WhatWeGrowPage = lazy(() => import('./pages/about/WhatWeGrowPage'))
+const GetInvolvedPage = lazy(() => import('./pages/about/GetInvolvedPage'))
 
-const MathGamesIndexPage = lazy(() => import('./math-games/MathGamesIndexPage'))
-
-
-
-// const ConnectFour = lazy(() => import('./math-games/connect-four/ConnectFour'))
-const ConnectFourRoot = lazy(() => import('./math-games/connect-four/ConnectFourRoot'))
-
-
-const FifteenGameRoutes = lazy(() => import('./math-games/magic-square-games/fifteen-game/FifteenGameRoutes'))
-const TicTacToeRoutes = lazy(() => import('./math-games/magic-square-games/tic-tac-toe/TicTacToeRoutes'))
-
-const ServicesIndexPage = lazy(() => import('./pages/services/_ServicesIndexPage'))
+// SERVICES
+const ServicesIndexPage = lazy(() => import('./pages/services/ServicesIndexPage'))
 const TutoringPage = lazy(() => import('./pages/services/TutoringPage'))
 const EnrichmentPage = lazy(() => import('./pages/services/EnrichmentPage'))
 const TeacherTrainingPage = lazy(() => import('./pages/services/TeacherTrainingPage'))
 const ChessClubsPage = lazy(() => import('./pages/services/ChessClubsPage'))
 const WebDevelopmentPage = lazy(() => import('./pages/services/WebDevelopmentPage'))
 
+// RESOURCES
+const PuzzlesIndexPage = lazy(() => import('./pages/resources/PuzzlesIndexPage'))
+const LessonPlansIndexPage = lazy(() => import('./pages/resources/LessonPlansIndexPage'))
+const MathGamesIndexPage = lazy(() => import('./math-games/MathGamesIndexPage'))
 
-const AboutIndexPage = lazy(() => import('./pages/about/_AboutIndexPage'))
-const OurStoryPage = lazy(() => import('./pages/about/OurStoryPage'))
-const WhatWeGrowPage = lazy(() => import('./pages/about/WhatWeGrowPage'))
-const GetInvolvedPage = lazy(() => import('./pages/about/GetInvolvedPage'))
+
+// Math Games
+const ConnectFourRoot = lazy(() => import('./math-games/connect-four/ConnectFourRoot'))
+const FifteenGameRoutes = lazy(() => import('./math-games/magic-square-games/fifteen-game/FifteenGameRoutes'))
+const TicTacToeRoutes = lazy(() => import('./math-games/magic-square-games/tic-tac-toe/TicTacToeRoutes'))
 
 
 const renderLoader = () => <p>Loading</p>;
@@ -61,20 +61,23 @@ export default function MainRouter() {
         
         <Route path="resources" >
           <Route path="math-games"  >
-          <Route index element={<MathGamesIndexPage />} />
-          <Route path="connect-four" element={<ConnectFourRoot />} />
-          <Route path="tic-tac-toe/*" element={<TicTacToeRoutes />} />
-          <Route path="the-15-game/*" element={<FifteenGameRoutes />} />
+            <Route index element={<MathGamesIndexPage />} />
+            <Route path="connect-four" element={<ConnectFourRoot />} />
+            <Route path="tic-tac-toe/*" element={<TicTacToeRoutes />} />
+            <Route path="the-15-game/*" element={<FifteenGameRoutes />} />
+          </Route>
 
-          
-          {/* <Route path="tic-tac-toe" element={<TicTacToeRoot />} >
-            <Route index element={<Welcome />} />
-            <Route path="play-with-coach" element={<PlayWithCoach />} />
-            <Route path="play-vs-bot" element={<PlayVsBot />} />
-          </Route> */}
-          {/* <Route path="the-15-game" element={<FifteenGame />} /> */}
+          <Route path="puzzles"  >
+            <Route index element={<PuzzlesIndexPage />} />
+          </Route>
+          {/* <Route path="puzzles" element={<PuzzlesIndexPage />} /> */}
 
-        </Route>
+          <Route path="lesson-plans"  >
+            <Route index element={<LessonPlansIndexPage />} />
+            <Route path="connect-four" element={<ConnectFourRoot />} />
+            <Route path="tic-tac-toe/*" element={<TicTacToeRoutes />} />
+            <Route path="the-15-game/*" element={<FifteenGameRoutes />} />
+          </Route>
         </Route>
         {/* <Route path="garden" element={<Garden />} >
           <Route path="what_we_grow" element={<Services />} />  
