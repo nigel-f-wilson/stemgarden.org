@@ -69,15 +69,13 @@ export function PageSubtitle(props) {
       sx={{
         textShadow: '0.15rem 0.15rem 0.3rem black',
         fontWeight: 200,
-        fontSize: '1.5rem',
-        lineHeight: '1.7rem',
+        fontSize: '1.7rem',
         '@media (min-width: 600px)': {
-          fontSize: '1.7rem',
-          lineHeight: '2.0rem',
+          fontSize: '1.8rem',
         },
-        // '@media (min-width: 900px)': {
-        //   fontSize: '2.0rem',
-        // },
+        '@media (min-width: 900px)': {
+          fontSize: '2.0rem',
+        },
       }}
     />
   )

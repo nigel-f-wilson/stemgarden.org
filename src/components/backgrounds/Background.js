@@ -4,6 +4,7 @@ import { Box } from '@mui/material';
 import { AppContext } from "../../AppContext";
 
 export default function Background(props) {
+  const { children } = props
   const { colorTheme } = useContext(AppContext)
   
   const bgcolor = (colorTheme === "dark") ? "darkGrey" : "white"
@@ -16,7 +17,7 @@ export default function Background(props) {
       display='flex'
       flexDirection='column'
     >
-      { props.children }
+      { children }
     </Box>
   )
 }

@@ -1,12 +1,15 @@
 import React, { lazy, Suspense  } from 'react'
-
 import { Route, Routes } from "react-router-dom"
 
+import { HalfMalf } from 'react-spinner-animated';
+import 'react-spinner-animated/dist/index.css'
+
+
 // PAGES
-// import { About, Contact, MathGames, ChessClubs, Services } from "./pages/index"
 import LandingPage from './pages/LandingPage'
 
 const ContactPage = lazy(() => import('./pages/ContactPage'))
+
 
 // ABOUT
 const AboutIndexPage = lazy(() => import('./pages/about/AboutIndexPage'))
@@ -27,14 +30,13 @@ const PuzzlesIndexPage = lazy(() => import('./pages/resources/PuzzlesIndexPage')
 const LessonPlansIndexPage = lazy(() => import('./pages/resources/LessonPlansIndexPage'))
 const MathGamesIndexPage = lazy(() => import('./math-games/MathGamesIndexPage'))
 
-
 // Math Games
 const ConnectFourRoot = lazy(() => import('./math-games/connect-four/ConnectFourRoot'))
 const FifteenGameRoutes = lazy(() => import('./math-games/magic-square-games/fifteen-game/FifteenGameRoutes'))
 const TicTacToeRoutes = lazy(() => import('./math-games/magic-square-games/tic-tac-toe/TicTacToeRoutes'))
 
+const renderLoader = () => <HalfMalf />
 
-const renderLoader = () => <p>Loading</p>;
 
 export default function MainRouter() {
   return (
