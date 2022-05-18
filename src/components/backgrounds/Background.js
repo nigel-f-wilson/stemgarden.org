@@ -4,7 +4,7 @@ import { Box } from '@mui/material';
 import { AppContext } from "../../AppContext";
 
 export default function Background(props) {
-  const { colorTheme, narrowScreen } = useContext(AppContext)
+  const { colorTheme } = useContext(AppContext)
   
   const bgcolor = (colorTheme === "dark") ? "darkGrey" : "white"
   
