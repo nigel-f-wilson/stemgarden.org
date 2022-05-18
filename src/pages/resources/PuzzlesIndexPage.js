@@ -2,8 +2,8 @@ import React from 'react'
 import { Link as RouterLink } from 'react-router-dom';
 import { Container, Grid, Card, CardMedia, Typography, Button, Stack } from '@mui/material';
 
-import Background from "../components/backgrounds/Background";
-import { PageHeader } from "../components/text";
+import { Background } from "../../components/backgrounds";
+import { PageHeader } from "../../components/text";
 
 // Images 
 const connect_four_screenshot = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_1000,h_1000,c_limit/v1647561099/stemgarden.org/project_screenshots/connect-four_y750ue.jpg"
@@ -60,14 +60,15 @@ const mathGamesCardData = [
  
 ]
 
-export default function MathGamesIndexPage() {
+export default function PuzzlesIndexPage() {
   
   return (
     <Background>
       <Container maxWidth="md" >
         <PageHeader 
-          title="Math Games"
-          subtitle="These games have something to offer students at all levels! Some aim to make practicing foundation facts a little more fun. Others have built in lessons on binary numbers, probability, combinatorics, and proof."
+          title="Puzzles"
+          subtitle="Each can be used with students at a wide range of levels. It's not about the answer, it about how you explore and explain."
+          // subtitle="I assembled this colletion of math puzzles over many years, pulling from many sources. Introduce a puzzle, allow space for struggle and confusion. Where other sheets are great for practicing basic skills these puzzles are for practicing high level problem solving. The important thing when using these puzzles is not the final answer, it is about how you approach the problem. Practice organizing your thoughts, breaking problems down into simpler parts, creating your own simpler problems to help as you explore the the puzzles in their original form. How kids get answers to these puzzles will vary a lot depending on what techniques the have recieve instruction on. None of these puzzles is meant to be solved one way, to be part of this collection a puzzle had to bear a connection to a high school standard while still being accessible to much younger kids with no formal teaching on that standard. Use the same puzzle more tSome of these are old classics and some These are my personal favorites ollection consists of my personal favorites of one page puzzles I have assembeled from many sources."
         />
         <Grid container spacing={2} >
           {

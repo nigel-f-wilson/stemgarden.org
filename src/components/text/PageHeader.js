@@ -31,7 +31,7 @@ export function PageTitle(props) {
         textShadow: '0.15rem 0.15rem 0.3rem black',
         fontWeight: 200,
         fontSize: '2.6rem',
-        lineHeight: '3.0rem',
+        lineHeight: '2.8rem',
         '@media (min-width: 450px)': {
           fontSize: '3.0rem',
           lineHeight: '3.5rem',
@@ -56,7 +56,7 @@ export function PageSubtitle(props) {
   const { colorTheme } = useContext(AppContext)
 
   const display = (text) ? "flex" : "none"
-  const padding = (gutterBottom) ? "0 0 4rem" : "0"
+  const padding = (gutterBottom) ? "0 0 3rem" : "0"
   const textColor = (colorTheme === "dark") ? "white" : "black"
 
   return (

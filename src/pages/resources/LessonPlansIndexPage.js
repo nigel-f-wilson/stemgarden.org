@@ -2,8 +2,8 @@ import React from 'react'
 import { Link as RouterLink } from 'react-router-dom';
 import { Container, Grid, Card, CardMedia, Typography, Button, Stack } from '@mui/material';
 
-import Background from "../components/backgrounds/Background";
-import { PageHeader } from "../components/text";
+import { Background } from "../../components/backgrounds";
+import { PageHeader } from "../../components/text";
 
 // Images 
 const connect_four_screenshot = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_1000,h_1000,c_limit/v1647561099/stemgarden.org/project_screenshots/connect-four_y750ue.jpg"
@@ -60,14 +60,14 @@ const mathGamesCardData = [
  
 ]
 
-export default function MathGamesIndexPage() {
+export default function LessonPlansIndexPage() {
   
   return (
     <Background>
       <Container maxWidth="md" >
         <PageHeader 
-          title="Math Games"
-          subtitle="These games have something to offer students at all levels! Some aim to make practicing foundation facts a little more fun. Others have built in lessons on binary numbers, probability, combinatorics, and proof."
+          title="Lesson Plans"
+          subtitle="Find math in everyday objects! These lessons teach many concepts and are appropriate for students at many levels. Many different math standards are addressed by each lesson. The unifying theme in each lesson is not a math standard but an every day object, not a "
         />
         <Grid container spacing={2} >
           {
