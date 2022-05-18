@@ -1,14 +1,9 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { Link as RouterLink } from 'react-router-dom';
-import { Box, Container, Grid, Card, CardMedia, Typography, Button, Stack } from '@mui/material';
-// import MathGameCard from "../components/cards/MathGameCard"
-
-import { AppContext } from "../AppContext";
+import { Container, Grid, Card, CardMedia, Typography, Button, Stack } from '@mui/material';
 
 import Background from "../components/backgrounds/Background";
-import PageTitle from "../components/text/PageTitle";
-import PageSubtitle from "../components/text/PageSubtitle";
-
+import { PageHeader } from "../components/text";
 
 // Images 
 const connect_four_screenshot = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_1000,h_1000,c_limit/v1647561099/stemgarden.org/project_screenshots/connect-four_y750ue.jpg"
@@ -66,16 +61,14 @@ const mathGamesCardData = [
 ]
 
 export default function MathGamesIndexPage() {
-  const { colorTheme, narrowScreen } = useContext(AppContext)
-  
-  console.log(`MathGames page had colortTheme: ${colorTheme}`);
-  console.log(`MathGames page had narrowScreen: ${narrowScreen}`);
-  
   
   return (
     <Background>
       <Container maxWidth="md" >
-        <PageHeader />
+        <PageHeader 
+          title="Math Games"
+          subtitle="These games have something to offer students at all levels! Some aim to make practicing foundation facts a little more fun. Others have built in lessons on binary numbers, probability, combinatorics, and proof."
+        />
         <Grid container spacing={2} >
           {
             mathGamesCardData.map((cardData, index) => {
@@ -91,19 +84,6 @@ export default function MathGamesIndexPage() {
     </Background>
   )
 }
-
-function PageHeader() {
-  return (
-    <Box pb='3rem' display='flex' flexDirection='column' >
-      <PageTitle text="Math Games" />
-      <PageSubtitle text="These games have something to offer students at all levels!
-        Some aim to make practicing foundation facts a little more fun.
-        Others have built in lessons on binary numbers, probability, combinatorics, and proof."
-      />
-    </Box>
-  )
-}
-
 
 function MathGameCard(props) {
   const { title, linkTo, imgUrl, disabled } = props.data
