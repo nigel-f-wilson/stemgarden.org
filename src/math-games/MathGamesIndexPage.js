@@ -2,20 +2,20 @@ import React from 'react'
 import { Link as RouterLink } from 'react-router-dom';
 import { Container, Grid, Card, CardMedia, Typography, Button, Stack } from '@mui/material';
 
-import Background from "../components/backgrounds/Background";
+import { Background } from "../components/backgrounds";
 import { PageHeader } from "../components/text";
 
 // Images 
-const connect_four_screenshot = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_1000,h_1000,c_limit/v1647561099/stemgarden.org/project_screenshots/connect-four_y750ue.jpg"
+import { 
+  connect_four_screenshot,
+  tic_tac_toe_screenshot,
+  fifteen_game_screenshot,
+  under_construction,
+} from "../cloudinaryURLs"
+
 const connect_four_description = "The classic game with a twist. Each time you select a column to drop a chip in you will be presented with a math question. Answer it correctly or your turn will be skipped!"
-
-const tic_tac_toe_screenshot = "https://res.cloudinary.com/nola-stem-garden/image/upload/v1647713688/stemgarden.org/project_screenshots/TicTacToeCoachScreenshot860x800_vvlgl3_f6ewfv.png"
 const tic_tac_toe_description = "Play the most underestimated strategy game of all time with a coach that will help you see its true depth. Tic Tac Toe serves as a wonderful tool for introducing kids to mathematical proof, tree diagrams, symmetry, and counting techniqes. "
-
-const fifteen_game_screenshot = "https://res.cloudinary.com/nola-stem-garden/image/upload/v1647714008/stemgarden.org/project_screenshots/Fifteen_Game_Screenshot_cropped_aycwzx.png"
 const fifteen_game_description = "Two players go head to head trying to collect a set of three cards that add up to 15. This game is a fantastic tool for building mental addition skills. For advanced players it has connections to combinations, permutations, and magic squares."
-
-const under_construction = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_1000,h_1000,c_limit/v1647561688/stemgarden.org/under_construction_sbiop2.png"
 
 const mathGamesCardData = [
   {
