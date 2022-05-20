@@ -5,85 +5,7 @@ import { Container, Grid, Card, CardMedia, Typography, Button, Stack } from '@mu
 import { Background } from "../../components/backgrounds";
 import { PageHeader } from "../../components/text";
 
-// Images 
-import { 
-  connect_four_screenshot,
-  tic_tac_toe_screenshot,
-  fifteen_game_screenshot,
-  under_construction,
-  weighing_pumpkins,
-  two_passing_trains,
-  rapunzels_hair,
-  teenagers_ages,
-  the_bent_bamboo,
-  gauss_addition,
-  weavers_apprentice,
-  pile_of_tennis_balls,
-  pirate_division,
-  lockers,
-  paperboy_payback,
-  pentagon_coloring,
-  mixing_purple_paint,
-  leaning_ladder,
-  monks_and_bread,
-  marksmans_choice,
-  goat_on_a_rope,
-  brahmaguptas_egg_puzzle,
-  increasing_the_average,
-  buying_horses,
-  finding_a_fake,
-  false_alarm_virus,
-  cookie_jar,
-  doorway_diagonal,
-  ant,
- } from "../../cloudinaryURLs";
-
-const connect_four_description = "The classic game with a twist. Each time you select a column to drop a chip in you will be presented with a math question. Answer it correctly or your turn will be skipped!"
-const tic_tac_toe_description = "Play the most underestimated strategy game of all time with a coach that will help you see its true depth. Tic Tac Toe serves as a wonderful tool for introducing kids to mathematical proof, tree diagrams, symmetry, and counting techniqes. "
-const fifteen_game_description = "Two players go head to head trying to collect a set of three cards that add up to 15. This game is a fantastic tool for building mental addition skills. For advanced players it has connections to combinations, permutations, and magic squares."
-
-const mathGamesCardData = [
-  {
-    title: "Math Fact Connect Four",
-    description: connect_four_description,
-    linkTo: "connect-four",
-    imgUrl: connect_four_screenshot,
-    disabled: false
-  },
-  {
-    title: "Tic Tac Toe Coach",
-    description: tic_tac_toe_description,
-    linkTo: "tic-tac-toe",
-    imgUrl: tic_tac_toe_screenshot,
-    disabled: false
-  },
-  {
-    title: "The Fifteen Game",
-    description: fifteen_game_description,
-    linkTo: "the-15-game",
-    imgUrl: fifteen_game_screenshot,
-    disabled: false
-  },
-  {
-    title: "Fluency Checklist",
-    linkTo: "the-15-game",
-    imgUrl: under_construction,
-    disabled: true
-  },
-  {
-    title: "Classic Nim",
-    linkTo: "the-15-game",
-    imgUrl: under_construction,
-    disabled: true
-  },
-  {
-    title: "Fibonacci Nim",
-    linkTo: "the-15-game",
-    imgUrl: under_construction,
-    disabled: true
-  },
- 
-]
+import { puzzleData } from "./puzzleData"
 
 export default function PuzzlesIndexPage() {
   
@@ -97,7 +19,8 @@ export default function PuzzlesIndexPage() {
         />
         <Grid container spacing={2} >
           {
-            mathGamesCardData.map((cardData, index) => {
+            puzzleData.map(cardData => {
+              const { title, tags, imgUrl, googleDriveCopyUrl } = cardData 
               return (
                 <Grid item xs={6} md={4} key={index} >
                   <MathGameCard data={cardData}  />
