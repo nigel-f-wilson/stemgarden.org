@@ -72,3 +72,5 @@ export const false_alarm_virus = "https://res.cloudinary.com/nola-stem-garden/im
 export const cookie_jar = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_300,h_300,c_limit/v1653002639/stemgarden.org/puzzle_clipart/cookie_jar_dzvzgp.png"
 export const doorway_diagonal = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_300,h_300,c_limit/v1653002639/stemgarden.org/puzzle_clipart/doorway_diagonal_moxs4y.png"
 export const ant = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_300,h_300,c_limit/v1653002639/stemgarden.org/puzzle_clipart/ant_w4ohkl.png"
+export const lawn_mower = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_300,h_300,c_limit/v1653086010/stemgarden.org/puzzle_clipart/lawn_mower_fm1xeg.png"
+
