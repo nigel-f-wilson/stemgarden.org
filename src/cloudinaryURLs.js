@@ -1,3 +1,6 @@
+// USED THROUGHOUT APP
+export const leafy_background = "https://res.cloudinary.com/nola-stem-garden/image/upload/v1647192146/stemgarden.org/leafy_background_wzclfb.jpg"
+export const under_construction = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1647561688/stemgarden.org/under_construction_sbiop2.png"
 
 // Tutoring
 export const practicing_math_facts = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_1000,h_1000,c_limit/v1646863130/stemgarden.org/teaching/practicing_math_facts_gnhwkx.jpg"
