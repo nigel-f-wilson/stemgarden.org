@@ -5,7 +5,6 @@ import { AppContext } from "../../AppContext";
 
 import { Background } from "../../components/backgrounds";
 import { PageHeader } from "../../components/text";
-import theme from '../../theme';
 
 import { 
   banana_papaya_turmeric_flower,
