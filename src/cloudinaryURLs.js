@@ -45,6 +45,13 @@ export const cucumber_pile = 'https://res.cloudinary.com/nola-stem-garden/image/
 export const tobacco_plant = 'https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1652730424/stemgarden.org/harvests/tobacco_plant_yiy4r6.jpg'
 export const basket_of_raddishes = 'https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1652701631/stemgarden.org/harvests/radishes_qpz2ou.jpg'
 
+// Lesson Plan Clipart
+export const guitar_fret_spacing = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_300,h_300,c_limit/v1653162084/stemgarden.org/lesson_plan_clipart/guitar_fret_spacing_dfx2vh.png"
+export const bike_ratio_conversions = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_300,h_300,c_limit/v1653161338/stemgarden.org/lesson_plan_clipart/blue_bike_clipart_ncg36w.png"
+export const measuring_with_dial_calipers = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_300,h_300,c_limit/v1653162087/stemgarden.org/lesson_plan_clipart/dial_callipers_waychn.png"
+export const making_a_magic_square = ""
+export const seeing_what_sounds_good = ""
+export const divisibility_checks = ""
 
 // Puzzle Clipart
 export const weighing_pumpkins = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_300,h_300,c_limit/v1653002644/stemgarden.org/puzzle_clipart/weiging_pumpkins_srtxhv.png"
