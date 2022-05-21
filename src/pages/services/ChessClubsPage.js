@@ -1,14 +1,14 @@
 import React from 'react'
-import { Box, Container, Grid } from '@mui/material';
+import { Container, Grid } from '@mui/material';
 
 import { Background } from "../../components/backgrounds";
-import { PageHeader, Section, Quote, PageSubtitle } from '../../components/text';
+import { PageHeader, Section, PageSubtitle } from '../../components/text';
 import { CopyDriveFileCard } from "../../components/cards";
 
 import { 
   chess_at_college_track,
   chess_at_college_track_2,
-  chess_at_bric,
+  // chess_at_bric,
   chess_demo_board,
   simul_at_bric,
   handout_rules_of_chess,
@@ -37,8 +37,8 @@ function WhyChessSection() {
   const headerText = "Why I Teach Chess"
   const par1 = "My very first teaching experiences were at chess club, years before I decided to become a math teacher. Chess Club is more than just good cheap entertainment, it is a medium through which kids learn life lessons on sportsmanship, psychology, and strategy. Chess helps kids remember that thinking really hard being playful are not mutually exclusive."
   const par2 = "It's intellectually challenging. It's not required, but kids flock to it. That is why I teach chess."
-  const par3 = 'Kids who have been made to feel bad about themselves in the context of a math class will often avoid math later on. They lose their ability to fearlessly create and experiment and the get the idea that math is just a lot of memorization. The best antidote to this perdicament I have yet found is to play strategy games. Chess is a great example, but almost any game will do. meta-cognition.  '
-  const par4 = 'As a math teacher I am frequently asked questions like "Why do I have to do this?" and "When am I ever going to need this?" As a chess coach, I am never asked such questions. Math is incredibly useful, yet the way it is taught causes many kids to doubt this. The required math curriculum in the US certainly includes many things that the average person will never need outside of school. Chess, on the other hand, is not a required subject. It requires a lot of focus, deep thought, and study to play well, but it has no practical value.'
+  // const par3 = 'Kids who have been made to feel bad about themselves in the context of a math class will often avoid math later on. They lose their ability to fearlessly create and experiment and the get the idea that math is just a lot of memorization. The best antidote to this perdicament I have yet found is to play strategy games. Chess is a great example, but almost any game will do. meta-cognition.  '
+  // const par4 = 'As a math teacher I am frequently asked questions like "Why do I have to do this?" and "When am I ever going to need this?" As a chess coach, I am never asked such questions. Math is incredibly useful, yet the way it is taught causes many kids to doubt this. The required math curriculum in the US certainly includes many things that the average person will never need outside of school. Chess, on the other hand, is not a required subject. It requires a lot of focus, deep thought, and study to play well, but it has no practical value.'
   return (
     <Section 
       headerText={headerText}
@@ -120,15 +120,15 @@ const chessTeachingMaterials = [
   {
     title: "Rules of Chess Handout",
     imgUrl: handout_rules_of_chess,
-    googleDriveCopyUrl: "/copy",
+    googleDriveCopyUrl: "https://docs.google.com/document/d/1wLQb0hd7IGSsqOCa1ui8eyOQZDYkt3nzcq34qpHNc3I/copy",
   },{
     title: "Rules of Chess Posters",
     imgUrl: poster_rules_of_chess,
-    googleDriveCopyUrl: "/copy",
+    googleDriveCopyUrl: "https://docs.google.com/document/d/10YYxbGb21AhLhDbFLkpnQ_3RsZy4FeuRsMneFkBlYAQ/copy",
   },{
     title: "Knight Coloring Quilt",
     imgUrl: knight_coloring_quilt,
-    googleDriveCopyUrl: "/copy",
+    googleDriveCopyUrl: "https://docs.google.com/document/d/1_0r_X2OVDNPV6SCykmdW-l7zvoimjEScxCIOHbiRbRY/copy",
   },
 ]
 
