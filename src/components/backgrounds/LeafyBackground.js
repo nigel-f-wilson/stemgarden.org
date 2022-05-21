@@ -2,9 +2,7 @@ import React, { useContext } from 'react'
 import { Box } from '@mui/material';
 
 import { AppContext } from "../../AppContext";
-
-// MY images
-const leafy_background = "https://res.cloudinary.com/nola-stem-garden/image/upload/v1647192146/stemgarden.org/leafy_background_wzclfb.jpg"
+import { leafy_background } from "../../cloudinaryURLs";
 
 export default function LeafyBackground(props) {
   const { children } = props
