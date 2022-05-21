@@ -27,7 +27,7 @@ const WebDevelopmentPage = lazy(() => import('./pages/services/WebDevelopmentPag
 
 // RESOURCES
 const PuzzlesIndexPage = lazy(() => import('./pages/resources/PuzzlesIndexPage'))
-const LessonPlansIndexPage = lazy(() => import('./pages/resources/LessonPlansIndexPage'))
+const LessonPlansPage = lazy(() => import('./pages/resources/LessonPlansPage'))
 const MathGamesIndexPage = lazy(() => import('./math-games/MathGamesIndexPage'))
 
 // Math Games
@@ -69,25 +69,10 @@ export default function MainRouter() {
             <Route path="the-15-game/*" element={<FifteenGameRoutes />} />
           </Route>
 
-          <Route path="puzzles"  >
-            <Route index element={<PuzzlesIndexPage />} />
-          </Route>
-          {/* <Route path="puzzles" element={<PuzzlesIndexPage />} /> */}
-
-          <Route path="lesson-plans"  >
-            <Route index element={<LessonPlansIndexPage />} />
-            <Route path="connect-four" element={<ConnectFourRoot />} />
-            <Route path="tic-tac-toe/*" element={<TicTacToeRoutes />} />
-            <Route path="the-15-game/*" element={<FifteenGameRoutes />} />
-          </Route>
+          <Route path="puzzles" element={<PuzzlesIndexPage />} />
+          <Route path="lesson-plans"  element={<LessonPlansPage />} />
         </Route>
-        {/* <Route path="garden" element={<Garden />} >
-          <Route path="what_we_grow" element={<Services />} />  
-          <Route path="our_story" element={<Services />} />
-          <Route path="buy_our_fruit" element={<Services />} />
-          <Route path="get_involved" element={<ChessClubs />} />
-        </Route>
-        <Route path="people" element={<People />} >
+        {/* <Route path="people" element={<People />} >
           <Route path="nigel" element={<Nigel />} />  
           <Route path="olive" element={<Olive />} />
           <Route path="you" element={<Join />} />
