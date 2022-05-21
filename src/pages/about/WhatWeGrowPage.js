@@ -5,7 +5,6 @@ import { AppContext } from "../../AppContext";
 
 import { Background } from "../../components/backgrounds";
 import { PageHeader } from "../../components/text";
-import theme from '../../theme';
 
 import { 
   banana_papaya_turmeric_flower,
@@ -190,10 +189,10 @@ function CropSelectorButton(props) {
   return (
     <Box 
       sx={{ 
-        // width: '16%', 
-        // paddingTop: '16%',
-        [theme.breakpoints.down('sm')]: {width: '33%', paddingTop: '33%' },
-        [theme.breakpoints.up('sm')]: {width: '16%', paddingTop: '16%'} 
+        width: '16%', 
+        paddingTop: '16%',
+        // [theme.breakpoints.down('sm')]: {width: '33%', paddingTop: '33%' },
+        // [theme.breakpoints.up('sm')]: {width: '16%', paddingTop: '16%'} 
       }}
       position='relative'
     >

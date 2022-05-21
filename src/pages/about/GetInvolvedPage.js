@@ -2,8 +2,8 @@ import React from 'react'
 import { Box, Container, Typography } from '@mui/material';
 
 
-import Background from "../../components/backgrounds/Background";
-import PageTitle from '../../components/text/PageTitle';
+import { Background } from "../../components/backgrounds";
+import { PageHeader } from '../../components/text';
 import Section from "../../components/text/Section";
 
 export default function GetInvolvedPage(props) {
@@ -11,7 +11,9 @@ export default function GetInvolvedPage(props) {
   return (
     <Background >
       <Container maxWidth='md' >
-        <PageTitle text="Our Story" />
+        <PageHeader 
+          title="Get Involved" 
+        />
 
         <FoundingSection />
         <LivingSection />
