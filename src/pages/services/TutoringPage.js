@@ -59,7 +59,7 @@ function SubjectsSection() {
 
 function PricingSection() {
   const headerText = "Pricing"
-  const par1 = "My base reate for one-on-one tutoring is $50 per hour. For tutoring in AP and college level material I charge $65 per hour. For groups of 2-8 students, pricing depends on group size and meeting location."
+  const par1 = "My base rate for one-on-one tutoring is $50 per hour. For tutoring in AP and college level material I charge $65 per hour. For groups of 2-8 students, pricing depends on group size and meeting location."
   const par2 = "I believe that high-quality math instruction should be available to any student with the drive to practice. If affordability is an issue, don't hesitate to reach out. I can usually make it work through a combination of group discounts and work-trade agreements. I also coach parents on how to best support their kids in math. This can be a more affordable option for families with kids up to high school."
    
   return (
