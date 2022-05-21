@@ -1,9 +1,5 @@
 // Images 
 import { 
-  connect_four_screenshot,
-  tic_tac_toe_screenshot,
-  fifteen_game_screenshot,
-  under_construction,
   weighing_pumpkins,
   two_passing_trains,
   rapunzels_hair,
@@ -47,7 +43,7 @@ export const puzzleData = [
     imgUrl: weavers_apprentice,
     googleDriveCopyUrl: "https://docs.google.com/document/d/1Dpy2zvJ7p0yOtDQSHx5oe_Eq9gmODGIns0P9HaQLAeM/copy",
   },{
-    title: "The Marksman's Choice",
+    title: "The Archer's Choice",
     tags: ["permutations", "tree graph"],
     imgUrl: marksmans_choice,
     googleDriveCopyUrl: "https://docs.google.com/document/d/1GQZYTRwHXQMwpuxShL-_xw3G0eXqReEAEVxAKG7ADUk/copy",
@@ -59,7 +55,7 @@ export const puzzleData = [
   },{
     title: "Goat On A Rope",
     tags: ["circles", "area"],
-    imgUrl: weighing_pumpkins,
+    imgUrl: goat_on_a_rope,
     googleDriveCopyUrl: "https://docs.google.com/document/d/1hgHbDiItoqi7RavAcyxI_QQqZoGy1N8117IdAZR5wvE/copy",
   },{
     title: "The Ant's Path",
@@ -93,7 +89,7 @@ export const puzzleData = [
     googleDriveCopyUrl: "https://docs.google.com/document/d/1MIkJgd-X4azvNmnph0OWiTKgUQPZruPgaNLRcMn4yFw/copy",
   },{
     title: "Doorway Diagonal",
-    tags: ["pythagorean theorem", "solving quadratics"],
+    tags: ["pythagorean theorem", "quadratics"],
     imgUrl: doorway_diagonal,
     googleDriveCopyUrl: "https://docs.google.com/document/d/1DRYOiyXSn27zdu2IUy0m1BwrdbgvWmiiF0WpnxIGJDY/copy",
   },{
