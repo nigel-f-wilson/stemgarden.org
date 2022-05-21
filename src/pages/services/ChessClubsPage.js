@@ -114,7 +114,24 @@ function LessonsSection() {
 }
 
 
+function ChessTeachingMaterialsSection() {
   return (
+    <Grid container spacing={2} sx={{ pb: '2rem' }} >
+      <Grid item xs={12} >
+        <PageSubtitle text="Printable Chess Teaching Resources" />
+      </Grid>
+      {
+        chessTeachingMaterials.filter(cardData => {
+          return true
+        }).map(cardData => {
+          return (
+            <Grid item xs={6} sm={4} key={cardData.title} >
+              <CopyDriveFileCard cardData={cardData}  />
+            </Grid>
+          )
+        })
+      }
+    </Grid>
   )
 }
 
@@ -134,3 +151,18 @@ function ChessClubHostAppSection(props) {
 
 
 
+const chessTeachingMaterials = [
+  {
+    title: "Rules of Chess Handout",
+    imgUrl: handout_rules_of_chess,
+    googleDriveCopyUrl: "/copy",
+  },{
+    title: "Rules of Chess Posters",
+    imgUrl: poster_rules_of_chess,
+    googleDriveCopyUrl: "/copy",
+  },{
+    title: "Knight Coloring Quilt",
+    imgUrl: knight_coloring_quilt,
+    googleDriveCopyUrl: "/copy",
+  },
+]
