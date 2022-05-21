@@ -27,7 +27,7 @@ const WebDevelopmentPage = lazy(() => import('./pages/services/WebDevelopmentPag
 
 // RESOURCES
 const PuzzlesIndexPage = lazy(() => import('./pages/resources/PuzzlesIndexPage'))
-const LessonPlansIndexPage = lazy(() => import('./pages/resources/LessonPlansIndexPage'))
+const LessonPlansPage = lazy(() => import('./pages/resources/LessonPlansPage'))
 const MathGamesIndexPage = lazy(() => import('./math-games/MathGamesIndexPage'))
 
 // Math Games
