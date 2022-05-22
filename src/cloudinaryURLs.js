@@ -1,9 +1,35 @@
+// USED THROUGHOUT APP
+export const leafy_background = "https://res.cloudinary.com/nola-stem-garden/image/upload/v1647192146/stemgarden.org/leafy_background_wzclfb.jpg"
+export const under_construction = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1647561688/stemgarden.org/under_construction_sbiop2.png"
+
+
+// SERVICES
+export const code_editor_screenshot = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1651934086/stemgarden.org/Code_Screenshot_thruye.png" 
+// Tutoring
+export const practicing_math_facts = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_1000,h_1000,c_limit/v1646863130/stemgarden.org/teaching/practicing_math_facts_gnhwkx.jpg"
+export const standardized_test_bubbles = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1612190954/nolastemgarden/multiple_choice_test_uh2uka.jpg"
+
+
+// Chess Clubs
+export const chess_at_college_track = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_1000,h_1000,c_limit/v1647050134/stemgarden.org/chess/chess_club_college_track_st00uc.jpg"
+export const chess_at_college_track_2 = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_1000,h_1000,c_limit/v1646937460/stemgarden.org/chess/playing_chess_at_college_track_dbg8xa.jpg"
+export const chess_at_bric = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_1000,h_1000,c_limit/v1647050028/stemgarden.org/chess/chess_club_at_bric_tvycwi.jpg"
+export const chess_demo_board = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_1000,h_1000,c_limit/v1612135192/stemgarden.org/chess/chess_demo_board_qtdzpw.jpg"
+export const simul_at_bric = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_1000,h_1000,c_limit/v1646937461/stemgarden.org/chess/simul_at_bric_nagag0.jpg"
+export const handout_rules_of_chess = "https://res.cloudinary.com/nola-stem-garden/image/upload/v1653172004/stemgarden.org/chess/handout_rules_of_chess_wmcxp0.png"
+export const poster_rules_of_chess = "https://res.cloudinary.com/nola-stem-garden/image/upload/v1653172004/stemgarden.org/chess/wall-poster-rules-of-chess_xbp1vw.png"
+export const knight_coloring_quilt = "https://res.cloudinary.com/nola-stem-garden/image/upload/v1653172004/stemgarden.org/chess/knight_coloring_quilt_guthfk.png"
+
+
+// Enrichment + Hands On
+export const guitar_fret_measuring = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_1000,h_1000,c_limit/v1646597930/stemgarden.org/teaching/hands_on/guitar_fret_spacing_jezbuk.jpg"
+export const bike_gear_ratio_tutoring = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_1000,h_1000,c_limit/v1647052266/stemgarden.org/teaching/hands_on/bike_gear_ratios_at_tutoring_s6l3ee.jpg"
+
+
 // MATH GAMES
 export const connect_four_screenshot = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_1000,h_1000,c_limit/v1647561099/stemgarden.org/project_screenshots/connect-four_y750ue.jpg"
 export const tic_tac_toe_screenshot = "https://res.cloudinary.com/nola-stem-garden/image/upload/v1647713688/stemgarden.org/project_screenshots/TicTacToeCoachScreenshot860x800_vvlgl3_f6ewfv.png"
 export const fifteen_game_screenshot = "https://res.cloudinary.com/nola-stem-garden/image/upload/v1647714008/stemgarden.org/project_screenshots/Fifteen_Game_Screenshot_cropped_aycwzx.png"
-
-export const under_construction = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_1000,h_1000,c_limit/v1647561688/stemgarden.org/under_construction_sbiop2.png"
 
 
 
