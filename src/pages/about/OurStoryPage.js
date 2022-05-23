@@ -4,7 +4,11 @@ import { Container } from '@mui/material';
 import { Background } from "../../components/backgrounds";
 import { PageHeader, Section } from '../../components/text';
 
-// const early_days_trash_pile = 'https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1612190892/nolastemgarden/early_days/mattresses_emfztm.jpg'
+import { 
+  early_days_trash_pile,
+  trash_in_dirt,
+
+ } from "../../cloudinaryURLs";
 
 export default function OurStoryPage(props) {
   
@@ -15,6 +19,9 @@ export default function OurStoryPage(props) {
 
         <FoundingSection />
         <LivingSection />
+
+        {/* <Wildlife /> 
+        <PhilosophyOfGardening /> */}
 
       </Container>
     </Background>
