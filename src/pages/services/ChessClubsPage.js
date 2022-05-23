@@ -1,26 +1,137 @@
 import React from 'react'
-import { Box, Typography } from '@mui/material';
+import { Container, Grid } from '@mui/material';
 
-import Background from "../../components/backgrounds/Background";
-import PageTitle from "../../components/text/PageTitle";
-import Section from "../../components/text/Section";
+import { Background } from "../../components/backgrounds";
+import { PageHeader, Section, PageSubtitle } from '../../components/text';
+import { CopyDriveFileCard } from "../../components/cards";
+
+import { 
+  chess_at_college_track,
+  chess_at_college_track_2,
+  // chess_at_bric,
+  chess_demo_board,
+  simul_at_bric,
+  handout_rules_of_chess,
+  poster_rules_of_chess,
+  knight_coloring_quilt,
+ } from "../../cloudinaryURLs";
+
 
 export default function ChessClubsPage(props) {
   return (
-    <Background colorTheme='dark' >
-      <PageTitle title="Chess Clubs" />
-      <Section 
-        headerText="Offering"
-        paragraphs={["I offer private lessons and small group coaching both online and in person. While you can practice playing chess against opponents of similar skill online any time, it is more fun when you have a partner who you can play with regularly over the board. Group lessons are great for siblings, neighbors, or kids who homeschool together. They enable you and your practice partner to grow together, so that your matches remain challenging and exciting as you improve. I also offer lessons specifically for parents who are new to chess but have a child who has taken an interest."]}
-      />
-      <Offering />
-      <Subjects />
-      <Pricing />
-      <Testimony />
-      <Experience />
+    <Background >
+      <Container maxWidth='md' sx={{ pb: '3rem'}} >
+        <PageHeader title="Chess Clubs" />
+        <WhyChessSection />
+        <ClubsSection />
+        <LessonsSection />
+        <ChessTeachingMaterialsSection />
+        <ChessClubHostAppSection />
+
+      </Container>
     </Background>
   )
 }
+
+function WhyChessSection() {
+  const headerText = "Why I Teach Chess"
+  const par1 = "My very first teaching experiences were at chess club, years before I decided to become a math teacher. Chess Club is more than just good cheap entertainment, it is a medium through which kids learn life lessons on sportsmanship, psychology, and strategy. Chess helps kids remember that thinking really hard being playful are not mutually exclusive."
+  const par2 = "It's intellectually challenging. It's not required, but kids flock to it. That is why I teach chess."
+  // const par3 = 'Kids who have been made to feel bad about themselves in the context of a math class will often avoid math later on. They lose their ability to fearlessly create and experiment and the get the idea that math is just a lot of memorization. The best antidote to this perdicament I have yet found is to play strategy games. Chess is a great example, but almost any game will do. meta-cognition.  '
+  // const par4 = 'As a math teacher I am frequently asked questions like "Why do I have to do this?" and "When am I ever going to need this?" As a chess coach, I am never asked such questions. Math is incredibly useful, yet the way it is taught causes many kids to doubt this. The required math curriculum in the US certainly includes many things that the average person will never need outside of school. Chess, on the other hand, is not a required subject. It requires a lot of focus, deep thought, and study to play well, but it has no practical value.'
+  return (
+    <Section 
+      headerText={headerText}
+      paragraphs={[ par1, par2 ]}
+      imgUrl={chess_at_college_track}
+      imgAlign="right"
+    />
+  )
+}
+
+function ClubsSection() {
+  const headerText = "Start a Club"
+  const par1 = "I am currently looking to establish new partnerships with schools, libraries, homeschooling groups, and other community organizations to offer seasonal chess clubs. I will be coaching in South East Ohio during the Spring and Fall and in New Orleans during Winter. Pricing for this service is negotiable case by case."
+  const par2 = "If you are interested in starting a chess club at your school please email nigel@stemgarden.org."
+
+  return (
+    <Section 
+      headerText={headerText}
+      paragraphs={[ par1, par2 ]}
+      imgUrl={chess_demo_board}
+      imgAlign="left"
+    />
+  )
+}
+
+function LessonsSection() {
+  const headerText = "Lessons"
+  const par1 = "I offer private and small group lessons in person and online. My base rate is $40 per hour for chess coaching. As with tutoring, I am willing to barter for this service I am happy to coach parents on how best to support their own kids in learning chess. "
+   
+  return (
+    <Section 
+      headerText={headerText}
+      paragraphs={[ par1 ]}
+      imgUrl={chess_at_college_track_2}
+      imgAlign="right"
+    />
+  )
+}
+
+
+function ChessTeachingMaterialsSection() {
+  return (
+    <Grid container spacing={2} sx={{ pb: '2rem' }} >
+      <Grid item xs={12} >
+        <PageSubtitle text="Printable Chess Teaching Resources" />
+      </Grid>
+      {
+        chessTeachingMaterials.filter(cardData => {
+          return true
+        }).map(cardData => {
+          return (
+            <Grid item xs={6} sm={4} key={cardData.title} >
+              <CopyDriveFileCard cardData={cardData}  />
+            </Grid>
+          )
+        })
+      }
+    </Grid>
+  )
+}
+
+function ChessClubHostAppSection(props) {
+  const headerText = "Club Hosting Tool"
+  const par1 = "I am currently working on a piece of software to automate the record keeping and rating calculations for in person clubs. It will have a leader board, tournament mode, free-play match up suggestions, a quiz series designed to help verify new members are fluent in the rules."
+
+  return (
+    <Section 
+      headerText={headerText}
+      paragraphs={[ par1 ]}
+      imgUrl={simul_at_bric}
+      imgAlign="left"
+    />
+  )
+}
+
+
+
+const chessTeachingMaterials = [
+  {
+    title: "Rules of Chess Handout",
+    imgUrl: handout_rules_of_chess,
+    googleDriveCopyUrl: "https://docs.google.com/document/d/1wLQb0hd7IGSsqOCa1ui8eyOQZDYkt3nzcq34qpHNc3I/copy",
+  },{
+    title: "Rules of Chess Posters",
+    imgUrl: poster_rules_of_chess,
+    googleDriveCopyUrl: "https://docs.google.com/document/d/10YYxbGb21AhLhDbFLkpnQ_3RsZy4FeuRsMneFkBlYAQ/copy",
+  },{
+    title: "Knight Coloring Quilt",
+    imgUrl: knight_coloring_quilt,
+    googleDriveCopyUrl: "https://docs.google.com/document/d/1_0r_X2OVDNPV6SCykmdW-l7zvoimjEScxCIOHbiRbRY/copy",
+  },
+]
+
 
 // Private and Group Lessons
 // 
@@ -50,113 +161,3 @@ export default function ChessClubsPage(props) {
 // Chess & Test Prep
 // I got serious about running youth chess clubs while working at College Track. CT placed a strong emphasis on preping kids for fast-paced high-stakes standardized tests. I reflected on my own experience getting a scholarship based on my ACT score and I realized that, though the math topics covered on the ACT had been gone over in school, what had really prepared me for the test's pressure level and pace was all the speed chess I had played as a kid. It was chess that taught me to cope with time pressure, to focus my mind so that I could think clearly in a stressful circumstance. I offer discounted rates on SAT and ACT prep for students who add on chess lessons.
 
-
-
-
-
-function Offering() {
-  return (
-    <Box pb='2rem' display='flex' flexDirection='column' >
-      <Typography  variant="pageSubheader" >
-        Offering & Booking
-      </Typography>
-      <Typography  variant="body1" align='justify' color='white' >
-        I offer one-on-one tutoring and small group lessons in math and physics. I teach in person and over Zoom. In person lessons are offered in New Orleans, Louisiana and Athens, Ohio depending on the time of year. 
-      </Typography>
-      <Typography  variant="body1" align='justify' color='white' >
-        To schedule a lesson, email nigel@stemgarden.org 
-      </Typography>
-    </Box>
-  )
-}
-
-function Subjects() {
-  return (
-    <Box pb='2rem' display='flex' flexDirection='column' >
-      <Typography  variant="pageSubheader" >
-        Subjects
-      </Typography>
-      <Typography  variant="body1" align='justify' color='white' >
-        I teach foundational number sense, algebra, geometry, trigonometry, calculus, statistics, discrete math, and probability. Tutoring generally focuses on book-work. 
-        If you are interesten in a more hands-on experience, be sure to check out the STEM Enrichment page. 
-        {/* I also love to support homeschooling families and collectives.  */}
-      </Typography>
-    </Box>
-  )
-}
-
-function Pricing() {
-  return (
-    <Box pb='2rem' display='flex' flexDirection='column' >
-      <Typography  variant="pageSubheader" >
-        Pricing
-      </Typography>
-      <Typography  variant="body1" align='justify' color='white' gutterBottom >
-        My base reate for one-on-one tutoring is $50 per hour. For tutoring in AP and college level material I charge $65 per hour.
-        For groups of 2-8 students, pricing depends on group size and meeting location.
-      </Typography>
-      <Typography  variant="body1" align='justify' color='white' >
-        I believe that high-quality math instruction should be available to any student with the drive to learn. If affordability is an issue, 
-        don't hesitate to reach out. I can usually make it work through a combination of group discounts and work-trade agreements. I also coach
-        parents on how to best support their kids in math. This can be a more affordable option for families with kids up to high school.
-      </Typography>
-    </Box>
-  )
-}
-
-function Testimony() {
-  return (
-    <Box pb='2rem' display='flex' flexDirection='column' >
-      <Typography  variant="pageSubheader" >
-        Testimony
-      </Typography>
-
-      <Quote
-        quote="I wouldn't have made it through my first semester of grad school without Nigel. I had tried several other tutors before him so I can say he has a unique tallent for breaking concepts down clearly. After working with him, I could even explain the concepts to the other people in my study group. He listened to me vent about my professor, then redirected to keep me positive and on track."
-        citation="Julie Richelson, MBA Student at UNO"
-      />
-
-      <Quote
-        quote="I highly recommend Nigel without reservation! He brought much preparation and care to his teaching while encouraging his students' solving ability and thirst for knowledge with an upbeat attitude."
-        citation="William Mains, Parent of a 7th grader at WSNO"
-      />
-
-      <Quote
-        quote="While Nigel was our math teacher at the Waldorf School of New Orleans, our students were very engaged. It was the most excited I had ever seen them to go to math. The lessons he developed and taught our 4th-8th graders were so interesting and thought provoking."
-        citation="Jill Contento, Faculty Chair WSNO"
-      />
-
-
-    </Box>
-  )
-}
-
-function Quote(props) {
-  const { quote, citation } = props
-  return (
-    <Box p={1} >
-      <Typography  variant="body1" align='justify' color='white' >
-        "{quote}"
-      </Typography>
-      <Typography  variant="body1" align='right' color='white' >
-        - {citation}
-      </Typography>
-    </Box>
-  )
-}
-
-function Experience() {
-  return (
-    <Box pb='2rem' display='flex' flexDirection='column' >
-      <Typography  variant="pageSubheader" >
-        Experience
-      </Typography>
-      <Typography  variant="body1" align='justify' color='white'  >
-        I had my first teaching experiences at chess club when I was still a kid. In 2015, I earned my Bachelors degree in 
-        secondary Math Education from Ohio University after completing an internship with Step-By-Step scool in Noida, India. 
-        Since then, I have been teaching in New Orleans in schools, after school programs, and as a private tutor.  I have helped
-        my students succeed at everything from foundational number sense to college level courses in calculus, statistics, and physics.
-      </Typography>
-    </Box>
-  )
-}

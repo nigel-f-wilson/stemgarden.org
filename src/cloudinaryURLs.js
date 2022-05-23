@@ -8,6 +8,7 @@ export const trash_in_dirt = "https://res.cloudinary.com/nola-stem-garden/image/
 
 // SERVICES
 export const code_editor_screenshot = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1651934086/stemgarden.org/Code_Screenshot_thruye.png" 
+
 // Tutoring
 export const practicing_math_facts = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_1000,h_1000,c_limit/v1646863130/stemgarden.org/teaching/practicing_math_facts_gnhwkx.jpg"
 export const standardized_test_bubbles = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1612190954/nolastemgarden/multiple_choice_test_uh2uka.jpg"
@@ -30,11 +31,10 @@ export const bike_gear_ratio_tutoring = "https://res.cloudinary.com/nola-stem-ga
 
 
 // MATH GAMES
+export const girls_playing_connect_four = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_1000,h_1000,c_limit/v1647052443/stemgarden.org/teaching/connect_four/girls_playing_math_fact_connect_four_j84gqo.jpg"
 export const connect_four_screenshot = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_1000,h_1000,c_limit/v1647561099/stemgarden.org/project_screenshots/connect-four_y750ue.jpg"
 export const tic_tac_toe_screenshot = "https://res.cloudinary.com/nola-stem-garden/image/upload/v1647713688/stemgarden.org/project_screenshots/TicTacToeCoachScreenshot860x800_vvlgl3_f6ewfv.png"
 export const fifteen_game_screenshot = "https://res.cloudinary.com/nola-stem-garden/image/upload/v1647714008/stemgarden.org/project_screenshots/Fifteen_Game_Screenshot_cropped_aycwzx.png"
-
-
 
 // What We Grow
 export const banana_papaya_turmeric_flower = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1612135337/stemgarden.org/harvests/banana_papaya_turmeric_s1uclh.jpg"
