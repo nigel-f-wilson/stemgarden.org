@@ -8,29 +8,17 @@ import { PageTitle } from "../components/text";
 import { LeafyBackground } from "../components/backgrounds";
 
 // Tutoring
-const practicing_math_facts = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_1000,h_1000,c_limit/v1646863130/stemgarden.org/teaching/practicing_math_facts_gnhwkx.jpg"
-
-// Math Games
-// const playing_the_15_game = "https://res.cloudinary.com/nola-stem-garden/image/upload/v1646685339/stemgarden.org/project_screenshots/playing_the_15_game_rcowti.jpg"
-// const playing_connect_four = "https://res.cloudinary.com/nola-stem-garden/image/upload/v1646687130/stemgarden.org/project_screenshots/playing_math_fact_connect_four_zgyzou.jpg"
-const girls_playing_connect_four = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_1000,h_1000,c_limit/v1647052443/stemgarden.org/teaching/connect_four/girls_playing_math_fact_connect_four_j84gqo.jpg"
-
-// Chess Clubs
-const chess_at_college_track = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_1000,h_1000,c_limit/v1647050134/stemgarden.org/chess/chess_club_college_track_st00uc.jpg"
-// const chess_at_bric = "https://res.cloudinary.com/nola-stem-garden/image/upload/v1647050028/stemgarden.org/chess/chess_club_at_bric_tvycwi.jpg"
-// const chess_demo_board = "https://res.cloudinary.com/nola-stem-garden/image/upload/v1612135192/stemgarden.org/chess/chess_demo_board_qtdzpw.jpg"
-// const simul_at_bric = "https://res.cloudinary.com/nola-stem-garden/image/upload/v1646937461/stemgarden.org/chess/simul_at_bric_nagag0.jpg"
-
-// Enrichment + Hands On
-const guitar_fret_measuring = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_1000,h_1000,c_limit/v1646597930/stemgarden.org/teaching/hands_on/guitar_fret_spacing_jezbuk.jpg"
-const bike_gear_ratio_tutoring = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_1000,h_1000,c_limit/v1647052266/stemgarden.org/teaching/hands_on/bike_gear_ratios_at_tutoring_s6l3ee.jpg"
-
-// What We Grow
-const banana_papaya_turmeric_flower = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_1000,h_1000,c_limit/v1646607021/stemgarden.org/banana_papaya_turmeric_j3f7k9.jpg"
-
-const profile_with_hoe = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_1000,h_1000,c_limit/v1647374938/stemgarden.org/nigel/profile-pic_ncluzf.jpg"
-const mushroom_background = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_1000,h_1000,c_limit/v1647375289/stemgarden.org/garden_backgrounds/mushroom_yfjiho.jpg"
-const banana_papaya_pile = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_1000,h_1000,c_limit/v1612135416/stemgarden.org/harvests/banana_papaya_harvest_f9ml5d.jpg"
+import { 
+  practicing_math_facts,
+  girls_playing_connect_four,
+  chess_at_college_track,
+  guitar_fret_measuring,
+  bike_gear_ratio_tutoring,
+  banana_papaya_turmeric_flower,
+  profile_with_hoe,
+  mushroom_background,
+  banana_papaya_pile,
+} from "../cloudinaryURLs";
 
 const landingCards = [
   {
