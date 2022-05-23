@@ -2,6 +2,9 @@
 export const leafy_background = "https://res.cloudinary.com/nola-stem-garden/image/upload/v1647192146/stemgarden.org/leafy_background_wzclfb.jpg"
 export const under_construction = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1647561688/stemgarden.org/under_construction_sbiop2.png"
 
+// ABOUT 
+export const early_days_trash_pile = 'https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1612190892/nolastemgarden/early_days/mattresses_emfztm.jpg'
+export const trash_in_dirt = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1612135254/stemgarden.org/garden_story/trash_in_dirt_gb2pnq.jpg"
 
 // SERVICES
 export const code_editor_screenshot = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1651934086/stemgarden.org/Code_Screenshot_thruye.png" 
@@ -55,6 +58,7 @@ export const fig = 'https://res.cloudinary.com/nola-stem-garden/image/upload/w_5
 export const fig_2 = 'https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1612190789/nolastemgarden/fig/fig_harvest_qmwyxm.jpg'
 export const fig_missing_bite = 'https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1652720191/stemgarden.org/harvests/fig_missing_bite_laugkv.jpg'
 export const three_figs = 'https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1652720224/stemgarden.org/harvests/three_figs_unwxfd.jpg'
+export const figs_on_tree = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1653333743/stemgarden.org/harvests/figs_on_tree_ufyfdw.jpg"
 
 // Loquat
 export const loquat_bunch = 'https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1652702918/stemgarden.org/harvests/loquat_harvest_lfyeee.jpg'
