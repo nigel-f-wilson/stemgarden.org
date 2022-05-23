@@ -7,7 +7,7 @@ export default function PageHeader(props) {
   const { title, subtitle } = props
 
   return (
-    <Box p='2rem 10%' >
+    <Box p='3.5rem 10%' >
       <PageTitle text={title} gutterBottom={subtitle} />
       <PageSubtitle text={subtitle}  />
     </Box>
@@ -19,7 +19,7 @@ export function PageTitle(props) {
   const { text, gutterBottom } = props
   const { colorTheme } = useContext(AppContext)
 
-  const padding = (gutterBottom) ? "0 0 2rem" : "0"
+  const padding = (gutterBottom) ? "0 0 3rem" : "0"
   const textColor = (colorTheme === "dark") ? "white" : "black"
 
   return (

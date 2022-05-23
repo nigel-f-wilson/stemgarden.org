@@ -2,19 +2,26 @@ import React from 'react'
 import { Container } from '@mui/material';
 
 import { Background } from "../../components/backgrounds";
-import { PageTitle, Section } from '../../components/text';
+import { PageHeader, Section } from '../../components/text';
 
-// const early_days_trash_pile = 'https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1612190892/nolastemgarden/early_days/mattresses_emfztm.jpg'
+import { 
+  early_days_trash_pile,
+  trash_in_dirt,
+
+ } from "../../cloudinaryURLs";
 
 export default function OurStoryPage(props) {
   
   return (
     <Background >
       <Container maxWidth='md' >
-        <PageTitle text="Our Story" paddingBottom={4} />
+        <PageHeader title="Our Story"  />
 
         <FoundingSection />
         <LivingSection />
+
+        {/* <Wildlife /> 
+        <PhilosophyOfGardening /> */}
 
       </Container>
     </Background>
@@ -22,14 +29,16 @@ export default function OurStoryPage(props) {
 }
 
 function FoundingSection() {
-  const headerText = "The STEM Garden was founded in 2016 ..."
-  const par1 = "Shortly after completing my bachelor's in math education at Ohio University, I moved to New Orleans. I wanted to find out what all the buzz around charter schools was about but I was also excited to be able to garden year round."
+  const headerText = "In 2016, I bought a vacant lot..."
+  const par1 = "I had just completed my bachelor's degree in math education at Ohio University and I had heard that the education scene in New Orleans was ripe with innovation. There was a lot of buzz around the city's post-Katrina transition from traditional public schools to a system made up entirely of independent charter schools. I moved to New Orleans because I wanted to see for myself what things were like on the ground in the city with the most rapidly changing educational landscape in the country. Besides that, I was also excited to be able to garden year round."
   const par2 = "I bought the first half of the garden in an online auction two months after moving to New Orleans. I had been gardening for three years at that point, working in a different place each summer. I had learned that gardening is about much more than taking care of plants, it is about taking care of soil, and that is something that you just can't do if you change location every year."
    
   return (
     <Section 
       headerText={headerText}
       paragraphs={[ par1, par2 ]}
+      imgUrl={early_days_trash_pile}
+      imgAlign="right"
     />
   )
 }
@@ -47,7 +56,8 @@ function LivingSection() {
     <Section 
       headerText={headerText}
       paragraphs={[ par1, par2, par3 ]}
-
+      imgUrl={trash_in_dirt}
+      imgAlign="left"
     />
   )
 }
