@@ -34,15 +34,20 @@ export default function ChessClubsPage(props) {
 }
 
 function WhyChessSection() {
-  const headerText = "Why I Teach Chess"
-  const par1 = "My very first teaching experiences were at chess club, years before I decided to become a math teacher. Chess Club is more than just good cheap entertainment, it is a medium through which kids learn life lessons on sportsmanship, psychology, and strategy. Chess helps kids remember that thinking really hard being playful are not mutually exclusive."
-  const par2 = "It's intellectually challenging. It's not required, but kids flock to it. That is why I teach chess."
-  // const par3 = 'Kids who have been made to feel bad about themselves in the context of a math class will often avoid math later on. They lose their ability to fearlessly create and experiment and the get the idea that math is just a lot of memorization. The best antidote to this perdicament I have yet found is to play strategy games. Chess is a great example, but almost any game will do. meta-cognition.  '
-  // const par4 = 'As a math teacher I am frequently asked questions like "Why do I have to do this?" and "When am I ever going to need this?" As a chess coach, I am never asked such questions. Math is incredibly useful, yet the way it is taught causes many kids to doubt this. The required math curriculum in the US certainly includes many things that the average person will never need outside of school. Chess, on the other hand, is not a required subject. It requires a lot of focus, deep thought, and study to play well, but it has no practical value.'
   return (
     <Section 
-      headerText={headerText}
-      paragraphs={[ par1, par2 ]}
+      textItems={[
+        {
+          type: 'heading',
+          text: "Why I Teach Chess"
+        },{
+          type: 'paragraph',
+          text: "My very first teaching experiences were at chess club, years before I decided to become a math teacher. Chess Club is more than just good cheap entertainment, it is a medium through which kids learn life lessons on sportsmanship, psychology, and strategy. Chess helps kids remember that thinking really hard being playful are not mutually exclusive."
+        },{
+          type: 'paragraph',
+          text: "It's intellectually challenging. It's not required, but kids flock to it. That is why I teach chess."
+        }
+      ]}
       imgUrl={chess_at_college_track}
       imgAlign="right"
     />
@@ -50,14 +55,20 @@ function WhyChessSection() {
 }
 
 function ClubsSection() {
-  const headerText = "Start a Club"
-  const par1 = "I am currently looking to establish new partnerships with schools, libraries, homeschooling groups, and other community organizations to offer seasonal chess clubs. I will be coaching in South East Ohio during the Spring and Fall and in New Orleans during Winter. Pricing for this service is negotiable case by case."
-  const par2 = "If you are interested in starting a chess club at your school please email nigel@stemgarden.org."
-
   return (
     <Section 
-      headerText={headerText}
-      paragraphs={[ par1, par2 ]}
+      textItems={[
+        {
+          type: 'heading',
+          text: "Start a Club"
+        },{
+          type: 'paragraph',
+          text: "I am currently looking to establish new partnerships with schools, libraries, homeschooling groups, and other community organizations to offer seasonal chess clubs. I will be coaching in South East Ohio during the Spring and Fall and in New Orleans during Winter. Pricing for this service is negotiable case by case."
+        },{
+          type: 'paragraph',
+          text: "If you are interested in starting a chess club at your school please email nigel@stemgarden.org."
+        }
+      ]}
       imgUrl={chess_demo_board}
       imgAlign="left"
     />
@@ -65,13 +76,17 @@ function ClubsSection() {
 }
 
 function LessonsSection() {
-  const headerText = "Lessons"
-  const par1 = "I offer private and small group lessons in person and online. My base rate is $40 per hour for chess coaching. As with tutoring, I am willing to barter for this service I am happy to coach parents on how best to support their own kids in learning chess. "
-   
   return (
     <Section 
-      headerText={headerText}
-      paragraphs={[ par1 ]}
+      textItems={[
+        {
+          type: 'heading',
+          text: "Lessons"
+        },{
+          type: 'paragraph',
+          text: "I offer private and small group lessons in person and online. My base rate is $40 per hour for chess coaching. I offer a discount on my math tutoring rate for students who combine math and chess lessons. As with tutoring, I am willing to barter for this service I am happy to coach parents on how best to support their own kids in learning chess."
+        }
+      ]}
       imgUrl={chess_at_college_track_2}
       imgAlign="right"
     />
@@ -101,13 +116,17 @@ function ChessTeachingMaterialsSection() {
 }
 
 function ChessClubHostAppSection(props) {
-  const headerText = "Club Hosting Tool"
-  const par1 = "I am currently working on a piece of software to automate the record keeping and rating calculations for in person clubs. It will have a leader board, tournament mode, free-play match up suggestions, a quiz series designed to help verify new members are fluent in the rules."
-
   return (
     <Section 
-      headerText={headerText}
-      paragraphs={[ par1 ]}
+      textItems={[
+        {
+          type: 'heading',
+          text: "Club Hosting Tool"
+        },{
+          type: 'paragraph',
+          text: "I am currently working on a piece of software to automate the record keeping and rating calculations for in person clubs. It will have a leader board, tournament mode, free-play match up suggestions, a quiz series designed to help verify new members are fluent in the rules."
+        }
+      ]}
       imgUrl={simul_at_bric}
       imgAlign="left"
     />
