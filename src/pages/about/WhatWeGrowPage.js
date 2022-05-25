@@ -17,7 +17,8 @@ import {
   banana_papaya_pile, 
   fig_2,
   fig_missing_bite,
-  three_figs,
+  figs_on_tree,
+  // three_figs,
   loquat_bunch,
   loquat_pile,
   loquats_on_tree,
@@ -70,7 +71,7 @@ const crops = [
     detailText: "Ripe papaya are a beutiful deep orange color but they can also be shredded and made into a salad while still green. Most papaya sold at grocery stores in the U.S. are picked prematurely to improve shelf-life, but as a result they never fully ripen. I leave the fruits on the trees until they are ready to eat. This way they get much sweeter and develop a more interesting flavor. Papaya is a key ingredient in my homegrown fruit smoothies. I sell them green, ripe, or frozen in quart bags.",
   },{ 
     name: "fig",
-    imgUrl: three_figs,
+    imgUrl: figs_on_tree,
     detailImgUrl1: fig_missing_bite,    
     detailImgUrl2: fig_2,
     detailText: 'Figs are available throughout the summer. They are pollenated by wasps, not bees or butterflies. We sell the fruit, fresh and frozen, as well as rooted cuttings for those who want to grow their own fig trees.',
@@ -188,12 +189,8 @@ function CropSelectorButton(props) {
 
   return (
     <Box 
-      sx={{ 
-        width: '16%', 
-        paddingTop: '16%',
-        // [theme.breakpoints.down('sm')]: {width: '33%', paddingTop: '33%' },
-        // [theme.breakpoints.up('sm')]: {width: '16%', paddingTop: '16%'} 
-      }}
+      width='16%'
+      paddingTop='16%'
       position='relative'
     >
       <Box 
