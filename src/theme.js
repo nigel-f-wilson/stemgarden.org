@@ -130,16 +130,15 @@ theme.typography.pageSubheader = {
   color: theme.palette.common.white,
   textShadow: '0.15rem 0.15rem 0.3rem black',
   fontWeight: 200,
-  fontSize: '0.85rem',
-    '@media (min-width:450px)': {
-      fontSize: '1.0rem',
-    },
+  fontSize: '1.7rem',
+  lineHeight: '1.9rem',
     [theme.breakpoints.up('sm')]: {
-      fontSize: '1.2rem',
+      fontSize: '1.8rem',
     },
     [theme.breakpoints.up('md')]: {
-      fontSize: '1.35rem',
+      fontSize: '2.0rem',
     },
+
 }
 
 theme.typography.cardHeader = {

@@ -1,161 +1,190 @@
 import React from 'react'
-import { Box, Container, Typography } from '@mui/material';
+import { Container } from '@mui/material';
 
 
 import { Background } from "../../components/backgrounds";
 import { PageHeader } from '../../components/text';
 import Section from "../../components/text/Section";
 
+import { 
+  olive_holding_raddishes,
+  nigel_profile_pic_with_hoe,
+  kaylee_dan_and_loquat_pile,
+  emily_with_tobacco_plant,
+  june_playing_banjo,
+  // nigel_at_computer_desk,
+  // nigel_holding_banana_bunches,
+  buckets_of_figs,
+  tearoom_completed,
+
+ } from "../../cloudinaryURLs";
+import { PictureRow } from '../../components/text';
+
 export default function GetInvolvedPage(props) {
+  // const [typeOfInvolvement, setTypeOfInvolvement] = useState('garden') 
   
   return (
     <Background >
       <Container maxWidth='md' >
-        <PageHeader 
-          title="Get Involved" 
+        <PageHeader title="Get Involved" />
+
+        {/* <TypeOfInvolvementSelector 
+          typeOfInvolvement={typeOfInvolvement}
+          setTypeOfInvolvement={setTypeOfInvolvement}
+        /> */}
+
+        <PictureRow 
+          imgUrls={[
+            emily_with_tobacco_plant,
+            kaylee_dan_and_loquat_pile,
+            nigel_profile_pic_with_hoe,
+            olive_holding_raddishes 
+          ]} 
+          roundedCorners
         />
 
-        <FoundingSection />
-        <LivingSection />
-        <SolarAndRainSection />
+        <GardenIntroSection />
+        
+        <ResidentCaretakerSection  />
+        <VolunteerDaysSection />
+        <VisitSection />
 
-        <Subjects />
-        <Pricing />
-        <Testimony />
-        <Experience />
       </Container>
     </Background>
   )
 }
 
-function FoundingSection() {
-  const headerText = "The STEM Garden was founded in 2016 ..."
-  const par1 = "Shortly after completing my bachelor's in math education at Ohio University, I moved to New Orleans. I wanted to find out what all the buzz around charter schools was about but I was also excited to be able to garden year round."
-  const par2 = "I bought the first half of the garden in an online auction two months after moving to New Orleans. I had been gardening for three years at that point, working in a different place each summer. I had learned that gardening is about much more than taking care of plants, it is about taking care of soil, and that is something that you just can't do if you change location every year."
-   
+// function TypeOfInvolvementSelector(props) {
+//   const { typeOfInvolvement, setTypeOfInvolvement } = props
+
+//   const InvolvementButton = (props) => {
+//     const { activity } = props
+//     return (
+//       <Button 
+//         color='white'
+//         variant='text' 
+//         children={activity} 
+//         sx={{
+//           width: '33%'
+//         }}
+
+//       />
+//     )
+//   }
+
+//   return (
+//     <Box 
+//       width='100%'
+//       height='60px'
+//       bgcolor='primary.main'
+//       margin='1rem 0'
+//       borderRadius='1rem'
+
+//     >
+//       <InvolvementButton activity='garden' />
+//       <InvolvementButton activity='garden' />
+//       <InvolvementButton activity='garden' />
+
+
+//     </Box>
+//   )
+// }
+
+function GardenIntroSection() {
+  return (
+    <React.Fragment>
+      <Section 
+        textItems={[
+          {
+            type: 'heading',
+            text: "Help with the Garden"
+          },{
+            type: 'paragraph',
+            text: "Ever since establishing the garden I have been thinking about ways to care for the space that will minimize the amount of maintenance required. All the compost that I've added has made the soil better at holding the right amounts of air and water. It has also made it very easy to pull weeds up roots and all. Many varieties of crops that we grew in the past we do not grow anymore because they required too much hands on care or pesticides to thrive. "
+          },
+        ]}
+      />
+      <Section 
+        textItems={[
+          {
+            type: 'paragraph',
+            text: "In spite of this mindset, it is still a 6000 square foot garden and it does require a lot of work. At this point in its evolution the work that the garden requires is roughly half planting and maintenance tasks and half harvesting and processing crops for storage and distribution. As much work as it is, it is failry obvious that the amount of fruit the space produces is more than worth the effort. "
+          },{
+            type: 'paragraph',
+            text: "We will happily accept help from folks with varying levels of know-how and commitment. Keep reading to learn about the different ways to get involved!"
+          }
+        ]}
+        imgUrl={buckets_of_figs}
+        imgAlign="right"
+      />
+    </React.Fragment>
+  )
+}
+
+function ResidentCaretakerSection() {
+  return (
+    <React.Fragment>
+      <Section 
+        textItems={[
+          {
+            type: 'heading',
+            text: "Resident Caretaker"
+          },{
+            type: 'paragraph',
+            text: "I am currently accepting applications for a resident caretaker position. This position requires between 10 and 15 hours of work per week, depending on the season. The caretaker would live on site in the Tea Room and be responsible for keeping up with daily chores as well as coordinating group volunteer days at times of year when there is more harvest and distribution work than normal. This is not a paid position, compensation will come in the form of discounted housing and, of course, all the fruit you can eat. "
+          }
+        ]}
+        imgUrl={tearoom_completed}
+        imgAlign="left"
+      />
+      <Section 
+        textItems={[
+          {
+            type: 'paragraph',
+            text: "I am looking for someone who will make a relatively long-term commitment, as it takes time to get deeply familiar with the garden, to get good at seeing what needs done. I will consider applicants with any amount of experience caring for plants but preference will be given to applicants with more experience farming. If interested, contact nigel@stemgarden.org"
+          },
+        ]}
+      />
+    </React.Fragment>
+  )
+}
+
+function VolunteerDaysSection() {
   return (
     <Section 
-      headerText={headerText}
-      paragraphs={[ par1, par2 ]}
+      textItems={[
+        {
+          type: 'heading',
+          text: "Volunteer Days"
+        },{
+          type: 'paragraph',
+          text: "The main activities that volunteers can help with are harvest, processing, and distributing fruit. We are currently seeking folks who volunteer regularly with NOLA Mutual Aid or other local charities that would like to get involved with the garden and leverage their other connections to help out produce find good homes. "
+        },
+      ]}
+      imgUrl={june_playing_banjo}
+      imgAlign="right"
     />
   )
 }
 
-function LivingSection() {
-  const headerText = "Building an off-grid urban homestead"
-  const par1 = "When I bought the garden it was an overgrown trash pit. When I first began cleaning up the site I was living out of my van. Over the next five years the garden gradually became a more comfortable place to live. I built a toolshed, a screened-in kitchen, and two tiny houses on trailers. I stubbornly avoided monthly bills and dependence on any infrastructure I did not thoroughly understand. I believe in radically shortening supply chains, that, when it comes to meeting our basic needs, bringing the production as close as possible to the consumer is a good thing. It makes systems both more efficient and more resilient.   as clsoe to home  got into solar power and rain water catch systems. with one panel and battery and expanded the system as I could afford to. Similarly, I " 
-  const par2 = "manure"
-   
+function VisitSection() {
   return (
     <Section 
-      headerText={headerText}
-      paragraphs={[ par1, par2 ]}
-
+      textItems={[
+        {
+          type: 'heading',
+          text: "Visit"
+        },{
+          type: 'paragraph',
+          text: "It is a long term goal of the garden to be a place where local schools can visit for STEM-themed field trips. From biology to solar power to carpentry, there is a lot of science that went into making this vacant lot a comfortable place to live. Visiting the garden for a day of hands-on learning is sure to be an experience kids carry with them for a long time. "
+        },{
+          type: 'paragraph',
+          text: "While we are excited to share with kids some of the ways that knowing science can enrich their lives, we do not currently carry liability insurance to be able to host groups of young people. If you are a teacher in New Orleans and you like what you see and would like to share the STEM Garden with your students, please reach out! Once enough people express interest we will take the needed steps to become a place where kids can come to learn about science outside the classroom."
+        }
+      ]}
+      // imgUrl={nigel_holding_banana_bunches}
+      // imgAlign="left"
     />
   )
 }
 
-function SolarAndRainSection() {
-  const headerText = "Solar Power and Rain Catch"
-  const par1 = "When I bought the garden it was an overgrown trash pit. When I first began cleaning up the site I was living out of my van. Over the next five years the garden gradually became a more comfortable place to live. I built a toolshed, a screened-in kitchen, and two tiny houses on trailers. I stubbornly avoided monthly bills and dependence on any infrastructure I did not thoroughly understand. I believe in radically shortening supply chains, that, when it comes to meeting our basic needs, bringing the production as close as possible to the consumer is a good thing. It makes systems both more efficient and more resilient.   as clsoe to home  got into solar power and rain water catch systems. with one panel and battery and expanded the system as I could afford to. Similarly, I " 
-  const par2 = ""
-   
-  return (
-    <Section 
-      headerText={headerText}
-      paragraphs={[ par1, par2 ]}
-
-    />
-  )
-}
-
-function Subjects() {
-  return (
-    <Box pb='2rem' display='flex' flexDirection='column' >
-      <Typography  variant="pageSubheader" >
-        Subjects
-      </Typography>
-      <Typography  variant="body1" align='justify' color='white' >
-        I teach foundational number sense, algebra, geometry, trigonometry, calculus, statistics, discrete math, and probability. Tutoring generally focuses on book-work. 
-        If you are interesten in a more hands-on experience, be sure to check out the STEM Enrichment page. 
-        {/* I also love to support homeschooling families and collectives.  */}
-      </Typography>
-    </Box>
-  )
-}
-
-function Pricing() {
-  return (
-    <Box pb='2rem' display='flex' flexDirection='column' >
-      <Typography  variant="pageSubheader" >
-        Pricing
-      </Typography>
-      <Typography  variant="body1" align='justify' color='white' gutterBottom >
-        My base reate for one-on-one tutoring is $50 per hour. For tutoring in AP and college level material I charge $65 per hour.
-        For groups of 2-8 students, pricing depends on group size and meeting location.
-      </Typography>
-      <Typography  variant="body1" align='justify' color='white' >
-        I believe that high-quality math instruction should be available to any student with the drive to learn. If affordability is an issue, 
-        don't hesitate to reach out. I can usually make it work through a combination of group discounts and work-trade agreements. I also coach
-        parents on how to best support their kids in math. This can be a more affordable option for families with kids up to high school.
-      </Typography>
-    </Box>
-  )
-}
-
-function Testimony() {
-  return (
-    <Box pb='2rem' display='flex' flexDirection='column' >
-      <Typography  variant="pageSubheader" >
-        Testimony
-      </Typography>
-
-      <Quote
-        quote="I wouldn't have made it through my first semester of grad school without Nigel. I had tried several other tutors before him so I can say he has a unique tallent for breaking concepts down clearly. After working with him, I could even explain the concepts to the other people in my study group. He listened to me vent about my professor, then redirected to keep me positive and on track."
-        citation="Julie Richelson, MBA Student at UNO"
-      />
-
-      <Quote
-        quote="I highly recommend Nigel without reservation! He brought much preparation and care to his teaching while encouraging his students' solving ability and thirst for knowledge with an upbeat attitude."
-        citation="William Mains, Parent of a 7th grader at WSNO"
-      />
-
-      <Quote
-        quote="While Nigel was our math teacher at the Waldorf School of New Orleans, our students were very engaged. It was the most excited I had ever seen them to go to math. The lessons he developed and taught our 4th-8th graders were so interesting and thought provoking."
-        citation="Jill Contento, Faculty Chair WSNO"
-      />
-
-
-    </Box>
-  )
-}
-
-function Quote(props) {
-  const { quote, citation } = props
-  return (
-    <Box p={1} >
-      <Typography  variant="body1" align='justify' color='white' >
-        "{quote}"
-      </Typography>
-      <Typography  variant="body1" align='right' color='white' >
-        - {citation}
-      </Typography>
-    </Box>
-  )
-}
-
-function Experience() {
-  return (
-    <Box pb='2rem' display='flex' flexDirection='column' >
-      <Typography  variant="pageSubheader" >
-        Experience
-      </Typography>
-      <Typography  variant="body1" align='justify' color='white'  >
-        I had my first teaching experiences at chess club when I was still a kid. In 2015, I earned my Bachelors degree in 
-        secondary Math Education from Ohio University after completing an internship with Step-By-Step scool in Noida, India. 
-        Since then, I have been teaching in New Orleans in schools, after school programs, and as a private tutor.  I have helped
-        my students succeed at everything from foundational number sense to college level courses in calculus, statistics, and physics.
-      </Typography>
-    </Box>
-  )
-}

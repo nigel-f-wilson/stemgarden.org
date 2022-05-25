@@ -4,13 +4,12 @@ import { Box, Container, Grid } from '@mui/material';
 import { Background } from "../../components/backgrounds";
 import { PageHeader, Section, Quote, PageSubtitle } from '../../components/text';
 
-// Tutoring
-const practicing_math_facts = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_1000,h_1000,c_limit/v1646863130/stemgarden.org/teaching/practicing_math_facts_gnhwkx.jpg"
-const guitar_fret_measuring = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_1000,h_1000,c_limit/v1646597930/stemgarden.org/teaching/hands_on/guitar_fret_spacing_jezbuk.jpg"
-const bike_gear_ratio_tutoring = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_1000,h_1000,c_limit/v1647052266/stemgarden.org/teaching/hands_on/bike_gear_ratios_at_tutoring_s6l3ee.jpg"
-
-// const standardized_test_bubbles = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_1000,h_1000,c_limit/v1612190954/nolastemgarden/multiple_choice_test_uh2uka.jpg"
-// const under_construction = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_1000,h_1000,c_limit/v1647561688/stemgarden.org/under_construction_sbiop2.png"
+import { 
+  // jakob_at_graduation,
+  practicing_math_facts,
+  guitar_fret_measuring,
+  bike_gear_ratio_tutoring
+} from "../../cloudinaryURLs";
 
 export default function TutoringPage(props) {
   return (
@@ -29,13 +28,20 @@ export default function TutoringPage(props) {
 }
 
 function OfferingSection() {
-  const headerText = "Offering & Booking"
-  const par1 = "I offer one-on-one tutoring and small group lessons in math and physics. In person lessons are offered in New Orleans, Louisiana and Athens, Ohio depending on the time of year. Lessons over Zoom are available year round."
-  const par2 = "To schedule a lesson, email nigel@stemgarden.org"
   return (
     <Section 
-      headerText={headerText}
-      paragraphs={[ par1, par2 ]}
+      textItems={[
+        {
+          type: 'heading',
+          text: "Offering & Booking"
+        },{
+          type: 'paragraph',
+          text: "I offer one-on-one tutoring and small group lessons in math and physics. In person lessons are offered in New Orleans, Louisiana and Athens, Ohio depending on the time of year. Lessons over Zoom are available year round."
+        },{
+          type: 'paragraph',
+          text: "To schedule a lesson, email nigel@stemgarden.org"
+        }
+      ]}
       imgUrl={guitar_fret_measuring}
       imgAlign="right"
     />
@@ -43,13 +49,17 @@ function OfferingSection() {
 }
 
 function SubjectsSection() {
-  const headerText = "Subjects"
-  const par1 = "I teach foundational number sense, algebra, geometry, trigonometry, calculus, statistics, discrete math, and probability. Tutoring generally focuses on book-work. If you are interesten in a more hands-on experience, be sure to check out the STEM Enrichment page."
-   
   return (
     <Section 
-      headerText={headerText}
-      paragraphs={[ par1 ]}
+      textItems={[
+        {
+          type: 'heading',
+          text: "Subjects"
+        },{
+          type: 'paragraph',
+          text: "I teach foundational number sense, algebra, geometry, trigonometry, calculus, statistics, discrete math, and probability. Tutoring generally focuses on book-work. If you are interesten in a more hands-on experience, be sure to check out the STEM Enrichment page."
+        },
+      ]}
       imgUrl={practicing_math_facts}
       imgAlign="left"
     />
@@ -58,14 +68,20 @@ function SubjectsSection() {
 
 
 function PricingSection() {
-  const headerText = "Pricing"
-  const par1 = "My base rate for one-on-one tutoring is $50 per hour. For tutoring in AP and college level material I charge $65 per hour. For groups of 2-8 students, pricing depends on group size and meeting location."
-  const par2 = "I believe that high-quality math instruction should be available to any student with the drive to practice. If affordability is an issue, don't hesitate to reach out. I can usually make it work through a combination of group discounts and work-trade agreements. I also coach parents on how to best support their kids in math. This can be a more affordable option for families with kids up to high school."
-   
   return (
     <Section 
-      headerText={headerText}
-      paragraphs={[ par1, par2 ]}
+      textItems={[
+        {
+          type: 'heading',
+          text: "Pricing"
+        },{
+          type: 'paragraph',
+          text: "My base rate for one-on-one tutoring is $50 per hour. For tutoring in AP and college level material I charge $65 per hour. For groups of 2-8 students, pricing depends on group size and meeting location."
+        },{
+          type: 'paragraph',
+          text: "I believe that high-quality math instruction should be available to any student with the drive to practice. If affordability is an issue, don't hesitate to reach out. I can usually make it work through a combination of group discounts and work-trade agreements. I also coach parents on how to best support their kids in math. This can be a more affordable option for families with kids up to high school age."
+        },
+      ]}
       imgUrl={bike_gear_ratio_tutoring}
       imgAlign="right"
     />

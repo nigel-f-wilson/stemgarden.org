@@ -1,60 +1,62 @@
-import React, { useContext } from 'react'
-import { Box, Grid, Typography } from '@mui/material';
+import React from 'react'
+import { Box, Grid } from '@mui/material';
 
-import theme from "../../theme";
-import { AppContext } from "../../AppContext";
-import { PageSubtitle } from "../text";
+import { Paragraph, PageSubtitle } from "../text";
 
 export default function Section(props) {
-  const { headerText, paragraphs, imgUrl, imgAlign } = props
+  const { textItems, imgUrl, imgAlign, contain } = props
 
-  const { colorTheme } = useContext(AppContext)
-  const textColor = (colorTheme === "dark") ? "white" : "black"
   const direction = (imgAlign === "right") ? "row" :'row-reverse'
+  const textGridColumns = (imgUrl) ? 8 : 12
+  const imageHeight = (imgUrl) ? '100%' : 0
+  const marginBottom = (imgUrl) ? '2.0rem' : 0
+  const imgCrop = (contain) ? 'contain' : 'cover'
 
   const imageStyles = {
     width: '100%',
-    height: 'auto',
-    minHeight: '270px',
+    height: 0,
+    paddingBottom: imageHeight,
+    // maxHeight: '225px',
     backgroundImage: `url(${imgUrl})`,
-    backgroundPosition: 'center top',
+    backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
-    backgroundSize: 'cover',
-    borderRadius: '1rem'
+    backgroundSize: imgCrop,
+    borderRadius: '1rem',
   }  
   
   return (
-    <Box pb='1rem' display='flex' flexDirection='column' >
-      <Grid container spacing={4} flexDirection={direction} mb="1rem" >
-        <Grid item xs={12} sm={8} 
-          sx={{ 
-            mb: 0, 
-            [theme.breakpoints.up('sm')]: { m: '0 0 auto' },
-          }}
-        >
-          <PageSubtitle 
-            text={headerText}
-            align="left"
-          />
-          {
-            paragraphs.map((paragraph, index) => {
+    <Grid container spacing={3} flexDirection={direction} mb={marginBottom} >
+      <Grid item xs={textGridColumns} >
+        {
+          textItems.map((item, index) => {
+            const { type, text } = item
+            console.assert(type === "paragraph" || type === "heading", "invalid item type in Section")
+            if (type === "paragraph") {
               return (
-                <Typography 
-                  key={`${headerText}-paragraph-${index}`}
-                  color={textColor} 
-                  children={paragraph}
-                  variant="body1" 
-                  align='justify' 
+                <Paragraph
+                  key={`${textItems[0]}-item-${index}`}
+                  text={text}
+                />
+              )
+            }
+            else {
+              return (
+                <PageSubtitle
+                  key={`${textItems[0]}-item-${index}`}
+                  text={text}
                   gutterBottom
                 />
               )
-            })
-          }
-        </Grid>
-        <Grid item xs={12} sm={4}  >
-          <Box sx={imageStyles} />
-        </Grid>
+            }
+            
+          })
+        }
       </Grid>
-    </Box>
+      <Grid item xs={12} sm={4}  >
+        <Box width='100%' height='100%' >
+          <Box sx={imageStyles} />
+        </Box>
+      </Grid>
+    </Grid>
   )
 }

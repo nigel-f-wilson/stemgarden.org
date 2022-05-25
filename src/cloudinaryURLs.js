@@ -1,3 +1,12 @@
+// VECTA LOGOS
+export const react_logo_svg = "https://www.vectorlogo.zone/logos/reactjs/reactjs-icon.svg"
+export const react_logo_with_text = "https://www.vectorlogo.zone/logos/reactjs/reactjs-ar21.svg"
+// export const mongo_logo_with_text = "https://www.vectorlogo.zone/logos/mongodb/mongodb-ar21.svg"
+export const mongo_logo_svg = "https://www.vectorlogo.zone/logos/mongodb/mongodb-icon.svg"
+export const aws_logo_svg = "https://www.vectorlogo.zone/logos/amazon_aws/amazon_aws-icon.svg"
+export const node_logo_svg = "https://www.vectorlogo.zone/logos/nodejs/nodejs-icon.svg"
+
+export const material_ui_logo = "https://res.cloudinary.com/nola-stem-garden/image/upload/v1653398199/stemgarden.org/material_iu_logo_cjedwj.svg"
 // USED THROUGHOUT APP
 export const leafy_background = "https://res.cloudinary.com/nola-stem-garden/image/upload/v1647192146/stemgarden.org/leafy_background_wzclfb.jpg"
 export const under_construction = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1647561688/stemgarden.org/under_construction_sbiop2.png"
@@ -6,8 +15,25 @@ export const under_construction = "https://res.cloudinary.com/nola-stem-garden/i
 export const early_days_trash_pile = 'https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1612190892/nolastemgarden/early_days/mattresses_emfztm.jpg'
 export const trash_in_dirt = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1612135254/stemgarden.org/garden_story/trash_in_dirt_gb2pnq.jpg"
 
+// Structures
+export const tearoom_completed = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1653500341/stemgarden.org/garden_story/tearoom_finished_xwlrcc.jpg"
+
+// People
+export const olive_holding_raddishes = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1653492318/stemgarden.org/people/olive_holding_raddishes_juhfpi.jpg"
+export const nigel_profile_pic_with_hoe = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1647374938/stemgarden.org/people/profile-pic_ncluzf.jpg"
+export const kaylee_dan_and_loquat_pile = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1653492318/stemgarden.org/people/kaylee_dan_and_loquat_pile_jrlosl.jpg"
+export const emily_with_tobacco_plant = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1653489408/stemgarden.org/people/emily_with_tobacco_plant_glebzy.png"
+export const jakob_at_graduation = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1653489409/stemgarden.org/people/jakob_at_graduation_xsgpcr.jpg"
+export const june_playing_banjo = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1653489411/stemgarden.org/people/june_playing_banjo_mlz2fp.png"
+export const nigel_at_computer_desk = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1653493058/stemgarden.org/people/nigel_at_computer_desk_bdrmks.jpg"
+export const nigel_holding_banana_bunches = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1612190847/nolastemgarden/banana/holding_banana_bunches_hpjb7q.jpg"
+
 // SERVICES
+// Web Develpoment
 export const code_editor_screenshot = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1651934086/stemgarden.org/Code_Screenshot_thruye.png" 
+export const react_logo = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1653391977/stemgarden.org/reactjs-icon_lmhkfk.svg"
+export const all_my_tools = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1653392450/stemgarden.org/all_my_tools_sua1lu.jpg"
+export const pragmatic_programmer_book = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1653326144/stemgarden.org/pragmatic_programmer_cover_n9cj0q.jpg"
 
 // Tutoring
 export const practicing_math_facts = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_1000,h_1000,c_limit/v1646863130/stemgarden.org/teaching/practicing_math_facts_gnhwkx.jpg"
@@ -46,6 +72,7 @@ export const papaya_fruit_whole = 'https://res.cloudinary.com/nola-stem-garden/i
 export const papaya_fruit_halved = 'https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1612135462/stemgarden.org/harvests/papaya_halved_sazzwm.jpg'
 export const papaya_flower = 'https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1646607697/stemgarden.org/flowers/papaya_flower_d3enpz.jpg'
 export const papayas_on_tree = 'https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1652720259/stemgarden.org/harvests/papaya_tree_with_green_fruit_yzzo7g.jpg'
+export const pile_of_papaya = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1653499141/stemgarden.org/harvests/pile_of_papaya_zezfcx.jpg"
 
 // Banana
 export const banana_hands = 'https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1652720183/stemgarden.org/harvests/banana_hands_vhxa6v.jpg'
@@ -59,6 +86,7 @@ export const fig_2 = 'https://res.cloudinary.com/nola-stem-garden/image/upload/w
 export const fig_missing_bite = 'https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1652720191/stemgarden.org/harvests/fig_missing_bite_laugkv.jpg'
 export const three_figs = 'https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1652720224/stemgarden.org/harvests/three_figs_unwxfd.jpg'
 export const figs_on_tree = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1653333743/stemgarden.org/harvests/figs_on_tree_ufyfdw.jpg"
+export const buckets_of_figs = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1653498826/stemgarden.org/harvests/three_buckets_of_figs_gzg6un.jpg"
 
 // Loquat
 export const loquat_bunch = 'https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1652702918/stemgarden.org/harvests/loquat_harvest_lfyeee.jpg'
@@ -74,6 +102,8 @@ export const tomato_cuke_harvest = 'https://res.cloudinary.com/nola-stem-garden/
 export const cucumber_pile = 'https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1652730445/stemgarden.org/harvests/cucumber_pile_fd91a2.jpg'
 export const tobacco_plant = 'https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1652730424/stemgarden.org/harvests/tobacco_plant_yiy4r6.jpg'
 export const basket_of_raddishes = 'https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1652701631/stemgarden.org/harvests/radishes_qpz2ou.jpg'
+
+
 
 // Lesson Plan Clipart
 export const guitar_fret_spacing = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_300,h_300,c_limit/v1653162084/stemgarden.org/lesson_plan_clipart/guitar_fret_spacing_dfx2vh.png"
