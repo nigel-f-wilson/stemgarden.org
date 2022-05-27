@@ -4,7 +4,7 @@ import React, { useState, useContext } from 'react'
 import { Box, Button, Dialog, Zoom, Typography, FormControl, InputLabel, OutlinedInput } from '@mui/material'
 
 // CONTEXT 
-import { AppContext } from "../../../AppContext";
+import { AppContext } from "../../../../../AppContext";
 import { ConnectFourContext } from "../ConnectFourContext";
 
 // import { LayoutContext } from "../contexts";

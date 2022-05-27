@@ -17,7 +17,7 @@ import { chooseRandomFromArray } from '../_helpers/low-level';
 
 
 // CONTEXT
-import { AppContext } from "../../AppContext";
+import { AppContext } from "../../../../AppContext";
 import { ConnectFourContext } from "./ConnectFourContext";
 import { getGameStatus, getBotMove } from "./moveListHelpers";
 
