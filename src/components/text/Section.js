@@ -7,10 +7,13 @@ export default function Section(props) {
   const { textItems, imgUrl, imgAlign, contain } = props
 
   const direction = (imgAlign === "right") ? "row" :'row-reverse'
-  const textGridColumns = (imgUrl) ? 8 : 12
+  const textGridColumns = (imgUrl === undefined) ? 12 : 8
   const imageHeight = (imgUrl) ? '100%' : 0
   const marginBottom = (imgUrl) ? '2.0rem' : 0
   const imgCrop = (contain) ? 'contain' : 'cover'
+
+  console.log(typeof imgUrl)
+  console.log(`textGridColumns ${textGridColumns}`);
 
   const imageStyles = {
     width: '100%',

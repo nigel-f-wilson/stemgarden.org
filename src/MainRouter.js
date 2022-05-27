@@ -28,12 +28,12 @@ const WebDevelopmentPage = lazy(() => import('./pages/services/WebDevelopmentPag
 // RESOURCES
 const PuzzlesIndexPage = lazy(() => import('./pages/resources/PuzzlesIndexPage'))
 const LessonPlansPage = lazy(() => import('./pages/resources/LessonPlansPage'))
-const MathGamesIndexPage = lazy(() => import('./math-games/MathGamesIndexPage'))
+const MathGamesIndexPage = lazy(() => import('./pages/resources/math-games/MathGamesIndexPage'))
 
 // Math Games
-const ConnectFourRoot = lazy(() => import('./math-games/connect-four/ConnectFourRoot'))
-const FifteenGameRoutes = lazy(() => import('./math-games/magic-square-games/fifteen-game/FifteenGameRoutes'))
-const TicTacToeRoutes = lazy(() => import('./math-games/magic-square-games/tic-tac-toe/TicTacToeRoutes'))
+const ConnectFourRoot = lazy(() => import('./pages/resources/math-games/connect-four/ConnectFourRoot'))
+const FifteenGameRoutes = lazy(() => import('./pages/resources/math-games/magic-square-games/fifteen-game/FifteenGameRoutes'))
+const TicTacToeRoutes = lazy(() => import('./pages/resources/math-games/magic-square-games/tic-tac-toe/TicTacToeRoutes'))
 
 const renderLoader = () => <HalfMalf />
 

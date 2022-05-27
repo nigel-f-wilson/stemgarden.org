@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { Box, Button, Typography, Zoom, Dialog,  } from '@mui/material';
 
 // CONTEXT 
-import { AppContext } from "../../../AppContext";
+import { AppContext } from "../../../../../AppContext";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Zoom ref={ref} {...props} />;
