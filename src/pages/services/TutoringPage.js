@@ -17,6 +17,7 @@ export default function TutoringPage(props) {
       <Container maxWidth='md' >
         {/* <PageTitle text="Tutoring" gutterBottom /> */}
         <PageHeader title="Tutoring" />
+
         <OfferingSection />
         <SubjectsSection />
         <PricingSection />
@@ -33,16 +34,19 @@ function OfferingSection() {
       textItems={[
         {
           type: 'heading',
-          text: "Offering & Booking"
+          text: "Offering"
         },{
           type: 'paragraph',
-          text: "I offer one-on-one tutoring and small group lessons in math and physics. In person lessons are offered in New Orleans, Louisiana and Athens, Ohio depending on the time of year. Lessons over Zoom are available year round."
+          text: "I work with learners of all ages, from elementary schoolers to adults. I offer one-on-one tutoring as well as small group lessons in math and physics. I also offer focussed preparation for the math portion of the SAT, ACT, and other standardized tests."
+        },{
+          type: 'paragraph',
+          text: "In person lessons are offered in New Orleans, Louisiana and Athens, Ohio depending on the time of year. Lessons over Zoom are available year round. "
         },{
           type: 'paragraph',
           text: "To schedule a lesson, email nigel@stemgarden.org"
-        }
+        },
       ]}
-      imgUrl={guitar_fret_measuring}
+      imgUrl={practicing_math_facts}
       imgAlign="right"
     />
   )
@@ -54,13 +58,19 @@ function SubjectsSection() {
       textItems={[
         {
           type: 'heading',
-          text: "Subjects"
+          text: "Subjects & Style"
         },{
           type: 'paragraph',
-          text: "I teach foundational number sense, algebra, geometry, trigonometry, calculus, statistics, discrete math, and probability. Tutoring generally focuses on book-work. If you are interesten in a more hands-on experience, be sure to check out the STEM Enrichment page."
+          text: "I teach foundational number sense, algebra, geometry, trigonometry, calculus, statistics, discrete math, probability, game theory, and physics."
+        },{
+          type: 'paragraph',
+          text: "Whereas schools require students to conform to their structures, Tutoring has the flexibility to be whatever works best for the student. It can be mainly book-work or can be filled with hands-on experiences. "
+        },{
+          type: 'paragraph',
+          text: 'My broad background enables me to help students at all levels identify and fill gaps in thier understanding of math. This is a critical advantage as almost all students who have learned math in a school setting have at one time or another been pushed to move through the curriculum in sync with peers rather than at their own pace. The way most schools operate all but guarantees that students will accumulate gaps in theiir math understanding, even as they earn passing grades and get promoted. '
         },
       ]}
-      imgUrl={practicing_math_facts}
+      imgUrl={guitar_fret_measuring}
       imgAlign="left"
     />
   )
@@ -72,11 +82,14 @@ function PricingSection() {
     <Section 
       textItems={[
         {
+          type: 'paragraph',
+          text: "Students usually seek out tutoring when they first have the experience of 'hitting a wall' in math. This experience causes many to worry that they have reached the limit of their math ability, but that is not the case! Feeling like you hit a wall in math is usually the result of several little gaps catching up with you all at once. Tutoring can elimate gaps with laser focus. It helps students to restore the positive feedback loop where struggle followed by success becomes a source of motivation."
+        },{
           type: 'heading',
           text: "Pricing"
         },{
           type: 'paragraph',
-          text: "My base rate for one-on-one tutoring is $50 per hour. For tutoring in AP and college level material I charge $65 per hour. For groups of 2-8 students, pricing depends on group size and meeting location."
+          text: "My horly rate for one-on-one tutoring in grade school content is $50. For tutoring in AP and college level material I charge $65 per hour. For groups of 2-8 students, pricing depends on group size and meeting location. Email nigel@stemgarden.org for details."
         },{
           type: 'paragraph',
           text: "I believe that high-quality math instruction should be available to any student with the drive to practice. If affordability is an issue, don't hesitate to reach out. I can usually make it work through a combination of group discounts and work-trade agreements. I also coach parents on how to best support their kids in math. This can be a more affordable option for families with kids up to high school age."
@@ -97,7 +110,7 @@ function TestimonySection() {
       <Grid container spacing={3} >
         <Grid item xs={12} >
           <Quote
-            quote="I wouldn't have made it through my first semester of grad school without Nigel. He has a unique tallent for breaking concepts down clearly. After working with him, I could even explain the concepts to the other people in my study group. He listened to me vent about my professor, then redirected to keep me positive and on track."
+            quote="I wouldn't have made it through my first semester of grad school without Nigel. He has a unique tallent for breaking concepts down clearly. I had worked with other tutors before and still felt stuck but after working with Nigel I could even explain the concepts to the other people in my study group."
             personName="Julie Richelson"
             relationship="MBA Student, UNO"
           />
@@ -118,9 +131,9 @@ function TestimonySection() {
         </Grid>
         <Grid item xs={12} md={6} >
           <Quote
-            quote="I was trying to relearn calculus after years out of school but I was having trouble with a few concepts. I was already using Khan Academy when I got in touch with Nigel but he showed me how to use it much more effectively so I would get the most out of study time between tutoring sessions. Nigel was able to quickly answer my questions on concepts and problems that I was getting stuck on."
+            quote="I was trying to relearn calculus after years out of school but I was having trouble with a few concepts. Nigel was able to quickly answer my questions on concepts and problems that I was getting stuck on. I was already using Khan Academy, but Nigel showed me how to use it much more effectively. He always set me up to get the most out of my independent study time between tutoring sessions."
             personName="Jakob Schanzer"
-            relationship="Adult Student"
+            relationship="Adult Student, UNO"
           />
         </Grid>
         <Grid item xs={12} md={6} >
@@ -135,7 +148,7 @@ function TestimonySection() {
   )
 }
 
-
+//  He listened to me vent about my professor, then redirected to keep me positive and on track.
 
 // function ExperienceSection() {
 //   const headerText = "Experience"
