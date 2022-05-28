@@ -1,36 +1,39 @@
-import React from 'react'
-import { Box, Grid } from '@mui/material';
+import React, { useContext } from 'react'
+import { Box } from '@mui/material';
 
 import { Paragraph, PageSubtitle } from "../text";
+import { AppContext } from "../../AppContext";
 
 export default function Section(props) {
-  const { textItems, imgUrl, imgAlign, contain } = props
+  const { screenWidth } = useContext(AppContext)
+  return (
+    <Box 
+      width='100%'
+      paddingBottom="0.5rem"
+      children={(screenWidth < 650) ?  <MobileSection {...props} /> : <DesktopSection {...props} /> } 
+    />
+  )
+}
 
-  const direction = (imgAlign === "right") ? "row" :'row-reverse'
-  const textGridColumns = (imgUrl === undefined) ? 12 : 8
-  const imageHeight = (imgUrl) ? '100%' : 0
-  const marginBottom = (imgUrl) ? '2.0rem' : 0
+function MobileSection(props) {
+  const { textItems, imgUrl, contain } = props
+  const imageHeight = (imgUrl) ? '95%' : 0
   const imgCrop = (contain) ? 'contain' : 'cover'
 
-  console.log(typeof imgUrl)
-  console.log(`textGridColumns ${textGridColumns}`);
-
   const imageStyles = {
-    width: '100%',
-    height: 0,
+    width: imageHeight,
+    margin: '0 auto',
     paddingBottom: imageHeight,
-    // maxHeight: '225px',
     backgroundImage: `url(${imgUrl})`,
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
     backgroundSize: imgCrop,
     borderRadius: '1rem',
   }  
-  
+
   return (
-    <Grid container spacing={3} flexDirection={direction} mb={marginBottom} >
-      <Grid item xs={textGridColumns} >
-        {
+    <Box width='100%' pb={1} >
+      {
           textItems.map((item, index) => {
             const { type, text } = item
             console.assert(type === "paragraph" || type === "heading", "invalid item type in Section")
@@ -54,12 +57,63 @@ export default function Section(props) {
             
           })
         }
-      </Grid>
-      <Grid item xs={12} sm={4}  >
-        <Box width='100%' height='100%' >
-          <Box sx={imageStyles} />
-        </Box>
-      </Grid>
-    </Grid>
+      <Box sx={imageStyles} />
+    </Box>
+  )
+}
+
+function DesktopSection(props) {
+  const { textItems, imgUrl, imgAlign, contain } = props
+
+  const imageHeight = (imgUrl) ? '300px' : 0
+  const imgCrop = (contain) ? 'contain' : 'cover'
+  const marginRight = (imgAlign === 'right') ?  0 : '2rem'
+  const marginLeft = (imgAlign === 'right') ?  '2rem' : 0
+  const marginBottom = (imgUrl) ? '0.5rem' : 0
+
+  const imageStyles = {
+    width: '300px',
+    maxWidth: '50%',
+    paddingBottom: imageHeight,
+    backgroundImage: `url(${imgUrl})`,
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: imgCrop,
+    borderRadius: '1rem',
+    
+    float: imgAlign,
+    marginRight: marginRight,
+    marginLeft: marginLeft,
+    marginBottom: marginBottom,
+  }  
+
+  return (
+    <React.Fragment>
+      <Box sx={imageStyles} />
+      {
+          textItems.map((item, index) => {
+            const { type, text } = item
+            console.assert(type === "paragraph" || type === "heading", "invalid item type in Section")
+            if (type === "paragraph") {
+              return (
+                <Paragraph
+                  key={`${textItems[0]}-item-${index}`}
+                  text={text}
+                />
+              )
+            }
+            else {
+              return (
+                <PageSubtitle
+                  key={`${textItems[0]}-item-${index}`}
+                  text={text}
+                  gutterBottom
+                />
+              )
+            }
+            
+          })
+        }
+    </React.Fragment>
   )
 }
