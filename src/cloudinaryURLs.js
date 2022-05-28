@@ -14,9 +14,12 @@ export const under_construction = "https://res.cloudinary.com/nola-stem-garden/i
 // ABOUT 
 export const early_days_trash_pile = 'https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1612190892/nolastemgarden/early_days/mattresses_emfztm.jpg'
 export const trash_in_dirt = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1612135254/stemgarden.org/garden_story/trash_in_dirt_gb2pnq.jpg"
+export const load_of_manure = "https://res.cloudinary.com/nola-stem-garden/image/upload/v1652701710/stemgarden.org/garden_story/first_load_of_manure_fzgdxk.png"
+export const cooking_on_the_screen_porch = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1653763425/stemgarden.org/garden_story/cooking_on_the_screen_porch_iscqdc.jpg"
 
 // Structures
 export const tearoom_completed = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1653500341/stemgarden.org/garden_story/tearoom_finished_xwlrcc.jpg"
+export const solar_panels_on_classroom = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1653761283/stemgarden.org/garden_story/solar_panels_on_classroom_fk8wjt.jpg"
 
 // People
 export const olive_holding_raddishes = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1653492318/stemgarden.org/people/olive_holding_raddishes_juhfpi.jpg"
