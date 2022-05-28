@@ -11,11 +11,13 @@ export default function Background(props) {
   
   return (
     <Box 
+      id='Background'
       width='100%'
       minHeight='100vh'
       bgcolor={bgcolor}
       display='flex'
       flexDirection='column'
+      overflowX='hidden'
     >
       { children }
     </Box>

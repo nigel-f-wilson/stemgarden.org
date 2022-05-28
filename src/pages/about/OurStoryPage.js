@@ -14,7 +14,10 @@ export default function OurStoryPage(props) {
   
   return (
     <Background >
-      <Container maxWidth='md' sx={{pb: 3}} >
+      <Container id='OurStory'
+        maxWidth='md' 
+        sx={{pb: 3}}  
+      >
         <PageHeader title="Our Story"  />
 
         <FoundingSection />
