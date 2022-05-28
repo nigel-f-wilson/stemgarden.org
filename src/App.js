@@ -16,12 +16,13 @@ export default function App() {
       <CssBaseline />
       <ThemeProvider theme={theme}>
         <AppContextProvider >
-          <Box id='root' 
+          <Box 
+            id='App' 
             bgcolor='primary.main'
             height='100vh'
             width='100vw'
-            // overflow='hidden'
-            overflow='scroll'
+            overflowX='hidden'
+            overflowY='scroll'
           >
             <Navbar />
             <MainRouter />
