@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { AppContext } from "../../AppContext";
 
-import { MobileNavbar, DesktopNavbar } from "./_index";
+import { MobileNavbar, DesktopNavbar } from "./index";
 import { Box } from "@mui/material"
 
 export default function Navbar(props) {

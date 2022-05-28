@@ -39,7 +39,7 @@ export default function WhatWeGrowPage(props) {
   
   return (
     <Background >
-      <Container maxWidth='md' >
+      <Container maxWidth='xl' >
         <PageHeader title={capitalizedCropName} />
 
         <CropSelector 
