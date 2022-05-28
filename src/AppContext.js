@@ -21,7 +21,7 @@ export const AppContextProvider = props => {
   let maxSquareSideLength = (availableHeight < availableWidth) ? availableHeight : availableWidth
   
   const layoutAndColorContext = {
-    // screenWidth,
+    screenWidth,
     // screenHeight,
     narrowScreen,
     navbarStyle,
