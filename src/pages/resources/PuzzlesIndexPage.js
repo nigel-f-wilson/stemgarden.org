@@ -1,8 +1,9 @@
 import React from 'react'
-import { Box, Container, Grid, Card, Typography, Button, Stack } from '@mui/material';
+import {  Container, Grid } from '@mui/material';
 
 import { Background } from "../../components/backgrounds";
 import { PageHeader } from "../../components/text";
+import { CopyDriveFileCard } from "../../components/cards";
 
 import { puzzleData } from "./puzzleData"
 
@@ -62,7 +63,7 @@ export default function PuzzlesIndexPage() {
             }).map(cardData => {
               return (
                 <Grid item xs={6} sm={4} md={3} key={cardData.title} >
-                  <PuzzleCard cardData={cardData}  />
+                  <CopyDriveFileCard cardData={cardData}  />
                 </Grid>
               )
             })
@@ -85,40 +86,3 @@ export default function PuzzlesIndexPage() {
 //     </Card>
 //   )
 // }
-
-function PuzzleCard(props) {
-  const { title, imgUrl, googleDriveCopyUrl } = props.cardData 
-  const imageStyles = {
-    width: '100%',
-    paddingTop: '100%',
-    backgroundPosition: 'center center',
-    backgroundRepeat: 'no-repeat',
-    backgroundSize: 'contain',
-  }  
-  return (
-    <Card raised
-      sx={{ height: '100%', borderRadius: 1, 
-        bgcolor: 'white'
-      }}
-    >
-      <Stack height='100%' display='flex' justifyContent='space-between' p={1} >
-        <Box display='flex' justifyContent='center' alignItems='center' minHeight="4.3rem" >
-          <Typography 
-            children={title}
-            color="black"
-            align='center'
-            fontSize='1.5rem'
-            lineHeight='1.9rem'
-          />
-        </Box>
-        <Box sx={{ backgroundImage: `url(${imgUrl})`, ...imageStyles}} />
-        <Button 
-          children="Make a Copy"
-          href={googleDriveCopyUrl}
-          variant='contained'
-          sx={{ mt: 1 }}
-        />
-      </Stack>
-    </Card>
-  )
-}
