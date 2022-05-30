@@ -27,6 +27,7 @@ const WebDevelopmentPage = lazy(() => import('./pages/services/WebDevelopmentPag
 
 // RESOURCES
 const PuzzlesIndexPage = lazy(() => import('./pages/resources/PuzzlesIndexPage'))
+const FluencyDrills = lazy(() => import('./pages/resources/FluencyDrills'))
 const LessonPlansPage = lazy(() => import('./pages/resources/LessonPlansPage'))
 const MathGamesIndexPage = lazy(() => import('./pages/resources/math-games/MathGamesIndexPage'))
 
@@ -70,6 +71,7 @@ export default function MainRouter() {
           </Route>
 
           <Route path="puzzles" element={<PuzzlesIndexPage />} />
+          <Route path="fluency-drills"  element={<FluencyDrills />} />
           <Route path="lesson-plans"  element={<LessonPlansPage />} />
         </Route>
         {/* <Route path="people" element={<People />} >
