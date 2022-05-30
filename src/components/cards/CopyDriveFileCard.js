@@ -4,7 +4,11 @@ import { Box, Card, Typography, Button, Stack } from '@mui/material';
 
 
 export default function CopyDriveFileCard(props) {
-  const { title, imgUrl, googleDriveCopyUrl } = props.cardData 
+  const { cardTitle, imgUrl, googleDriveFileId } = props.cardData 
+
+  const googleDrivePreviewUrl = `https://docs.google.com/document/d/${googleDriveFileId}/preview`
+  const googleDriveCopyUrl = `https://docs.google.com/document/d/${googleDriveFileId}/copy`
+  
   const imageStyles = {
     width: '100%',
     paddingTop: '100%',
@@ -21,7 +25,7 @@ export default function CopyDriveFileCard(props) {
       <Stack height='100%' display='flex' justifyContent='space-between' p={1} >
         <Box display='flex' justifyContent='center' alignItems='center' minHeight="4.3rem" >
           <Typography 
-            children={title}
+            children={cardTitle}
             color="black"
             align='center'
             fontSize='1.5rem'
