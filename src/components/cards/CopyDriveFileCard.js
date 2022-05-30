@@ -34,6 +34,12 @@ export default function CopyDriveFileCard(props) {
         </Box>
         <Box sx={{ backgroundImage: `url(${imgUrl})`, ...imageStyles}} />
         <Button 
+          children="Preview"
+          href={googleDrivePreviewUrl}
+          variant='contained'
+          sx={{ mt: 1 }}
+        />
+        <Button 
           children="Make a Copy"
           href={googleDriveCopyUrl}
           variant='contained'
