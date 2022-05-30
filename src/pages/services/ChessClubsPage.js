@@ -104,8 +104,9 @@ function ChessTeachingMaterialsSection() {
         chessTeachingMaterials.filter(cardData => {
           return true
         }).map(cardData => {
+          const { cardTitle } = cardData
           return (
-            <Grid item xs={6} sm={4} key={cardData.title} >
+            <Grid item xs={6} sm={4} key={cardTitle} >
               <CopyDriveFileCard cardData={cardData}  />
             </Grid>
           )
@@ -137,15 +138,15 @@ function ChessClubHostAppSection(props) {
 
 const chessTeachingMaterials = [
   {
-    title: "Rules of Chess Handout",
+    cardTitle: "Rules of Chess Handout",
     imgUrl: handout_rules_of_chess,
     googleDriveCopyUrl: "https://docs.google.com/document/d/1wLQb0hd7IGSsqOCa1ui8eyOQZDYkt3nzcq34qpHNc3I/copy",
   },{
-    title: "Rules of Chess Posters",
+    cardTitle: "Rules of Chess Posters",
     imgUrl: poster_rules_of_chess,
     googleDriveCopyUrl: "https://docs.google.com/document/d/10YYxbGb21AhLhDbFLkpnQ_3RsZy4FeuRsMneFkBlYAQ/copy",
   },{
-    title: "Knight Coloring Quilt",
+    cardTitle: "Knight Coloring Quilt",
     imgUrl: knight_coloring_quilt,
     googleDriveCopyUrl: "https://docs.google.com/document/d/1_0r_X2OVDNPV6SCykmdW-l7zvoimjEScxCIOHbiRbRY/copy",
   },

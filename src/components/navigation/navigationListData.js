@@ -21,9 +21,12 @@ import {
   faCopy,
   // faCalculator,
   // faBrain,
+  // faHeadSideBrain  PRO
   // faFlask,
   // faScaleBalanced,
  } from '@fortawesome/free-solid-svg-icons'
+
+//  import PsychologyIcon from '@mui/icons-material/Psychology';
 
 export const aboutListData = [
   {
@@ -96,6 +99,11 @@ export const resourcesListData = [
     label: "Puzzles",
     icon: faPuzzlePiece,
     linkTo: "resources/puzzles",
+  },
+  {
+    label: "Fluency Drills",
+    icon: faCopy,  // faHeadSideBrain
+    linkTo: "resources/fluency-drills",
   },
   {
     label: "Lesson Plans",

@@ -14,7 +14,6 @@ import {
  } from "../../cloudinaryURLs";
 
 export default function OurStoryPage(props) {
-  
   return (
     <Background >
       <Container id='OurStory'
@@ -32,12 +31,8 @@ export default function OurStoryPage(props) {
           ]} 
           roundedCorners
         />
-
-
         <LivingSection />
-
         <SolarAndRainSection />
-
         <PictureRow 
           imgUrls={[
             tearoom_completed,
@@ -45,10 +40,8 @@ export default function OurStoryPage(props) {
           ]} 
           roundedCorners
         />
-
         {/* <Wildlife /> 
         <PhilosophyOfGardening /> */}
-
       </Container>
     </Background>
   )
