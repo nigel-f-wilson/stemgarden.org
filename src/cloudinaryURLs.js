@@ -23,7 +23,7 @@ export const solar_panels_on_classroom = "https://res.cloudinary.com/nola-stem-g
 
 // People
 export const olive_holding_raddishes = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1653492318/stemgarden.org/people/olive_holding_raddishes_juhfpi.jpg"
-export const nigel_profile_pic_with_hoe = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1647374938/stemgarden.org/people/profile-pic_ncluzf.jpg"
+export const profile_pic_with_hoe = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1647374938/stemgarden.org/people/profile-pic_ncluzf.jpg"
 export const kaylee_dan_and_loquat_pile = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1653492318/stemgarden.org/people/kaylee_dan_and_loquat_pile_jrlosl.jpg"
 export const emily_with_tobacco_plant = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1653489408/stemgarden.org/people/emily_with_tobacco_plant_glebzy.png"
 export const jakob_at_graduation = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1653489409/stemgarden.org/people/jakob_at_graduation_xsgpcr.jpg"
