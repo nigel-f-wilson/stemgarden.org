@@ -8,7 +8,9 @@ import HomeButton from "../buttons/HomeButton";
 import DifficultyModeButton from "../buttons/DifficultyModeButton";
 
 // Logic
-import { gameOver, status } from "../../../solution";
+// import {  } from "../../../solution";
+import { status, gameOver } from "../../../magicSquareHelpers";
+
 
 export default function BotPanel(props) {
   const { 
