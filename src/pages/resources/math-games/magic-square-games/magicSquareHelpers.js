@@ -62,9 +62,8 @@ export function gameDrawn(ml) {
   return (ml.length === 9 && !gameHasBeenWon(ml))
 }
 export function moveNumber(ml) {
-  return (ml.length + 1)
+    return (ml.length + 1)
 }
-
 
 export function numbersInWin(ml) {
   let Xs = xNumbers(ml)
@@ -191,5 +190,3 @@ export function sumsOfTwo(moveSet) {
     }
     return sums
 }
-
-
