@@ -8,7 +8,7 @@ import {
   // faGuitar,
   // faGamepad,
   // faHourglass,
-
+  faEnvelope,
   // faChalkboardTeacher,
   // faPersonChalkboard, // not free
   // faFlask,
@@ -84,7 +84,11 @@ export const servicesListData = [
     icon: faLaptopCode,
     linkTo: "services/web-development",
   },
-  
+  {
+    label: "Contact Form",
+    icon: faEnvelope,
+    linkTo: "contact",
+  },
 ]
 
 
