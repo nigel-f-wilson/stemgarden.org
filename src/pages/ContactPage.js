@@ -43,45 +43,6 @@ export default function ContactPage() {
   )
 }
 
-function FormWrapperPaper(props) {
-  const bgURL = `url(${bamboo})`
-  return (
-    <Paper sx={{
-      display: 'flex',
-      flexDirection: 'row',
-      alignItems: 'stretch',
-      width: "100%",
-      height: "auto",
-      borderRadius: 4,
-      overflowX: "hidden"
-    }}>
-      <Box 
-        id="picture-container" 
-        width={{ xs: '0', sm: '25%', md: '35%' }}
-        position='relative'
-      >
-        <Box id="picture" 
-          width="100%"
-          height='100%'
-          position='absolute'
-          top={0}
-          left={0}
-          sx={{ 
-            backgroundColor: 'primary.main',
-            backgroundImage: bgURL,
-            backgroundSize: 'cover',
-          }}
-        />
-      </Box>
-      <Stack 
-        id="form-container"
-        children={props.children}
-        padding={4}
-        width={{ xs: '100%', sm: '75%', md: '65%' }}
-      />
-    </Paper>
-  )
-}
 
 
 function FormspreeContactForm(props) {
@@ -178,6 +139,46 @@ function FormspreeContactForm(props) {
   }
 }
 
+
+function FormWrapperPaper(props) {
+  const bgURL = `url(${bamboo})`
+  return (
+    <Paper sx={{
+      display: 'flex',
+      flexDirection: 'row',
+      alignItems: 'stretch',
+      width: "100%",
+      height: "auto",
+      borderRadius: 4,
+      overflowX: "hidden"
+    }}>
+      <Box 
+        id="picture-container" 
+        width={{ xs: '0', sm: '25%', md: '35%' }}
+        position='relative'
+      >
+        <Box id="picture" 
+          width="100%"
+          height='100%'
+          position='absolute'
+          top={0}
+          left={0}
+          sx={{ 
+            backgroundColor: 'primary.main',
+            backgroundImage: bgURL,
+            backgroundSize: 'cover',
+          }}
+        />
+      </Box>
+      <Stack 
+        id="form-container"
+        children={props.children}
+        padding={4}
+        width={{ xs: '100%', sm: '75%', md: '65%' }}
+      />
+    </Paper>
+  )
+}
 
 function FormRowWrapper(props) {
   let { label, children } = props
