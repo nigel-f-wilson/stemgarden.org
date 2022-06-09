@@ -2,9 +2,9 @@
 // This contact form must reflect the settings in ./formspree.json
 // Any changes must be deployed by running 'formspree deploy'
 
-import React from 'react'
+import React, { useState } from 'react'
 
-import { useForm, ValidationError } from '@formspree/react';
+import { useForm } from '@formspree/react';
 
 import { 
   Container, 
@@ -24,8 +24,6 @@ import SendIcon from '@mui/icons-material/Send';
 import { PageHeader } from "../components/text";
 import { LeafyBackground } from "../components/backgrounds";
 
-
-
 // Image URLs
 const bamboo = "https://res.cloudinary.com/nola-stem-garden/image/upload/v1646607025/stemgarden.org/bamboo_ho9jli.jpg"
 
@@ -38,17 +36,22 @@ export default function ContactPage() {
           <FormspreeContactForm />
         </FormWrapperPaper>
       </Container>
-      
     </LeafyBackground>
   )
 }
 
-
-
 function FormspreeContactForm(props) {
-  const [state, handleSubmit] = useForm("xvolyaaw");
+  const [state, handleSubmit] = useForm("contact");
 
-  // const [reasonForReachingOut, setReasonForReachingOut] = useState("tutoring")
+  const [reasonForContacting, setReasonForContacting] = useState("")
+  const [name, setName] = useState("")
+  const [emailAddress, setEmailAddress] = useState("")
+  const [message, setMessage] = useState("")
+
+
+  const isValidEmail = (emailAddress) => {
+    return (/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(emailAddress))
+  }
 
 
   if (state.succeeded) {
@@ -67,7 +70,9 @@ function FormspreeContactForm(props) {
     return (
       <Stack>
             
-        <form onSubmit={handleSubmit} >
+        <form 
+          onSubmit={handleSubmit} 
+        >
 
           <Typography variant="h4" children="What can we do for you?" />
           <FormRowWrapper>
@@ -91,29 +96,39 @@ function FormspreeContactForm(props) {
           </FormRowWrapper>
         
           
-          <FormRowWrapper label="Your Name" >
+          </Stack>
+
+          <FormRowWrapper 
+            label="Your Name" 
+            errorMessage={(message.length > 0 && name.length === 0) ? "What shall I call you?" : ""}
+          >
             <TextField
               id="name"
               name="name"
+              value={name}
+              onChange={(event) => { setName(event.target.value) }}
               fullWidth 
             />
           </FormRowWrapper>
-          <FormRowWrapper label="Your Email Address" >
+          <FormRowWrapper 
+            label="Your Email Address" 
+            errorMessage={(message.length > 0 && !isValidEmail(emailAddress)) ? "I need a valid email address so I can reply to your inquiry." : ""}
+          >
             <TextField
               id="email"
               name="email"
+              value={emailAddress}
+              onChange={(event) => { setEmailAddress(event.target.value) }}
               fullWidth 
             />
-            <ValidationError 
-              prefix="Email"
-              field="email"
-              errors={state.errors}
-            />
           </FormRowWrapper>
+
           <FormRowWrapper label="Message" >
             <TextField
               id="message"
               name="message"
+              value={message}
+              onChange={(event) => { setMessage(event.target.value) }}
               fullWidth 
               multiline minRows={4} maxRows={4}
             />
@@ -123,7 +138,7 @@ function FormspreeContactForm(props) {
 
           <Button 
             type="submit"
-            disabled={state.submitting}
+            disabled={state.submitting || !isValidEmail(emailAddress) || name.length === 0 }
             children="Send" 
             variant="contained" 
             endIcon={<SendIcon />} 
@@ -181,7 +196,7 @@ function FormWrapperPaper(props) {
 }
 
 function FormRowWrapper(props) {
-  let { label, children } = props
+  let { label, children, errorMessage } = props
   return (
     <Stack 
       id="form_row"
@@ -192,6 +207,7 @@ function FormRowWrapper(props) {
     >
       <Typography children={label}  />
       { children }
+      <Typography children={errorMessage} color="error" />
     </Stack>
   )
 }
