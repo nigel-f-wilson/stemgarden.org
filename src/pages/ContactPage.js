@@ -73,29 +73,59 @@ function FormspreeContactForm(props) {
         <form 
           onSubmit={handleSubmit} 
         >
+          <Typography variant="h4" align='left' children="What can we do for you?" />
+          <RadioGroup 
+            id="reason-for-contact"
+            name="reason-for-contact"
+            value={reasonForContacting}
+            onChange={(event) => { setReasonForContacting(event.target.value) }}
+            sx={{ width: '100%'}}
+            row
+            aria-labelledby="reason-for-reaching-out-radio-buttons"
+          >
+            <Stack width='50%' >
+              <FormControlLabel value="garden" control={<Radio />} label="It's about the Garden" />
+              <FormControlLabel value="tutor" control={<Radio />} label="Math Tutoring" />
+              {/* <FormControlLabel value="chess" control={<Radio />} label="Chess Clubs and Lessons" /> */}
+            </Stack>
+            <Stack width='50%'  >
+              <FormControlLabel value="web-dev" control={<Radio />} label="Build me a Website" />
+              <FormControlLabel value="other" control={<Radio />} label="Something Else" />
+            </Stack>
+          </RadioGroup>
 
-          <Typography variant="h4" children="What can we do for you?" />
-          <FormRowWrapper>
+          
+
+          <Stack id="garden-follow-up-question" display={(reasonForContacting === "garden") ? "flex" : "none"} >
+            <Typography children="I want to..." paddingTop={2}  variant="h4"  align='left'  />
             <RadioGroup 
-              id="reason-for-contact-radio-group"
-              name="reason-for-contact"
-              sx={{ width: '100%'}}
-              defaultValue='garden'
+              name="garden-follow-up"
+              sx={{ width: '100%', justifyContent: 'space-between'}}
               row
-              aria-labelledby="reason-for-reaching-out-radio-buttons"
+              aria-labelledby="garden-follow-up-radio-buttons"
             >
-              <Stack width='50%' >
-                <FormControlLabel value="garden" control={<Radio />} label="It's about the Garden" />
-                <FormControlLabel value="tutor" control={<Radio />} label="Math Tutoring" />
+              <FormControlLabel value="buy-produce" control={<Radio  />} label="Buy fruits and veg" />
+              <FormControlLabel value="volunteer" control={<Radio  />} label="Volunteer" />
+              <FormControlLabel value="plan-a-fieldtrip" control={<Radio  />} label="Plan a Fieldtrip" />
+            </RadioGroup>
+          </Stack>
+          <Stack id="tutor-follow-up-question" display={(reasonForContacting === "tutor") ? "flex" : "none"} >
+            <Typography children="I need help with..." paddingTop={2}  variant="h4"  align='left'  />
+            <RadioGroup 
+              name="tutor-follow-up"
+              sx={{ width: '100%', justifyContent: 'space-between'}}
+              row
+              aria-labelledby="tutor-follow-up-radio-buttons"
+            >
+              <Stack width="40%" >
+                <FormControlLabel value="class-work" control={<Radio  />} label="A specific class" />
+                <FormControlLabel value="general-math" control={<Radio  />} label="Math in general" />
               </Stack>
-              <Stack width='50%'  >
-                <FormControlLabel value="web-dev" control={<Radio />} label="Build me a Website" />
-                <FormControlLabel value="other" control={<Radio />} label="Something Else" />
+              <Stack width="60%" >
+                <FormControlLabel value="test-prep" control={<Radio  />} label="Standardized test prep" />
+                <FormControlLabel value="stem-enrichment" control={<Radio  />} label="STEM Enrichment" />
               </Stack>
             </RadioGroup>
-          </FormRowWrapper>
-        
-          
           </Stack>
 
           <FormRowWrapper 
