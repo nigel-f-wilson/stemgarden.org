@@ -4,6 +4,8 @@
       "name": "Contact Form",
       "fields": {
         "reason-for-contact": { "type": "text", "required": true }, 
+        "garden-follow-up": { "type": "text" }, 
+        "tutor-follow-up": { "type": "text" }, 
         "name": { "type": "text", "required": true },
         "email": { "type": "email", "required": true },
         "message": { "type": "text", "required": true }
