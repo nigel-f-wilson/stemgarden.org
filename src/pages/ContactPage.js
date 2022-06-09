@@ -1,345 +1,296 @@
+// WARNING 
+// This contact form must reflect the settings in ./formspree.json
+// Any changes must be deployed by running 'formspree deploy'
+
 import React from 'react'
-import { Link as RouterLink } from 'react-router-dom';
-import { Select, MenuItem, FormControl, Typography, TextField } from '@mui/material'
-import { Box, Grid, Container, Card, CardHeader, CardMedia,  } from '@mui/material';
-import theme from '../theme';
 
-import { Dialog, Button, IconButton, } from '@mui/material'
-import CloseIcon from '@mui/icons-material/Close';
+import { useForm, ValidationError } from '@formspree/react';
 
-// import Footer from '../components/Footer';
+import { 
+  Container, 
+  Box, 
+  Stack, 
+  Paper,
+  Typography, 
+  TextField, 
+  Button, 
+  FormControlLabel, 
+  RadioGroup, 
+  Radio 
+} from '@mui/material';
+import SendIcon from '@mui/icons-material/Send';
+
+// My Components
 import { PageHeader } from "../components/text";
 import { LeafyBackground } from "../components/backgrounds";
 
-// Tutoring
-import { 
-  practicing_math_facts,
-  girls_playing_connect_four,
-  chess_at_college_track,
-  guitar_fret_measuring,
-  bike_gear_ratio_tutoring,
-  banana_papaya_turmeric_flower,
-  profile_with_hoe,
-  mushroom_background,
-  banana_papaya_pile,
-} from "../cloudinaryURLs";
 
-const landingCards = [
-  {
-    title: "Math Tutoring",
-    linkTo: "services/tutoring",
-    imgUrl: practicing_math_facts
 
-  },
-  {
-    title: "Math Games",
-    linkTo: "resources/math-games",
-    // imgUrl: playing_the_15_game,
-    imgUrl: girls_playing_connect_four,
-  },
-  {
-    title: "Chess Clubs",
-    linkTo: "services/tutoring",
-    imgUrl: chess_at_college_track
-  },
-  {
-    title: "STEM Enrichment",
-    linkTo: "services/tutoring",
-    imgUrl: bike_gear_ratio_tutoring,
-  },
-  {
-    title: "What We Grow",
-    linkTo: "about",
-    imgUrl: banana_papaya_turmeric_flower,
-  },
-  {
-    title: "Study Materials",
-    linkTo: "/services/tutoring",
-    imgUrl: guitar_fret_measuring,
-  },
-  {
-    title: "Our Story",
-    linkTo: "/garden/story",
-    imgUrl: mushroom_background,
-  },
-  {
-    title: "Buy Our Fruit",
-    linkTo: "/garden/for_sale",
-    imgUrl: banana_papaya_pile,
-  },
-  {
-    title: "Get Involved",
-    linkTo: "/garden/get_involved",
-    imgUrl: profile_with_hoe,
-  },
-]
+// Image URLs
+const bamboo = "https://res.cloudinary.com/nola-stem-garden/image/upload/v1646607025/stemgarden.org/bamboo_ho9jli.jpg"
 
 export default function ContactPage() {
   return (
-    <React.Fragment>
-      <LeafyBackground >
-        <Container maxWidth='md' id='landing' >
-          <PageHeader title="Contact Us" />
-          {/* <CardGrid /> */}
-        </Container>
-        
-      </LeafyBackground>
-      {/* <Footer smallScreen={smallScreen} /> */}
-    </React.Fragment>
+    <LeafyBackground >
+      <Container maxWidth='md' id='landing' >
+        <PageHeader title="Contact Us" />
+        <FormWrapperPaper>
+          <FormspreeContactForm />
+        </FormWrapperPaper>
+      </Container>
+      
+    </LeafyBackground>
+  )
+}
+
+function FormWrapperPaper(props) {
+  const bgURL = `url(${bamboo})`
+  return (
+    <Paper sx={{
+      display: 'flex',
+      flexDirection: 'row',
+      alignItems: 'stretch',
+      width: "100%",
+      height: "auto",
+      borderRadius: 4,
+      overflowX: "hidden"
+    }}>
+      <Box 
+        id="picture-container" 
+        width={{ xs: '0', sm: '25%', md: '35%' }}
+        position='relative'
+      >
+        <Box id="picture" 
+          width="100%"
+          height='100%'
+          position='absolute'
+          top={0}
+          left={0}
+          sx={{ 
+            backgroundColor: 'primary.main',
+            backgroundImage: bgURL,
+            backgroundSize: 'cover',
+          }}
+        />
+      </Box>
+      <Stack 
+        id="form-container"
+        children={props.children}
+        padding={4}
+        width={{ xs: '100%', sm: '75%', md: '65%' }}
+      />
+    </Paper>
   )
 }
 
 
+function FormspreeContactForm(props) {
+  const [state, handleSubmit] = useForm("xpzbnqoa");
+
+  // const [reasonForReachingOut, setReasonForReachingOut] = useState("tutoring")
 
 
-// MUI components
-
-
-function EditModal(props) {
-    let { open, selectedCatData, saveUpdates, closeEditModal } = props
+  if (state.succeeded) {
     return (
-        <Dialog
-            open={open}
-            onClose={closeEditModal}
-            PaperProps={{
-                sx: {
-                    width: "1000px",
-                    height: "650px",
-                    borderRadius: 4,
-                    overflowX: "hidden"
-                }
-            }}>
-            <Header 
-                closeEditModal={closeEditModal}
-            />
-            <Form 
-                selectedCatData={selectedCatData}
-                saveUpdates={saveUpdates}
-                closeEditModal={closeEditModal}
-            />
-        </Dialog>
+      <Stack minHeight="500px" justifyContent='center' >
+        <Typography variant="h5" color='black' gutterBottom >
+          Your message sent successfully!
+        </Typography>
+        <Typography variant="h5" color='black' >
+          Thanks for reaching out!
+        </Typography>
+      </Stack>
     )
-}
-
-function Header(props) {
-    let { closeEditModal } = props
+  }
+  else {
     return (
-        <Box sx={{
-            borderBottom: "solid #888 1px",
-            height: "100px",
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            padding: "0 1rem"
-
-        }} >
-            <Typography variant="h4" children="Edit Cat" />
-            <IconButton
-                children={<CloseIcon />}
-                onClick={closeEditModal}
-            />
-        </Box>
-    )
-}
-function Form(props) {
-    let { selectedCatData, saveUpdates, closeEditModal } = props
-
-    const [formState, setFormState] = useState({...selectedCatData})
-
-    const handleFormChange = (e) => {
-        const { name, value } = e.target;
-        console.log(`Updating Form field "${name}" with value: ${value}`)
-
-        setFormState({
-            ...formState,
-            [name]: value,
-        });
-    }
-    
-    return (
-        <Box sx={{
-            height: "550px",
-            display: "flex",
-            flexDirection: "column",
-            padding: "1rem 0 0"
-        }} >
+      <Stack>
             
-            
-            <NameInput
-                formName={formState.name}
-                handleFormChange={handleFormChange}
-            />
-            <UrlInput
-                formUrl={formState.thumbnail_url}
-                handleFormChange={handleFormChange}
-            />
-            <BirthdateInput
-                formBirthdate={formState.birthdate}
-                handleFormChange={handleFormChange}
-            />
-            <OwnerInput
-                formOwner={formState.owner_name}
-                handleFormChange={handleFormChange}
-            />
-            <SaveAndCancelButtons 
-                formState={formState}
-                saveUpdates={saveUpdates} 
-                closeEditModal={closeEditModal}    
-            />
-        </Box>
-    )
+        <form onSubmit={handleSubmit} >
 
-    
-}
-
-function SaveAndCancelButtons(props) {
-    let { formState, saveUpdates, closeEditModal } = props
-
-    return (
-        <Box
-            sx={{
-                display: "flex",
-                width: '100%',
-                height: "100px",
-                justifyContent: "flex-end",
-                alignItems: "center",
-                borderTop: "solid #888 1px",
-            }}
-        >
-            <Button
-                children="Save"
-                onClick={() => { saveUpdates(formState) }}
-            />
-            <Box sx={{ width: "0", height: "1.6rem", margin: "0.8rem 0.5rem", border: "solid black 1px" }} />
-            <Button
-                children="Cancel"
-                onClick={closeEditModal}
-                sx={{ paddingRight: "2rem", }}
-            />
-        </Box>
-    )
-}
-
-function FormRow(props) {
-    let { label, children } = props
-    return (
-        <Box id="form_row"
-            sx={{
-                width: "100%",
-                height: "120px",
-                display: "flex",
-                justifyContent: "flex-start",
-                alignItems: "center"
-            }} >
-            <Typography
-                variant="body1"
-                children={label}
-                sx={{ flex: "0 0 35%", paddingLeft: "5%" }}
-            />
-            <Box 
-                children={children}                
-                sx={{ flex: "0 0 55%", display: "flex", justifyContent: "stretch" }}
-            />
-        </Box>
-    )
-}
-
-function NameInput(props) {
-    let { formName, handleFormChange } = props
-    return (
-        <FormRow label={"Name"} >
+          <Typography variant="h4" children="What can we do for you?" />
+          <FormRowWrapper>
+            <RadioGroup 
+              name="reason-for-contact"
+              sx={{ width: '100%'}}
+              defaultValue='garden'
+              row
+              aria-labelledby="reason-for-reaching-out-radio-buttons"
+            >
+              <Stack width='50%' >
+                <FormControlLabel value="garden" control={<Radio />} label="It's about the Garden" />
+                <FormControlLabel value="tutor" control={<Radio />} label="Math Tutoring" />
+              </Stack>
+              <Stack width='50%'  >
+                <FormControlLabel value="web-dev" control={<Radio />} label="Build me a Website" />
+                <FormControlLabel value="other" control={<Radio />} label="Something Else" />
+              </Stack>
+            </RadioGroup>
+          </FormRowWrapper>
+        
+          
+          <FormRowWrapper label="Your Name" >
             <TextField
-                name="name"
-                value={formName}
-                variant="outlined"
-                onChange={handleFormChange}
-                fullWidth 
+              id="name"
+              name="name"
+              fullWidth 
             />
-        </FormRow>
-    )
-}
+          </FormRowWrapper>
+          <FormRowWrapper label="Your Email Address" >
+            <TextField
+              id="email"
+              name="email"
+              fullWidth 
+            />
+            <ValidationError 
+              prefix="Email"
+              field="email"
+              errors={state.errors}
+            />
+          </FormRowWrapper>
+          <FormRowWrapper label="Message" >
+            <TextField
+              id="message"
+              name="message"
+              fullWidth 
+              multiline minRows={4} maxRows={4}
+            />
+          </FormRowWrapper>
 
-
-function BirthdateInput(props) {
-    let { formBirthdate, handleFormChange } = props
           {/* <div className="g-recaptcha" data-sitekey={process.env.REACT_APP_RECAPTCHA_SITE_KEY} ></div>  */}
 
-    let dateString = convertDateFormat(formBirthdate)
-    console.log(`Form BD: ${formBirthdate}`);
+          <Button 
+            type="submit"
+            disabled={state.submitting}
+            children="Send" 
+            variant="contained" 
+            endIcon={<SendIcon />} 
+            sx={{ 
+              margin: '1rem 0 0', 
+              maxHeight: '2.5rem' 
+            }} 
 
-    return (
-        <FormRow label={"Birthdate"} >
-            <TextField
-                name="birthdate"
-                value={formBirthdate}
-                variant="outlined"
-                onChange={handleFormChange}
-                id="date"
-                type="date"
-                fullWidth
-                // Still trying to get this to display this string as "dd mon yyyy" instead of "mm/dd/yyyy"
-                // InputProps={{
-                //     valueAsDate: dateString,
-                // }}  
             />
-        </FormRow>
+          </form>
+        </Stack>
     )
+  }
 }
 
 
-function UrlInput(props) {
-    let { formUrl, handleFormChange } = props
-    return (
-        <FormRow label={"Thumbnail URL"} >
-            <TextField
-                name="thumbnail_url"
-                value={formUrl}
-                variant="outlined"
-                onChange={handleFormChange}
-                fullWidth 
-            />
-        </FormRow>
-    )
+function FormRowWrapper(props) {
+  let { label, children } = props
+  return (
+    <Stack 
+      id="form_row"
+      marginTop={2}
+      width="100%"
+      display='flex'      
+      alignItems='flex-start'
+    >
+      <Typography children={label}  />
+      { children }
+    </Stack>
+  )
 }
 
+// function NameInput(props) {
+//     let { formName, handleFormChange } = props
+//     return (
+//         <FormRow label={"Name"} >
+//             <TextField
+//                 name="name"
+//                 value={formName}
+//                 variant="outlined"
+//                 onChange={handleFormChange}
+//                 fullWidth 
+//             />
+//         </FormRow>
+//     )
+// }
 
-function OwnerInput(props) {
-    let { formOwner, handleFormChange } = props
 
-    let owners = ["Claire Morrison", "Jane Doe", "Jane Smith", "John Doe", "Kate Debarros", "Sam Jones"]
+// function BirthdateInput(props) {
+//     let { formBirthdate, handleFormChange } = props
 
-    return (
-        <FormRow label="Owner"  >
-            <FormControl fullWidth >
-                <Select
-                    name="owner_name"
-                    labelId="select-owner"
-                    id="select-owner"
-                    value={formOwner}
-                    onChange={handleFormChange}
-                >
-                    {owners.map((owner, index) => {
-                        return (
-                            <MenuItem key={index} value={owner} >{owner}</MenuItem>
-                        )
-                    })}
-                </Select>
-            </FormControl>
-        </FormRow>
-    )
-}
+//     let dateString = convertDateFormat(formBirthdate)
+//     console.log(`Form BD: ${formBirthdate}`);
 
-function convertDateFormat(inputDate) {
-    if (inputDate === undefined) {
-        return undefined
-    }
-    let firstHyphen = inputDate.indexOf("-")
-    let secondHyphen = inputDate.lastIndexOf("-")
-    let year = inputDate.slice(0, firstHyphen)
-    let monthList = ["Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"]
-    let monthNumber = Number(inputDate.slice(firstHyphen + 1, secondHyphen))
-    let month = monthList[(monthNumber - 1)]
-    let day = Number(inputDate.slice(secondHyphen + 1))
-    let date = `${day} ${month} ${year}`
-    return date
-}
+//     return (
+//         <FormRow label={"Birthdate"} >
+//             <TextField
+//                 name="birthdate"
+//                 value={formBirthdate}
+//                 variant="outlined"
+//                 onChange={handleFormChange}
+//                 id="date"
+//                 type="date"
+//                 fullWidth
+//                 // Still trying to get this to display this string as "dd mon yyyy" instead of "mm/dd/yyyy"
+//                 // InputProps={{
+//                 //     valueAsDate: dateString,
+//                 // }}  
+//             />
+//         </FormRow>
+//     )
+// }
+
+
+// function UrlInput(props) {
+//     let { formUrl, handleFormChange } = props
+//     return (
+//         <FormRow label={"Thumbnail URL"} >
+//             <TextField
+//                 name="thumbnail_url"
+//                 value={formUrl}
+//                 variant="outlined"
+//                 onChange={handleFormChange}
+//                 fullWidth 
+//             />
+//         </FormRow>
+//     )
+// }
+
+
+// function OwnerInput(props) {
+//     let { formOwner, handleFormChange } = props
+
+//     let owners = ["Claire Morrison", "Jane Doe", "Jane Smith", "John Doe", "Kate Debarros", "Sam Jones"]
+
+//     return (
+//         <FormRow label="Owner"  >
+//             <FormControl fullWidth >
+//                 <Select
+//                     name="owner_name"
+//                     labelId="select-owner"
+//                     id="select-owner"
+//                     value={formOwner}
+//                     onChange={handleFormChange}
+//                 >
+//                     {owners.map((owner, index) => {
+//                         return (
+//                             <MenuItem key={index} value={owner} >{owner}</MenuItem>
+//                         )
+//                     })}
+//                 </Select>
+//             </FormControl>
+//         </FormRow>
+//     )
+// }
+
+
+
+// function convertDateFormat(inputDate) {
+//     if (inputDate === undefined) {
+//         return undefined
+//     }
+//     let firstHyphen = inputDate.indexOf("-")
+//     let secondHyphen = inputDate.lastIndexOf("-")
+//     let year = inputDate.slice(0, firstHyphen)
+//     let monthList = ["Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"]
+//     let monthNumber = Number(inputDate.slice(firstHyphen + 1, secondHyphen))
+//     let month = monthList[(monthNumber - 1)]
+//     let day = Number(inputDate.slice(secondHyphen + 1))
+//     let date = `${day} ${month} ${year}`
+//     return date
+// }
