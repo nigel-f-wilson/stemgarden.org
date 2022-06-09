@@ -262,6 +262,7 @@ function NameInput(props) {
 
 function BirthdateInput(props) {
     let { formBirthdate, handleFormChange } = props
+          {/* <div className="g-recaptcha" data-sitekey={process.env.REACT_APP_RECAPTCHA_SITE_KEY} ></div>  */}
 
     let dateString = convertDateFormat(formBirthdate)
     console.log(`Form BD: ${formBirthdate}`);
