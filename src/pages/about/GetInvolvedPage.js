@@ -8,7 +8,7 @@ import Section from "../../components/text/Section";
 
 import { 
   olive_holding_raddishes,
-  nigel_profile_pic_with_hoe,
+  profile_pic_with_hoe,
   kaylee_dan_and_loquat_pile,
   emily_with_tobacco_plant,
   june_playing_banjo,
@@ -37,7 +37,7 @@ export default function GetInvolvedPage(props) {
           imgUrls={[
             emily_with_tobacco_plant,
             kaylee_dan_and_loquat_pile,
-            nigel_profile_pic_with_hoe,
+            profile_pic_with_hoe,
             olive_holding_raddishes 
           ]} 
           roundedCorners
