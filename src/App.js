@@ -1,5 +1,7 @@
 import React from 'react'
 import { Box, CssBaseline } from '@mui/material';
+import { FormspreeProvider } from '@formspree/react';
+
 
 // My Components
 import MainRouter from './MainRouter'
@@ -16,17 +18,20 @@ export default function App() {
       <CssBaseline />
       <ThemeProvider theme={theme}>
         <AppContextProvider >
-          <Box 
-            id='App' 
-            bgcolor='primary.main'
-            height='100vh'
-            width='100vw'
-            overflowX='hidden'
-            overflowY='scroll'
-          >
-            <Navbar />
-            <MainRouter />
-          </Box>
+          <FormspreeProvider project="1960964562039602920" >
+          {/* <FormspreeProvider project={process.env.REACT_APP_FORMSPREE_PROJECT_ID} > */}
+            <Box 
+              id='App' 
+              bgcolor='primary.main'
+              height='100vh'
+              width='100vw'
+              overflowX='hidden'
+              overflowY='scroll'
+            >
+              <Navbar /> 
+              <MainRouter />
+            </Box>
+          </FormspreeProvider>
         </AppContextProvider>
       </ThemeProvider>
     </React.Fragment>
