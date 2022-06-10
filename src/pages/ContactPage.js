@@ -168,7 +168,7 @@ function FormspreeContactForm(props) {
 
           <Button 
             type="submit"
-            disabled={state.submitting || !isValidEmail(emailAddress) || name.length === 0 }
+            disabled={state.submitting || !isValidEmail(emailAddress) || name.length === 0 || message.length === 0  }
             children="Send" 
             variant="contained" 
             endIcon={<SendIcon />} 
