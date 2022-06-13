@@ -8,13 +8,19 @@ export const AppContext = createContext();
 export const AppContextProvider = props => {
   // COLOR THEME
   const [colorTheme, setColorTheme] = useState("dark")
+  const [navbarHidden, setNavbarHidden] = useState(false)
+
 
   // SCREEN LAYOUT
   let screenHeight = useScreenHeight()
   let screenWidth = useScreenWidth()
   let narrowScreen = screenWidth < 900
-  let navbarStyle = narrowScreen ? 'mobile' : 'desktop'
-  let navbarHeightPx = (navbarStyle === 'mobile') ? 48 : 96
+
+  let navbarStyle = navbarHidden ? 'hidden' : narrowScreen ? 'mobile' : 'desktop'
+  let navbarHeightPx = (navbarStyle === 'hidden') ? 0 : (navbarStyle === 'mobile') ? 48 : 96
+
+
+
   let availableHeight = screenHeight - navbarHeightPx
   let availableWidth = screenWidth
 
@@ -24,14 +30,17 @@ export const AppContextProvider = props => {
     screenWidth,
     // screenHeight,
     narrowScreen,
-    navbarStyle,
-    navbarHeightPx,
     availableHeight, 
     availableWidth,
     maxSquareSideLength,
 
     colorTheme,
-    setColorTheme
+    setColorTheme,
+
+    navbarStyle,
+    navbarHeightPx,
+    navbarHidden,
+    setNavbarHidden
   }
 
   // console.log(`ROOT PAGE LAYOUT CONTEXT: ${JSON.stringify(layout, null, 4)}`);
