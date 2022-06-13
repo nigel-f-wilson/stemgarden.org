@@ -29,9 +29,11 @@ const WebDevelopmentPage = lazy(() => import('./pages/services/WebDevelopmentPag
 const PuzzlesIndexPage = lazy(() => import('./pages/resources/PuzzlesIndexPage'))
 const FluencyDrills = lazy(() => import('./pages/resources/FluencyDrills'))
 const LessonPlansPage = lazy(() => import('./pages/resources/LessonPlansPage'))
-const MathGamesIndexPage = lazy(() => import('./pages/resources/math-games/MathGamesIndexPage'))
+const DivisibilityPlaygroundPage = lazy(() => import('./pages/resources/divisibilty-playground/DivisibilityPlaygroundPage'))
+
 
 // Math Games
+const MathGamesIndexPage = lazy(() => import('./pages/resources/math-games/MathGamesIndexPage'))
 const ConnectFourRoot = lazy(() => import('./pages/resources/math-games/connect-four/ConnectFourRoot'))
 const FifteenGameRoutes = lazy(() => import('./pages/resources/math-games/magic-square-games/fifteen-game/FifteenGameRoutes'))
 const TicTacToeRoutes = lazy(() => import('./pages/resources/math-games/magic-square-games/tic-tac-toe/TicTacToeRoutes'))
@@ -73,6 +75,8 @@ export default function MainRouter() {
           <Route path="puzzles" element={<PuzzlesIndexPage />} />
           <Route path="fluency-drills"  element={<FluencyDrills />} />
           <Route path="lesson-plans"  element={<LessonPlansPage />} />
+          <Route path="divisibility-playground"  element={<DivisibilityPlaygroundPage />} />
+
         </Route>
         {/* <Route path="people" element={<People />} >
           <Route path="nigel" element={<Nigel />} />  

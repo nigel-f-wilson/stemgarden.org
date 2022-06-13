@@ -10,8 +10,8 @@ export default function Navbar(props) {
   return (
     <React.Fragment>
       <Box 
-        children={(navbarStyle === 'mobile') ?  <MobileNavbar /> : <DesktopNavbar /> } 
-        // width='100vw'
+        display={(navbarStyle === 'hidden') ?  "none" : "flex"}
+        children={ (navbarStyle === 'mobile') ? <MobileNavbar /> : <DesktopNavbar /> } 
         bgcolor='primary.main'
       />
       <Box 

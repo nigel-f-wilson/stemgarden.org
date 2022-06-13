@@ -19,6 +19,7 @@ import {
   // faDisplayCode,  // not free
   faLaptopCode,
   faCopy,
+  faDivide,
   // faCalculator,
   // faBrain,
   // faHeadSideBrain  PRO
@@ -114,5 +115,9 @@ export const resourcesListData = [
     icon: faCopy,
     linkTo: "resources/lesson-plans",
   },
-  
+  {
+    label: "Divisibility Playground",
+    icon: faDivide,
+    linkTo: "resources/divisibility-playground",
+  },
 ]
