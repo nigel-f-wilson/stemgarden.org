@@ -8,9 +8,10 @@ import { AppContext } from '../../AppContext';
 // const leaf_logo = "https://www.logoai.com/oss/icons/2022/03/14/fe7fdb2f7fd12c15c1bfd8441e7c346e.svg"
 import { stem_garden_logo } from "../../cloudinaryURLs";
 
-export default function Logo() {
-  const { navbarHeightPx } = useContext(AppContext)
-  
+export default function Logo(props) {
+  const { height: explicitHeight } = props
+  const { navbarHeightPx: contextHeight } = useContext(AppContext)
+  const navbarHeightPx = (explicitHeight) ? explicitHeight : contextHeight
   return (
     <RouterLink to='/' >
       <Box
