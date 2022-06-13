@@ -53,13 +53,12 @@ export default function DivisibilityPlaygroundPage() {
   const [numberCardSize, setNumberCardSize] = useState('medium')
 
   const [factors, setFactors] = useState({
-    red: 9,
-    yellow: 4,
-    blue: 7
+    red: 'none',
+    yellow: 9,
+    blue: 11
   })
 
 
-  let optionsForFactors = ['none',2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]
   
 
   let cardFontSize, cardSideLength, gridSpacing
@@ -80,10 +79,13 @@ export default function DivisibilityPlaygroundPage() {
   }
   let maxNumberOfColumns = Math.floor(screenWidth / (cardSideLength + gridSpacing))
   
-  let optionsForNumberOfColumns = [3,4,5,6,7,8,9,10,11,12]
-
-
   let optionsForSquareSize = ['small', 'medium', 'large']
+  let optionsForNumberOfColumns = []
+  let optionsForFactors = ['none', 2]
+  for (let i = 3; i < maxNumberOfColumns; i++) {
+    optionsForNumberOfColumns.push(i)
+    optionsForFactors.push(i)
+  }
 
   let textColor = darkMode ? 'white' : 'black'
 
