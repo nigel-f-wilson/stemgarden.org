@@ -3,7 +3,6 @@ import { Box,
   Container, 
   Grid, 
   Stack, 
-  TextField,
   Typography, 
   IconButton, 
   Drawer,
@@ -27,6 +26,10 @@ import { AppContext } from "../../../AppContext";
 export default function DivisibilityPlaygroundPage() {
   const { screenWidth, setNavbarHidden, colorTheme } = useContext(AppContext)
 
+  useEffect(() => {
+    setNavbarHidden(true)
+  }, [setNavbarHidden])
+
   const darkMode = colorTheme === 'dark' 
   const backgroundColor = darkMode ? 'darkGrey' : 'white'
 
@@ -44,11 +47,8 @@ export default function DivisibilityPlaygroundPage() {
   } : {
 
   }
-  
 
   const [settingsDrawerOpen, setSettingsDrawerOpen] = useState(true)
-
-
   const [numberOfColumns, setNumberOfColumns] = useState(10)
   const [numberCardSize, setNumberCardSize] = useState('medium')
 
@@ -57,9 +57,6 @@ export default function DivisibilityPlaygroundPage() {
     yellow: 9,
     blue: 11
   })
-
-
-  
 
   let cardFontSize, cardSideLength, gridSpacing
   if (numberCardSize === 'small') {
@@ -88,12 +85,6 @@ export default function DivisibilityPlaygroundPage() {
   }
 
   let textColor = darkMode ? 'white' : 'black'
-
-  useEffect(() => {
-    setNavbarHidden(true)
-  }, [])
-
-  let sw = `screenWidth = ${screenWidth}`
 
   return (
     <Background>
