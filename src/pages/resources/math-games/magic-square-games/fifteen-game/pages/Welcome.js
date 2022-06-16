@@ -3,10 +3,9 @@ import { Link as RouterLink } from 'react-router-dom';
 import { Box, Button, Typography } from '@mui/material'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faRobot, faChalkboardTeacher } from '@fortawesome/free-solid-svg-icons';
-// import { faPlus, faTimes, faDivide, faSuperscript } from '@fortawesome/free-solid-svg-icons'
+import { faRobot, faUserFriends } from '@fortawesome/free-solid-svg-icons';
 
-export default function Welcome(props) {
+export default function Welcome() {
   return (
     <Box >
       <Title />
@@ -157,9 +156,9 @@ function PlayModeButtons() {
         icon={faRobot}
       />
       <BigIconButton 
-        label="Play with Coach"
-        to='play-with-coach'
-        icon={faChalkboardTeacher}
+        label="Play with a Friend"
+        to='play-vs-friend'
+        icon={faUserFriends}
       />
     </Box>
   )
