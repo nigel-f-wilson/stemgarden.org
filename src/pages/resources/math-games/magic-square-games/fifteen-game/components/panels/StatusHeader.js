@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { status } from "../../../helpers";
+import { status } from "../../../magicSquareHelpers";
 
 // MUI Components
 import { Typography } from '@mui/material';
@@ -13,15 +13,15 @@ export default function StatusHeader(props) {
   function statusMessage(gameStatus) {
     switch (gameStatus) {
       case "xWins":
-        return "Game Over. X Wins!"
+        return "Player One Wins!"
       case "oWins":
-        return "Game Over. O Wins!"
+        return "Player Two Wins!"
       case "draw":
         return "Game Over! Draw."
       case "xNext":
-        return "X's turn."
+        return "Player One's turn."
       case "oNext":
-        return "O's turn."
+        return "Player Two's turn."
       default:
         return "Error";
     }
