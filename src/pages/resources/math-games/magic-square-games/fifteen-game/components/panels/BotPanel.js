@@ -4,6 +4,7 @@ import { Box, Container, Button, Typography } from '@mui/material';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRotateLeft } from '@fortawesome/free-solid-svg-icons';
 
+import StatusHeader from "./StatusHeader"
 import HomeButton from "../buttons/HomeButton";
 import NewGameButton from "../buttons/NewGameButton";
 import DifficultyModeButton from "../buttons/DifficultyModeButton";
@@ -47,37 +48,7 @@ export default function BotPanel(props) {
     )
   }
 
-  const StatusHeader = () => {
-    const gameStatus = status(moveList);
-    let message = `Game Number ${gameNumber}`
-    switch (gameStatus) {
-      case "xWins":
-        message = (humanGoesFirst) ? "Game Over. Human Wins!" : "Game Over. Bot Wins!"
-        break
-      case "oWins":
-        message = (humanGoesFirst) ? "Game Over. Bot Wins!" : "Game Over. Human Wins!" 
-        break
-      case "draw":
-        message = "Game Over! Draw."
-        break
-      case "xNext":
-        message = (humanGoesFirst) ? "Human's Turn" : "Bot's Turn" 
-        break
-      case "oNext":
-        message = (humanGoesFirst) ? "Bot's Turn" : "Human's Turn" 
-        break
-      default:
-    }
-    return (
-    <Typography 
-      children={message} 
-      pt={2} 
-      color="common.white" 
-      align='center' 
-      component='h1' 
-      variant='h4' noWrap gutterBottom />
-    )
-  }
+  
 
   // const WinLossDrawRecord = () => {
   //   // const {  } = props
@@ -133,7 +104,11 @@ export default function BotPanel(props) {
       }}
       disableGutters
     >
-      <StatusHeader />
+      <StatusHeader 
+        moveList={moveList} 
+        playMode={playMode}
+        humanGoesFirst={humanGoesFirst}
+      />
       <WinLossDrawRecord 
         winLossDrawRecord={winLossDrawRecord}
         humanGoesFirst={humanGoesFirst}
