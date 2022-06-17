@@ -6,7 +6,7 @@ import FifteenGameBoard from "../components/FifteenGameBoard";
 import FriendPanel from "../components/panels/FriendPanel";
 
 // Game Logic
-import { status, gameOver, nextPlayer } from "../../magicSquareHelpers";
+import { status, gameOver } from "../../magicSquareHelpers";
 
 export default function PlayVsFriend(props) {
   const { outcomeMap } = props
