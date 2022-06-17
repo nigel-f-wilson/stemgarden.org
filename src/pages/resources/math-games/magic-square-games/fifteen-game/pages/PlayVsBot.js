@@ -58,7 +58,7 @@ export default function PlayVsBot(props) {
     }
   }
 
-  function newGame() {
+  function handleNewGameClick() {
     setGameNumber(gameNumber => ++gameNumber)
     setHumanGoesFirst(true)
     setMoveList(startingPosition)
@@ -137,11 +137,10 @@ export default function PlayVsBot(props) {
         moveList={moveList}
         winLossDrawRecord={winLossDrawRecord}
         humanGoesFirst={humanGoesFirst}
-        newGame={newGame}
+        handleNewGameClick={handleNewGameClick}
         letBotGoFirst={letBotGoFirst}
         difficultyMode={difficultyMode}
         changeDifficultyMode={changeDifficultyMode}
-        gameNumber={gameNumber}
       />
 
     </Box>

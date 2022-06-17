@@ -9,12 +9,14 @@ import StatusHeader from './StatusHeader';
 
 import HomeButton from "../buttons/HomeButton";
 // import UndoMoveButton from "../buttons/UndoMoveButton";
+import NewGameButton from "../buttons/NewGameButton";
 // import ShowSolutionButton from "../buttons/ShowSolutionButton";
 
 
 
 export default function FriendPanel(props) {
   const { moveList, showSolution, toggleShowSolution, handleUndoClick, outcomeMap } = props
+    handleNewGameClick, 
 
   const UndoMoveButton = () => {
     return (
@@ -52,6 +54,7 @@ export default function FriendPanel(props) {
       </Box>
       <Box mb={2} height={40} display='flex' justifyContent='space-between' >
         <UndoMoveButton />
+        <NewGameButton moveList={moveList} handleNewGameClick={handleNewGameClick} />
         <HomeButton />
       </Box>
     </Container>

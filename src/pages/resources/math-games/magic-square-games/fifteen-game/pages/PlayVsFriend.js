@@ -40,7 +40,7 @@ export default function PlayVsFriend(props) {
     setMoveList(updatedMoveList)
   }
 
-  function newGame() {
+  function handleNewGameClick() {
     setGameNumber(gameNumber => ++gameNumber)
     setMoveList(startingPosition)
   }
@@ -80,7 +80,7 @@ export default function PlayVsFriend(props) {
       <FriendPanel
         moveList={moveList}
         winLossDrawRecord={winLossDrawRecord}
-        newGame={newGame}
+        handleNewGameClick={handleNewGameClick}
         gameNumber={gameNumber}
         handleUndoClick={handleUndoClick}
       />

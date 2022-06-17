@@ -16,7 +16,7 @@ export default function BotPanel(props) {
   const { 
     moveList, 
     humanGoesFirst, 
-    newGame, 
+    handleNewGameClick, 
     difficultyMode, 
     changeDifficultyMode, 
     letBotGoFirst,
@@ -119,7 +119,7 @@ export default function BotPanel(props) {
         <DifficultyModeButtons /> 
         <Box display='flex' justifyContent='space-between' height={40} >
           <BotGoFirstButton />
-          <NewGameButton />
+          <NewGameButton moveList={moveList} handleNewGameClick={handleNewGameClick} />
           <HomeButton />
         </Box>
       </Box>
