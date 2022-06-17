@@ -79,18 +79,18 @@ export default function BotPanel(props) {
     )
   }
 
-  const WinLossDrawRecord = () => {
-    // const {  } = props
-    let playerOne = ""
-    let playerTwo = ""
-    if (humanGoesFirst) {
-      playerOne = "X Human"
-      playerTwo = "O Bot"
-    }
-    else {
-      playerOne = "O Human"
-      playerTwo = "X Bot"
-    }
+  // const WinLossDrawRecord = () => {
+  //   // const {  } = props
+  //   let playerOne = ""
+  //   let playerTwo = ""
+  //   if (humanGoesFirst) {
+  //     playerOne = "X Human"
+  //     playerTwo = "O Bot"
+  //   }
+  //   else {
+  //     playerOne = "O Human"
+  //     playerTwo = "X Bot"
+  //   }
 
     return (
       <Box display='flex' flexDirection='column' px='25%' >
@@ -134,7 +134,11 @@ export default function BotPanel(props) {
       disableGutters
     >
       <StatusHeader />
-      <WinLossDrawRecord />
+      <WinLossDrawRecord 
+        winLossDrawRecord={winLossDrawRecord}
+        humanGoesFirst={humanGoesFirst}
+        playMode={playMode}
+      />
         
       <Box>
         <DifficultyModeButtons /> 
