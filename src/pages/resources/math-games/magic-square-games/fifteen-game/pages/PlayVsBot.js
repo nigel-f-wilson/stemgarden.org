@@ -18,7 +18,7 @@ export default function PlayVsBot(props) {
   const [humanGoesFirst, setHumanGoesFirst] = useState(true);
   const [gameNumber, setGameNumber] = useState(1);
   const [winLossDrawRecord, setWinLossDrawRecord] = useState([0, 0, 0]);
-  const [difficultyMode, setDifficultyMode] = useState("hard") 
+  const [difficultyMode, setDifficultyMode] = useState("easy") 
 
   function humanGoesNext(moveList) {  
     if (humanGoesFirst) {
