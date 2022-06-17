@@ -6,17 +6,24 @@ import { faRotateLeft, faQuestion } from '@fortawesome/free-solid-svg-icons';
 
 // My Components
 import StatusHeader from './StatusHeader';
-
 import HomeButton from "../buttons/HomeButton";
-// import UndoMoveButton from "../buttons/UndoMoveButton";
 import NewGameButton from "../buttons/NewGameButton";
 // import ShowSolutionButton from "../buttons/ShowSolutionButton";
 
 
 
 export default function FriendPanel(props) {
-  const { moveList, showSolution, toggleShowSolution, handleUndoClick, outcomeMap } = props
+  const { 
+    moveList, 
+    humanGoesFirst, 
     handleNewGameClick, 
+    difficultyMode, 
+    changeDifficultyMode, 
+    letBotGoFirst,
+    winLossDrawRecord,
+    gameNumber, 
+    handleUndoClick, 
+  } = props
 
   const UndoMoveButton = () => {
     return (
@@ -48,11 +55,11 @@ export default function FriendPanel(props) {
       }}
     >
       <Box >
-        <StatusHeader moveList={moveList} />
+        <StatusHeader moveList={moveList} playMode="playVsFriend" />
         
         
       </Box>
-      <Box mb={2} height={40} display='flex' justifyContent='space-between' >
+      <Box display='flex' justifyContent='space-between' height={40} >
         <UndoMoveButton />
         <NewGameButton moveList={moveList} handleNewGameClick={handleNewGameClick} />
         <HomeButton />
