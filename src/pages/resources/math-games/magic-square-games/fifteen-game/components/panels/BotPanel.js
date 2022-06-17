@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRotateLeft } from '@fortawesome/free-solid-svg-icons';
 
 import HomeButton from "../buttons/HomeButton";
+import NewGameButton from "../buttons/NewGameButton";
 import DifficultyModeButton from "../buttons/DifficultyModeButton";
 
 // Logic
@@ -32,22 +33,6 @@ export default function BotPanel(props) {
     )
   }
   
-  const NewGameButton = () => {
-    return (
-      <Button
-        onClick={() => newGame()}
-        variant="contained"
-        color="primary"
-        disabled={!gameOver(moveList)}
-        sx={{ flexGrow: 2, mx: 1 }}
-      >
-        <Box mr={2} display="flex" alignContent="center" >
-          <FontAwesomeIcon icon={faRotateLeft} size='lg' />
-        </Box>
-        Play&nbsp;Again!
-      </Button>
-    )
-  }
   const BotGoFirstButton = () => {
     return (
       <Button
