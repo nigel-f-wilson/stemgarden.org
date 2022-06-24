@@ -31,9 +31,6 @@ export default function PlayVsBot(props) {
 
   // CLICK HANDLERS
   function handleNumberCardClick(numberCardClicked) {
-    console.log(`handleNumberCardClick called with square clicked ${numberCardClicked}`)
-    console.log( typeof numberCardClicked)
-    
     if (!humanGoesNext(moveList)) {
       console.warn("NO EFFECT. Be patient, the bot takes a second to move. ")
       return 1
@@ -128,13 +125,12 @@ export default function PlayVsBot(props) {
     >
       <FifteenGameBoard 
         moveList={moveList}
-        // showSolution={false}
         handleNumberCardClick={handleNumberCardClick}
-        // outcomeMap={outcomeMap}
       />
 
       <BotPanel
         moveList={moveList}
+        gameNumber={gameNumber}
         winLossDrawRecord={winLossDrawRecord}
         humanGoesFirst={humanGoesFirst}
         handleNewGameClick={handleNewGameClick}
