@@ -105,11 +105,12 @@ function CardGrid(props) {
               <LandingCard data={cardData}  />
             </Grid>
           )
-        })
-      }
-    </Grid>
-  )
 }
+// function CardGrid(props) {
+//     <Grid container spacing={1} padding='0 0 4rem' >
+//       {
+//               <LandingCard data={cardData}  />
+//             </Grid>
 
 
 function LandingCard(props) {
