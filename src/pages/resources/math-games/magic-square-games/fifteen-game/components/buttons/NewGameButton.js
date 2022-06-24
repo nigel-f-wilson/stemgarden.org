@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Button } from '@mui/material';
+import { Box, Button ,Typography } from '@mui/material';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRotateLeft } from '@fortawesome/free-solid-svg-icons';
@@ -20,12 +20,12 @@ export default function NewGameButton(props) {
       variant="contained"
       color="primary"
       disabled={!gameOver(moveList)}
-      sx={{ flexGrow: 2, mx: 1 }}
+      sx={{ flexGrow: 2 }}
     >
-      <Box mr={2} display="flex" alignContent="center" >
+      <Box mr={1} display={{ xs: 'none', sm: 'flex' }} alignContent="center" >
         <FontAwesomeIcon icon={faRotateLeft} size='lg' />
       </Box>
-      Play&nbsp;Again!
+      <Typography children="Play&nbsp;Again!" variant="button" noWrap />
     </Button>
   )
 }
