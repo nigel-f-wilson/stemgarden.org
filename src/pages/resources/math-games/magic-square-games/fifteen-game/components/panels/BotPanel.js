@@ -1,13 +1,9 @@
 import React from 'react';
-import { Box, Container, Button } from '@mui/material';
+import { Box, Container } from '@mui/material';
 
 import StatusHeader from "./StatusHeader"
-import HomeButton from "../buttons/HomeButton";
-import NewGameButton from "../buttons/NewGameButton";
-import DifficultyModeButton from "../buttons/DifficultyModeButton";
+import { HomeButton, BotGoFirstButton, NewGameButton, DifficultyModeButton } from "../buttons";
 import WinLossDrawRecord from "./WinLossDrawRecord";
-
-// Logic
 
 export default function BotPanel(props) {
   const { 
@@ -20,57 +16,13 @@ export default function BotPanel(props) {
     winLossDrawRecord,
   } = props
 
-  const playMode = "playVsBot" 
-
-
-  // const WinLossDrawRecord = () => {
-  //   // const {  } = props
-  //   let playerOne = ""
-  //   let playerTwo = ""
-  //   if (humanGoesFirst) {
-  //     playerOne = "X Human"
-  //     playerTwo = "O Bot"
-  //   }
-  //   else {
-  //     playerOne = "O Human"
-  //     playerTwo = "X Bot"
-  //   }
-
-  //   return (
-  //     <Box display='flex' flexDirection='column' px='25%' >
-  //       <Box display='flex' justifyContent='space-between' >
-  //         <Typography align='left' variant='h5' >
-  //           {playerOne}:
-  //         </Typography>
-  //         <Typography align='right' variant='h5' >
-  //           {winLossDrawRecord[0]}
-  //         </Typography>
-  //       </Box> 
-  //       <Box display='flex' justifyContent='space-between' >
-  //         <Typography align='left' variant='h5' >
-  //           {playerTwo}:
-  //         </Typography>
-  //         <Typography align='right' variant='h5' >
-  //           {winLossDrawRecord[1]}
-  //         </Typography>
-  //       </Box> 
-  //       <Box display='flex' justifyContent='space-between' >
-  //         <Typography align='left' variant='h5' >
-  //           Drawn:
-  //         </Typography>
-  //         <Typography align='right' variant='h5' >
-  //           {winLossDrawRecord[2]}
-  //         </Typography>
-  //       </Box> 
-  //     </Box>  
-  //   )
-  // }
+  const playMode = "play-vs-bot" 
 
   return (
     <Container 
       sx={{ 
         width: '100%',
-        height: '35vh',
+        height: '40vh',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-between',
@@ -88,16 +40,16 @@ export default function BotPanel(props) {
         playMode={playMode}
       />
         
-      <Box>
-        <Box mb={2} height={40} display='flex' justifyContent='space-between' > 
+      <Box id='button-container' m={1} >
+        <Box display='flex' justifyContent='space-between' height={40} mb={1}  > 
           <DifficultyModeButton thisButtonsMode='easy'   difficultyMode={difficultyMode} changeDifficultyMode={changeDifficultyMode} />
-          <DifficultyModeButton thisButtonsMode='medium' difficultyMode={difficultyMode} changeDifficultyMode={changeDifficultyMode}  />
+          <DifficultyModeButton thisButtonsMode='medium' difficultyMode={difficultyMode} changeDifficultyMode={changeDifficultyMode} marginX={1} />
           <DifficultyModeButton thisButtonsMode='hard'   difficultyMode={difficultyMode} changeDifficultyMode={changeDifficultyMode}  />
         </Box> 
         <Box display='flex' justifyContent='space-between' height={40} >
-          <BotGoFirstButton />
-          <NewGameButton moveList={moveList} handleNewGameClick={handleNewGameClick} />
           <HomeButton />
+          <BotGoFirstButton moveList={moveList} letBotGoFirst={letBotGoFirst} />
+          <NewGameButton moveList={moveList} handleNewGameClick={handleNewGameClick} />
         </Box>
       </Box>
     </Container>
