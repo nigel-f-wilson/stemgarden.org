@@ -25,12 +25,15 @@ const theme = createTheme({
       text: '#000000',        // black
     },
     backgrounds: {
-      light: '#FFFFFF',
       dark: '#212121',
+      light: '#FFFFFF',
+      white: '#FFFFFF',
     },
-    white: '#FFFFFF',
+    white: '#FFF',
+    lightGrey: '#DDD',
+    darkGrey: '#222',
     black: '#000000',
-    darkGrey: '#212121',
+
     
     primary: {
       light: '#669944',
