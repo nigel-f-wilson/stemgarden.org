@@ -33,6 +33,7 @@ export const jakob_at_graduation = "https://res.cloudinary.com/nola-stem-garden/
 export const june_playing_banjo = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1653489411/stemgarden.org/people/june_playing_banjo_mlz2fp.png"
 export const nigel_at_computer_desk = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1653493058/stemgarden.org/people/nigel_at_computer_desk_bdrmks.jpg"
 export const nigel_holding_banana_bunches = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1612190847/nolastemgarden/banana/holding_banana_bunches_hpjb7q.jpg"
+export const profile_with_hoe = "https://res.cloudinary.com/nola-stem-garden/image/upload/v1647374938/stemgarden.org/people/profile-pic_ncluzf.jpg"
 
 // SERVICES
 // Web Develpoment
@@ -69,7 +70,6 @@ export const fifteen_game_screenshot = "https://res.cloudinary.com/nola-stem-gar
 
 // What We Grow
 export const banana_papaya_turmeric_flower = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1612135337/stemgarden.org/harvests/banana_papaya_turmeric_s1uclh.jpg"
-export const profile_with_hoe = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1647374938/stemgarden.org/nigel/profile-pic_ncluzf.jpg"
 export const mushroom_background = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1647375289/stemgarden.org/garden_backgrounds/mushroom_yfjiho.jpg"
 
 // Papaya
