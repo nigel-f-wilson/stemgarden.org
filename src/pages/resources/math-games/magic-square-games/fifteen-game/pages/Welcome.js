@@ -156,7 +156,7 @@ function PlayModeButtons() {
         icon={faRobot}
       />
       <BigIconButton 
-        label="Play with a Friend"
+        label="Play a Friend"
         to='play-vs-friend'
         icon={faUserFriends}
       />
@@ -173,8 +173,9 @@ function BigIconButton(props) {
       fullWidth
       sx={{
         border: "solid white 1px",
-        height: "100%",
+        // height: "100%",
         margin: 3,
+        paddingBottom: 2,
         textTransform: 'none',
         flexDirection: 'column',
         justifyContent: 'space-evenly'
