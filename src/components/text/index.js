@@ -5,4 +5,6 @@ export {default as PageSubtitle} from './PageSubtitle';
 export {default as Section} from './Section';
 export {default as Quote} from './Quote';
 export {default as PictureRow} from './PictureRow';
+export {default as Testimony} from './Testimony';
+
 
