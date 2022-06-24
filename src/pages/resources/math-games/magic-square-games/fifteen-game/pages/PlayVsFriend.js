@@ -1,132 +1,64 @@
-import { Box } from '@mui/material';
 import React, { useState } from 'react';
-<<<<<<< Updated upstream:src/math-games/magic-square-games/fifteen-game/pages/PlayVsFriend.js
-=======
-<<<<<<< Updated upstream:src/math-games/tic-tac-toe/pages/PlayVsBot.js
-import { useOutletContext } from "react-router-dom";
-=======
 import { Box } from '@mui/material';
->>>>>>> Stashed changes:src/math-games/magic-square-games/fifteen-game/pages/PlayVsFriend.js
->>>>>>> Stashed changes:src/math-games/tic-tac-toe/pages/PlayVsBot.js
 
 // My Components
-import Board from "../components/Board";
-import BotPanel from "../components/panels/BotPanel";
+import FifteenGameBoard from "../components/FifteenGameBoard";
+import FriendPanel from "../components/panels/FriendPanel";
 
-<<<<<<< Updated upstream:src/math-games/magic-square-games/fifteen-game/pages/PlayVsFriend.js
 // Game Logic
-import { status, gameOver, nextPlayer  } from "../../solution";
-import { getBotMove } from "../botLogic";
-=======
-<<<<<<< Updated upstream:src/math-games/tic-tac-toe/pages/PlayVsBot.js
-import { Box } from '@mui/material';
-=======
-// Game Logic
-import { status, gameOver, nextPlayer  } from "../../helpers";
-import { getBotMove } from "../../getBotMove";
->>>>>>> Stashed changes:src/math-games/magic-square-games/fifteen-game/pages/PlayVsFriend.js
->>>>>>> Stashed changes:src/math-games/tic-tac-toe/pages/PlayVsBot.js
+import { status, gameOver } from "../../magicSquareHelpers";
+
+const startingPosition = "" 
 
 export default function PlayVsFriend(props) {
   const { outcomeMap } = props
-  
-  const startingPosition = "" 
+
   const [moveList, setMoveList] = useState(startingPosition)
-  
-  const [humanGoesFirst, setHumanGoesFirst] = useState(true);
   const [gameNumber, setGameNumber] = useState(1);
   const [winLossDrawRecord, setWinLossDrawRecord] = useState([0, 0, 0]);
-  const [difficultyMode, setDifficultyMode] = useState("hard") 
-
-  function humanGoesNext(moveList) {  
-    if (humanGoesFirst) {
-      return (nextPlayer(moveList) === "xNext")
-    } 
-    else {
-      return (nextPlayer(moveList) === "oNext")
-    }
-  }
 
   // CLICK HANDLERS
-  function handleSquareClick(squareClicked) {
-    if (!humanGoesNext(moveList)) {
-      console.warn("NO EFFECT. Be patient, the bot takes a second to move. ")
-      return 1
-    }
-    else if (moveList.includes(squareClicked)) {
+  function handleNumberCardClick(squareClicked) {
+    if (moveList.includes(squareClicked)) {
       console.warn("NO EFFECT. That number has already been claimed.")
-      return 1
     }
     else if (gameOver(moveList)) {
       console.warn("NO EFFECT. The Game is already over.")
-      return 1
     }
     else {
       let updatedMoveList = moveList.concat(squareClicked)
       setMoveList(updatedMoveList)
       if (gameOver(updatedMoveList)) {
         handleGameOver(updatedMoveList)
-      } else {
-        handleBotsTurn(updatedMoveList)
-      }
-      return 0
+      } 
     }
   }
 
-  function newGame() {
+  function handleUndoClick() {
+    const updatedMoveList = moveList.slice(0,-1)
+    setMoveList(updatedMoveList)
+  }
+
+  function handleNewGameClick() {
     setGameNumber(gameNumber => ++gameNumber)
-    setHumanGoesFirst(true)
     setMoveList(startingPosition)
   }
 
-  function letBotGoFirst() {
-    console.assert(moveList.length === 0, `handleLetBotGoFirstClick was called but it is not the frst move of the game!`)
-    setHumanGoesFirst(false)
-    handleBotsTurn('') // if the bot is going first the movelist is empty.
-  }
 
-  function changeDifficultyMode(newDifficulty) {
-    if (newDifficulty !== difficultyMode) {
-      setGameNumber(1)
-      setHumanGoesFirst(true)
-      setWinLossDrawRecord([0, 0, 0])
-      setMoveList(startingPosition)
-      setDifficultyMode(newDifficulty)
-    }
-  }
-
-  // Find and make a move for the Bot with a slight delay. 
-  function handleBotsTurn(moveList) {
-    let botMove = getBotMove(difficultyMode, moveList, humanGoesFirst, outcomeMap)
-    let updatedMoveList = moveList.concat(botMove)
-    setTimeout(() => {
-      setMoveList(updatedMoveList)
-      if (gameOver(updatedMoveList)) {
-        handleGameOver(updatedMoveList)
-      }
-    }, 600)
-  }
-
-  function handleGameOver(ml) {
-    let result = status(ml)
+  function handleGameOver(moveList) {
+    const playerOneWentFirst = (gameNumber % 2 === 1)
+    let result = status(moveList)
+    const playerOneWins = playerOneWentFirst ? (result === "xWins") : (result === "oWins")  
+    const playerTwoWins = playerOneWentFirst ? (result === "oWins") : (result === "xWins")  
+    console.assert((result !== "xNext" && result !== "oNext"), `handleGameOver got invalid result when calling status(ml).`)
     if (result === "draw") {
       setWinLossDrawRecord([winLossDrawRecord[0], winLossDrawRecord[1], ++winLossDrawRecord[2]])
     }
-    else if (result === "xWins") {
-      if (humanGoesFirst) {
-        setWinLossDrawRecord([++winLossDrawRecord[0], winLossDrawRecord[1], winLossDrawRecord[2]])
-      }
-      else {
-        setWinLossDrawRecord([winLossDrawRecord[0], ++winLossDrawRecord[1], winLossDrawRecord[2]])
-      }
+    else if (playerOneWins) {
+      setWinLossDrawRecord([++winLossDrawRecord[0], winLossDrawRecord[1], winLossDrawRecord[2]])
     }
-    else if (result === "oWins") {
-      if (humanGoesFirst) {
-        setWinLossDrawRecord([winLossDrawRecord[0], ++winLossDrawRecord[1], winLossDrawRecord[2]])
-      }
-      else {
-        setWinLossDrawRecord([++winLossDrawRecord[0], winLossDrawRecord[1], winLossDrawRecord[2]])
-      }
+    else if (playerTwoWins) {
+      setWinLossDrawRecord([winLossDrawRecord[0], ++winLossDrawRecord[1], winLossDrawRecord[2]])
     }
     else {
         console.error(`handleGameOver called with invalid game result: ${result}. `)
@@ -141,22 +73,19 @@ export default function PlayVsFriend(props) {
       bgcolor='common.black'
       color='common.white'
     >
-      <Board 
+      <FifteenGameBoard 
         moveList={moveList}
         showSolution={false}
-        handleSquareClick={handleSquareClick}
+        handleNumberCardClick={handleNumberCardClick}
         outcomeMap={outcomeMap}
       />
 
-      <BotPanel
+      <FriendPanel
         moveList={moveList}
-        winLossDrawRecord={winLossDrawRecord}
-        humanGoesFirst={humanGoesFirst}
-        newGame={newGame}
-        letBotGoFirst={letBotGoFirst}
-        difficultyMode={difficultyMode}
-        changeDifficultyMode={changeDifficultyMode}
         gameNumber={gameNumber}
+        winLossDrawRecord={winLossDrawRecord}
+        handleNewGameClick={handleNewGameClick}
+        handleUndoClick={handleUndoClick}
       />
 
     </Box>

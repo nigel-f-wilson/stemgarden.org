@@ -4,8 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHouse } from '@fortawesome/free-solid-svg-icons';
 
 // MUI Components
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
+import { Box, Button, Typography } from '@mui/material';
 
 
 
@@ -16,12 +15,12 @@ export default function HomeButton() {
       to='../'
       variant="contained"
       color="primary"
-      sx={{ flexGrow: 1, mx: 1 }}
+      sx={{ flexGrow: 1 }}
     >
-      <Box mr={1} display="flex" alignContent="center" >
+      <Box display="flex" alignContent="center" >
         <FontAwesomeIcon icon={faHouse} size='lg' />
       </Box>
-      Home
+      <Typography children="Home" variant="button" ml={1} display={{ xs: 'none', sm: 'block' }}  />
     </Button>
   )
 }
