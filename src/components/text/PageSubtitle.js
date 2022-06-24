@@ -17,14 +17,17 @@ export default function PageSubtitle(props) {
       align={align} 
       p={padding}
       sx={{
-        textShadow: '0.15rem 0.15rem 0.3rem black',
+        textShadow: '0.12rem 0.12rem 0.2rem black',
         fontWeight: 200,
-        fontSize: '1.7rem',
+        fontSize: '1.2rem',
+        lineHeight: '1.5rem',
         '@media (min-width: 600px)': {
-          fontSize: '1.8rem',
+          fontSize: '1.5rem',
+        lineHeight: '1.8rem',
         },
         '@media (min-width: 900px)': {
-          fontSize: '2.0rem',
+          fontSize: '2.2rem',
+        lineHeight: '2.6rem',
         },
       }}
     />
