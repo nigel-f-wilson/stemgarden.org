@@ -46,15 +46,19 @@ export default function PlayVsFriend(props) {
   }
 
 
-  function handleGameOver(ml) {
-    let result = status(ml)
+  function handleGameOver(moveList) {
+    const playerOneWentFirst = (gameNumber % 2 === 1)
+    let result = status(moveList)
+    const playerOneWins = playerOneWentFirst ? (result === "xWins") : (result === "oWins")  
+    const playerTwoWins = playerOneWentFirst ? (result === "oWins") : (result === "xWins")  
+    console.assert((result !== "xNext" && result !== "oNext"), `handleGameOver got invalid result when calling status(ml).`)
     if (result === "draw") {
       setWinLossDrawRecord([winLossDrawRecord[0], winLossDrawRecord[1], ++winLossDrawRecord[2]])
     }
-    else if (result === "xWins") {
+    else if (playerOneWins) {
       setWinLossDrawRecord([++winLossDrawRecord[0], winLossDrawRecord[1], winLossDrawRecord[2]])
     }
-    else if (result === "oWins") {
+    else if (playerTwoWins) {
       setWinLossDrawRecord([winLossDrawRecord[0], ++winLossDrawRecord[1], winLossDrawRecord[2]])
     }
     else {
