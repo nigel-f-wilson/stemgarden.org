@@ -25,7 +25,7 @@ export function getBotMove(difficultyMode, moveList, humanGoesFirst, outcomeMap)
 // In EASY mode: Bot wins immediately if it can and otherwise selects a random move. 
 function easyProtocol(ml) {
     if (winningMoves(ml).length > 0) {
-        console.log(`BOT FOUND IMMEDIEATELY WINNING MOVES: ${winningMoves(ml)}`)
+        // console.log(`BOT FOUND IMMEDIEATELY WINNING MOVES: ${winningMoves(ml)}`)
         return pickRandomFromArray(winningMoves(ml))
     }
     else {
@@ -38,11 +38,11 @@ function mediumProtocol(ml) {
     let wins = winningMoves(ml)
     let defensiveMoves = urgentDefensiveMoves(ml)
     if (wins.length > 0) {
-        console.log(`BOT FOUND IMMEDIATELY WINNING MOVES: ${wins}`)
+        // console.log(`BOT FOUND IMMEDIATELY WINNING MOVES: ${wins}`)
         return pickRandomFromArray(wins)
     }
     else if (defensiveMoves.length > 0) {
-        console.log(`BOT FOUND URGENT DEFENSIVE MOVES: ${defensiveMoves}`)
+        // console.log(`BOT FOUND URGENT DEFENSIVE MOVES: ${defensiveMoves}`)
         return pickRandomFromArray(defensiveMoves)
     }
     else {
