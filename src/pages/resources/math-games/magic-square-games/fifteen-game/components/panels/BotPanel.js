@@ -22,22 +22,6 @@ export default function BotPanel(props) {
 
   const playMode = "playVsBot" 
 
-  
-  const BotGoFirstButton = () => {
-    return (
-      <Button
-        variant="contained"
-        color="primary"
-        onClick={() => letBotGoFirst()}
-        disabled={moveList.length !== 0}
-        sx={{ flexGrow: 2, mx: 1 }}
-      >
-        Let&nbsp;Bot&nbsp;Go&nbsp;First
-      </Button>
-    )
-  }
-
-  
 
   // const WinLossDrawRecord = () => {
   //   // const {  } = props
