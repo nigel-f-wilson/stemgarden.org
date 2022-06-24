@@ -18,7 +18,7 @@ export default function PlayVsBot(props) {
   const [humanGoesFirst, setHumanGoesFirst] = useState(true);
   const [gameNumber, setGameNumber] = useState(1);
   const [winLossDrawRecord, setWinLossDrawRecord] = useState([0, 0, 0]);
-  const [difficultyMode, setDifficultyMode] = useState("hard") 
+  const [difficultyMode, setDifficultyMode] = useState("easy") 
 
   function humanGoesNext(moveList) {  
     if (humanGoesFirst) {
@@ -31,9 +31,6 @@ export default function PlayVsBot(props) {
 
   // CLICK HANDLERS
   function handleNumberCardClick(numberCardClicked) {
-    console.log(`handleNumberCardClick called with square clicked ${numberCardClicked}`)
-    console.log( typeof numberCardClicked)
-    
     if (!humanGoesNext(moveList)) {
       console.warn("NO EFFECT. Be patient, the bot takes a second to move. ")
       return 1
@@ -58,7 +55,7 @@ export default function PlayVsBot(props) {
     }
   }
 
-  function newGame() {
+  function handleNewGameClick() {
     setGameNumber(gameNumber => ++gameNumber)
     setHumanGoesFirst(true)
     setMoveList(startingPosition)
@@ -128,20 +125,18 @@ export default function PlayVsBot(props) {
     >
       <FifteenGameBoard 
         moveList={moveList}
-        // showSolution={false}
         handleNumberCardClick={handleNumberCardClick}
-        // outcomeMap={outcomeMap}
       />
 
       <BotPanel
         moveList={moveList}
+        gameNumber={gameNumber}
         winLossDrawRecord={winLossDrawRecord}
         humanGoesFirst={humanGoesFirst}
-        newGame={newGame}
+        handleNewGameClick={handleNewGameClick}
         letBotGoFirst={letBotGoFirst}
         difficultyMode={difficultyMode}
         changeDifficultyMode={changeDifficultyMode}
-        gameNumber={gameNumber}
       />
 
     </Box>

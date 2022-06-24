@@ -6,8 +6,7 @@ import { generatePositionToOutcomeMap } from "../solution";
 
 
 const Welcome = lazy(() => import('./pages/Welcome'))
-// const PlayWithCoach = lazy(() => import('./pages/PlayWithCoach'))
-// const PlayVsFriend = lazy(() => import('./pages/PlayVsFriend')) 
+const PlayVsFriend = lazy(() => import('./pages/PlayVsFriend')) 
 const PlayVsBot = lazy(() => import('./pages/PlayVsBot')) 
 
 // Game Logic
@@ -35,8 +34,7 @@ export default function FifteenGameRoutes(props) {
       <Container maxWidth='sm' disableGutters >
         <Routes >
           <Route index element={<Welcome />} />
-          {/* <Route path="play-with-coach" element={<PlayWithCoach outcomeMap={outcomeMap} />} /> */}
-          {/* <Route path="play-vs-friend" element={<PlayVsFriend outcomeMap={outcomeMap} />} /> */}
+          <Route path="play-vs-friend" element={<PlayVsFriend outcomeMap={outcomeMap} />} />
           <Route path="play-vs-bot" element={<PlayVsBot outcomeMap={outcomeMap} />} />
         </Routes>
       </Container>
