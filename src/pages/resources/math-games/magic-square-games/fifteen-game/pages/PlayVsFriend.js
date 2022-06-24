@@ -8,15 +8,14 @@ import FriendPanel from "../components/panels/FriendPanel";
 // Game Logic
 import { status, gameOver } from "../../magicSquareHelpers";
 
+const startingPosition = "" 
+
 export default function PlayVsFriend(props) {
   const { outcomeMap } = props
-  
-  const startingPosition = "" 
+
   const [moveList, setMoveList] = useState(startingPosition)
-  
   const [gameNumber, setGameNumber] = useState(1);
   const [winLossDrawRecord, setWinLossDrawRecord] = useState([0, 0, 0]);
-
 
   // CLICK HANDLERS
   function handleNumberCardClick(squareClicked) {
@@ -83,9 +82,9 @@ export default function PlayVsFriend(props) {
 
       <FriendPanel
         moveList={moveList}
+        gameNumber={gameNumber}
         winLossDrawRecord={winLossDrawRecord}
         handleNewGameClick={handleNewGameClick}
-        gameNumber={gameNumber}
         handleUndoClick={handleUndoClick}
       />
 
