@@ -25,12 +25,12 @@ export default function PageTitle(props) {
           lineHeight: '4.3rem',
         },
         '@media (min-width: 600px)': {
-          fontSize: '4.2rem',
-          lineHeight: '4.7rem',
+          fontSize: '4.0rem',
+          lineHeight: '4.5rem',
         },
         '@media (min-width: 900px)': {
-          fontSize: '6.0rem',
-          lineHeight: '7.0rem', 
+          fontSize: '5.0rem',
+          lineHeight: '5.7rem', 
         },
       }}
     >
