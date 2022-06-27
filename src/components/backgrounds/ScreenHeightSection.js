@@ -49,7 +49,6 @@ export default function ScreenHeightSection(props) {
         sx={{
           display: 'flex',
           flexDirection: 'column',
-          alignItems: 'space-evenly',
           textAlign: 'center',
         }}    
       />
