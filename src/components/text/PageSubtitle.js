@@ -26,8 +26,8 @@ export default function PageSubtitle(props) {
         lineHeight: '1.8rem',
         },
         '@media (min-width: 900px)': {
-          fontSize: '2.2rem',
-        lineHeight: '2.6rem',
+          fontSize: '2.0rem',
+        lineHeight: '2.2rem',
         },
       }}
     />
