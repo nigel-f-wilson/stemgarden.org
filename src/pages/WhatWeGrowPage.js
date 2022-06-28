@@ -1,10 +1,10 @@
 import React, { useState, useContext } from 'react'
 import { Box, Grid, Container, Typography, Tooltip } from '@mui/material';
 
-import { AppContext } from "../../AppContext";
+import { AppContext } from "../AppContext";
 
-import { Background } from "../../components/backgrounds";
-import { PageHeader } from "../../components/text";
+import { Background } from "../components/backgrounds";
+import { PageHeader } from "../components/text";
 
 import { 
   banana_papaya_turmeric_flower,
@@ -27,7 +27,7 @@ import {
   tomato_cuke_harvest,
   cucumber_pile,
   tobacco_plant
-} from "../../cloudinaryURLs";
+} from "../cloudinaryURLs";
 
 
 export default function WhatWeGrowPage(props) {
