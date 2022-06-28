@@ -79,7 +79,7 @@ export default function MainRouter() {
           <Route path="olive" element={<Olive />} />
           <Route path="you" element={<Join />} />
         </Route> */}
-        <Route path="contact" element={<ContactPage />} />
+        <Route path="contact-us" element={<ContactPage />} />
       </Routes>
 
     </Suspense>
