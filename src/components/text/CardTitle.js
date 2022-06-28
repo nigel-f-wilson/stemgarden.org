@@ -4,7 +4,7 @@ import { Typography } from '@mui/material';
 import { AppContext } from "../../AppContext";
 
 export default function CardTitle(props) {
-  const { text, shortText, align, gutterBottom } = props
+  const { text, align, gutterBottom } = props
   const { colorTheme } = useContext(AppContext)
 
   const padding = (gutterBottom) ? "0 0 0.4rem" : "0"

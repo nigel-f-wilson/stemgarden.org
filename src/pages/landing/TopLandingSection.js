@@ -80,7 +80,7 @@ export default function TopLandingSection(props) {
 }
 
 function LandingCard(props) {
-  const { title, shortTitle, imgUrl, cardWidth } = props
+  const { title, imgUrl, cardWidth } = props
   // const cardTitleHeight = `${Math.floor(cardWidth / 5)}px`
   return (
     <Box width={cardWidth} height="100%" padding={1} >

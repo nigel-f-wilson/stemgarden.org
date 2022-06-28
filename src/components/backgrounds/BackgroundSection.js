@@ -5,7 +5,7 @@ import { AppContext } from "../../AppContext";
 import { leafy_background } from "../../cloudinaryURLs";
 
 export default function ScreenHeightSection(props) {
-  const { narrowScreen, availableHeight } = useContext(AppContext)
+  const { narrowScreen } = useContext(AppContext)
   const { 
     id, 
     children, 

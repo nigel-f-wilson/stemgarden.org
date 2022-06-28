@@ -1,28 +1,20 @@
-import React, { useContext } from 'react'
-import { Link as RouterLink } from 'react-router-dom';
-import { HashLink } from 'react-router-hash-link';
+import React from 'react'
 
 import { Button } from '@mui/material';
-
-// ICONS
 import { faArrowCircleRight } from '@fortawesome/free-solid-svg-icons'
 
 // CUSTOM COMPONENTS
 import { PageHeader, ButtonLabel } from "../../components/text";
 import { BackgroundSection } from "../../components/backgrounds";
 import { Section } from "../../components/text";
-// import Footer from '../components/Footer';
 
 // IMAGE URLs
 import { 
   early_days_trash_pile,
   tool_shed_with_zinnias,
-  gulf_fritillary,
  } from "../../cloudinaryURLs";
-import { AppContext } from '../../AppContext';
 
 export default function OurStorySection(props) {
-  const { availableHeight, availableWidth } = useContext(AppContext)
   return (
     <BackgroundSection id="our-story" bg="dark"  sectionHeight="auto" >
       <PageHeader title="Our Story" />
