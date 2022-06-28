@@ -1,3 +1,3 @@
 export {default as Background} from './Background';
 export {default as LeafyBackground} from './LeafyBackground';
-export {default as ScreenHeightSection} from './ScreenHeightSection';
+export {default as BackgroundSection} from './BackgroundSection';
