@@ -6,16 +6,15 @@ import 'react-spinner-animated/dist/index.css'
 
 
 // PAGES
-import LandingPage from './pages/LandingPage'
+import LandingPage from './pages/landing/LandingPage'
 
 const ContactPage = lazy(() => import('./pages/ContactPage'))
 
 
 // ABOUT
-const AboutIndexPage = lazy(() => import('./pages/about/AboutIndexPage'))
-const OurStoryPage = lazy(() => import('./pages/about/OurStoryPage'))
-const WhatWeGrowPage = lazy(() => import('./pages/about/WhatWeGrowPage'))
-const GetInvolvedPage = lazy(() => import('./pages/about/GetInvolvedPage'))
+const OurStoryPage = lazy(() => import('./pages/OurStoryPage'))
+const WhatWeGrowPage = lazy(() => import('./pages/WhatWeGrowPage'))
+const GetInvolvedPage = lazy(() => import('./pages/GetInvolvedPage'))
 
 // SERVICES
 const ServicesIndexPage = lazy(() => import('./pages/services/ServicesIndexPage'))
@@ -47,13 +46,10 @@ export default function MainRouter() {
       <Routes>
         <Route exact path="/" element={<LandingPage />} />
 
-        <Route path="about" >
-          <Route index element={<AboutIndexPage />} />
-          <Route path="our-story" element={<OurStoryPage />} />
-          <Route path="what-we-grow" element={<WhatWeGrowPage />} />  
-          <Route path="get-involved" element={<GetInvolvedPage />} />
-          {/* <Route path="buy-our-fruit" element={<BuyOurFruitPage />} /> */}
-        </Route>
+        <Route path="our-story" element={<OurStoryPage />} />
+        <Route path="what-we-grow" element={<WhatWeGrowPage />} />  
+        <Route path="get-involved" element={<GetInvolvedPage />} />
+        {/* <Route path="buy-our-fruit" element={<BuyOurFruitPage />} /> */}
         
         <Route path="services"  >
           <Route index element={<ServicesIndexPage />} />
