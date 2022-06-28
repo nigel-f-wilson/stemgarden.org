@@ -1,8 +1,8 @@
 import React from 'react'
 import { Container } from '@mui/material';
 
-import { Background } from "../../components/backgrounds";
-import { PageHeader, Section, PictureRow } from '../../components/text';
+import { Background } from "../components/backgrounds";
+import { PageHeader, Section, PictureRow } from '../components/text';
 
 import { 
   early_days_trash_pile,
@@ -10,8 +10,9 @@ import {
   solar_panels_on_classroom,
   load_of_manure,
   tearoom_completed,
-  cooking_on_the_screen_porch
- } from "../../cloudinaryURLs";
+  cooking_on_the_screen_porch,
+  tool_shed_with_zinnias
+ } from "../cloudinaryURLs";
 
 export default function OurStoryPage(props) {
   return (
@@ -78,13 +79,13 @@ function LivingSection() {
           text: "Building an off-grid homestead"
         },{
           type: 'paragraph',
-          text: "When I bought the garden it was an overgrown trash pit. I spent my first summer in New Orleans sleeping in my van and picking broken glass, car parts, furniture and other trash out of the dirt. I built a simple toolshed and picked up many discarded pallets to build a fence out of. I brought in and composted over 9000 cubic feet of leaves and horse manure to feed the soil and to help the site become less succeptible to flooding by. "
+          text: "When I bought the garden it was an overgrown trash pit. I spent my first summer in New Orleans sleeping in my van and picking broken glass, car parts, furniture and other trash out of the dirt. I built a simple tool shed and picked up many discarded pallets to build a fence out of. I brought in and composted over 9000 cubic feet of leaves and horse manure to feed the soil and to help the site become less susceptible to flooding. "
         },{
           type: 'paragraph',   
-          text: "I hosted a series of couch surfers who would trade a couple hours of work for a place to stay. In the third year, a friend of a frien named Olive asked if she could park her 1950's air stream trailer in the garden and live there for a few months. We hit it off immediately and a few months has turned into many happy years. I built a screened-in kitchen so Olive could cook without getting moquito bites. I designed and built two tiny houses on trailers, the Tea Room and the Classroom. I took things apart and reused the materials and gradually I got better and building things. The garden became a more comfortable place to live."
+          text: "I hosted a series of couch surfers who would trade a couple hours of work for a place to stay. In the third year, a friend of a friend named Olive asked if she could park her 1950's airstream trailer in the garden and live there for a few months. We hit it off immediately and a few months has turned into many happy years. I built a screened-in kitchen so Olive could cook without getting mosquito bites. I designed and built two tiny houses on trailers, the Tea Room and the Classroom. I took things apart and reused the materials and gradually I got better at building things. The garden became a more comfortable place to live."
         }
       ]}
-      imgUrl={"https://res.cloudinary.com/nola-stem-garden/image/upload/v1653761836/stemgarden.org/garden_story/tool_shed_with_zinnias_ljylpx.jpg"}
+      imgUrl={tool_shed_with_zinnias}
       imgAlign="left"
       contain
     />

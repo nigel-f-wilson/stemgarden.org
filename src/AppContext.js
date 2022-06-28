@@ -22,7 +22,7 @@ export const AppContextProvider = props => {
 
 
   let availableHeight = screenHeight - navbarHeightPx
-  let availableWidth = screenWidth
+  let availableWidth = (screenWidth < 900) ? screenWidth : 900
 
   let maxSquareSideLength = (availableHeight < availableWidth) ? availableHeight : availableWidth
   

@@ -33,17 +33,17 @@ export const aboutListData = [
   {
     label: "Our Story",
     icon: faLeaf,
-    linkTo: "about/our-story",
+    linkTo: "our-story",
   },
   {
     label: 'What We Grow',
     icon: faCamera,
-    linkTo: "about/what-we-grow",
+    linkTo: "what-we-grow",
   },
   {
     label: 'Get Involved',
     icon: faPeopleCarry,
-    linkTo: "about/get-involved",
+    linkTo: "get-involved",
   },
   // {
   //   label: 'Philosophy',
@@ -86,9 +86,9 @@ export const servicesListData = [
     linkTo: "services/web-development",
   },
   {
-    label: "Contact Form",
+    label: "Contact Us",
     icon: faEnvelope,
-    linkTo: "contact",
+    linkTo: "contact-us",
   },
 ]
 

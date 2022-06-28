@@ -17,9 +17,9 @@ export default function Paragraph(props) {
       variant="body1"
       gutterBottom
       sx={{
-        fontSize: '1.0rem',
+        fontSize: '0.9rem',
         [theme.breakpoints.up('sm')]: {
-          fontSize: '1.15rem',
+          fontSize: '1.1rem',
         },
         // [theme.breakpoints.up('md')]: {
         //   fontSize: '1.3rem',

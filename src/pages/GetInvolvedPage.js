@@ -2,9 +2,9 @@ import React from 'react'
 import { Container } from '@mui/material';
 
 
-import { Background } from "../../components/backgrounds";
-import { PageHeader } from '../../components/text';
-import Section from "../../components/text/Section";
+import { Background } from "../components/backgrounds";
+import { PageHeader, PictureRow } from '../components/text';
+import Section from "../components/text/Section";
 
 import { 
   olive_holding_raddishes,
@@ -17,8 +17,7 @@ import {
   buckets_of_figs,
   tearoom_completed,
 
- } from "../../cloudinaryURLs";
-import { PictureRow } from '../../components/text';
+ } from "../cloudinaryURLs";
 
 export default function GetInvolvedPage(props) {
   // const [typeOfInvolvement, setTypeOfInvolvement] = useState('garden') 

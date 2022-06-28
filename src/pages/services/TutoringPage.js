@@ -67,7 +67,7 @@ function SubjectsSection() {
           text: "Whereas schools require students to conform to their structures, Tutoring has the flexibility to be whatever works best for the student. It can be mainly book-work or can be filled with hands-on experiences. "
         },{
           type: 'paragraph',
-          text: 'My broad background enables me to help students at all levels identify and fill gaps in thier understanding of math. This is a critical advantage as almost all students who have learned math in a school setting have at one time or another been pushed to move through the curriculum in sync with peers rather than at their own pace. The way most schools operate all but guarantees that students will accumulate gaps in theiir math understanding, even as they earn passing grades and get promoted. '
+          text: 'My broad background enables me to help students at all levels identify and fill gaps in their understanding of math. This is a critical advantage as almost all students who have learned math in a school setting have at one time or another been pushed to move through the curriculum in sync with peers rather than at their own pace. The way most schools operate all but guarantees that students will accumulate gaps in their math understanding, even as they earn passing grades and get promoted. '
         },
       ]}
       imgUrl={guitar_fret_measuring}
@@ -83,13 +83,13 @@ function PricingSection() {
       textItems={[
         {
           type: 'paragraph',
-          text: "Students usually seek out tutoring when they first have the experience of 'hitting a wall' in math. This experience causes many to worry that they have reached the limit of their math ability, but that is not the case! Feeling like you hit a wall in math is usually the result of several little gaps catching up with you all at once. Tutoring can elimate gaps with laser focus. It helps students to restore the positive feedback loop where struggle followed by success becomes a source of motivation."
+          text: "Students usually seek out tutoring when they first have the experience of 'hitting a wall' in math. This experience causes many to worry that they have reached the limit of their math ability, but that is not the case! Feeling like you hit a wall in math is usually the result of several little gaps catching up with you all at once. Tutoring can eliminate gaps with laser focus. It helps students to restore the positive feedback loop where struggle followed by success becomes a source of motivation."
         },{
           type: 'heading',
           text: "Pricing"
         },{
           type: 'paragraph',
-          text: "My horly rate for one-on-one tutoring in grade school content is $50. For tutoring in AP and college level material I charge $65 per hour. For groups of 2-8 students, pricing depends on group size and meeting location. Email nigel@stemgarden.org for details."
+          text: "My hourly rate for one-on-one tutoring in grade school content is $50. For tutoring in AP and college level material I charge $65 per hour. For groups of 2-8 students, pricing depends on group size and meeting location. Email nigel@stemgarden.org for details."
         },{
           type: 'paragraph',
           text: "I believe that high-quality math instruction should be available to any student with the drive to practice. If affordability is an issue, don't hesitate to reach out. I can usually make it work through a combination of group discounts and work-trade agreements. I also coach parents on how to best support their kids in math. This can be a more affordable option for families with kids up to high school age."
@@ -110,7 +110,7 @@ function TestimonySection() {
       <Grid container spacing={3} >
         <Grid item xs={12} >
           <Quote
-            quote="I wouldn't have made it through my first semester of grad school without Nigel. He has a unique tallent for breaking concepts down clearly. I had worked with other tutors before and still felt stuck but after working with Nigel I could even explain the concepts to the other people in my study group."
+            quote="I wouldn't have made it through my first semester of grad school without Nigel. He has a unique talent for breaking concepts down clearly. I had worked with other tutors before and still felt stuck but after working with Nigel I could even explain the concepts to the other people in my study group."
             personName="Julie Richelson"
             relationship="MBA Student, UNO"
           />
@@ -124,7 +124,7 @@ function TestimonySection() {
         </Grid>
         <Grid item xs={12} md={6} >
           <Quote
-            quote="Our students were very engaged in Mr. Nigel's math class. It was the most excited I had ever seen them to go to math. The lessons he developed and taught our 4th-8th graders were so interesting and thought provoking for students and other staff."
+            quote="Our students were very engaged in Mr. Nigel's math class. It was the most excited I had ever seen them to go to math. The lessons he developed and taught our 4th-8th graders were so interesting and thought provoking for students and even for other staff."
             personName="Jill Contento"
             relationship="Faculty Chair, WSNO"
           />
@@ -138,7 +138,7 @@ function TestimonySection() {
         </Grid>
         <Grid item xs={12} md={6} >
           <Quote
-            quote="Your explanations are always so simple and digestible. I feel so much more comfortable supporting my students in math after having you would explain things to me. The depth of your content knowledge is extraordinary and you have a gift for explaining math in user-friendly terms."
+            quote="Your explanations are always so simple and digestible. I feel so much more comfortable supporting my students in math after having you coach me on teaching strategies. The depth of your content knowledge is extraordinary and you have a gift for explaining math in user-friendly terms."
             personName="Justin Allison"
             relationship="Special Needs Teacher at Bricolage"
           />

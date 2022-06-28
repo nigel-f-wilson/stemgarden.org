@@ -3,6 +3,7 @@ import { Link as RouterLink } from 'react-router-dom';
 import { Box, Container, Grid, Card, CardMedia, Typography, Button, Stack } from '@mui/material';
 
 import { AppContext } from "../../AppContext";
+import { PageHeader } from '../../components/text';
 
 // const under_construction = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_1000,h_1000,c_limit/v1647561688/stemgarden.org/under_construction_sbiop2.png"
 
@@ -88,7 +89,11 @@ const servicesCardData = [
 export default function ServicesIndexPage() {
   return (
     <Background >
-      <PageHeader />
+      <PageHeader 
+        title="Services"
+        subtitle="I am a jack of all trades because I believe that variety is the spice of life.  
+        The best kind of learning synthesizes insights from across disiplines."
+      />
       <CardGrid />
     </Background>
   )
@@ -112,20 +117,8 @@ function Background(props) {
     </Box>
   )
 }
-function PageHeader() {
-  return (
-    <Box pb='2rem' display='flex' flexDirection='column' >
-      <Typography align="center" variant="pageHeader" >
-        Services
-      </Typography>
-      <Typography align="justify" variant="pageSubheader" px='8%' >
-        I am a jack of all trades because I believe that variety is the spice of life.  
-        The best kind of learning synthesizes insights from across disiplines.
-        {/* "A jack of all trades is a master of none, but is often more useful than a master of one."   */}
-      </Typography>
-    </Box>
-  )
-}
+
+
 function CardGrid(props) {
   return (
     <Grid container spacing={2} >
