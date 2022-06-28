@@ -47,9 +47,7 @@ export default function ScreenHeightSection(props) {
 
 
   return (
-    <Box  
-      // border="solid red 1px"
-      id={id}
+    <Box id={id}
       sx={backgroundStyles} 
       width='100vw'
       height={sectionHeight}

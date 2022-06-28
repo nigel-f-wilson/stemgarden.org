@@ -18,7 +18,7 @@ export default function PageTitle(props) {
         padding: padding, 
         textShadow: '0.15rem 0.15rem 0.3rem black',
         fontWeight: 200,
-        fontSize: '2.6rem',
+        fontSize: '2.4rem',
         lineHeight: '3.0rem',
         '@media (min-width: 450px)': {
           fontSize: '3.8rem',
@@ -29,8 +29,8 @@ export default function PageTitle(props) {
           lineHeight: '4.5rem',
         },
         '@media (min-width: 900px)': {
-          fontSize: '5.0rem',
-          lineHeight: '5.7rem', 
+          fontSize: '4.5rem',
+          lineHeight: '4.8rem', 
         },
       }}
     >

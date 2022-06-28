@@ -27,8 +27,8 @@ export default function CardTitle(props) {
         lineHeight: '2.1rem',
         },
         '@media (min-width: 900px)': {
-          fontSize: '2.0rem',
-        lineHeight: '2.2rem',
+          fontSize: '1.5rem',
+        lineHeight: '1.8rem',
         },
       }}
     />
