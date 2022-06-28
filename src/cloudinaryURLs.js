@@ -23,6 +23,7 @@ export const cooking_on_the_screen_porch = "https://res.cloudinary.com/nola-stem
 // Structures
 export const tearoom_completed = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1653500341/stemgarden.org/garden_story/tearoom_finished_xwlrcc.jpg"
 export const solar_panels_on_classroom = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1653761283/stemgarden.org/garden_story/solar_panels_on_classroom_fk8wjt.jpg"
+export const tool_shed_with_zinnias = "https://res.cloudinary.com/nola-stem-garden/image/upload/v1653761836/stemgarden.org/garden_story/tool_shed_with_zinnias_ljylpx.jpg"
 
 // People
 export const olive_holding_raddishes = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1653492318/stemgarden.org/people/olive_holding_raddishes_juhfpi.jpg"
@@ -34,6 +35,7 @@ export const june_playing_banjo = "https://res.cloudinary.com/nola-stem-garden/i
 export const nigel_at_computer_desk = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1653493058/stemgarden.org/people/nigel_at_computer_desk_bdrmks.jpg"
 export const nigel_holding_banana_bunches = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1612190847/nolastemgarden/banana/holding_banana_bunches_hpjb7q.jpg"
 export const profile_with_hoe = "https://res.cloudinary.com/nola-stem-garden/image/upload/v1647374938/stemgarden.org/people/profile-pic_ncluzf.jpg"
+export const american_gothic_with_nigel_olive = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1653492332/stemgarden.org/people/american_gothic_with_nigel_olive_bm0li2.jpg"
 
 // SERVICES
 // Web Develpoment
@@ -108,6 +110,8 @@ export const cucumber_pile = 'https://res.cloudinary.com/nola-stem-garden/image/
 export const tobacco_plant = 'https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1652730424/stemgarden.org/harvests/tobacco_plant_yiy4r6.jpg'
 export const basket_of_raddishes = 'https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1652701631/stemgarden.org/harvests/radishes_qpz2ou.jpg'
 
+// Wildlife
+export const gulf_fritillary = "https://res.cloudinary.com/nola-stem-garden/image/upload/w_500,h_500,c_limit/v1646607327/stemgarden.org/wildlife/gulf_fritilary_qeoacw.jpg"
 
 
 // Lesson Plan Clipart
