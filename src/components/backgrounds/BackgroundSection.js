@@ -5,8 +5,13 @@ import { AppContext } from "../../AppContext";
 import { leafy_background } from "../../cloudinaryURLs";
 
 export default function ScreenHeightSection(props) {
-  const { children, bg } = props
   const { narrowScreen, availableHeight } = useContext(AppContext)
+  const { 
+    id, 
+    children, 
+    bg, 
+    sectionHeight = '100vh' 
+  } = props
 
   const gradient = (narrowScreen) ?
     "linear-gradient(90deg, rgba(58,94,22,0.80) 0%, rgba(58,99,22,0.80) 100%)"
@@ -14,7 +19,7 @@ export default function ScreenHeightSection(props) {
 
   const leafyBackgroundStyles = {
     width: '100vw',
-    height: availableHeight,
+    height: sectionHeight,
     backgroundImage: `
       ${gradient},
       url(${leafy_background})
@@ -26,13 +31,13 @@ export default function ScreenHeightSection(props) {
 
   const darkBackgroundStyles = {
     width: '100vw',
-    height: availableHeight,
+    height: sectionHeight,
     backgroundColor: 'darkGrey',
   }  
 
   const whiteBackgroundStyles = {
     width: '100vw',
-    height: availableHeight,
+    height: sectionHeight,
     backgroundColor: 'white',
   }  
 
@@ -42,7 +47,13 @@ export default function ScreenHeightSection(props) {
 
 
   return (
-    <Box  sx={backgroundStyles} >
+    <Box  
+      // border="solid red 1px"
+      id={id}
+      sx={backgroundStyles} 
+      width='100vw'
+      height={sectionHeight}
+    >
       <Container
         children={children}
         maxWidth='md' 
