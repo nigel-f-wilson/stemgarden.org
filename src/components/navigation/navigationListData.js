@@ -86,9 +86,9 @@ export const servicesListData = [
     linkTo: "services/web-development",
   },
   {
-    label: "Contact Form",
+    label: "Contact Us",
     icon: faEnvelope,
-    linkTo: "contact",
+    linkTo: "contact-us",
   },
 ]
 
