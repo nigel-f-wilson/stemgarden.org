@@ -1,0 +1,2 @@
+(this["webpackJsonpstemgarden.org"]=this["webpackJsonpstemgarden.org"]||[]).push([[23],{412:function(n,e,t){"use strict";t.r(e),t.d(e,"default",(function(){return c}));var r=t(0),s=t.n(r),a=t(1);function c(n){return Object(a.jsx)(s.a.Fragment,{children:"Enrichment Page"})}}}]);
+//# sourceMappingURL=23.39b95022.chunk.js.map
