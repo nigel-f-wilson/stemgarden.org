@@ -31,7 +31,7 @@ export default function ButtonLabel(props) {
           startIcon ? (
             <FontAwesomeIcon icon={startIcon} color={textColor} size={iconSize} />
           ) : (
-            <></>
+            <React.Fragment></React.Fragment>
           )
         }
         {
@@ -58,14 +58,14 @@ export default function ButtonLabel(props) {
               }}
             />
           ) : (
-            <></>
+            <React.Fragment></React.Fragment>
           )
         }
         {
           endIcon ? (
             <FontAwesomeIcon icon={endIcon} color={textColor} size={iconSize} />
           ) : (
-            <></>
+            <React.Fragment></React.Fragment>
           )
         }
     </Box>
